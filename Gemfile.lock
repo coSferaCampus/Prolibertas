@@ -215,25 +215,25 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
-  angular-rails-templates
-  bootstrap-sass
-  capybara
-  cucumber-rails
+  active_model_serializers (~> 0.9.3)
+  angular-rails-templates (~> 0.1.3)
+  bootstrap-sass (~> 3.3.3)
+  capybara (~> 2.4.4)
+  cucumber-rails (~> 1.4.2)
   database_cleaner (= 1.3.0)
-  factory_girl_rails
-  faker
+  factory_girl_rails (~> 4.5.0)
+  faker (~> 1.4.3)
   mongoid (~> 4.0.1)
   mongoid-rspec (~> 2.1.0)
-  pry-rails
-  rack-cors
+  pry-rails (~> 0.3.3)
+  rack-cors (~> 0.3.1)
   rails (= 4.2.0)
-  rails-assets-angular!
-  rails-assets-angular-local-storage!
-  rails-assets-angular-permission!
-  rails-assets-angular-ui-router!
-  rspec-expectations
-  rspec-rails
-  selenium-webdriver
-  spring
-  spring-commands-rspec
+  rails-assets-angular (~> 1.3.14)!
+  rails-assets-angular-local-storage (~> 0.1.5)!
+  rails-assets-angular-permission (~> 0.2.0)!
+  rails-assets-angular-ui-router (~> 0.2.13)!
+  rspec-expectations (~> 3.2.0)
+  rspec-rails (~> 3.2.1)
+  selenium-webdriver (~> 2.45.0)
+  spring (~> 1.3.3)
+  spring-commands-rspec (~> 1.0.4)
