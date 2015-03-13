@@ -18,7 +18,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   # RSpec Rails can automatically mix in different behaviours to your tests
@@ -38,6 +38,8 @@ RSpec.configure do |config|
 
   # Configure mongoid-rspec
   include Mongoid::Matchers, type: :model
+  # Configure controller macros
+  config.extend ControllerMacros, type: :controller
 
   # Configure DatabaseCleaner
   config.before(:suite) do
