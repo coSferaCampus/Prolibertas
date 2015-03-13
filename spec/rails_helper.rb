@@ -38,6 +38,8 @@ RSpec.configure do |config|
 
   # Configure mongoid-rspec
   include Mongoid::Matchers, type: :model
+  # Configure controller macros
+  config.extend ControllerMacros, type: :controller
 
   # Configure DatabaseCleaner
   config.before(:suite) do
