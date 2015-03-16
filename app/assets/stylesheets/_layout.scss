@@ -41,9 +41,33 @@ html {
   border: none;
 }
 
+li .lista__el:hover,
+li .lista__el:focus {
+  background-color: $brand_light;
+}
+
 .lista__el__text {
   color: white;
   line-height: 45px;
+}
+
+.info {
+  position: absolute;
+    left: 0px;
+  bottom: $footer_height;
+}
+
+.info__logo {
+  margin-top: 60px;
+  height: 100px;
+  width:  100px;
+  margin-left: 100px;
+
+}
+
+.info__text {
+  padding: 30px;
+  color: white;
 }
 
 .footer {
