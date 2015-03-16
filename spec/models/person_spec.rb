@@ -1,12 +1,8 @@
 require 'rails_helper'
-
-#  vamos a definir la clase personas
-
 RSpec.describe Person, type: :model do
   context "Document" do
     it { is_expected.to be_timestamped_document }
   end
-
   context "Fields" do
     it { is_expected.to have_field(:name).of_type(String) }
     it { is_expected.to have_field(:surname).of_type(String) }
@@ -25,16 +21,10 @@ RSpec.describe Person, type: :model do
     it { is_expected.to have_field(:address).of_type(String) }
     it { is_expected.to have_field(:contact_family).of_type(String) }
     it { is_expected.to have_field(:notes).of_type(String) }
-
-
-
   end
-
   context "Validations" do 
   	it { is_expected.to validate_presence_of(:name) }
   	it { is_expected.to validate_presence_of(:surname) }
     it { is_expected.to validate_inclusion_of(:genre).to_allow([:man, :woman]) }
-
   end
-
 end
