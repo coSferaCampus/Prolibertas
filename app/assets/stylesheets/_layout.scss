@@ -1,1 +1,66 @@
-//layout
+$lista_height:  60px;
+$footer_height: 80px;
+
+html {
+  font-family: istokRegular, sans-serif;
+}
+
+.body {
+  background-color: $brand;
+}
+
+.navbar-nav {
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  border-right: 1px solid #eee;
+  background-color: $brand_dark;
+  overflow-y: auto;
+}
+
+.logo {
+  padding: 20px;
+  height:130px;
+}
+
+.lista {
+  margin-top: 20px;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.lista__el {
+  margin-top: 10px;
+  height: $lista_height;
+  width: 105%;
+  background-color: $brand;
+  text-align: center;
+  border: none;
+}
+
+.lista__el__text {
+  color: white;
+  line-height: 45px;
+}
+
+.footer {
+  position: fixed;
+  height: $footer_height;
+  width: 100%;
+  background-color: white;
+  left: 0px;
+  bottom: 0px;
+}
+
+.footer__img {
+  display: inline-block;
+}
+
+.footer__text {
+  line-height: $footer_height;
+  display: inline-block;
+}
+
