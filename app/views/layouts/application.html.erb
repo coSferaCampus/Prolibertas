@@ -8,7 +8,24 @@
 </head>
 <body>
 
-	<div ui-view></div>
+	<div class="list-group nav navbar-nav col-md-3">
+		<img class="logo" src="/assets/logo.svg">
+		<ul class="list-group lista">
+			<li><a href="#" class="list-group-item lista__el"><span class="lista__el__text">PERSONAS</span></a></li>
+			<li><a href="#" class="list-group-item lista__el"><span class="lista__el__text">FAMILIAS</span></a></li>
+			<li><a href="#" class="list-group-item lista__el"><span class="lista__el__text">SERVICIOS</span></a></li>
+			<li><a href="#" class="list-group-item lista__el"><span class="lista__el__text">INFORMES</span></a></li>
+		</ul>
+	</div>
+
+	<div class="col-md-9 col-md-offset-3 body" ui-view><p>SOY EL BODY</p></div>
+
+   	<!-- FOOTER -->
+   	<footer class="footer">
+   		<img class="footer__img" src="/assets/logo_footer.svg">
+      <p class="footer__text">www.prolibertas.org - info@prolibertas.org</p>
+    </footer>
+  </div> 
 
 </body>
 </html>
