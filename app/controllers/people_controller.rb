@@ -23,6 +23,11 @@ class PeopleController < ApplicationController
     respond_with @person
   end
 
+  def destroy
+    @person= Person.find(params[:id])
+    @person.destroy
+    respond_with @person
+  end
 
   private
 
