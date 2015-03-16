@@ -38,7 +38,8 @@ html {
 }
 
 li .lista__el:hover,
-li .lista__el:focus {
+li .lista__el:focus,
+li .lista__el.selected, {
   background-color: $brand_light;
 }
 
