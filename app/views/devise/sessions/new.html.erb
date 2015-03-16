@@ -3,6 +3,7 @@
     <div class="col-md-offset-4 col-md-4">  
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: "form-signin"}) do |f| %>
         <img class="center-block logologin" src="/assets/logo.svg">
+
             <%= f.label :name %><br />
             <div class="input-group input-group-lg">
                <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
@@ -22,15 +23,15 @@
             </div>
           <% end -%>
           <div class="actions">
-            <%= f.submit "Acceder", class:"btn btn-lg btn-block botoniniciar"%>
+            <%= f.submit "Acceder", class:"btn btn-lg btn-block botoniniciar", id:"buttomlogin"%>
           </div>
+          <div id="invalid"><%=alert%></div>  
         <% end %>
        </div>
       </div>
     </div>  
   <div class="row">
-    <div class="col-sm-12 lineagris">
-    </div>
+    <div class="col-sm-12 lineagris"></div>
   </div>
   <div class="row">
         <div class="col-md-2 imgfooter"><img  src="/assets/logo_footer.svg"></div>
