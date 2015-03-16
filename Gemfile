@@ -50,7 +50,7 @@ group :test do
   # Al terminar de pasarse los tests borra la base de datos
   gem 'database_cleaner', '1.3.0'
 
-  gem 'cucumber-rails', '~> 1.4.2' # Para tests con BDD en las vistas
+  gem 'cucumber-rails', '~> 1.4.2', require: false # Para tests con BDD en las vistas
   gem 'capybara', '~> 2.4.4' # Herramienta para buscar elementos en el DOM durante los tests con cucumber
   gem 'selenium-webdriver', '~> 2.45.0' # Drive para trabajar con javascript en los tests
   gem 'rspec-expectations', '~> 3.2.0' # Expectations de rspec.
