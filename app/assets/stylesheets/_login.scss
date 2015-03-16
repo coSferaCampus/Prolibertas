@@ -1,1 +1,83 @@
 //login
+@import "variables.scss";
+
+.container_login{
+	width: 100%;
+	background-image: url(/assets/fondo_login.jpg);
+}
+li.footer__list{
+	list-style:none;
+}
+.lineagris{
+	background-color: $grey_80;
+	height: 5px;
+}
+.botoniniciar{
+	background-color: $brand_light;
+	border-color: $brand; 
+	color: white;
+}
+
+.botoniniciar:hover{
+	background-color: $brand_dark;
+	color: white;
+	border-color: $brand; 
+}
+.field{
+	margin-top: 10px;
+}
+
+.logologin{
+	padding-bottom: 20px;
+}
+
+.col-md-offset-4.col-md-4{
+	background-color: rgba(255,255,255, 0.7);
+}
+
+.col-lg-12{
+  padding: 180px;
+}
+.center-block {
+  display: block;
+  margin: 0 auto;
+}
+
+.glyphicon.glyphicon-user{
+	color: white;
+}
+.glyphicon.glyphicon-lock{
+	color: white;
+}
+.input-group-addon{
+	background-color: $brand_light;
+}
+.form-signin {
+  max-width: 330px;
+  margin: 0 auto;
+  padding-top: 120px;
+  padding-bottom: 290px;
+}
+
+.imgfooter{
+	padding: 10px;
+	left: 30px;
+}
+.correofooter{
+	padding: 20px;
+	color: $grey_80;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.colordefondo{
+	background-color: white;
+}
+
+

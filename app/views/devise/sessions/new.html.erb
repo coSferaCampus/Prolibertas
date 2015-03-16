@@ -1,25 +1,48 @@
-<h2>Log in</h2>
+<div class="container container_login">
+  <div class="row"> 
+    <div class="col-md-offset-4 col-md-4">  
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: "form-signin"}) do |f| %>
+        <img class="center-block logologin" src="/assets/logo.svg">
+            <%= f.label :name %><br />
+            <div class="input-group input-group-lg">
+               <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+               <%= f.text_field :name, autofocus: true, class:"form-control", "aria-describedby" => "sizing-addon1"%>
+            </div>
 
-<%= alert %>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+            <%= f.label :password%><br />
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+             <%= f.password_field :password, autocomplete: "off", class:"form-control", "aria-describedby" => "sizing-addon1" %>
+           </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+          <div class="actions">
+            <%= f.submit "Acceder", class:"btn btn-lg btn-block botoniniciar"%>
+          </div>
+        <% end %>
+       </div>
+      </div>
+    </div>  
+  <div class="row">
+    <div class="col-sm-12 lineagris">
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+  <div class="row">
+        <div class="col-md-2 imgfooter"><img  src="/assets/logo_footer.svg"></div>
+        <div class="col-md-offset-8 col-md-2 correofooter">
+          <ul>
+            <li class="footer__list"><a href="http://wwww.prolibertas.org">prolibertas.org</a></li>
+            <li class="footer__list"><a href="mailto:info@prolibertas.org">info@prolibertas.org</a></li>
+          </ul>
+        </div>
+  </div>
+
+  </div>
+
+</div>
+
