@@ -37,7 +37,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   # Configure mongoid-rspec
-  include Mongoid::Matchers, type: :model
+  config.include Mongoid::Matchers, type: :model
   # Configure controller macros
   config.extend ControllerMacros, type: :controller
 
