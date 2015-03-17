@@ -1,8 +1,9 @@
 @import "variables.scss";
 $lista_height:  60px;
 
+
 .navbar-nav {
-  left: -1px;
+  left: 0px;
   position: fixed;
   top: 0px;
   height: 100%;
@@ -11,17 +12,19 @@ $lista_height:  60px;
   border-right: 1px solid #eee;
   background-color: $brand_dark;
   overflow-y: auto;
-}
 
-.logo {
-  padding: 20px;
-  height: 130px;
 }
 
 .menu {
   margin-top: 20px;
   margin-right: 0;
   margin-left: 0;
+  width: 100%;
+}
+
+.logo {
+  padding: 5%;
+  width: 95%;
 }
 
 .menu__el {
@@ -62,6 +65,6 @@ li .menu__el.selected, {
 .info__text {
   font-family: istokRegular, sans-serif;
   letter-spacing: 0.6px;
-  padding: 30px;
+  padding: 5%;
   color: white;
 }
