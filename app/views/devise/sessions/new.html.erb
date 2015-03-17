@@ -1,7 +1,5 @@
 <div class="container container_login">
-  <div class="row"> 
-    <div class="col-md-offset-4 col-md-4">  
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: "form-signin"}) do |f| %>
+     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: "form-signin"}) do |f| %>
         <img class="center-block logologin" src="/assets/logo.svg">
 
             <%= f.label :name %><br />
@@ -26,24 +24,9 @@
             <%= f.submit "Acceder", class:"btn btn-lg btn-block botoniniciar", id:"buttomlogin"%>
           </div>
           <div id="invalid"><%=alert%></div>  
-        <% end %>
-       </div>
-      </div>
-    </div>  
-  <div class="row">
-    <div class="col-sm-12 lineagris"></div>
-  </div>
-  <div class="row">
-        <div class="col-md-2 imgfooter"><img  src="/assets/logo_footer.svg"></div>
-        <div class="col-md-offset-8 col-md-2 correofooter">
-          <ul>
-            <li class="footer__list"><a href="http://wwww.prolibertas.org">prolibertas.org</a></li>
-            <li class="footer__list"><a href="mailto:info@prolibertas.org">info@prolibertas.org</a></li>
-          </ul>
-        </div>
-  </div>
-
-  </div>
-
+      <% end %>
+      <div class="cajablanca"></div> 
 </div>
+
+
 
