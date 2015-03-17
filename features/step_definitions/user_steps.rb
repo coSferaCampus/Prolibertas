@@ -22,3 +22,11 @@ end
 Then(/^I should be in home info page$/) do
   expect(page).to have_css ".navbar-nav"
 end
+
+When(/^I visit home page$/) do
+  visit root_path
+end
+
+Then(/^I should to be in login page$/) do
+  expect(page).to have_css ".container_login"
+end

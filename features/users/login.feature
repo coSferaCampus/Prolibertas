@@ -13,3 +13,7 @@ Feature: Login
     Given I visit login page
     When I fill user login form with valid parameters
     Then I should be in home info page
+  
+  Scenario: User not registered
+    When I visit home page
+    Then I should to be in login page
