@@ -1,9 +1,5 @@
 $lista_height:  60px;
 
-html {
-  font-family: istokRegular, sans-serif;
-}
-
 .navbar-nav {
   left: -1px;
   position: fixed;
@@ -21,13 +17,13 @@ html {
   height: 130px;
 }
 
-.lista {
+.menu {
   margin-top: 20px;
   margin-right: 0;
   margin-left: 0;
 }
 
-.lista__el {
+.menu__el {
   margin-top: 10px;
   height: $lista_height;
   width: 105%;
@@ -36,13 +32,14 @@ html {
   border: none;
 }
 
-li .lista__el:hover,
-li .lista__el:focus,
-li .lista__el.selected, {
+li .menu__el:hover,
+li .menu__el:focus,
+li .menu__el.selected, {
   background-color: $brand_light;
 }
 
-.lista__el__text {
+.menu__el__text {
+  font-family: istokRegular, sans-serif;
   color: white;
   line-height: 45px;
   letter-spacing: 0.6px;
@@ -62,6 +59,7 @@ li .lista__el.selected, {
 }
 
 .info__text {
+  font-family: istokRegular, sans-serif;
   letter-spacing: 0.6px;
   padding: 30px;
   color: white;
