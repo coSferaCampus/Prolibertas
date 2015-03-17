@@ -9,6 +9,16 @@
       .success(function(data){
         scope.people = data.people;
       })
+
+    scope.genero = function(genero){
+      if (genero == "man") {
+        return 'H';
+      }
+      else {
+        return 'M';
+      }
+    }
+
   }])
 
 })();

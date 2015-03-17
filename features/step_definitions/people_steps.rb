@@ -13,7 +13,15 @@ end
 Then(/^I should see the list of the people$/) do
   expect(page).to have_css "#peopleTable"
   Person.each do |person|
-    expect(page).to have_css "tr#person_#{person.id}", text: person.name
-    expect(page).to have_css "tr#person_#{person.id}", text: person.surname
+    expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
+    expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
+    expect(page).to have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
+    expect(page).to have_css "tr#person_#{person.id} td:nth-child(4)", text: 
+      if person.genre == :man
+        "H"
+      else
+        "M"
+      end
+    expect(page).to have_css "tr#person_#{person.id} td:nth-child(5)", text: person.menu
   end
 end
