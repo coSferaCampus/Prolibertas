@@ -20,14 +20,14 @@
             </span>
           </div>
         </div>
-        <button type="button" class="btn btn-primary col-md-offset-2">Añadir Persona</button>
+        <button type="button" class="btn listpeople__boton col-md-offset-2">Añadir Persona</button>
       </form>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-offset-0 col-md-12 listpeople__tabla">
-      <table class="table">
+      <table class="table" id="peopleTable">
         <thead class="listpeople__cabecera">
           <tr>
             <th>Nombre</th>
@@ -44,12 +44,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Javier</td>
-            <td>Montero Acosta</td>
-            <td>España</td>
-            <td class="listpeople__centrado">H</td>
-            <td class="listpeople__centrado">E</td>
+          <tr ng-repeat="person in peopleCtrl.people" id="person_{{person.id}}">
+            <td>{{person.name}}</td>
+            <td>{{person.surname}}</td>
+            <td>{{person.origin}}</td>
+            <td class="listpeople__centrado">{{peopleCtrl.genero(person.genre)}}</td>
+            <td class="listpeople__centrado">{{person.menu}}</td>
             <td class="listpeople__centrado"><input type="checkbox"></td>
             <td class="listpeople__centrado"><input type="checkbox"></td>
             <td class="listpeople__centrado"><input type="checkbox"></td>
