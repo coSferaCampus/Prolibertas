@@ -1,12 +1,11 @@
 $lista_height:  60px;
-$footer_height: 80px;
 
 html {
   font-family: istokRegular, sans-serif;
 }
 
 .navbar-nav {
-  left: 0px;
+  left: -1px;
   position: fixed;
   top: 0px;
   height: 100%;
@@ -19,7 +18,7 @@ html {
 
 .logo {
   padding: 20px;
-  height:130px;
+  height: 130px;
 }
 
 .lista {
@@ -46,45 +45,24 @@ li .lista__el.selected, {
 .lista__el__text {
   color: white;
   line-height: 45px;
+  letter-spacing: 5px;
 }
 
 .info {
   position: absolute;
     left: 0px;
-  bottom: $footer_height;
+  bottom: 0px;
 }
 
 .info__logo {
   margin-top: 60px;
-  height: 100px;
-  width:  100px;
-  margin-left: 100px;
+  height: 40px;
+  margin-left: calc(50% - 20px);
 
 }
 
 .info__text {
-
+  letter-spacing: 3px;
   padding: 30px;
   color: white;
 }
-
-.footer {
-  position: fixed;
-  height: $footer_height;
-  width: 100%;
-  background-color: white;
-  left: 0px;
-  bottom: 0px;
-}
-
-.footer__img {
-  display: inline-block;
-  height: 70px;
-  margin-left: 22px;
-}
-
-.footer__text {
-  line-height: $footer_height;
-  display: inline-block;
-}
-
