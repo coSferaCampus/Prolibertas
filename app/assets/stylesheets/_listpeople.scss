@@ -1,29 +1,30 @@
 //lista de personas
 @import "variables";
 
-.buscadores {
+.listpeople__buscadores {
 	background-color: $grey_20;
 	padding: 20px;
 	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
-.iconos_azules {
+.listpeople__azul {
 	color: $brand;
 }
 
-.tabla {
+.listpeople__tabla {
 	padding: 0px;
 }
 
-thead {
+.listpeople__cabecera {
 	background-color: $grey_20;
 }
 
-.centrado {
+.listpeople__centrado {
 	 text-align: center;
 	 vertical-align: middle;
 }
 
-img {
+.listpeople__iconos {
 	width: 20px;
 }
