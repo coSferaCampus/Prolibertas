@@ -13,7 +13,6 @@ gem 'devise', '~> 3.4.1'
 # Convierte objetos de nuestros modelos en json
 gem 'active_model_serializers', '~> 0.9.3'
 
-
 gem 'rack-cors', '~> 0.3.1'
 
 gem 'jquery-rails', '~> 4.0.3'

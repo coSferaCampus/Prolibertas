@@ -40,6 +40,8 @@ RSpec.configure do |config|
   config.include Mongoid::Matchers, type: :model
   # Configure controller macros
   config.extend ControllerMacros, type: :controller
+  #Devise TestHelpers
+  config.include Devise::TestHelpers, type: :controller
 
   # Configure DatabaseCleaner
   config.before(:suite) do
