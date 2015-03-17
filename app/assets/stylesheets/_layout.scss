@@ -45,7 +45,7 @@ li .lista__el.selected, {
 .lista__el__text {
   color: white;
   line-height: 45px;
-  letter-spacing: 5px;
+  letter-spacing: 0.6px;
 }
 
 .info {
@@ -62,7 +62,7 @@ li .lista__el.selected, {
 }
 
 .info__text {
-  letter-spacing: 3px;
+  letter-spacing: 0.6px;
   padding: 30px;
   color: white;
 }
