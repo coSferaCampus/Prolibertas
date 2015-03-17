@@ -1,7 +1,11 @@
 @import "variables.scss";
+
 $lista_height:  60px;
 
 .navbar-nav {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   left: 0px;
   position: fixed;
   top: 0px;
@@ -65,4 +69,37 @@ li .menu__el.selected {
   letter-spacing: 0.6px;
   padding: 5%;
   color: white;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .vista {
+    position:absolute;
+    top: 35%;
+    left:0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .navbar-nav {
+    display: block;
+    margin: 0;
+    left: 0px;
+    position: fixed;
+    top: 0px;
+    height: 35%;
+    border-radius: 0;
+    border: none;
+    background-color: $brand_dark;
+    overflow-y: auto;
+  }
+
+  .menu {
+    margin: 0;
+    margin-top: -25px;
+    width: 100%;
+  }
+
 }
