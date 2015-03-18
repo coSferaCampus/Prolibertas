@@ -1,9 +1,10 @@
 (function(){
-  var app = angular.module('prolibertas-person', ['ui.router']);
+  var app = angular.module('prolibertas-person-form', ['ui.router']);
 
   app.controller('PeopleController', ['$http', function($http){
     var scope = this;
-    scope.people = {};
+    scope.newPerson = [];
+
 
     $http.get('/people.json')
       .success(function(data){
