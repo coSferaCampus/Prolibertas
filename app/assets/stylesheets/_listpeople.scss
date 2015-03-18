@@ -41,14 +41,8 @@
 }
 
 	@media only screen and (max-width: 767px) {
-		.listpeople__tabla {
-			margin-top: 0px;
 
-		}
-
-		.listpeople__buscadores{
-			position: fixed;
-			left:0;
-			top: 72px;
+		.listpeople__buscadores {
+			margin-top: 50px;
 		}
 }
