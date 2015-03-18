@@ -18,6 +18,8 @@ gem 'rack-cors', '~> 0.3.1'
 gem 'jquery-rails', '~> 4.0.3'
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.3'
+# Datepicker para fechas
+gem 'bootstrap-datepicker-rails', '~>  1.4.0'
 
 # Angular
 gem 'angular-rails-templates', '~> 0.1.3'

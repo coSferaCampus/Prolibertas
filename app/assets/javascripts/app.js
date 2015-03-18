@@ -10,8 +10,13 @@
 	  .state("personas", {
 	    url: "/personas",
 	    templateUrl: "personas.html",
-      controller: "PeopleController",
-      controllerAs: "peopleCtrl"
-  	});
-  });
+        controller: "PeopleController",
+        controllerAs: "peopleCtrl"
+  	   })
+
+	  .state("personasNueva", {
+  		url: "/personas/nueva",
+  		templateUrl: "persona-nueva.html"
+  	  })
+    });
 })();
