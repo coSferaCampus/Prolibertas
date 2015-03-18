@@ -1,19 +1,21 @@
-<div class="container col-sm-12 col-md-12">
+<div class="container col-xs-12 col-sm-12 col-md-12">
 	<form class="col-md-12">
+		
 		<h1 class="header-titule">Crear Persona</h1>
+		
 		<div class="col-md-12">
 			<div class="form-group col-md-4">
 				<label for="InputName">Nombre</label>
 				<input type="text" class="form-control" id="InputName">
 			</div>
 			<div class="form-group col-md-3 col-md-offset-3" >
-				<label for="exampleInputPassword1">Fecha de nacimiento</label>
-				<input type="text" class="form-control datepicker" id="exampleInputPassword1">
+				<label for="InputBirth">Fecha de nacimiento</label>
+				<input type="text" class="form-control datepicker" id="InputBirth">
 			</div>
 		</div>
 		<div class="col-md-12 ">
 			<div class="form-group col-md-6">
-				<label for="InputName">Apellidos</label>
+				<label for="InputSurname">Apellidos</label>
 				<input type="text" class="form-control" id="InputSurname">
 			</div>
 			<div class="form-group col-md-3 col-md-offset-1">
@@ -23,8 +25,9 @@
 		</div>
 		<div class="col-md-12 ">
 			<div class="form-group col-md-3 ">
-				<label for="Inputgenre">Genero</label>
-				<select type="text" class="form-control">
+				<label for="Inputgenre">Género</label>
+				<select type="text" class="form-control" id="Inputgenre">
+					<option>Seleccione género</option>
 					<option>Hombre</option>
 					<option>Mujer</option>
 				</select>
@@ -36,11 +39,11 @@
 		</div>
 		<div class="col-md-12 ">
 			<div class="form-group col-md-3">
-				<label for="InputPhone">Telefono</label>
+				<label for="InputPhone">Teléfono</label>
 				<input type="text" class="form-control" id="InputPhone">
 			</div>
 			<div class="form-group col-md-5 col-md-offset-4">
-				<label for="InputTm">Tipo de Menu</label>
+				<label for="InputTm">Tipo de Menú</label>
 				<input type="text" class="form-control" id="InputTm">
 			</div>
 		</div>
@@ -60,13 +63,13 @@
 				<input type="text" class="form-control" id="InputHome">
 			</div>
 			<div class="form-group col-md-5 col-md-offset-1">
-				<label for="InputAddress">Direccion</label>
+				<label for="InputAddress">Dirección</label>
 				<input type="text" class="form-control" id="InputAddress">
 			</div>
 		</div>
 		<div class="col-md-12 ">
 			<div class="form-group col-md-6">
-				<label for="InputFamily">Situacion Familiar</label>
+				<label for="InputFamily">Situación Familiar</label>
 				<textarea class="form-control" rows="2"></textarea>
 			</div>
 			<div class="form-group col-md-5 col-md-offset-1">
@@ -76,7 +79,7 @@
 		</div>
 		<div class="col-md-12 ">
 			<div class="form-group col-md-6">
-				<label for="Inputsanitary">Situacion Sanitaria</label>
+				<label for="Inputsanitary">Situación Sanitaria</label>
 				<textarea class="form-control" rows="2"></textarea>
 			</div>
 			<div class="form-group col-md-5 col-md-offset-1">
@@ -85,7 +88,7 @@
 			</div>
 		</div>
 		<div class="col-md-12">
-			<div class="form-group col-md-3 col-md-offset-7">
+			<div class="submit-group col-md-3 col-md-offset-7">
 				<button class="btn btn-info" type="submit">Guardar</button>
 				<button class="btn btn-danger" type="submit">Salir</button>
 			</div>
