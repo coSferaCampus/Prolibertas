@@ -1,5 +1,7 @@
 <div class="container col-md-offset-0 col-md-12 col-xs-12">
-  <div class="row">
+
+  <nav class="navbar-fixed-top col-md-offset-3 col-md-9 col-xs-offset-3 col-xs-9">
+  <div class="row" >
     <div class="col-md-offset-0 col-md-12 listpeople__buscadores">
       <form class="form-inline">
         <div class="form-group">
@@ -11,7 +13,7 @@
             </span>
           </div>
         </div>
-        <div class="form-group col-md-offset-1">
+        <div class="form-group col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
           <label class="sr-only"></label>
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Buscar por origen...">
@@ -20,14 +22,13 @@
             </span>
           </div>
         </div>
-        <button type="button" class="btn listpeople__boton col-md-offset-2">Añadir Persona</button>
+        <button type="button" class="btn listpeople__boton col-md-offset-1">Añadir Persona</button>
       </form>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-offset-0 col-md-12 listpeople__tabla">
-      <table class="table" id="peopleTable">
+
+      <table class="table col-md-offset-0 col-md-12  
+                    listpeople__tabla listpeople__tabla__header" id="peopleTable">
         <thead class="listpeople__cabecera">
           <tr>
             <th>Nombre</th>
@@ -43,22 +44,26 @@
             <th class="listpeople__centrado"></th>
           </tr>
         </thead>
-        <tbody>
-          <tr ng-repeat="person in peopleCtrl.people" id="person_{{person.id}}">
-            <td>{{person.name}}</td>
-            <td>{{person.surname}}</td>
-            <td>{{person.origin}}</td>
-            <td class="listpeople__centrado">{{peopleCtrl.genero(person.genre)}}</td>
-            <td class="listpeople__centrado">{{person.menu}}</td>
-            <td class="listpeople__centrado"><input type="checkbox"></td>
-            <td class="listpeople__centrado"><input type="checkbox"></td>
-            <td class="listpeople__centrado"><input type="checkbox"></td>
-            <td class="listpeople__centrado"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></td>
-            <td class="listpeople__centrado"><i class="glyphicon glyphicon-eye-open listpeople__azul"></td>
-            <td class="listpeople__centrado"><i class="glyphicon glyphicon-list listpeople__azul"></td>
-          </tr>
-        </tbody>
       </table>
-  </div>
+    </div>
+  </nav>
+  
+    <table class="table col-md-offset-0 col-md-12 listpeople__tabla listpeople__tabla__body" >
+      <tbody>
+        <tr ng-repeat="person in peopleCtrl.people" id="person_{{person.id}}">
+          <td>{{person.name}}</td>
+          <td>{{person.surname}}</td>
+          <td>{{person.origin}}</td>
+          <td class="listpeople__centrado">{{peopleCtrl.genero(person.genre)}}</td>
+          <td class="listpeople__centrado">{{person.menu}}</td>
+          <td class="listpeople__centrado"><input type="checkbox"></td>
+          <td class="listpeople__centrado"><input type="checkbox"></td>
+          <td class="listpeople__centrado"><input type="checkbox"></td>
+          <td class="listpeople__centrado"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></td>
+          <td class="listpeople__centrado"><i class="glyphicon glyphicon-eye-open listpeople__azul"></td>
+          <td class="listpeople__centrado"><i class="glyphicon glyphicon-list listpeople__azul"></td>
+        </tr>
+      </tbody>
+    </table>
 
 </div>
