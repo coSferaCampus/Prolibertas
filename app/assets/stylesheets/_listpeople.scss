@@ -1,12 +1,6 @@
 //lista de personas
 @import "variables";
 
-.listpeople__fixed__top {
-	position: fixed;
-	top: 0;
-	left: 0;
-}
-
 .listpeople__buscadores {
 	background-color: $grey_20;
 	padding: 20px;
@@ -17,11 +11,16 @@
 }
 
 .listpeople__tabla {
-	padding: 0;
+	padding: 0px;
+	margin-top: 82px;
+}
+
+.listpeople__tabla__head {
+	margin-left: 40px;
 }
 
 .listpeople__tabla__body {
-	margin-top: 110px;
+	
 }
 
 .listpeople__cabecera {
