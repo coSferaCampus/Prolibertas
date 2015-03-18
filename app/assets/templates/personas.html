@@ -1,6 +1,4 @@
-<div class="container col-md-offset-0 col-md-12 col-xs-12">
-
-  <nav class="navbar-fixed-top col-md-offset-3 col-md-9 col-xs-offset-3 col-xs-9">
+  <nav class="navbar-fixed-top col-md-offset-3 col-md-9 col-sm-offset-3 col-sm-9 col-xs-offset-0 col-xs-12">
   <div class="row" >
     <div class="col-md-offset-0 col-md-12 listpeople__buscadores">
       <form class="form-inline">
@@ -26,9 +24,10 @@
       </form>
     </div>
 
-
-      <table class="table col-md-offset-0 col-md-12  
-                    listpeople__tabla listpeople__tabla__header" id="peopleTable">
+    </div>
+  </nav>
+  <section class="listpeople__tabla col-md-12">
+    <table class="table col-md-offset-0 col-md-12 col-lg-offset-0 col-lg-12" id="peopleTable">
         <thead class="listpeople__cabecera">
           <tr>
             <th>Nombre</th>
@@ -44,12 +43,8 @@
             <th class="listpeople__centrado"></th>
           </tr>
         </thead>
-      </table>
-    </div>
-  </nav>
-  
-    <table class="table col-md-offset-0 col-md-12 listpeople__tabla listpeople__tabla__body" >
-      <tbody>
+
+      <tbody >
         <tr ng-repeat="person in peopleCtrl.people" id="person_{{person.id}}">
           <td>{{person.name}}</td>
           <td>{{person.surname}}</td>
@@ -65,5 +60,3 @@
         </tr>
       </tbody>
     </table>
-
-</div>
