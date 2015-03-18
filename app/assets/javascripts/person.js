@@ -3,7 +3,7 @@
 
   app.controller('PeopleController', ['$http', function($http){
     var scope = this;
-    scope.people = {};
+    scope.people = [];
 
     $http.get('/people.json')
       .success(function(data){
