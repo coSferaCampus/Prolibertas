@@ -2,6 +2,15 @@ Given(/^I visit login page$/) do
   visit new_user_session_path
 end
 
+Given(/^I am loged in like user$/) do
+  usuario = FactoryGirl.create(:user)
+  visit new_user_session_path
+  fill_in 'user_name', with: usuario.name
+  fill_in 'user_password', with: 'foobarfoo'
+  #click_button 'buttomlogin'
+  page.find("#buttomlogin").click
+end
+
 When(/^I fill user login form with invalid parameters$/) do
   fill_in 'user_name', with: 'nombreinventado'
   fill_in 'user_password', with: 'contranseñainventadaalcuadrado'
@@ -16,7 +25,8 @@ When(/^I fill user login form with valid parameters$/) do
   usuario = FactoryGirl.create(:user)
   fill_in 'user_name', with: usuario.name
   fill_in 'user_password', with: 'foobarfoo'
-  click_button 'buttomlogin'
+  #click_button 'buttomlogin'
+  page.find("#buttomlogin").click
 end
 
 Then(/^I should be in home info page$/) do
