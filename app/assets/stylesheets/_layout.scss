@@ -14,6 +14,20 @@ $lista_height:  60px;
   text-align: center;
 }
 
+.collapsed.navbar-toggle { 
+  background-color: $brand;
+  border-color: white;
+}
+
+.collapsed.navbar-toggle:hover {
+    background-color: $brand_light;
+  }
+
+.icon-bar {
+  display: block;
+  background-color: white !important;
+}
+
 .navbar-nav {
   display: block;
   margin-left: auto;
@@ -90,7 +104,7 @@ li .menu__el.selected {
 
 @media only screen and (max-width: 767px) {
   .vista {
-    display: block;
+
     margin-left: auto;
     margin-right: auto;
   }
