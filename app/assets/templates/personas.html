@@ -5,7 +5,7 @@
         <div class="form-group">
           <label class="sr-only"></label>
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Buscar por apellidos...">
+            <input id="searchsurname" ng-model="search.surname" type="text" class="form-control" placeholder="Buscar por apellidos...">
             <span class="input-group-addon">
                 <i class="glyphicon glyphicon-search listpeople__azul"></i>
             </span>
@@ -14,7 +14,7 @@
         <div class="form-group col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
           <label class="sr-only"></label>
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Buscar por origen...">
+            <input id="searchorigin" ng-model="search.origin" type="text" class="form-control" placeholder="Buscar por origen...">
             <span class="input-group-addon">
                 <i class="glyphicon glyphicon-globe listpeople__azul"></i>
             </span>
@@ -46,7 +46,7 @@
         </thead>
 
       <tbody >
-        <tr ng-repeat="person in peopleCtrl.people" id="person_{{person.id}}">
+        <tr ng-repeat="person in peopleCtrl.people | filter:search" id="person_{{person.id}}">
           <td>{{person.name}}</td>
           <td>{{person.surname}}</td>
           <td>{{person.origin}}</td>
