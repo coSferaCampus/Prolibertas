@@ -1,7 +1,11 @@
 .has-error {
 
-  .tooltip.right .tooltip-arrow {
-    border-right-color: rgb(201, 48, 44);
+  .tooltip.in {
+    opacity: 0.8;
+  }
+
+  .tooltip.top .tooltip-arrow {
+    border-top-color: rgb(201, 48, 44);
   }
 
   .tooltip-inner {
