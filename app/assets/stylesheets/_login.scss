@@ -12,7 +12,6 @@
   -o-background-size: cover;
   background-size: cover;
 }
-
 li.footer__list{
 	list-style:none;
 }
@@ -25,7 +24,6 @@ li.footer__list{
 	border-color: $brand; 
 	color: white;
 }
-
 .botoniniciar:hover{
 	background-color: $brand_dark;
 	color: white;
@@ -34,14 +32,11 @@ li.footer__list{
 .field{
 	margin-top: 10px;
 }
-
 .logologin{
-
 }
 .invalid{
 	background-color: red;
 }
-
 .cajablanca{
 	background-color: rgba(255,255,255, 0.7);
   width: 450px;
