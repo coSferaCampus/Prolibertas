@@ -15,13 +15,7 @@
 	margin-top: 82px;
 }
 
-.listpeople__tabla__head {
-	margin-left: 40px;
-}
 
-.listpeople__tabla__body {
-	
-}
 
 .listpeople__cabecera {
 	background-color: $grey_20;
@@ -41,6 +35,16 @@
 	color: white;
 }
 
-@media only screen and (max-width: 767px) {
+	@media only screen and (max-width: 767px) {
+		.listpeople__tabla {
+			padding: 0px;
+			margin-top: 10px;
+			z-index: -100;
+		}
 
+		.listpeople__buscadores{
+			position: fixed;
+			left:0;
+			top: 72px;
+		}
 }
