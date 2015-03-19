@@ -1,8 +1,17 @@
 <div id="person-show-page">
-  <div class="panel row">
+
+  <h2>Ficha de {{ personCtrl.person.name }} {{ personCtrl.person.surname }}</h2>
+
+  <ul class="nav navPersona">
+    <li class="navPersona__el col-md-2"><a href="#">Servicios <span class="sr-only">(current)</span></a></li>
+    <li class="navPersona__el col-md-2"><a href="#">Historia</a></li>
+    <li class="navPersona__el col-md-2"><a href="#">Adjuntos</a></li>
+    <li class="navPersona__el col-md-2"><a href="#">Alertas</a></li>
+  </ul>    
+
+  <div class="panel row col-md-12">
     <div class="col-md-6">
       <ul class="list-group">
-
         <li class="list-group-item">
           <strong>Nombre:</strong> {{ personCtrl.person.name }}
         </li>
@@ -37,9 +46,45 @@
         </li>      
         <li class="list-group-item">
           <strong>Notas:</strong> {{ personCtrl.person.notes }}
+        </li>
+      </ul>
+    </div>
 
+
+    <div class="col-md-6">
+      <ul class="list-group">
+
+        <li class="list-group-item">
+          <strong>Edad:</strong> {{ personCtrl.person.birth }}
+        </li>
+
+        <li class="list-group-item">
+          <strong>DNI:</strong> {{ personCtrl.person.nif }}
+        </li>
+
+        <li class="list-group-item">
+          <strong>Servicios sociales</strong> {{ personCtrl.person.social_services }}
+        </li>
+
+        <li class="list-group-item">
+          <strong>Vivienda:</strong> {{ personCtrl.person.home }}
+        </li>
+
+        <li class="list-group-item">
+          <strong>Ingresos:</strong> {{ personCtrl.person.income }}
+        </li>
+
+        <li class="list-group-item">
+          <strong>Dirección:</strong> {{ personCtrl.person.address }}
+        </li>
+
+        <li class="list-group-item">
+          <strong>Familiar de contacto:</strong> {{ personCtrl.person.contact_family }}
         </li>
       </ul>
     </div>
   </div>
+
+
+
 </div>
