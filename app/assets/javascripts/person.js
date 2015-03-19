@@ -2,9 +2,13 @@
   var app = angular.module('prolibertas-person', ['ui.router']);
 
   // Controllers
-  app.controller('PeopleController', ['$http', function($http){
+  app.controller('PeopleController', ['$http', '$timeout', '$state', function($http, $timeout, $state){
     var scope = this;
     scope.people = [];
+    scope.alerta = $state.params.alerta;
+    console.log(scope.alerta);
+    // La alerta se oculta después de 3 segundos
+    $timeout(function(){scope.alerta = false;}, 5000);
 
     $http.get('/people.json')
       .success(function(data){
@@ -33,4 +37,43 @@
 
   }]);
 
+  app.controller('PersonFormController', ['$http', '$state', function($http, $state){
+    var scope = this;
+    // variable para el formulario
+    scope.personForm = {};
+   //variable para los errores
+    scope.errors = {};
+
+    $('.datepicker').datepicker({
+      format: "dd/mm/yyyy",
+      startView: 2,
+      clearBtn: true,
+      language: "es",
+      orientation: "top auto",
+      autoclose: true
+    });
+
+    scope.guardarPersona = function() {
+      $http.post('/people.json', {person: scope.personForm})
+        .success(function(data){
+          $state.go('personas', {alerta: 'true'});
+
+        })
+        .error(function(data) {
+          scope.errors = data.errors;
+          if(scope.errors.name) { 
+            $("#InputName").tooltip({trigger: 'manual'});    
+            $("#InputName").tooltip('show');
+          }
+          if(scope.errors.surname) {
+            $("#InputSurname").tooltip({trigger: 'manual'});    
+            $("#InputSurname").tooltip('show');
+          }
+          if(scope.errors.genre) {
+            $("#InputGenre").tooltip({trigger: 'manual'});    
+            $("#InputGenre").tooltip('show');
+          }
+        });
+    };
+  }]);
 })();
