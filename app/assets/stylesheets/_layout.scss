@@ -19,7 +19,8 @@ $lista_height:  60px;
   border-color: white;
 }
 
-.collapsed.navbar-toggle:hover {
+.collapsed.navbar-toggle:hover,
+.collapsed.navbar-toggle:focus {
     background-color: $brand_light;
   }
 
