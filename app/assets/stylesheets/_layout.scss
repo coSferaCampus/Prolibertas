@@ -59,16 +59,15 @@ $lista_height:  60px;
 }
 */
 
-.menu__boton {
-  right: 100px;
+.menu__logout {
   top: 12px;
   position: absolute;
-  color: white;
+  font-size: 20px;
   opacity: 0.9;
 }
 
-.menu__boton {
-  font-size: 20px;
+.menu__logout a {
+  color: white;
 }
 
 .menu__el {
