@@ -39,5 +39,5 @@ When(/^I visit home page$/) do
 end
 
 Then(/^I should to be in login page$/) do
-  expect(page).to have_css ".container_login"
+  expect(page).to have_css ".containerall"
 end
