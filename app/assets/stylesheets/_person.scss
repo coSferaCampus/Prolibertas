@@ -1,0 +1,65 @@
+.navPersona {
+  background-color: $grey_20;
+  height: 60px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.navPersona__el {
+  list-style-type: none;
+  border-radius: 5px;
+  background-color: $brand_light;
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.navPersona__el:first-child {
+  margin-left: -25px;
+}
+
+.navPersona__el:hover,
+.navPersona__el:focus {
+    background-color: $brand;
+}
+
+.navPersona__el__text {
+  color: white; 
+  border-radius: 5px;
+  margin-left: 16px; 
+}
+
+.navPersona__el:last-child {
+  background-color: $brand-danger;
+}
+
+.navPersona__el:last-child .navPersona__el__text {
+    margin-left: 22px; 
+}
+
+.persona__botones__edit {
+  position: absolute;
+  top: 0;
+  right: 30px;
+}
+
+.persona__botones__remove {
+  position: absolute;
+  top: 0;
+  right: 100px;
+}
+
+.person__list__el {
+
+}
+
+.person__list__text__left {
+  font-family: istokBold, sans-serif;
+}
+
+.person__list__text__right {
+  font-family: istokRegular, sans-serif;
+}
