@@ -75,3 +75,14 @@ Then(/^I should see the list of the people with "(.*?)" and "(.*?)" as surname a
   end
 end
 
+# PERSON SHOW
+
+When(/^I click the view icon of a person in people list view$/) do
+  persona = Person.first 
+  page.find("#person-show-#{persona.id}").click
+end
+
+Then(/^I should go to a view of this person$/) do
+  expect(page).to have_css "#person-show-page"
+end
+
