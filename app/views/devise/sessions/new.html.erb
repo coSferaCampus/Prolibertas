@@ -1,5 +1,6 @@
-<div class="container container_login">
-     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: "form-signin"}) do |f| %>
+<div class="container">
+  <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-2 col-sm-8 fill"> 
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: "form-signin"}) do |f| %>
         <img class="center-block logologin" src="/assets/logo.svg">
 
             <%= f.label :name %><br />
@@ -24,9 +25,7 @@
             <%= f.submit "Acceder", class:"btn btn-lg btn-block botoniniciar", id:"buttomlogin"%>
           </div>
           <div id="invalid"><%=alert%></div>  
-      <% end %>
-      <div class="cajablanca"></div> 
+        <% end %>
+  </div>
 </div>
-
-
 

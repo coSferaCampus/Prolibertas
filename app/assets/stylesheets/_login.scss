@@ -1,23 +1,18 @@
 //login
 @import "variables.scss";
 
-.container_login{
-
-	width: 100%;
-  height: 100%;
-  background-image: url(/assets/fondo_login.jpg);
-  position: fixed;
+.fill { 
+  min-height: 100%;
+    height: 100%;
+}
+.container{
+  width: 100%;
+  height: 1400px;
+  background: url(/assets/fondo_login.jpg)no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-li.footer__list{
-	list-style:none;
-}
-.lineagris{
-	background-color: $grey_80;
-	height: 5px;
 }
 .botoniniciar{
 	background-color: $brand_light;
@@ -32,23 +27,18 @@ li.footer__list{
 .field{
 	margin-top: 10px;
 }
+
 .logologin{
+	padding-bottom: 20px;
 }
 .invalid{
 	background-color: red;
 }
-.cajablanca{
+
+.col-lg-offset-4.col-lg-4{
 	background-color: rgba(255,255,255, 0.7);
-  width: 450px;
-  height: 100%;
-  position: absolute;
-  left:50%;
-  -webkit-transform: translate(-50%);
 }
 
-.col-lg-12{
-  padding: 180px;
-}
 .center-block {
   display: block;
   margin: 0 auto;
@@ -63,16 +53,11 @@ li.footer__list{
 .input-group-addon{
 	background-color: $brand_light;
 }
-.form-signin {
-
+.form-signin{
   max-width: 330px;
-  z-index: 1;
-  position: absolute;
-  left:50%;
-  top:50%;
-  -webkit-transform: translate(-50% , -50%);
+  margin: 0 auto;
+  padding-top: 120px;
 }
-
 .imgfooter{
 	padding: 10px;
 	left: 30px;
@@ -81,13 +66,16 @@ li.footer__list{
 	padding: 20px;
 	color: $grey_80;
 }
-
 .form-signin .checkbox {
   font-weight: normal;
 }
 
 .colordefondo{
 	background-color: white;
+}
+
+@media only screen and (max-width: 1200px) {
+
 }
 
 
