@@ -45,7 +45,13 @@
 
   <div class="list-group nav navbar-nav col-md-2 col-xs-12 col-sm-2 hidden-xs">
 
-    <img class="logo hidden-xs" src="/assets/logo-menu.svg">
+    <!--<img class="logo hidden-xs" src="/assets/logo-menu.svg">-->
+
+    <div class="menu__logout col-md-offset-5 col-sm-offset-5" title="Cerrar sesión">
+      <%= link_to destroy_user_session_path, id: "logout", method: :delete do %>
+        <i class="glyphicon glyphicon-log-out"></i>
+      <% end %>
+    </div>
 
     <ul class="list-group menu">
 

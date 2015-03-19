@@ -51,11 +51,23 @@ $lista_height:  60px;
   width: 100%;
 }
 
-.logo {
+/*.logo {
   padding: 5%;
   margin: 0;
   width: 95%;
   margin-bottom: -40px;
+}
+*/
+
+.menu__logout {
+  top: 12px;
+  position: absolute;
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+.menu__logout a {
+  color: white;
 }
 
 .menu__el {

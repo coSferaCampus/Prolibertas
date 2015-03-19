@@ -41,3 +41,13 @@ end
 Then(/^I should to be in login page$/) do
   expect(page).to have_css ".containerall"
 end
+
+#Test para CERRAR SESIÓN
+
+When(/^I click the logout icon$/) do
+  page.find("#logout").click
+end
+
+Then(/^I should be in login page$/) do
+  expect(page).to have_css ".logologin"
+end
