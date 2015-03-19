@@ -16,6 +16,7 @@ es:
       user:
         name: 'Nombre'
         password: 'Contraseña'
+        remember_me: "Recordar sesión"
     errors:
       template:
         <<: *template
