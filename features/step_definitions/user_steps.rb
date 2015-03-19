@@ -8,6 +8,7 @@ Given(/^I am loged in like user$/) do
   fill_in 'user_name', with: usuario.name
   fill_in 'user_password', with: 'foobarfoo'
   #click_button 'buttomlogin'
+  #page.execute_script "$('body').scrollTo('#buttomlogin');"
   page.find("#buttomlogin").click
 end
 
