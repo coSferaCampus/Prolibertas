@@ -51,11 +51,24 @@ $lista_height:  60px;
   width: 100%;
 }
 
-.logo {
+/*.logo {
   padding: 5%;
   margin: 0;
   width: 95%;
   margin-bottom: -40px;
+}
+*/
+
+.menu__boton {
+  right: 100px;
+  top: 12px;
+  position: absolute;
+  color: white;
+  opacity: 0.9;
+}
+
+.menu__boton {
+  font-size: 20px;
 }
 
 .menu__el {
