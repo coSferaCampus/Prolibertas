@@ -35,6 +35,15 @@
       console.log(scope.person);
     });
 
+    scope.destroyPerson = function(person) {
+      var confirmed = confirm('¿Desea borrar a ' + person.name + ' ' + person.surname + '?');
+      if (confirmed) {
+        $http.delete('/people/' + person.id + '.json').success(function(data) {
+          $state.go("personas")
+        }); 
+      }
+    };
+
   }]);
 
   app.controller('PersonFormController', ['$http', '$state', function($http, $state){
