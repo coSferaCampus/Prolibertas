@@ -53,6 +53,13 @@
       autoclose: true
     });
 
+    scope.change = function(field) {
+      if(scope.errors[field.toLowerCase()]) {
+        $("#Input" + field).tooltip('destroy');
+        scope.errors[field.toLowerCase()] = false
+      }
+    };
+
     scope.guardarPersona = function() {
       $http.post('/people.json', {person: scope.personForm})
         .success(function(data){
@@ -61,9 +68,6 @@
         })
         .error(function(data) {
           scope.errors = data.errors;
-          $("#InputName").tooltip('destroy');  
-          $("#InputSurname").tooltip('destroy');  
-          $("#InputGenre").tooltip('destroy');  
 
           if(scope.errors.name) { 
             $("#InputName").tooltip({trigger: 'manual', title: scope.errors.name.join(', ')});    
