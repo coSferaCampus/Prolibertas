@@ -14,11 +14,6 @@
         controllerAs: "peopleCtrl"
   	   })
 
-	  .state("personasNueva", {
-  		url: "/personas/nueva",
-  		templateUrl: "persona-nueva.html"
-  	  })
-
     .state("personasNueva", {
       url: "/personas/nueva",
       templateUrl: "persona-nueva.html",
