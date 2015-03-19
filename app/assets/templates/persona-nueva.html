@@ -7,7 +7,7 @@
     <div class="col-md-12">
       <div class="form-group col-md-4" ng-class="{ 'has-error':personCtrl.errors.name }">
         <label for="InputName">Nombre</label>
-        <input ng-model="personCtrl.personForm.name" type="text" class="form-control" id="InputName" title="Este campo es obligatorio" data-placement="top">
+        <input ng-model="personCtrl.personForm.name" type="text" class="form-control" id="InputName" data-placement="top">
 
       </div>
       <div class="form-group col-md-4 col-md-offset-3" >
@@ -18,11 +18,7 @@
     <div class="col-md-12 ">
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.surname }">
         <label for="InputSurname">Apellidos</label>
-        <input ng-model="personCtrl.personForm.surname" type="text" class="form-control" id="InputSurname" title="Este campo es obligatorio" data-placement="top" >
-        <!--<script type="text/javascript">     
-          $("#InputSurname").tooltip({trigger: 'manual'});    
-          $("#InputSurname").tooltip('show');    
-        </script>-->
+        <input ng-model="personCtrl.personForm.surname" type="text" class="form-control" id="InputSurname" data-placement="top" >
       </div>
       <div class="form-group col-md-4 col-md-offset-1">
         <label for="InputNif">NIF</label>
@@ -32,11 +28,7 @@
     <div class="col-md-12 ">
       <div class="form-group col-md-4" ng-class="{ 'has-error':personCtrl.errors.genre }">
         <label for="InputGenre">Género</label>
-        <select ng-model="personCtrl.personForm.genre" type="text" class="form-control" id="InputGenre" title="Debe elegir una opción" data-placement="top">
-        <!--<script type="text/javascript">     
-          $("#InputGenre").tooltip({trigger: 'manual'});    
-          $("#InputGenre").tooltip('show');    
-        </script>  -->      
+        <select ng-model="personCtrl.personForm.genre" type="text" class="form-control" id="InputGenre" data-placement="top">   
           <option value="">Seleccione género</option>
           <option value="man">Hombre</option>
           <option value="woman">Mujer</option>

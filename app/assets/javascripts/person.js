@@ -61,16 +61,20 @@
         })
         .error(function(data) {
           scope.errors = data.errors;
+          $("#InputName").tooltip('destroy');  
+          $("#InputSurname").tooltip('destroy');  
+          $("#InputGenre").tooltip('destroy');  
+
           if(scope.errors.name) { 
-            $("#InputName").tooltip({trigger: 'manual'});    
+            $("#InputName").tooltip({trigger: 'manual', title: scope.errors.name.join(', ')});    
             $("#InputName").tooltip('show');
           }
           if(scope.errors.surname) {
-            $("#InputSurname").tooltip({trigger: 'manual'});    
+            $("#InputSurname").tooltip({trigger: 'manual', title: scope.errors.surname.join(', ')});    
             $("#InputSurname").tooltip('show');
           }
           if(scope.errors.genre) {
-            $("#InputGenre").tooltip({trigger: 'manual'});    
+            $("#InputGenre").tooltip({trigger: 'manual', title: scope.errors.genre.join(', ')});    
             $("#InputGenre").tooltip('show');
           }
         });
