@@ -27,4 +27,5 @@
       controller: "PersonFormController",
       controllerAs: "personCtrl"
     });
+  });
 })();

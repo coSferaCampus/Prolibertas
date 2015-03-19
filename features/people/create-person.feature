@@ -12,7 +12,7 @@ Feature: Create person
     When I fill person form with valid parameters
     Then I should see the new person in people list
     And  I should see person created message
-@wip
+
   Scenario: Error parameters
     When I fill person form with invalid parameters
     Then I should see the errors in the form
