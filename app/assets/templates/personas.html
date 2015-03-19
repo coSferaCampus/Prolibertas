@@ -56,7 +56,11 @@
           <td class="listpeople__centrado"><input type="checkbox"></td>
           <td class="listpeople__centrado"><input type="checkbox"></td>
           <td class="listpeople__centrado"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></td>
-          <td class="listpeople__centrado"><i class="glyphicon glyphicon-eye-open listpeople__azul"></td>
+          <td class="listpeople__centrado"><a id="person-show-{{person.id}}" 
+              ui-sref="persona({ id: person.id })">
+            <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+          </td>
+          
           <td class="listpeople__centrado"><i class="glyphicon glyphicon-list listpeople__azul"></td>
         </tr>
       </tbody>

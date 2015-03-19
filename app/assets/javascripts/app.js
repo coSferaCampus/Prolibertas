@@ -14,9 +14,16 @@
         controllerAs: "peopleCtrl"
   	   })
 
+    .state("persona", {
+      url: "/personas/:id",
+      templateUrl: "persona.html",
+        controller: "PersonController",
+        controllerAs: "personCtrl"
+    })
+
 	  .state("personasNueva", {
   		url: "/personas/nueva",
   		templateUrl: "persona-nueva.html"
-  	  })
+  	  });
     });
 })();

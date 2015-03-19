@@ -1,10 +1,11 @@
 @javascript
-Feature: Search
+Feature: Person Show
   As an user
   I want to see one person page
   In order to display all data of this person
 
-  Background: 
+  Background:
+    Given There are 3 people in the platform 
     Given I am loged in like user
 
   Scenario: Open person view
