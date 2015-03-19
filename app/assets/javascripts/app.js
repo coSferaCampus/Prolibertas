@@ -14,18 +14,23 @@
         controllerAs: "peopleCtrl"
   	   })
 
+	  .state("personasNueva", {
+  		url: "/personas/nueva",
+  		templateUrl: "persona-nueva.html"
+  	  })
+
+    .state("personasNueva", {
+      url: "/personas/nueva",
+      templateUrl: "persona-nueva.html",
+      controller: "PersonFormController",
+      controllerAs: "personCtrl"
+    })
+
     .state("persona", {
       url: "/personas/:id",
       templateUrl: "persona.html",
         controller: "PersonController",
         controllerAs: "personCtrl"
-    })
-
-	  .state("personasNueva", {
-  		url: "/personas/nueva",
-  		templateUrl: "persona-nueva.html",
-      controller: "PersonFormController",
-      controllerAs: "personCtrl"
     });
   });
 })();
