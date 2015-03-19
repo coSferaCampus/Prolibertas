@@ -160,9 +160,23 @@ end
 
 Then(/^I should see the errors in the form$/) do
   expect(page).to have_css ".has-error #InputName"
-  expect(page).to have_css "#InputName ~ .tooltip", text: "Este campo es obligatorio"
+  expect(page).to have_css "#InputName ~ .tooltip", text:  I18n.t('mongoid.errors.messages.blank')
   expect(page).to have_css ".has-error #InputSurname"
-  expect(page).to have_css "#InputSurname ~ .tooltip", text: "Este campo es obligatorio"
+  expect(page).to have_css "#InputSurname ~ .tooltip", text: I18n.t('mongoid.errors.messages.blank')
   expect(page).to have_css ".has-error #InputGenre"
-  expect(page).to have_css "#InputGenre ~ .tooltip", text: "Debe elegir una opción"
+  expect(page).to have_css "#InputGenre ~ .tooltip", text: I18n.t('mongoid.errors.messages.inclusion')
+end
+
+When(/^I fill input "(.*?)" with "(.*?)"$/) do |key, value|
+  if key == 'InputGenre'
+   select(value, from: key)
+   else
+    fill_in key, with: value
+  end
+  click_button 'InputSubmit'  
+end
+
+Then(/^I should not see error on "(.*?)"$/) do |key|
+  expect(page).to_not have_css "##{key} ~ .tooltip"
+
 end
