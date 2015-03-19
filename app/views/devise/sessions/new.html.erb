@@ -3,16 +3,14 @@
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: "form-signin"}) do |f| %>
         <img class="center-block logologin" src="/assets/logo.svg">
 
-            <%= f.label :name %><br />
             <div class="input-group input-group-lg">
                <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
-               <%= f.text_field :name, autofocus: true, class:"form-control", "aria-describedby" => "sizing-addon1"%>
+               <%= f.text_field :name, autofocus: true, class:"form-control", placeholder:User.human_attribute_name("name"), "aria-describedby" => "sizing-addon1"%>
             </div>
-
-            <%= f.label :password%><br />
+              <span>&nbsp</span>
             <div class="input-group input-group-lg">
               <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
-             <%= f.password_field :password, autocomplete: "off", class:"form-control", "aria-describedby" => "sizing-addon1" %>
+             <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:User.human_attribute_name("password"), "aria-describedby" => "sizing-addon1" %>
            </div>
 
           <% if devise_mapping.rememberable? -%>
