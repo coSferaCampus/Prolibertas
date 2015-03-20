@@ -85,7 +85,7 @@ end
 Then(/^I should go to a view of this person$/) do
   expect(page).to have_css "#person-show-page"
 end
-
+#eliminar persona
 When(/^I click the remove button in people view$/) do
   @persona = Person.first 
   page.find("#person-show-#{@persona.id}").click
@@ -204,28 +204,48 @@ When(/^I click the edit button$/) do
 end
 
 Then(/^I should see the edit form person$/) do
-  person = Person.first 
-  find_field('InputName').value.should eq person.name
-  find_field('InputBirth').value.should eq person.birth
-  find_field('InputSurname').value.should eq person.surname
-  find_field('InputNif').value.should eq person.nif
-  find_field('InputGenre').value.should eq person.genre
-  find_field('InputSocialServices').value.should eq person.social_services
-  find_field('InputPhone').value.should eq person.phone
-  find_field('InputOrigin').value.should eq person.origin
-  find_field('InputMenu').value.should eq person.menu
-  find_field('InputAssistance').value.should eq person.assistance
-  find_field('InputIncome').value.should eq person.income
-  find_field('InputHome').value.should eq person.home
-  find_field('InputAddress').value.should eq person.address
-  find_field('InputFamilyStatus').value.should eq person.family_status
-  find_field('InputContactFamily').value.should eq person.contact_family
-  find_field('InputHealthStatus').value.should eq person.health_status
-  find_field('InputNotes').value.should eq person.notes
-
+ expect(page).to have_css "#personform"
 end
 
 Then(/^I should see the person information in the form$/) do
-  pending # express the regexp above with the code you wish you had
+  @person = Person.first 
+  find_field('InputName').value.should eq @person.name
+  find_field('InputSurname').value.should eq @person.surname
+  find_field('InputNif').value.should eq @person.nif
+  find_field('InputGenre').value.should eq @person.genre.to_s
+  find_field('InputSocialServices').value.should eq @person.social_services
+  find_field('InputPhone').value.should eq @person.phone
+  find_field('InputOrigin').value.should eq @person.origin
+  find_field('InputMenu').value.should eq @person.menu
+  find_field('InputAssistance').value.should eq @person.assistance
+  find_field('InputIncome').value.should eq @person.income
+  find_field('InputHome').value.should eq @person.home
+  find_field('InputAddress').value.should eq p@erson.address
+  find_field('InputFamilyStatus').value.should eq @person.family_status
+  find_field('InputContactFamily').value.should eq @person.contact_family
+  find_field('InputHealthStatus').value.should eq @person.health_status
+  find_field('InputNotes').value.should eq @person.notes
 end
+
+
+When(/^I edit the form$/) do
+  @person = Person.first 
+  page.find("#person-edit-#{@person.id}").click
+  fill_in 'InputName', with: "pepe"
+  page.find("#InputSubmit").click
+end
+
+Then(/^I should see the person updated$/) do
+  expect(page).to have_css "#person-edit-#{@person.id}"
+  find_field('InputName').value.should eq "pepe"
+end
+
+
+
+
+
+
+
+
+
 

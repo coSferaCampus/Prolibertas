@@ -5,7 +5,11 @@
   app.controller('PeopleController', ['$http', '$timeout', '$state', function($http, $timeout, $state){
     var scope = this;
     scope.people = [];
+<<<<<<< HEAD
     scope.alertaCreado = $state.params.alertaCreado;
+=======
+    scope.alerta = $state.params.alerta;;
+>>>>>>> editar persona, test y controlador formulario
     // La alerta se oculta después de 3 segundos
     $timeout(function(){scope.alertaCreado = false;}, 5000);
 
@@ -35,7 +39,6 @@
     $http.get('/people/' + $state.params.id + '.json')
     .success(function(data){
       scope.person = data.person;
-      console.log(scope.person);
     });
 
     scope.destroyPerson = function(person) {
@@ -49,12 +52,13 @@
 
   }]);
 
-  app.controller('PersonFormController', ['$http', '$state', '$rootScope',function($http, $state, $rootScope) {
+  app.controller('PersonFormController', ['$http', '$state', function($http, $state){
     var scope = this;
     // variable para el formulario
     scope.personForm = {};
    //variable para los errores
     scope.errors = {};
+    scope.model = {};
 
     $('.datepicker').datepicker({
       format: "dd/mm/yyyy",
@@ -72,6 +76,7 @@
       }
     };
 
+
     scope.guardarPersona = function() {
       $http.post('/people.json', {person: scope.personForm})
         .success(function(data){
@@ -80,13 +85,43 @@
         .error(function(data) {
           scope.errors = data.errors;
 
-          for(var error in scope.errors) {
-            if(scope.errors[error]) {
-              $("#Input" + $rootScope.capitalize(error))
-                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
-            }
+          if(scope.errors.name) { 
+            $("#InputName").tooltip({trigger: 'manual', title: scope.errors.name.join(', ')});    
+            $("#InputName").tooltip('show');
+          }
+          if(scope.errors.surname) {
+            $("#InputSurname").tooltip({trigger: 'manual', title: scope.errors.surname.join(', ')});    
+            $("#InputSurname").tooltip('show');
+          }
+          if(scope.errors.genre) {
+            $("#InputGenre").tooltip({trigger: 'manual', title: scope.errors.genre.join(', ')});    
+            $("#InputGenre").tooltip('show');
           }
         });
     };
+
+    scope.actualizarPersona = function() {
+    $http.put(
+      "/people/" + $state.params.id + ".json"
+    ), {person: scope.personForm}
+   .success(function() {
+      $state.go("persona", {id: $state.params.id});
+      scope.errors = {};
+    });
+ }
+
+    scope.actionForm = scope.guardarPersona;
+
+    if ($state.params.id != undefined) {
+      scope.actionForm = scope.actualizarPersona;
+      $http.get('/people/' + $state.params.id + '.json')
+      .success(function(data){
+        scope.personForm = data.person;
+      });
+    }
+    else{
+      scope.actionForm = scope.guardarPersona;
+    }
+
   }]);
 })();
