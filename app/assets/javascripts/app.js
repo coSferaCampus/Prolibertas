@@ -17,8 +17,8 @@
     .state("personasNueva", {
       url: "/personas/nueva",
       templateUrl: "persona-nueva.html",
-      controller: "PersonFormController",
-      controllerAs: "personCtrl"
+        controller: "PersonFormController",
+        controllerAs: "personCtrl"
     })
 
     .state("persona", {
@@ -26,7 +26,14 @@
       templateUrl: "persona.html",
         controller: "PersonController",
         controllerAs: "personCtrl"
-    });
+    })
+
+    .state("personaEditar", {
+      url: "/personas/:id/editar",
+      templateUrl: "persona-nueva.html",
+        controller: "PersonFormController",
+        controllerAs: "personCtrl"    
+      });
   });
 
   app.run(function($rootScope, $state) {
