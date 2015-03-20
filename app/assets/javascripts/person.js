@@ -46,7 +46,7 @@
 
   }]);
 
-  app.controller('PersonFormController', ['$http', '$state', function($http, $state){
+  app.controller('PersonFormController', ['$http', '$state', '$rootScope',function($http, $state, $rootScope) {
     var scope = this;
     // variable para el formulario
     scope.personForm = {};
@@ -73,22 +73,15 @@
       $http.post('/people.json', {person: scope.personForm})
         .success(function(data){
           $state.go('personas', {alerta: 'true'});
-
         })
         .error(function(data) {
           scope.errors = data.errors;
 
-          if(scope.errors.name) { 
-            $("#InputName").tooltip({trigger: 'manual', title: scope.errors.name.join(', ')});    
-            $("#InputName").tooltip('show');
-          }
-          if(scope.errors.surname) {
-            $("#InputSurname").tooltip({trigger: 'manual', title: scope.errors.surname.join(', ')});    
-            $("#InputSurname").tooltip('show');
-          }
-          if(scope.errors.genre) {
-            $("#InputGenre").tooltip({trigger: 'manual', title: scope.errors.genre.join(', ')});    
-            $("#InputGenre").tooltip('show');
+          for(var error in scope.errors) {
+            if(scope.errors[error]) {
+              $("#Input" + $rootScope.capitalize(error))
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+            }
           }
         });
     };

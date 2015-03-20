@@ -28,4 +28,11 @@
         controllerAs: "personCtrl"
     });
   });
+
+  app.run(function($rootScope, $state) {
+    // Capitalizar palabra
+    $rootScope.capitalize = function(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    };
+  });
 })();
