@@ -5,10 +5,13 @@
   app.controller('PeopleController', ['$http', '$timeout', '$state', function($http, $timeout, $state){
     var scope = this;
     scope.people = [];
-    scope.alerta = $state.params.alerta;
-    console.log(scope.alerta);
+    scope.alertaCreado = $state.params.alertaCreado;
     // La alerta se oculta después de 3 segundos
-    $timeout(function(){scope.alerta = false;}, 5000);
+    $timeout(function(){scope.alertaCreado = false;}, 5000);
+
+    scope.alertaBorrado = $state.params.alertaBorrado;
+    // La alerta se oculta después de 3 segundos
+    $timeout(function(){scope.alertaBorrado = false;}, 5000);
 
     $http.get('/people.json')
       .success(function(data){
@@ -25,7 +28,7 @@
     }
   }]);
 
-  app.controller('PersonController',  ['$http', '$state', function($http, $state) {
+  app.controller('PersonController',  ['$http', '$timeout', '$state', function($http, $timeout, $state) {
     var scope = this;
     scope.person = {};
 
@@ -39,7 +42,7 @@
       var confirmed = confirm('¿Desea borrar a ' + person.name + ' ' + person.surname + '?');
       if (confirmed) {
         $http.delete('/people/' + person.id + '.json').success(function(data) {
-          $state.go("personas")
+          $state.go("personas", { alertaBorrado: 'true' })
         }); 
       }
     };
@@ -72,7 +75,7 @@
     scope.guardarPersona = function() {
       $http.post('/people.json', {person: scope.personForm})
         .success(function(data){
-          $state.go('personas', {alerta: 'true'});
+          $state.go('personas', { alertaCreado: 'true' });
         })
         .error(function(data) {
           scope.errors = data.errors;

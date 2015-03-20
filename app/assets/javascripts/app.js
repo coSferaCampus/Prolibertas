@@ -8,7 +8,7 @@
   	// Aquí establecemos los estados de nuestra applicación.
 	  $stateProvider
 	  .state("personas", {
-	    url: "/personas?alerta",
+	    url: "/personas?alertaCreado&alertaBorrado",
 	    templateUrl: "personas.html",
         controller: "PeopleController",
         controllerAs: "peopleCtrl"

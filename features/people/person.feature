@@ -6,7 +6,7 @@ Feature: Person Show
 
   Background:
     Given There are 3 people in the platform 
-    Given I am loged in like user
+    And I am loged in like user
 
   Scenario: Open person view
     When I click the view icon of a person in people list view
@@ -15,3 +15,4 @@ Feature: Person Show
   Scenario: Remove person
     When I click the remove button in people view
     Then I should remove this person
+    And  I should see a success message
