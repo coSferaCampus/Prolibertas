@@ -22,7 +22,7 @@ $lista_height:  60px;
 .collapsed.navbar-toggle:hover,
 .collapsed.navbar-toggle:focus {
     background-color: $brand_light;
-  }
+}
 
 .icon-bar {
   display: block;
@@ -82,8 +82,8 @@ $lista_height:  60px;
 
 li .menu__el:hover,
 li .menu__el:focus,
-li .menu__el.selected {
-  background-color: $brand_light;
+li .menu__el.active {
+  background-color: $brand_light !important;
 }
 
 .menu__el__text {
