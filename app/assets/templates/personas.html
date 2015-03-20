@@ -1,8 +1,8 @@
-  <nav class="navbar-fixed-top col-md-offset-2 col-md-10 col-sm-offset-2 col-sm-10 col-xs-offset-0 col-xs-12">
+  <nav class="navbar-fixed-top col-md-offset-2 col-md-10 col-sm-offset-2 col-sm-10 col-xs-12">
   <div class="row" >
-    <div class="col-md-offset-0 col-md-12 col-sm-12 col-xs-12 listpeople__buscadores">
+    <div class="col-md-12 col-sm-12 col-xs-12 listpeople__buscadores">
       <form class="form-inline">
-        <div class="form-group  col-md-4 col-sm-4 col-xs-12 col-xs-offset-0 ">
+        <div class="form-group  col-md-4 col-sm-4 col-xs-12">
           <label class="sr-only"></label>
           <div class="input-group">
             <input id="searchsurname" ng-model="search.surname" type="text" class="form-control" placeholder="Buscar por apellidos...">
@@ -11,7 +11,7 @@
             </span>
           </div>
         </div>
-        <div class="form-group col-md-4 col-sm-4 col-xs-11">
+        <div class="form-group col-md-4 col-sm-4 col-xs-10">
           <label class="sr-only"></label>
           <div class="input-group">
             <input id="searchorigin" ng-model="search.origin" type="text" class="form-control" placeholder="Buscar por origen...">
@@ -20,7 +20,7 @@
             </span>
           </div>
         </div>
-        <a id="createPerson" ui-sref="personasNueva" class="btn listpeople__boton col-md-1 col-sm-1 col-xs-1 col-md-offset-3 col-sm-offset-3 col-xs-offset-0 col-xs-pull-0 col-xs-1"><img src="/assets/add-person.svg" class="glyphiconlistpeople__boton__img"></a>
+        <a id="createPerson" ui-sref="personasNueva" class="btn listpeople__boton col-md-1 col-sm-1 col-md-offset-3 col-sm-offset-3 col-xs-1"><img src="/assets/add-person.svg" class="glyphiconlistpeople__boton__img"></a>
       </form>
     </div>
 
@@ -28,20 +28,20 @@
   </nav>
 
   <section class="listpeople__tabla col-md-12">
-    <table class="table col-md-offset-0 col-md-12 col-lg-offset-0 col-lg-12" id="peopleTable">
+    <table class="table table-responsive col-md-12  col-lg-12" id="peopleTable">
         <thead class="listpeople__cabecera">
           <tr>
             <th>Nombre</th>
             <th>Apellidos</th>
-            <th>Origen</th>
-            <th class="listpeople__centrado">S</th>  
-            <th class="listpeople__centrado">Menú</th>
+            <th class="hidden-xs">Origen</th>
+            <th class="listpeople__centrado hidden-xs">S</th>  
+            <th class="listpeople__centrado hidden-xs">Menú</th>
             <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/cutlery23.svg"></th>
             <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/tshirt18.svg"></th>
             <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/shower17.svg"></th>
-            <th class="listpeople__centrado">MÁS</th>
+            <th class="listpeople__centrado hidden-xs">MÁS</th>
             <th class="listpeople__centrado"></th>
-            <th class="listpeople__centrado"></th>
+            <th class="listpeople__centrado hidden-xs"></th>
           </tr>
         </thead>
 
@@ -49,19 +49,19 @@
         <tr ng-repeat="person in peopleCtrl.people | filter:search" id="person_{{person.id}}">
           <td>{{person.name}}</td>
           <td>{{person.surname}}</td>
-          <td>{{person.origin}}</td>
-          <td class="listpeople__centrado">{{peopleCtrl.genero(person.genre)}}</td>
-          <td class="listpeople__centrado">{{person.menu}}</td>
+          <td class="hidden-xs">{{person.origin}}</td>
+          <td class="listpeople__centrado hidden-xs">{{peopleCtrl.genero(person.genre)}}</td>
+          <td class="listpeople__centrado hidden-xs">{{person.menu}}</td>
           <td class="listpeople__centrado"><input type="checkbox"></td>
           <td class="listpeople__centrado"><input type="checkbox"></td>
           <td class="listpeople__centrado"><input type="checkbox"></td>
-          <td class="listpeople__centrado"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></td>
+          <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></td>
           <td class="listpeople__centrado"><a id="person-show-{{person.id}}" 
               ui-sref="persona({ id: person.id })">
             <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
           </td>
           
-          <td class="listpeople__centrado"><i class="glyphicon glyphicon-list listpeople__azul"></td>
+          <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-list listpeople__azul"></td>
         </tr>
       </tbody>
     </table>
