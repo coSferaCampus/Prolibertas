@@ -31,7 +31,7 @@ When(/^I fill user login form with valid parameters$/) do
 end
 
 Then(/^I should be in home info page$/) do
-  expect(page).to have_css ".navbar-nav"
+  expect(page).to have_css ".menu"
 end
 
 When(/^I visit home page$/) do

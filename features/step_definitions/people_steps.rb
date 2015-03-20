@@ -93,8 +93,13 @@ When(/^I click the remove button in people view$/) do
   page.driver.browser.switch_to.alert.accept
 end
 
+# Remove person
 Then(/^I should remove this person$/) do
   expect(page).to_not have_css "#person-show-#{@persona.id}"
+end
+
+Then(/^I should see a success message$/) do
+  expect(page).to have_css ".leo-message", text:"¡Borrado satisfactoriamente!"
 end
 
 # Test para Crear persona
