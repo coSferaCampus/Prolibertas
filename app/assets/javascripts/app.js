@@ -30,10 +30,7 @@
   });
 
   app.run(function($rootScope, $state) {
-    // Para usar $state en las vistas
-    $rootScope.$state = $state;
-
-    // Comprueba si un objeto está vacío
+    // Capitalizar palabra
     $rootScope.capitalize = function(string) {
       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     };
