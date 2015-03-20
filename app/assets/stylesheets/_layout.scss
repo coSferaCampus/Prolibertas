@@ -45,10 +45,13 @@ $lista_height:  60px;
 }
 
 .menu {
-  margin-top: 20px;
+  position: absolute;
+  top: 40px;
+  left:0;
   margin-right: 0;
   margin-left: 0;
   width: 100%;
+
 }
 
 /*.logo {
