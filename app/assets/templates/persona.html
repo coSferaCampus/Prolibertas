@@ -100,7 +100,7 @@
     <a  id="remove-person-btn" type="button" class="btn btn-danger persona__botones__remove"
         ng-click="personCtrl.destroyPerson(personCtrl.person)">Eliminar
     </a>
-    <button ui-sref="personaEditar({id:personCtrl.person.id})" type="button" class="btn btn-primary persona__botones__edit">Editar</button>
+    <button id="person-edit-{{personCtrl.person.id}}" ui-sref="personaEditar({id:personCtrl.person.id})" type="button" class="btn btn-primary persona__botones__edit">Editar</button>
   </div>
 
 </div>

@@ -14,3 +14,7 @@ Scenario: Visit edit form
   When I click the edit button
   Then I should see the edit form person
   And I should see the person information in the form
+
+Scenario: edit update form
+  When I edit the form
+  Then I should see the person updated
