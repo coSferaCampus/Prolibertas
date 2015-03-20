@@ -97,7 +97,9 @@
   </div>
 
   <div class="persona__botones col-md-6">
-    <button type="button" class="btn btn-danger persona__botones__remove">Eliminar</button>
+    <a  id="remove-person-btn" type="button" class="btn btn-danger persona__botones__remove"
+        ng-click="personCtrl.destroyPerson(personCtrl.person)">Eliminar
+    </a>
     <button type="button" class="btn btn-primary persona__botones__edit">Editar</button>
   </div>
 

@@ -86,6 +86,17 @@ Then(/^I should go to a view of this person$/) do
   expect(page).to have_css "#person-show-page"
 end
 
+When(/^I click the remove button in people view$/) do
+  @persona = Person.first 
+  page.find("#person-show-#{@persona.id}").click
+  page.find("#remove-person-btn").click
+  page.driver.browser.switch_to.alert.accept
+end
+
+Then(/^I should remove this person$/) do
+  expect(page).to_not have_css "#person-show-#{@persona.id}"
+end
+
 # Test para Crear persona
 Given(/^I visit new person page$/) do
   click_link 'createPerson'

@@ -142,4 +142,7 @@ li .menu__el.selected {
     width: 100%;
   }
 
+  .menu__logout {
+    left: calc(100% - 120px);
+  }
 }
