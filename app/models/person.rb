@@ -1,4 +1,4 @@
-class Person 
+class Person
 	include Mongoid::Document
 	include Mongoid::Timestamps
 
@@ -20,8 +20,13 @@ class Person
 	field :contact_family, 	type: String
 	field :notes,  			type: String
 
+	has_many :used_services
+
+
+
 	validates :name, presence: true
 	validates :surname, presence: true
 	validates :genre, inclusion: {in: [:man, :woman]}
-end
 
+
+end

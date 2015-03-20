@@ -10,6 +10,10 @@ class Service
   field :name,    type: String
   field :type,    type: Symbol
 
+  has_many :used_services
+
+
+
   validates :name,        presence: true, uniqueness: {case_sensitive: false}
   validates :type,        inclusion: { in: VALID_TYPES }
 end

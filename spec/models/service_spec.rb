@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Services, type: :model do
+RSpec.describe Service, type: :model do
   context "Document" do
     it { is_expected.to be_timestamped_document }
   end
@@ -8,6 +8,10 @@ RSpec.describe Services, type: :model do
   context "Fields" do
     it { is_expected.to have_field(:name).of_type(String) }
     it { is_expected.to have_field(:type).of_type(Symbol) }
+  end
+
+  context "Relations" do
+    it { is_expected.to have_many(:used_services) }
   end
 
   context "Validations" do
