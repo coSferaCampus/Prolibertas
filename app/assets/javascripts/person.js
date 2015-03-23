@@ -49,7 +49,7 @@
 
   }]);
 
-  app.controller('PersonFormController', ['$http', '$state', function($http, $state){
+  app.controller('PersonFormController', ['$http', '$state', '$rootScope',function($http, $state, $rootScope) {
     var scope = this;
     // variable para el formulario
     scope.personForm = {};
@@ -117,7 +117,7 @@
         scope.personForm = data.person;
       });
     }
-    else{
+    else {
       scope.actionForm = scope.guardarPersona;
     }
 

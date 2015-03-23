@@ -18,3 +18,7 @@ Scenario: Visit edit form
 Scenario: update form
   When I update the form
   Then I should see the person updated
+
+Scenario: Update form with no text
+  When I fill person update form with invalid parameters
+  Then I should see the errors in the update form

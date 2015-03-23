@@ -220,7 +220,7 @@ Then(/^I should see the person information in the form$/) do
   find_field('InputAssistance').value.should eq @person.assistance
   find_field('InputIncome').value.should eq @person.income
   find_field('InputHome').value.should eq @person.home
-  find_field('InputAddress').value.should eq p@erson.address
+  find_field('InputAddress').value.should eq @person.address
   find_field('InputFamilyStatus').value.should eq @person.family_status
   find_field('InputContactFamily').value.should eq @person.contact_family
   find_field('InputHealthStatus').value.should eq @person.health_status
@@ -266,9 +266,24 @@ Then(/^I should see the person updated$/) do
   expect(page).to have_css "#person_contact", text: "ninguna persona"
   expect(page).to have_css "#person_health", text: "esta genial"
   expect(page).to have_css "#person_notes", text: "este hombre es un maquina"
-  
 end
 
+# Test para los errores del formulario
+When(/^I fill person update form with invalid parameters$/) do
+  @person = Person.first 
+  page.find("#person-edit-#{@person.id}").click
+  fill_in 'InputName', with: ""
+  fill_in 'InputSurname', with: ""
+  page.find("#InputSubmit").click
+end
+
+
+Then(/^I should see the errors in the update form$/) do
+  expect(page).to have_css ".has-error #InputName"
+  expect(page).to have_css "#InputName ~ .tooltip", text:  I18n.t('mongoid.errors.messages.blank')
+  expect(page).to have_css ".has-error #InputSurname"
+  expect(page).to have_css "#InputSurname ~ .tooltip", text: I18n.t('mongoid.errors.messages.blank')
+end
 
 
 
