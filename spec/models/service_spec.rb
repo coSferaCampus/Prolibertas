@@ -7,7 +7,7 @@ RSpec.describe Service, type: :model do
 
   context "Fields" do
     it { is_expected.to have_field(:name).of_type(String) }
-    it { is_expected.to have_field(:type).of_type(Symbol) }
+    it { is_expected.to have_field(:primary).of_type(Mongoid::Boolean) }
   end
 
   context "Relations" do
@@ -17,10 +17,21 @@ RSpec.describe Service, type: :model do
   context "Validations" do
     it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
 
-    it {
-      is_expected.to validate_inclusion_of(:type).to_allow(
-        [:primary, :secondary ]
-      )
-    }
+
+  end
+
+  context "Primary services" do
+    it "exists service for comida" do
+      expect(Service.where(name: 'comida', primary: true).size).to eql(1)
+    end
+
+    it "exists service for ducha" do
+      expect(Service.where(name: 'ducha', primary: true).size).to eql(1)
+    end
+
+    it "exists service for ropa" do
+      expect(Service.where(name: 'ropa', primary: true).size).to eql(1)
+    end
+
   end
 end

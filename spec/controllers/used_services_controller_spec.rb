@@ -13,6 +13,7 @@ RSpec.describe UsedServicesController, type: :controller do
     person = FactoryGirl.create(:person)
     service = FactoryGirl.create(:service)
 
+    #Para el test de show
     @resource = FactoryGirl.create(:used_service, person: person, service: service)
 
     #Para los test create y destroy
