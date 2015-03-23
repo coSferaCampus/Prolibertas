@@ -67,7 +67,7 @@
     scope.personForm = {};
    //variable para los errores
     scope.errors = {};
-    $rootScope.prolibertas = "Crear Persona"
+
 
     $('.datepicker').datepicker({
       format: "dd/mm/yyyy",
@@ -130,10 +130,12 @@
       $http.get('/people/' + $state.params.id + '.json')
       .success(function(data){
         scope.personForm = data.person;
+        $rootScope.prolibertas = "Editar Persona"
       });
     }
     else {
       scope.actionForm = scope.guardarPersona;
+      $rootScope.prolibertas = "Crear Persona"
     }
 
   }]);
