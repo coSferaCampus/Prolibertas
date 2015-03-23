@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
@@ -9,6 +8,10 @@ gem 'mongoid', '~> 4.0.1'
 
 # Para el registro de usuarios
 gem 'devise', '~> 3.4.1'
+# Roles
+gem "rolify", '~> 4.0.0'
+# Para comprimir el javascript
+gem "uglifier", '~> 2.7.1'
 
 # Convierte objetos de nuestros modelos en json
 gem 'active_model_serializers', '~> 0.9.3'
