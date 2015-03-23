@@ -6,6 +6,7 @@
     var scope = this;
     scope.people = [];
     scope.alertaCreado = $state.params.alertaCreado;
+
     // La alerta se oculta después de 3 segundos
     $timeout(function(){scope.alertaCreado = false;}, 5000);
 
@@ -35,7 +36,6 @@
     $http.get('/people/' + $state.params.id + '.json')
     .success(function(data){
       scope.person = data.person;
-      console.log(scope.person);
     });
 
     scope.destroyPerson = function(person) {
@@ -72,6 +72,7 @@
       }
     };
 
+
     scope.guardarPersona = function() {
       $http.post('/people.json', {person: scope.personForm})
         .success(function(data){
@@ -88,5 +89,37 @@
           }
         });
     };
+
+    scope.actualizarPersona = function() {
+      $http.put("/people/" + $state.params.id + ".json",{person: scope.personForm})
+        .success(function() {
+          $state.go("persona", {id: $state.params.id});
+          scope.errors = {};
+        })
+        .error(function(data) {
+          scope.errors = data.errors;
+
+          for(var error in scope.errors) {
+            if(scope.errors[error]) {
+              $("#Input" + $rootScope.capitalize(error))
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+            }
+          }
+        });
+    };
+
+    scope.actionForm = scope.guardarPersona;
+
+    if ($state.params.id != undefined) {
+      scope.actionForm = scope.actualizarPersona;
+      $http.get('/people/' + $state.params.id + '.json')
+      .success(function(data){
+        scope.personForm = data.person;
+      });
+    }
+    else {
+      scope.actionForm = scope.guardarPersona;
+    }
+
   }]);
 })();

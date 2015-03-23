@@ -24,39 +24,39 @@
     <div class="col-md-6">
       <ul class="list-group">
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Nombre:</strong> {{ personCtrl.person.name }}
+          <strong class="person__list__text__left">Nombre:</strong> <span id="person_name">{{ personCtrl.person.name }}</span> 
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Apellidos:</strong> {{ personCtrl.person.surname }}
+          <strong class="person__list__text__left">Apellidos:</strong> <span id="person_surname">{{ personCtrl.person.surname }}</span> 
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Sexo:</strong> {{ personCtrl.person.genre }}
+          <strong class="person__list__text__left">Sexo:</strong> <span id="person_genre">{{ personCtrl.person.genre }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Teléfono:</strong> {{ personCtrl.person.phone }}
+          <strong class="person__list__text__left">Teléfono:</strong> <span id="person_phone">{{ personCtrl.person.phone }}</span> 
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Asistencia:</strong> {{ personCtrl.person.assistance }}
+          <strong class="person__list__text__left">Asistencia:</strong> <span id="person_assistance">{{ personCtrl.person.assistance }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Tipo de vivienda:</strong> {{ personCtrl.person.home }}
+          <strong class="person__list__text__left">Tipo de vivienda:</strong> <span id="person_home">{{ personCtrl.person.home }}</span>
 
         </li>
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Situación familiar:</strong> {{ personCtrl.person.family_status }}
+          <strong class="person__list__text__left">Situación familiar:</strong> <span id="person_family">{{ personCtrl.person.family_status }}</span>
 
         </li>
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Situación sanitaria:</strong> {{ personCtrl.person.health_status }}
+          <strong class="person__list__text__left">Situación sanitaria:</strong> <span id="person_health">{{ personCtrl.person.health_status }}</span>
 
         </li>      
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Notas:</strong> {{ personCtrl.person.notes }}
+          <strong class="person__list__text__left">Notas:</strong> <span id="person_notes">{{ personCtrl.person.notes }}</span>
         </li>
       </ul>
     </div>
@@ -66,31 +66,39 @@
       <ul class="list-group">
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Edad:</strong> {{ personCtrl.person.birth }}
+          <strong class="person__list__text__left">Edad:</strong> <span id="person_age">{{ personCtrl.person.birth }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">DNI:</strong> {{ personCtrl.person.nif }}
+          <strong class="person__list__text__left">Origen:</strong> <span id="person_origin">{{ personCtrl.person.origin }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Servicios sociales</strong> {{ personCtrl.person.social_services }}
+          <strong class="person__list__text__left">Tipo de menú:</strong> <span id="person_menu">{{ personCtrl.person.menu}}</span>
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Vivienda:</strong> {{ personCtrl.person.home }}
+          <strong class="person__list__text__left">DNI:</strong> <span id="person_nif">{{ personCtrl.person.nif }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong  class="person__list__text__left">Ingresos:</strong> {{ personCtrl.person.income }}
+          <strong class="person__list__text__left">Servicios sociales:</strong> <span id="person_social">{{ personCtrl.person.social_services }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Dirección:</strong> {{ personCtrl.person.address }}
+          <strong class="person__list__text__left">Vivienda:</strong> <span id="person_home">{{ personCtrl.person.home }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Familiar de contacto:</strong> {{ personCtrl.person.contact_family }}
+          <strong  class="person__list__text__left">Ingresos:</strong> <span id="person_income">{{ personCtrl.person.income }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Dirección:</strong> <span id="person_address">{{ personCtrl.person.address }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Familiar de contacto:</strong> <span id="person_contact">{{ personCtrl.person.contact_family }}</span>
         </li>
       </ul>
     </div>
@@ -100,7 +108,7 @@
     <a  id="remove-person-btn" type="button" class="btn btn-danger persona__botones__remove"
         ng-click="personCtrl.destroyPerson(personCtrl.person)">Eliminar
     </a>
-    <button type="button" class="btn btn-primary persona__botones__edit">Editar</button>
+    <button id="person-edit-{{personCtrl.person.id}}" ui-sref="personaEditar({id:personCtrl.person.id})" type="button" class="btn btn-primary persona__botones__edit">Editar</button>
   </div>
 
 </div>
