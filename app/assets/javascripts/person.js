@@ -5,11 +5,8 @@
   app.controller('PeopleController', ['$http', '$timeout', '$state', function($http, $timeout, $state){
     var scope = this;
     scope.people = [];
-<<<<<<< HEAD
     scope.alertaCreado = $state.params.alertaCreado;
-=======
-    scope.alerta = $state.params.alerta;;
->>>>>>> editar persona, test y controlador formulario
+
     // La alerta se oculta después de 3 segundos
     $timeout(function(){scope.alertaCreado = false;}, 5000);
 
@@ -84,17 +81,11 @@
         .error(function(data) {
           scope.errors = data.errors;
 
-          if(scope.errors.name) { 
-            $("#InputName").tooltip({trigger: 'manual', title: scope.errors.name.join(', ')});    
-            $("#InputName").tooltip('show');
-          }
-          if(scope.errors.surname) {
-            $("#InputSurname").tooltip({trigger: 'manual', title: scope.errors.surname.join(', ')});    
-            $("#InputSurname").tooltip('show');
-          }
-          if(scope.errors.genre) {
-            $("#InputGenre").tooltip({trigger: 'manual', title: scope.errors.genre.join(', ')});    
-            $("#InputGenre").tooltip('show');
+          for(var error in scope.errors) {
+            if(scope.errors[error]) {
+              $("#Input" + $rootScope.capitalize(error))
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+            }
           }
         });
     };
@@ -104,6 +95,16 @@
         .success(function() {
           $state.go("persona", {id: $state.params.id});
           scope.errors = {};
+        })
+        .error(function(data) {
+          scope.errors = data.errors;
+
+          for(var error in scope.errors) {
+            if(scope.errors[error]) {
+              $("#Input" + $rootScope.capitalize(error))
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+            }
+          }
         });
     };
 
