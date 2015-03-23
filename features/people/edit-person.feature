@@ -15,6 +15,6 @@ Scenario: Visit edit form
   Then I should see the edit form person
   And I should see the person information in the form
 
-Scenario: edit update form
-  When I edit the form
+Scenario: update form
+  When I update the form
   Then I should see the person updated

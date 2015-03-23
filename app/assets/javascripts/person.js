@@ -58,7 +58,6 @@
     scope.personForm = {};
    //variable para los errores
     scope.errors = {};
-    scope.model = {};
 
     $('.datepicker').datepicker({
       format: "dd/mm/yyyy",
@@ -101,14 +100,12 @@
     };
 
     scope.actualizarPersona = function() {
-    $http.put(
-      "/people/" + $state.params.id + ".json"
-    ), {person: scope.personForm}
-   .success(function() {
-      $state.go("persona", {id: $state.params.id});
-      scope.errors = {};
-    });
- }
+      $http.put("/people/" + $state.params.id + ".json",{person: scope.personForm})
+        .success(function() {
+          $state.go("persona", {id: $state.params.id});
+          scope.errors = {};
+        });
+    };
 
     scope.actionForm = scope.guardarPersona;
 
