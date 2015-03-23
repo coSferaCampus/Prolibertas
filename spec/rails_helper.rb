@@ -47,6 +47,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.orm = 'mongoid'
     DatabaseCleaner.strategy = :truncation, {except: %w( services) }
+    Service.where(:name.nin => %w(comida ducha ropa)).destroy_all
   end
 
   config.before(:all) do
