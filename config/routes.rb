@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "main#main"
+  resources :users
   resources :people
   resources :services
   resources :used_services
