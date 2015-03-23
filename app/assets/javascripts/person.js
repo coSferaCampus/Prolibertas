@@ -2,7 +2,7 @@
   var app = angular.module('prolibertas-person', ['ui.router']);
 
   // Controllers
-  app.controller('PeopleController', ['$http', '$timeout', '$state', function($http, $timeout, $state){
+  app.controller('PeopleController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope){
     var scope = this;
     scope.people = [];
     scope.alertaCreado = $state.params.alertaCreado;
@@ -13,6 +13,7 @@
     scope.alertaBorrado = $state.params.alertaBorrado;
     // La alerta se oculta después de 3 segundos
     $timeout(function(){scope.alertaBorrado = false;}, 5000);
+    $rootScope.prolibertas = "Lista de Personas"
 
     $http.get('/people.json')
       .success(function(data){
@@ -29,14 +30,25 @@
     }
   }]);
 
-  app.controller('PersonController',  ['$http', '$timeout', '$state', function($http, $timeout, $state) {
+  app.controller('PersonController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {
     var scope = this;
     scope.person = {};
+
 
     $http.get('/people/' + $state.params.id + '.json')
     .success(function(data){
       scope.person = data.person;
+      $rootScope.prolibertas = scope.person.name + ' ' + scope.person.surname
     });
+
+    scope.genero = function(genero){
+      if (genero == "man") {
+        return 'Hombre';
+      }
+      else {
+        return 'Mujer';
+      }
+    };
 
     scope.destroyPerson = function(person) {
       var confirmed = confirm('¿Desea borrar a ' + person.name + ' ' + person.surname + '?');
@@ -55,6 +67,7 @@
     scope.personForm = {};
    //variable para los errores
     scope.errors = {};
+    $rootScope.prolibertas = "Crear Persona"
 
     $('.datepicker').datepicker({
       format: "dd/mm/yyyy",
@@ -64,6 +77,8 @@
       orientation: "top auto",
       autoclose: true
     });
+
+
 
     scope.change = function(field) {
       if(scope.errors[field.toLowerCase()]) {
