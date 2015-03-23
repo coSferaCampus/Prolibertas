@@ -5,5 +5,15 @@ Rolify.configure do |config|
   # Dynamic shortcuts for User class (user.is_admin? like methods). Default is: false
   # config.use_dynamic_shortcuts
 
-  Role.create([{ name: 'director' }, { name: 'worker' }, { name: 'volunteer'}])
+  if Role.where(name: 'director').empty?
+    Role.create(name: 'director')
+  end
+
+  if Role.where(name: 'worker').empty?
+    Role.create(name: 'worker')
+  end
+
+  if Role.where(name: 'volunteer').empty?
+    Role.create(name: 'volunteer')
+  end
 end
