@@ -22,7 +22,12 @@ RSpec.describe Person, type: :model do
     it { is_expected.to have_field(:contact_family).of_type(String) }
     it { is_expected.to have_field(:notes).of_type(String) }
   end
-  context "Validations" do 
+
+  context "Relations" do
+    it { is_expected.to have_many(:used_services) }
+  end
+  
+  context "Validations" do
   	it { is_expected.to validate_presence_of(:name) }
   	it { is_expected.to validate_presence_of(:surname) }
     it { is_expected.to validate_inclusion_of(:genre).to_allow([:man, :woman]) }

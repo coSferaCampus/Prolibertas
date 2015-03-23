@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :service do
     name
-    type { [:primary, :secondary].sample }
+    primary { [true, false].sample }
   end
 end
