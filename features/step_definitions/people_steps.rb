@@ -223,16 +223,45 @@ Then(/^I should see the person information in the form$/) do
 end
 
 
-When(/^I edit the form$/) do
+When(/^I update the form$/) do
   @person = Person.first 
   page.find("#person-edit-#{@person.id}").click
   fill_in 'InputName', with: "pepe"
+  fill_in 'InputSurname', with: "gonzalez"
+  fill_in 'InputNif', with: "23423423s"
+  fill_in 'InputSocialServices', with: "prolibertas"
+  fill_in 'InputPhone', with: "345345343"
+  fill_in 'InputOrigin', with: "congo"
+  fill_in 'InputMenu', with: "musulman"
+  fill_in 'InputAssistance', with: "asiste muchisimo"
+  fill_in 'InputIncome', with: "ninguno"
+  fill_in 'InputHome', with: "debajo del puente"
+  fill_in 'InputAddress', with: "lo mismo"
+  fill_in 'InputFamilyStatus', with: "ninguno"
+  fill_in 'InputContactFamily', with: "ninguna persona"
+  fill_in 'InputHealthStatus', with: "esta genial"
+  fill_in 'InputNotes', with: "este hombre es un maquina"
   page.find("#InputSubmit").click
 end
 
 Then(/^I should see the person updated$/) do
   expect(page).to have_css "#person-edit-#{@person.id}"
-  find_field('InputName').value.should eq "pepe"
+  expect(page).to have_css "#person_name", text: "pepe"
+  expect(page).to have_css "#person_surname", text: "gonzalez"
+  expect(page).to have_css "#person_nif", text: "23423423s"
+  expect(page).to have_css "#person_social", text: "prolibertas"
+  expect(page).to have_css "#person_phone", text: "345345343"
+  expect(page).to have_css "#person_origin", text: "congo"
+  expect(page).to have_css "#person_menu", text: "musulman"
+  expect(page).to have_css "#person_assistance", text: "asiste muchisimo"
+  expect(page).to have_css "#person_income", text: "ninguno"
+  expect(page).to have_css "#person_home", text: "debajo del puente"
+  expect(page).to have_css "#person_address", text: "lo mismo"
+  expect(page).to have_css "#person_family", text: "ninguno"
+  expect(page).to have_css "#person_contact", text: "ninguna persona"
+  expect(page).to have_css "#person_health", text: "esta genial"
+  expect(page).to have_css "#person_notes", text: "este hombre es un maquina"
+  
 end
 
 
