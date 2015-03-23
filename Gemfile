@@ -10,6 +10,8 @@ gem 'mongoid', '~> 4.0.1'
 gem 'devise', '~> 3.4.1'
 # Roles
 gem "rolify", '~> 4.0.0'
+# Permisos de usuario
+gem 'cancancan', '~> 1.10'
 # Para comprimir el javascript
 gem "uglifier", '~> 2.7.1'
 
