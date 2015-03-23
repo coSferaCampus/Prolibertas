@@ -1,6 +1,6 @@
 <div id="person-show-page">
 
-  <h2>Ficha de {{ personCtrl.person.name }} {{ personCtrl.person.surname }}</h2>
+  <h2 class="hidden-xs">Ficha de {{ personCtrl.person.name }} {{ personCtrl.person.surname }}</h2>
 
   <div class="row">
     <div class="col-md-12 col-xs-12">
@@ -36,7 +36,7 @@
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Sexo:</strong> <span id="person_genre">{{ personCtrl.person.genre }}</span>
+          <strong class="person__list__text__left">Género:</strong> <span id="person_genre">{{ personCtrl.genero(personCtrl.person.genre) }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
