@@ -4,7 +4,7 @@ RSpec.describe UsersController, type: :controller do
   set_content_type 'application/json'
 
   options = [:show, :index, :create, :update, :destroy]
-  json_attributes = [:name]
+  json_attributes = [:name, :full_name, :email, :tlf]
 
   before :all do
     @user = FactoryGirl.create(:user)
@@ -22,7 +22,9 @@ RSpec.describe UsersController, type: :controller do
     @parameters = FactoryGirl.attributes_for(:user)
 
     # Para el test de update
-    @update_params = { name: 'pepe' }
+    @update_params = { 
+      name: 'nombre1' , full_name: "nombre1 apellido1", 
+      email: "email1@email.com", tlf: "957000001" }
   end
 
   before do

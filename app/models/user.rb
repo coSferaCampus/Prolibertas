@@ -11,7 +11,7 @@ class User
          :rememberable, :trackable
 
   ## Database authenticatable
-  field :name,              type: String, default: ""
+  field :name,               type: String, default: ""
   field :encrypted_password, type: String, default: ""
 
 
@@ -24,4 +24,9 @@ class User
   field :last_sign_in_at,    type: Time
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
+
+  ## Custom fields
+  field :full_name,          type: String, default: ""
+  field :email,              type: String, default: ""
+  field :tlf,                type: String, default: ""
 end

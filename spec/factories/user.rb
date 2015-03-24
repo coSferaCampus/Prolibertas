@@ -2,6 +2,9 @@ FactoryGirl.define do
   factory :user do
     name
     password "foobarfoo"
+    full_name 
+    email
+    tlf
   end
 
   factory :director, parent: :user do
