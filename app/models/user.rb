@@ -33,5 +33,6 @@ class User
   # Validations
   validates :name,            presence: true
   validates :full_name,       presence: true
-  validates :password,        presence: true, confirmation: true
+  validates_presence_of       :password, on: :create
+  validates :password,        confirmation: true
 end

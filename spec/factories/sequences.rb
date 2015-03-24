@@ -3,10 +3,6 @@ FactoryGirl.define do
     "nombre#{n}"
   end
 
-  sequence :full_name do |n|
-    "nombre#{n} apellido#{n}"
-  end
-
   sequence :email do |n|
     "email#{n}@email.com"
   end
