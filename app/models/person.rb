@@ -21,6 +21,7 @@ class Person
   field :notes,  			type: String
 
   has_many :used_services
+  has_many :alerts
 
   validates :name, presence: true
   validates :surname, presence: true

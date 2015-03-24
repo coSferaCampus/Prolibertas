@@ -6,7 +6,7 @@
     </li>
 
     <li class="list-group-item person__list__el">
-      <strong class="person__list__text__left">Decripción:</strong> <span></span>
+      <strong class="person__list__text__left">Descripción:</strong> <span></span>
     </li>
 
     <li class="list-group-item person__list__el">
@@ -25,6 +25,8 @@
     Eliminar
   </a>
   <button type="button" class="btn btn-primary persona__botones__edit">
-    Editar
+    <a a ui-sref="persona.alertaEditar({id: personCtrl.person.id})">
+      Editar
+    </a>
   </button>
 </div>

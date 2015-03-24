@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :people
   resources :services
   resources :used_services
+  resources :alerts
 end

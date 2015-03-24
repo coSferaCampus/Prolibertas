@@ -71,7 +71,7 @@
     })
 
     .state("persona.alerta", {
-      url: "/alertas/alerta",
+      url: "/alertas/:alerta_id",
       views:{
         menupersona:{
         templateUrl: "alerta.html"
@@ -80,7 +80,7 @@
     })
 
     .state("persona.alertaEditar", {
-      url: "/alertas/alerta/editar",
+      url: "/alertas/:alerta_id/editar",
       views:{
         menupersona:{
         templateUrl: "alerta-nueva.html",   

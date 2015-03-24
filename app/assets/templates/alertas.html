@@ -16,12 +16,12 @@
       <td></td>
       <td></td>
       <td>
-        <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+        <a a ui-sref="persona.alerta({id: personCtrl.person.id})"><span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
       </td>
     </tr>
   </tbody>
 </table>
 
-<a class="btn listalerts__boton col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 col-xs-offset-9 col-xs-3">
+<a a ui-sref="persona.alertasNueva({id: personCtrl.person.id})" class="btn listalerts__boton col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 col-xs-offset-9 col-xs-3">
   Añadir Alerta
 </a>
