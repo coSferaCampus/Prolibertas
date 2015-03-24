@@ -24,7 +24,8 @@ RSpec.describe UsersController, type: :controller do
     # Para el test de update
     @update_params = { 
       name: 'nombre1' , full_name: "nombre1 apellido1", 
-      email: "email1@email.com", tlf: "957000001" }
+      email: "email1@email.com", tlf: "957000001" 
+    }
   end
 
   before do
