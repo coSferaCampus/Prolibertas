@@ -8,6 +8,7 @@ RSpec.describe PeopleController, type: :controller do
 
   before :all do
     @user = FactoryGirl.create(:user)
+    
     # Para todos los tests
     @model = Person
 
