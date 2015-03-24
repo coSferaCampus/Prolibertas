@@ -4,12 +4,20 @@
   // Config
   app.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
   	// Para las urls que no se encuentren, redirigimos a la raíz.
- 	 $urlRouterProvider.otherwise("/personas");
+ 	  $urlRouterProvider.otherwise("/personas");
+
   	// Aquí establecemos los estados de nuestra applicación.
-	  $stateProvider
-	  .state("personas", {
-	    url: "/personas?alertaCreado&alertaBorrado",
-	    templateUrl: "personas.html",
+    $stateProvider
+    .state("usuarios", {
+      url: "/usuarios?alertaCreado&alertaBorrado",
+      templateUrl: "usuarios.html",
+        controller: "UsersController",
+        controllerAs: "usersCtrl"
+       })
+
+    .state("personas", {
+      url: "/personas?alertaCreado&alertaBorrado",
+      templateUrl: "personas.html",
         controller: "PeopleController",
         controllerAs: "peopleCtrl"
   	   })
