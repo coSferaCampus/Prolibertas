@@ -43,15 +43,6 @@
         controllerAs: "personCtrl"    
     })
 
-    .state("persona.historias", {
-      url: "/historias",
-      views:{
-        menupersona:{
-          templateUrl: "historias.html" 
-        }
-      }
-    })
-
     .state("persona.alertas", {
       url: "/alertas",
       views:{
@@ -86,9 +77,35 @@
         templateUrl: "alerta-nueva.html",   
         }
       }
-    });
+    })
 
-    
+    .state("persona.historias", {
+       url: "/historias",
+       views:{
+         menupersona:{
+           templateUrl: "historias.html" 
+         }
+        }
+      })
+
+     .state("persona.historiaNueva", {
+        url: "/historias/nueva",
+        views:{
+         menupersona:{
+            templateUrl: "form_historia.html" 
+         }
+        }
+      })
+
+    .state("persona.historia", {
+        url: "/historia",
+        views:{
+          menupersona:{
+          templateUrl: "historia.html" 
+           }
+          }
+      });
+
   });
 
   app.run(function($rootScope, $state) {
