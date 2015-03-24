@@ -20,7 +20,7 @@
       templateUrl: "personas.html",
         controller: "PeopleController",
         controllerAs: "peopleCtrl"
-  	   })
+  	})
 
     .state("personasNueva", {
       url: "/personas/nueva",
@@ -41,16 +41,54 @@
       templateUrl: "persona-nueva.html",
         controller: "PersonFormController",
         controllerAs: "personCtrl"    
-      })
+    })
 
-      .state("persona.historias", {
-        url: "/historias",
-        views:{
-         menupersona:{
-            templateUrl: "historias.html" 
-         }
+    .state("persona.historias", {
+      url: "/historias",
+      views:{
+        menupersona:{
+          templateUrl: "historias.html" 
         }
-      });
+      }
+    })
+
+    .state("persona.alertas", {
+      url: "/alertas",
+      views:{
+        menupersona:{
+        templateUrl: "alertas.html"
+        }
+      }
+    })
+
+    .state("persona.alertasNueva", {
+      url: "/alertas/nueva",
+      views:{
+        menupersona:{
+        templateUrl: "alerta-nueva.html"
+        }
+      }
+    })
+
+    .state("persona.alerta", {
+      url: "/alertas/:alerta_id",
+      views:{
+        menupersona:{
+        templateUrl: "alerta.html"
+        }
+      }
+    })
+
+    .state("persona.alertaEditar", {
+      url: "/alertas/:alerta_id/editar",
+      views:{
+        menupersona:{
+        templateUrl: "alerta-nueva.html",   
+        }
+      }
+    });
+
+    
   });
 
   app.run(function($rootScope, $state) {

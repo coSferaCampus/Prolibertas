@@ -5,10 +5,10 @@
   <div class="row fondo_menu_persona">
     <div class="col-md-12 col-xs-12 ">
       <ul class="nav nav-tabs">
-        <li><a data-toggle="tab">Ficha persona</a></li>
+        <li><a ui-sref="persona({id: personCtrl.person.id})"data-toggle="tab">Ficha persona</a></li>
         <li><a data-toggle="tab">Servicios</a></li>
         <li class="navPersona__el"><a ui-sref="persona.historias({id: personCtrl.person.id})" data-toggle="tab">Historia</a></li>
-        <li class="navPersona__el"><a  data-toggle="tab">Alertas</a></li>
+        <li class="navPersona__el"><a ui-sref="persona.alertas({id: personCtrl.person.id})"data-toggle="tab">Alertas</a></li>
       </ul>
     </div>
   </div>  
