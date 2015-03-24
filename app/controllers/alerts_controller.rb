@@ -7,12 +7,12 @@ class AlertsController < ApplicationController
   end
 
   def index
-    @alerts = Alert.all
+    @alerts = Person.find(params[:person_id]).alerts
     respond_with @alerts
   end
 
   def create
-    @alert = Alert.create(alert_params)
+    @alert = Person.find(params[:person_id]).alerts.create(alert_params)
     respond_with @alert
   end
 

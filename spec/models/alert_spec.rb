@@ -17,5 +17,6 @@ RSpec.describe Alert, type: :model do
   context "Validations" do
     it { is_expected.to validate_inclusion_of(:type).to_allow([:punishment, :warning, :advice]) }
     it { is_expected.to validate_presence_of(:pending) }
+    it { is_expected.to validate_presence_of(:person) }
   end
 end

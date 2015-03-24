@@ -11,5 +11,6 @@ class Alert
 
   validates :type, inclusion: {in: [:punishment, :warning, :advice]}
   validates :pending, presence: true
+  validates :person, presence: true
 
 end
