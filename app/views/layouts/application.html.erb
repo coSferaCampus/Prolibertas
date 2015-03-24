@@ -12,11 +12,16 @@
   <nav class="navbar navbar-default barra navbar-fixed-top barra hidden-sm hidden-md hidden-lg">
     <div class="container-fluid">
       <div class="navbar-header">
+        <div class="menu__users" title="Gestión de usuarios">
+          <a ui-sref="usuarios" class="glyphicon glyphicon-user" aria-hidden="true"></a>
+        </div>
         <div class="menu__logout" title="Cerrar sesión">
           <%= link_to destroy_user_session_path, id: "logout", method: :delete do %>
           <i class="glyphicon glyphicon-log-out"></i>
           <% end %>
         </div>
+
+
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-movil" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar" ></span>
@@ -48,11 +53,16 @@
     </div><!--/.container-fluid -->
   </nav>
 
+
+
   <div class="list-group nav navbar-nav col-md-2 col-xs-12 col-sm-2 hidden-xs">
 
     <!--<img class="logo hidden-xs" src="/assets/logo-menu.svg">-->
 
-    <div class="menu__logout" title="Cerrar sesión">
+    <div class="menu__users" title="Gestión de usuarios">
+      <a ui-sref="usuarios" class="glyphicon glyphicon-user" aria-hidden="true"></a>
+    </div>
+        <div class="menu__logout" title="Cerrar sesión">
       <%= link_to destroy_user_session_path, id: "logout", method: :delete do %>
         <i class="glyphicon glyphicon-log-out"></i>
       <% end %>
@@ -86,6 +96,7 @@
     </div>
 
   </div> 
+
   <!-- FIN MENU LATERAL -->
 
   <!-- VISTA DINÁMICA CON ANGULARJS -->

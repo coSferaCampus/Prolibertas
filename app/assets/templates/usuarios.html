@@ -1,21 +1,54 @@
-<section class="listpeople__tabla col-md-12">
+  <nav class="navbar-fixed-top col-md-offset-2 col-md-10 col-sm-offset-2 col-sm-10 col-xs-12">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12 listpeople__buscadores">
+          <a id="createPerson" ui-sref="usuarioNuevo" class="btn listpeople__boton col-md-1 col-sm-1 col-md-offset-11 col-sm-offset-11 col-xs-1"><img src="/assets/add-person.svg" class="glyphiconlistpeople__boton__img"></a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="listpeople__tabla col-md-12">
   <table class="table table-responsive col-md-12  col-lg-12" id="peopleTable">
     <thead class="listpeople__cabecera">
       <tr>
-        <th>Nombre</th>
-        <th>Rol</th>
+        <th>Usuario</th>
+        <th>Nombre completo</th>
+        <th class="listpeople__centrado">Tipo de usuario</th>
+        <th class="listpeople__centrado"></th>
       </tr>
     </thead>
 
     <tbody>
-      <tr ng-repeat="user in usersCtrl.users" id="user_{{user.id}}">
-        <td>{{user.name}}</td>
-        <td>{{user.role}}</td>
-        <td class="listpeople__centrado"><a id="user-show-{{user.id}}" 
-            ui-sref="usuario({ id: user.id })">
+      <tr>
+        <td>doni_24</td>
+        <td>Tortuga ninja Donatello</td>
+        <td class="listpeople__centrado">Luchador con palo</td>
+        <td>
           <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
         </td>
-        <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-list listpeople__azul"></td>
+      </tr>
+      <tr>
+        <td>miki__star</td>
+        <td>Tortuga ninja Miquelangelo</td>
+        <td class="listpeople__centrado">Luchador con lunchacos</td>
+        <td>
+          <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+        </td>
+      </tr>
+      <tr>
+        <td>raphita21</td>
+        <td>Tortuga ninja Raphael</td>
+        <td class="listpeople__centrado">Luchador con dagas</td>
+        <td>
+          <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+        </td>
+      </tr>
+      <tr>
+        <td>leonardo666</td>
+        <td>Tortuga ninja Leonardo</td>
+        <td class="listpeople__centrado">Luchador con espada</td>
+        <td>
+          <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+        </td>
       </tr>
     </tbody>
   </table>
