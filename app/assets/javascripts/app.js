@@ -41,6 +41,15 @@
       templateUrl: "persona-nueva.html",
         controller: "PersonFormController",
         controllerAs: "personCtrl"    
+      })
+
+      .state("persona.historias", {
+        url: "/historias",
+        views:{
+         menupersona:{
+            templateUrl: "historias.html" 
+         }
+        }
       });
   });
 
