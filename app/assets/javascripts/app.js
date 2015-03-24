@@ -4,15 +4,23 @@
   // Config
   app.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
   	// Para las urls que no se encuentren, redirigimos a la raíz.
- 	 $urlRouterProvider.otherwise("/personas");
+ 	  $urlRouterProvider.otherwise("/personas");
+
   	// Aquí establecemos los estados de nuestra applicación.
-	  $stateProvider
-	  .state("personas", {
-	    url: "/personas?alertaCreado&alertaBorrado",
-	    templateUrl: "personas.html",
+    $stateProvider
+    .state("usuarios", {
+      url: "/usuarios?alertaCreado&alertaBorrado",
+      templateUrl: "usuarios.html",
+        controller: "UsersController",
+        controllerAs: "usersCtrl"
+       })
+
+    .state("personas", {
+      url: "/personas?alertaCreado&alertaBorrado",
+      templateUrl: "personas.html",
         controller: "PeopleController",
         controllerAs: "peopleCtrl"
-  	   })
+  	})
 
     .state("personasNueva", {
       url: "/personas/nueva",
@@ -33,7 +41,54 @@
       templateUrl: "persona-nueva.html",
         controller: "PersonFormController",
         controllerAs: "personCtrl"    
-      });
+    })
+
+    .state("persona.historias", {
+      url: "/historias",
+      views:{
+        menupersona:{
+          templateUrl: "historias.html" 
+        }
+      }
+    })
+
+    .state("persona.alertas", {
+      url: "/alertas",
+      views:{
+        menupersona:{
+        templateUrl: "alertas.html"
+        }
+      }
+    })
+
+    .state("persona.alertasNueva", {
+      url: "/alertas/nueva",
+      views:{
+        menupersona:{
+        templateUrl: "alerta-nueva.html"
+        }
+      }
+    })
+
+    .state("persona.alerta", {
+      url: "/alertas/:alerta_id",
+      views:{
+        menupersona:{
+        templateUrl: "alerta.html"
+        }
+      }
+    })
+
+    .state("persona.alertaEditar", {
+      url: "/alertas/:alerta_id/editar",
+      views:{
+        menupersona:{
+        templateUrl: "alerta-nueva.html",   
+        }
+      }
+    });
+
+    
   });
 
   app.run(function($rootScope, $state) {

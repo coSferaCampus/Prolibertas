@@ -1,8 +1,8 @@
 class PeopleController < ApplicationController
   respond_to :json
+  load_and_authorize_resource param_method: :person_params
 
   def show
-    @person = Person.find(params[:id])
     respond_with @person
   end
 
@@ -16,15 +16,12 @@ class PeopleController < ApplicationController
     respond_with @person
   end
 
-
   def update
-    @person = Person.find(params[:id])
     @person.update_attributes(person_params)
     respond_with @person
   end
 
   def destroy
-    @person= Person.find(params[:id])
     @person.destroy
     respond_with @person
   end
@@ -36,5 +33,4 @@ class PeopleController < ApplicationController
       :id, :name, :surname, :origin, :genre, :phone, :assistance, :home, :family_status, :health_status, :birth, :nif, :social_services, :menu, :income, :address, :contact_family, :notes
       )
   end
-
 end

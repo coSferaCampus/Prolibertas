@@ -10,5 +10,4 @@ class ServicesController < ApplicationController
     @services = Service.all
     respond_with @services
   end
-
 end

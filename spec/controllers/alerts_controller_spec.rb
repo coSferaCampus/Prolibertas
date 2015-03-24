@@ -1,28 +1,29 @@
 require 'rails_helper'
 
-RSpec.describe PeopleController, type: :controller do
+RSpec.describe AlertsController, type: :controller do
   set_content_type 'application/json'
 
   options = [:show, :index, :create, :update, :destroy]
-  json_attributes = FactoryGirl.attributes_for(:person).keys
+  json_attributes = FactoryGirl.attributes_for(:alert).keys
 
   before :all do
     @user = FactoryGirl.create(:user)
+    @person = FactoryGirl.create(:person)
     
     # Para todos los tests
-    @model = Person
+    @model = Alert
 
     # Para el test de show
-    @resource = FactoryGirl.create(:person)
+    @resource = FactoryGirl.create(:alert)
 
     # Para el test de index
-    @first_page_resources = Person.all
+    @first_page_resources = Alert.all
 
     # Para el test de create y destroy
-    @parameters = FactoryGirl.attributes_for(:person)
+    @parameters = FactoryGirl.attributes_for(:alert)
 
     # Para el test de update
-    @update_params = FactoryGirl.attributes_for(:person_update)
+    @update_params = FactoryGirl.attributes_for(:alert_update)
   end
 
   before do

@@ -12,6 +12,7 @@ $lista_height:  60px;
 .barra__text {
   color: white;
   text-align: center;
+  font-size: 14px;
 }
 
 .collapsed.navbar-toggle { 
@@ -62,9 +63,21 @@ $lista_height:  60px;
 }
 */
 
+.menu__users {
+  top: 12px;
+  left: 35%;
+  position: absolute;
+  font-size: 20px;
+  opacity: 0.9;
+
+  a {
+    text-decoration: none;
+  }
+}
+
 .menu__logout {
   top: 12px;
-  left: calc(50% - 10px);
+  left: 55%;
   position: absolute;
   font-size: 20px;
   opacity: 0.9;
@@ -145,8 +158,13 @@ li .menu__el.active {
     width: 100%;
   }
 
-  .menu__logout {
+  .menu__users {
     left: calc(100% - 120px);
+
+  }
+
+  .menu__logout {
+    left: calc(100% - 90px);
   }
 
   .menu__el {
