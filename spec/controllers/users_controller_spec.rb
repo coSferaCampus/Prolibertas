@@ -43,9 +43,37 @@ RSpec.describe UsersController, type: :controller do
         sign_in @volunteer
       end
 
+      context "GET #show" do
+        it "returns 403 HTTP status code" do
+          get :show, id: @volunteer.id.to_s 
+          expect(response).to have_http_status :forbidden
+        end
+      end
+
+      context "GET #index" do
+        it "returns 403 HTTP status code" do
+          get :index
+          expect(response).to have_http_status :forbidden
+        end
+      end
+
       context "POST #create" do
         it "returns 403 HTTP status code" do
           post :create, user: @parameters 
+          expect(response).to have_http_status :forbidden
+        end
+      end
+
+      context "PUT #update" do
+        it "returns 403 HTTP status code" do
+          put :update, id: @volunteer.id.to_s, user: @parameters 
+          expect(response).to have_http_status :forbidden
+        end
+      end
+
+      context "DELETE #destroy" do
+        it "returns 403 HTTP status code" do
+          delete :destroy, id: @volunteer.id.to_s
           expect(response).to have_http_status :forbidden
         end
       end

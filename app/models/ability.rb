@@ -14,8 +14,9 @@ class Ability
     #  can     :manage, User
     #  can     :manage, Person
     #  cannot  :write, User
+
     if user.has_role? :volunteer
-      cannot  :create, User
+      cannot  :manage, User
     end
   end
 end
