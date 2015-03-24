@@ -11,4 +11,8 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_field(:email).of_type(String) }
     it { is_expected.to have_field(:tlf).of_type(String) }
   end
+
+  context "Validations" do
+    it { is_expected.to validate_presence_of(:full_name) }
+  end
 end

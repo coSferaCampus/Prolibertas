@@ -29,4 +29,6 @@ class User
   field :full_name,          type: String, default: ""
   field :email,              type: String, default: ""
   field :tlf,                type: String, default: ""
+
+  validates :full_name,      presence: true
 end
