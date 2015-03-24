@@ -20,7 +20,8 @@
       templateUrl: "personas.html",
       controller: "PeopleController",
       controllerAs: "peopleCtrl"
-  	   })
+  	 })
+
 
     .state("personasNueva", {
       url: "/personas/nueva",
