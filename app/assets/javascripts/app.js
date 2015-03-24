@@ -61,19 +61,31 @@
       }
     })
 
-    .state("alertasNueva", {
-      url: "/personas/:id/alertas/nueva",
-      templateUrl: "alerta-nueva.html"
+    .state("persona.alertasNueva", {
+      url: "/alertas/nueva",
+      views:{
+        menupersona:{
+        templateUrl: "alerta-nueva.html"
+        }
+      }
     })
 
-    .state("alerta", {
-      url: "/personas/:id/alertas/alerta",
-      templateUrl: "alerta.html",
+    .state("persona.alerta", {
+      url: "/alertas/alerta",
+      views:{
+        menupersona:{
+        templateUrl: "alerta.html"
+        }
+      }
     })
 
-    .state("alertaEditar", {
-      url: "/personas/:id/alertas/alerta/editar",
-      templateUrl: "alerta-nueva.html",   
+    .state("persona.alertaEditar", {
+      url: "/alertas/alerta/editar",
+      views:{
+        menupersona:{
+        templateUrl: "alerta-nueva.html",   
+        }
+      }
     });
 
     

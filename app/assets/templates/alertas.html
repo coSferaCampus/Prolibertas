@@ -1,51 +1,27 @@
-  <h2 class="hidden-xs">Alertas de {{ personCtrl.person.name }} {{ personCtrl.person.surname }}</h2>
+<table class="table table-responsive col-md-12  col-lg-12">
+  <thead class="listpeople__cabecera">
+    <tr>
+      <th>Tipo</th>
+      <th>Descripción</th>
+      <th>Causa</th>
+      <th>Hasta</th>
+      <th></th>      
+    </tr>
+  </thead>
 
-  <div class="row">
-    <div class="col-md-12 col-xs-12">
-      <ul class="navPersona">
-        <li type="button" class="navPersona__el col-md-2 col-xs-2">
-          <a href="#"><span class="navPersona__el__text">Servicios</span></a>
-        </li>
-      
-        <li type="button" class="navPersona__el col-md-2 col-xs-2">
-          <a href="#"><span class="navPersona__el__text">Historias</span></a>
-        </li>
+  <tbody >
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-        <li type="button" class="navPersona__el col-md-2 col-xs-2">
-          <a href="#"><span class="navPersona__el__text">Adjuntos</span></a>
-        </li>
-
-        <li type="button" class="navPersona__el col-md-2 col-xs-2">
-          <a href="#"><span class="navPersona__el__text">Alertas</span></a>
-        </li>
-      </ul>  
-    </div>
-  </div>
-
-  <table class="table table-responsive col-md-12  col-lg-12">
-    <thead class="listpeople__cabecera">
-      <tr>
-        <th>Tipo</th>
-        <th>Descripción</th>
-        <th>Causa</th>
-        <th>Hasta</th>
-        <th></th>      
-      </tr>
-    </thead>
-
-    <tbody >
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-          <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <a class="btn listalerts__boton col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 col-xs-offset-9 col-xs-3">
-    Añadir Alerta
-  </a>
+<a class="btn listalerts__boton col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 col-xs-offset-9 col-xs-3">
+  Añadir Alerta
+</a>
