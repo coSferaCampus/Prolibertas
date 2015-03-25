@@ -1,0 +1,56 @@
+<div class="container col-xs-12 col-sm-12 col-md-12" id="userForm">
+  <form class="col-md-12" ng-submit="userFormCtrl.guardarUsuario()">
+    <h1 class="header-titule hidden-xs">Crear Usuario</h1>
+    <div class="col-md-12">
+      <div class="form-group col-md-4" ng-class="{ 'has-error':userFormCtrl.errors.name }">
+        <label for="InputUsername">Nombre de usuario</label>
+        <input ng-model="userFormCtrl.userForm.name" ng-change="userFormCtrl.change('Name')" type="text" class="form-control" id="InputUsername" data-placement="top">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group col-md-4" ng-class="{ 'has-error':userFormCtrl.errors.name }">
+        <label for="InputPass">Contraseña</label>
+        <input ng-model="userFormCtrl.userForm.password" ng-change="userFormCtrl.change('Password')" type="password" class="form-control" id="InputPass" data-placement="top">
+      </div>
+      <div class="form-group col-md-4 col-offset-md-1">
+        <label for="InputPassConfirmation">Repetir Contraseña</label>
+        <input ng-model="userFormCtrl.userForm.password_confirmation" type="password" class="form-control" id="InputPassConfirmation" data-placement="top">
+      </div>
+    </div>   
+    <div class="col-md-12">
+      <div class="form-group col-md-7" ng-class="{ 'has-error':userFormCtrl.errors.name }">
+        <label for="InputName">Nombre y Apellidos</label>
+        <input ng-model="userFormCtrl.userForm.full_name" ng-change="userFormCtrl.change('Fullname')" type="text" class="form-control" id="InputName" data-placement="top">
+      </div>
+    </div>
+    <div class="col-md-12 ">
+      <div class="form-group col-md-4" ng-class="{ 'has-error':userFormCtrl.errors.role }">
+        <label for="InputRole">Tipo de usuario</label>
+        <select ng-model="userFormCtrl.userForm.role" ng-change="userCtrl.change('Role')" type="text" class="form-control" id="InputRole" data-placement="top">   
+          <option value="">Seleccione opción</option>
+          <option value="worker">Trabajador Social</option>
+          <option value="volunteer">Voluntario</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group col-md-7">
+        <label for="InputEmail">Correo electrónico</label>
+        <input ng-model="userFormCtrl.userForm.email" type="text" class="form-control" id="InputEmail">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group col-md-4">
+        <label for="InputTlf">Teléfono</label>
+        <input ng-model="userFormCtrl.userForm.tlf" type="text" class="form-control" id="InputTlf">
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="submit-group col-md-4">
+        <button class="btn btn-primary" type="submit" id="InputSubmit">Guardar</button>
+      </div>
+    </div>
+  </form>
+</div>
+

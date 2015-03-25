@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person']);
+  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-user']);
 
   // Config
   app.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
@@ -14,6 +14,20 @@
       controller: "UsersController",
       controllerAs: "usersCtrl"
        })
+
+    .state("usuariosNuevo", {
+      url: "/usuarios/nuevo",
+      templateUrl: "usuarios-nuevo.html",
+      controller: "UserFormController",
+      controllerAs: "userFormCtrl"
+      })
+
+    .state("usuario", {
+      url: "/usuarios/:id",
+      templateUrl: "usuario.html",
+      controller: "UserController",
+      controllerAs: "userCtrl"
+    })
 
     .state("personas", {
       url: "/personas?alertaCreado&alertaBorrado",

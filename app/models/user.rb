@@ -28,6 +28,7 @@ class User
   field :full_name,           type: String, default: ""
   field :email,               type: String, default: ""
   field :tlf,                 type: String, default: ""
+  field :role,                type: String, default: ""
 
   # Validations
   validates :name,            presence: true, uniqueness: { case_sensitive: false }

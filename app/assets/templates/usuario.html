@@ -1,0 +1,33 @@
+<div class="container col-xs-12 col-sm-12 col-md-12" id="user-show-page">
+  <h2 style="padding-bottom: 20px; padding-left: 13px;" class="hidden-xs">Ficha de {{ userCtrl.user.name }}</h2>
+  <div class="row col-md-12">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item user__list__el">
+          <strong class="user__list__text__left">Nombre:</strong> <span id="user_full_name">{{ userCtrl.user.full_name }}</span> 
+        </li>
+
+        <li class="list-group-item user__list__el">
+          <strong class="user__list__text__left">Nombre de usuario:</strong> <span id="user_username">{{ userCtrl.user.name }}</span> 
+        </li>
+
+        <li class="list-group-item user__list__el">
+          <strong class="user__list__text__left">Teléfono:</strong> <span id="user_tlf">{{ userCtrl.user.tlf }}</span> 
+        </li>
+
+        <li class="list-group-item user__list__el">
+          <strong class="user__list__text__left">Email:</strong> <span id="user_email">{{ userCtrl.user.email }}</span>
+        </li>
+
+        <li class="list-group-item user__list__el">
+          <strong class="user__list__text__left">Tipo de usuario:</strong> <span id="user_role">{{ userCtrl.rol(userCtrl.user.role) }}</span>
+
+      </ul>
+      <div class="usuario__botones col-md-6">
+        <a id="remove-user-btn" type="button" class="btn btn-danger usuario__botones__remove"
+        ng-click="userCtrl.destroyuser(userCtrl.user)">Eliminar</a>
+        <button id="user-edit-{{userCtrl.user.id}}" ui-sref="usuarioEditar({id:userCtrl.user.id})" type="button" class="btn btn-primary usuario__botones__edit">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
