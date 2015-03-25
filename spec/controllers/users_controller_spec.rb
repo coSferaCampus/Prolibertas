@@ -131,10 +131,9 @@ RSpec.describe UsersController, type: :controller do
           expect(response).to have_http_status :no_content
         end
 
-        it "cant destroy worker or director" do
-          @parameters[:role] = "worker"
+        it "cant destroy worker or director, returns 403 HTTP status code" do
           delete :destroy, id: @worker.id.to_s, user: @parameters
-          expect(User.where(id: @worker.id.to_s).first).to eql @worker
+          expect(response).to have_http_status :forbidden
         end
       end
     end
@@ -162,8 +161,21 @@ RSpec.describe UsersController, type: :controller do
       context "PUT #update" do
         it "can upgrade volunteer to worker" do
           @parameters[:role] = "worker"
-          put :update,id: @volunteer.id.to_s, user: @parameters 
+          put :update, id: @volunteer.id.to_s, user: @parameters 
           expect(User.where(id: @volunteer.id.to_s).first).to have_role :worker
+        end
+      end
+
+      context "DELETE #destroy" do
+        it "can destroy workers and volunteers" do
+          worker = FactoryGirl.create(:worker)
+          delete :destroy, id: worker.id.to_s
+          expect(response).to have_http_status :no_content
+        end
+
+        it "cant destroy director" do
+          delete :destroy, id: @user.id.to_s, user: @parameters
+          expect(response).to have_http_status :forbidden
         end
       end
     end
