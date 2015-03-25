@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     if current_user.has_role? :director
       @user.add_role(rol)
     end
-    
+
     respond_with @user
   end
 
