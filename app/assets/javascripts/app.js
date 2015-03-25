@@ -1,5 +1,6 @@
 (function() {
-  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user']);
+  
+  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-alert']);
 
   // Config
   app.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
@@ -69,9 +70,12 @@
       url: "/alertas",
       views:{
         menupersona:{
-        templateUrl: "alertas.html"
+          templateUrl: "alertas.html",
+          controller: "AlertsController",
+          controllerAs: "alertsCtrl"
         }
-      }
+      },
+
     })
 
     .state("persona.alertasNueva", {
