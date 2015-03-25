@@ -134,7 +134,7 @@ RSpec.describe UsersController, type: :controller do
         it "cant destroy worker or director" do
           @parameters[:role] = "worker"
           delete :destroy, id: @worker.id.to_s, user: @parameters
-          expect(User.where(id: @worker.id.to_s).first).to have_role :worker
+          expect(User.where(id: @worker.id.to_s).first).to eql @worker
         end
       end
     end
