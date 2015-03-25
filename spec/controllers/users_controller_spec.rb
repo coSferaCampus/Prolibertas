@@ -136,6 +136,14 @@ RSpec.describe UsersController, type: :controller do
           expect(User.last).to have_role :volunteer
         end
       end
+
+      context "PUT #update" do
+        it "director can upgrade volunteer to worker" do
+          @parameters[:role] = "worker"
+          put :update,id: @volunteer.id.to_s, user: @parameters 
+          expect(User.where(id: @volunteer.id.to_s).first).to have_role :worker
+        end
+      end
     end
   end
 end

@@ -33,7 +33,14 @@ class UsersController < ApplicationController
   end
 
   def update
+    rol = params[:user].delete :role
+
     @user.update_attributes(user_params)
+
+    if current_user.has_role? :director
+      @user.add_role(rol)
+    end
+    
     respond_with @user
   end
 
