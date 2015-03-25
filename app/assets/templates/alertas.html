@@ -16,7 +16,7 @@
       <td>{{alert.cause}}</td>
       <td>{{alert.pending}}</td>
       <td>
-        <a id="alert-show-{{alert.id}}" ui-sref="persona.alerta({id: personCtrl.person.id})"><span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+        <a id="alert-show-{{alert.id}}" ui-sref="persona.alerta({id: personCtrl.person.id, alerta_id: alert.id})"><span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
       </td>
     </tr>
   </tbody>
