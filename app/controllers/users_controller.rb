@@ -45,7 +45,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    rol = params[:user].delete :role
+    @user.destroy unless current_user.has_role? :worker and (rol == "worker" or rol == "director")
     respond_with @user
   end
 
