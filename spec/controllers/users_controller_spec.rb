@@ -131,8 +131,13 @@ RSpec.describe UsersController, type: :controller do
           expect(response).to have_http_status :no_content
         end
 
-        it "cant destroy worker or director, returns 403 HTTP status code" do
+        it "cant destroy worker, returns 403 HTTP status code" do
           delete :destroy, id: @worker.id.to_s, user: @parameters
+          expect(response).to have_http_status :forbidden
+        end
+
+        it "cant destroy director, returns 403 HTTP status code" do
+          delete :destroy, id: @user.id.to_s, user: @parameters
           expect(response).to have_http_status :forbidden
         end
       end
@@ -173,7 +178,7 @@ RSpec.describe UsersController, type: :controller do
           expect(response).to have_http_status :no_content
         end
 
-        it "cant destroy director" do
+        it "cant destroy director, returns 403 HTTP status code" do
           delete :destroy, id: @user.id.to_s, user: @parameters
           expect(response).to have_http_status :forbidden
         end
