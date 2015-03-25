@@ -13,11 +13,18 @@ class UsersController < ApplicationController
       elsif current_user.has_role? :worker
         User.with_role :volunteer
       end
+
     respond_with @users
   end
 
   def create
-    @user = User.create(user_params)
+     
+    @user = User.new(user_params)
+    @user.save
+    # if current_user.has_role? :worker
+    #   @user.add_role "volunteer"
+    # end
+
     respond_with @user
   end
 

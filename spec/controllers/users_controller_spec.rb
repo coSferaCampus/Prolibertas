@@ -107,6 +107,26 @@ RSpec.describe UsersController, type: :controller do
           expect(assigns(:users).to_a).to match_array User.with_role(:volunteer).to_a
         end
       end
+
+      # context "POST #create, worker only can create volunteers" do
+      #   it "returns 201 HTTP status code" do
+      #     post :create, user: @parameters
+      #     expect(assigns(:user)).to eql User.with_role(:volunteer)
+      #   end
+      # end
+    end
+
+    context "director" do
+      before do
+        sign_in @user
+      end
+
+      context "create user with role worker" do
+        it "returns 200 HTTP status code when looking for a volunteer" do
+          get :show, id: @volunteer.id.to_s
+          expect(response).to have_http_status :ok
+        end
+      end
     end
   end
 end
