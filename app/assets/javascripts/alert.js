@@ -23,4 +23,16 @@
 
   }])
 
+  app.controller('AlertController',  ['$http', '$state', function($http, $state) {
+    var scope = this;
+    scope.alert = {};
+
+    $http.get("/alerts/" + $state.params.id + ".json")
+    .success(function(data){
+      scope.alert = data.alert;
+      console.log(scope.alert);
+    });
+  }]);
+
+
 })();

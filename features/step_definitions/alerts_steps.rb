@@ -24,3 +24,13 @@ Then(/^I should see the list of the alerts$/) do
 
   end
 end
+
+When(/^I click the view icon of an alert in alerts list view$/) do
+  persona = Person.first
+  alerta = Alert.where(person: persona).first
+  page.find("#alert-show-#{alerta.id}").click
+end
+
+Then(/^I should go to a view of this alert$/) do
+  expect(page).to have_css "#alert-show-page"
+end

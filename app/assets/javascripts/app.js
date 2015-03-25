@@ -91,7 +91,9 @@
       url: "/alertas/:alerta_id",
       views:{
         menupersona:{
-        templateUrl: "alerta.html"
+          templateUrl: "alerta.html",
+          controller: "AlertController",
+          controllerAs: "alertCtrl"
         }
       }
     })
