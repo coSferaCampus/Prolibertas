@@ -1,0 +1,25 @@
+<section class="listpeople__tabla col-md-12">
+  <table class="table table-responsive col-md-12  col-lg-12" id="peopleTable">
+    <thead class="listpeople__cabecera">
+      <tr>
+        <th>Nombre</th>
+        <th>Rol</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="user in usersCtrl.users" id="user_{{user.id}}">
+        <td>{{user.name}}</td>
+        <td>{{user.role}}</td>
+        <td class="listpeople__centrado"><a id="user-show-{{user.id}}" 
+            ui-sref="usuario({ id: user.id })">
+          <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+        </td>
+        <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-list listpeople__azul"></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="alert alert-success leo-message" ng-if="usersCtrl.alertaCreado">¡Ha creado satisfactoriamente un nuevo usuario!</div>
+<div class="alert alert-danger leo-message" ng-if="usersCtrl.alertaBorrado">¡Borrado satisfactoriamente!</div>
