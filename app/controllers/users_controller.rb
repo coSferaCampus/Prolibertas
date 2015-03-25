@@ -7,7 +7,12 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = 
+      if current_user.has_role? :director
+        User.all
+      elsif current_user.has_role? :worker
+        User.with_role :volunteer
+      end
     respond_with @users
   end
 

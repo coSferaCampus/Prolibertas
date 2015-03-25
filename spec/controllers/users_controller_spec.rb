@@ -78,5 +78,35 @@ RSpec.describe UsersController, type: :controller do
         end
       end
     end
+
+    context "worker" do
+      before do
+        sign_in @worker
+      end
+
+      context "GET #show" do
+        it "returns 403 HTTP status code when looking for a director" do
+          get :show, id: @user.id.to_s
+          expect(response).to have_http_status :forbidden
+        end
+
+        it "returns 403 HTTP status code when looking for a worker" do
+          get :show, id: @worker.id.to_s
+          expect(response).to have_http_status :forbidden
+        end
+
+        it "returns 200 HTTP status code when looking for a volunteer" do
+          get :show, id: @volunteer.id.to_s
+          expect(response).to have_http_status :ok
+        end
+      end
+
+      context "GET #index" do
+        it "returns only volunteers" do
+          get :index
+          expect(assigns(:users).to_a).to match_array User.with_role(:volunteer).to_a
+        end
+      end
+    end
   end
 end
