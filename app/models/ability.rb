@@ -6,6 +6,7 @@ class Ability
     can :manage, User
     can :manage, Person
     can :manage, Alert
+    can :manage, History
     
     if user.has_role? :director
       cannot  [:show, :destroy], User do |usuario|

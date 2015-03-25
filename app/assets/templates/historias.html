@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <table class="table col-md-12 col-lg-12" id="listadohistoria">
+  <table class="table col-md-12 col-lg-12" id="list_histories">
     <thead class="listpeople__cabecera">
       <tr>
         <th>Creador</th>
@@ -11,12 +11,12 @@
       </tr>
     </thead>
     <tbody >
-      <tr>
-        <td>Isabel Gónzalez</td>
-        <td>Aquí van la descripción de la historia Aquín la descripción de la historian la descripción de la historia</td>
-        <td>Aquí van los comAquí van la descripción de la historiapromisos </td>
-        <td>03/09/2014</td> 
-        <td>12:45</td> 
+      <tr ng-repeat="history in historyCtrl.histories">
+        <td></td>
+        <td>{{history.description}}</td>
+        <td>{{history.liabilities}}</td>
+        <td>{{history.date}}</td> 
+        <td>{{history.time}}</td> 
         <td class="listpeople__centrado"><a ui-sref="persona.historia">
             <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
         </td>  

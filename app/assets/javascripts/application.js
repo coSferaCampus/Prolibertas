@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap/collapse
 //= require bootstrap/tooltip
+//= require moment
+//= require bootstrap-datetimepicker
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 //= require angular

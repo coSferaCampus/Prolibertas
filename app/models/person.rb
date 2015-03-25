@@ -22,6 +22,7 @@ class Person
 
   has_many :used_services
   has_many :alerts
+  has_many :histories
 
   validates :name, presence: true
   validates :surname, presence: true
