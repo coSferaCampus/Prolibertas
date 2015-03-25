@@ -117,7 +117,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context "PUT #update" do
-        it "worker cant upgrade volunteer to worker" do
+        it "cant upgrade volunteer to worker" do
           @parameters[:role] = "worker"
           put :update,id: @volunteer.id.to_s, user: @parameters 
           expect(User.where(id: @volunteer.id.to_s).first).to have_role :volunteer
@@ -129,6 +129,12 @@ RSpec.describe UsersController, type: :controller do
           volunteer = FactoryGirl.create(:volunteer)
           delete :destroy, id: volunteer.id.to_s
           expect(response).to have_http_status :no_content
+        end
+
+        it "cant destroy worker or director" do
+          @parameters[:role] = "worker"
+          delete :destroy, id: @worker.id.to_s, user: @parameters
+          expect(User.where(id: @worker.id.to_s).first).to have_role :worker
         end
       end
     end
@@ -154,7 +160,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context "PUT #update" do
-        it "director can upgrade volunteer to worker" do
+        it "can upgrade volunteer to worker" do
           @parameters[:role] = "worker"
           put :update,id: @volunteer.id.to_s, user: @parameters 
           expect(User.where(id: @volunteer.id.to_s).first).to have_role :worker
