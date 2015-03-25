@@ -1,7 +1,11 @@
 FactoryGirl.define do
   factory :user do
-    name
+    name 
     password "foobarfoo"
+    password_confirmation "foobarfoo"
+    full_name { Faker::Name.name }
+    email
+    tlf
   end
 
   factory :director, parent: :user do
