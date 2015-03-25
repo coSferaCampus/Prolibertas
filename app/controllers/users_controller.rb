@@ -18,12 +18,16 @@ class UsersController < ApplicationController
   end
 
   def create
-     
+    rol = params[:user].delete :role
     @user = User.new(user_params)
+
+    if current_user.has_role? :director
+      @user.add_role(rol)
+    elsif current_user.has_role? :worker
+      @user.add_role "volunteer"
+    end
+
     @user.save
-    # if current_user.has_role? :worker
-    #   @user.add_role "volunteer"
-    # end
 
     respond_with @user
   end
