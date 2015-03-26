@@ -8,7 +8,7 @@ RSpec.describe PeopleController, type: :controller do
 
   before :all do
     @user = FactoryGirl.create(:user)
-    
+
     # Para todos los tests
     @model = Person
 
@@ -23,6 +23,7 @@ RSpec.describe PeopleController, type: :controller do
 
     # Para el test de update
     @update_params = FactoryGirl.attributes_for(:person_update)
+
   end
 
   before do
