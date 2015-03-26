@@ -118,11 +118,11 @@
         url: "/historias/:historia_id",
         views:{
           menupersona:{
-          templateUrl: "historia.html",
-          controller: "HistoryController",
-          controllerAs: "historyCtrl"  
-           }
+            templateUrl: "historia.html",
+            controller: "HistoryController",
+            controllerAs: "historyCtrl"  
           }
+        }
       });
 
   });

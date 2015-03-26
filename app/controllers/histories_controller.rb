@@ -8,7 +8,6 @@ class HistoriesController < ApplicationController
 
   def index
     @histories = Person.find(params[:person_id]).histories
-
     respond_with @histories
   end
 
@@ -32,7 +31,7 @@ class HistoriesController < ApplicationController
 
   def history_params
     params.require(:history).permit(
-      :id, :description, :liabilities, :date, :time, :newdate, :newtime
+      :description, :liabilities, :date, :time, :newdate, :newtime
       )
   end
 end
