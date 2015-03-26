@@ -1,34 +1,35 @@
 <div class="container col-xs-12 col-sm-12 col-md-12">
-  <form>
+  <h3>Historia nueva</h3>
+  <form ng-submit="historyFormCtrl.guardarHistoria">
     <div class="form-group">
-      <textarea class="form-control" placeholder="Descrición de la nueva historia" rows="3"></textarea>
+      <textarea class="form-control" id="InputDescriptionHistory" placeholder="Descripción de la nueva historia" rows="3"></textarea>
     </div>
     <div class="form-group">
-      <textarea class="form-control" placeholder="Compromisos" rows="3"></textarea>
+      <textarea class="form-control" id="InputLiabilities" placeholder="Compromisos" rows="3"></textarea>
     </div>
     <div class="row nuevacita">
           <div class="col-md-2 col-xs-6">
       <div class="input-group">
         <span class="input-group-addon listpeople__azul"><span class="glyphicon glyphicon-calendar"></span></span>
-          <input type="text" class="form-control" placeholder="Fecha">
+          <input type="text" class="form-control" placeholder="Fecha" id="InputDateHistory">
       </div>
     </div>
     <div class="col-md-2 col-xs-6">
       <div class="input-group">
         <span class="input-group-addon listpeople__azul "><span class="glyphicon glyphicon-time"></span></span>
-          <input type="text" class="form-control" placeholder="Hora">
+          <input type="text" class="form-control" placeholder="Hora" id="InputTime">
       </div>
     </div>
       <div class="col-md-2 col-xs-6">
         <div class="input-group">
           <span class="input-group-addon listpeople__azul"><span class="glyphicon glyphicon-calendar"></span></span>
-          <input type="text" class="form-control" placeholder="Fecha nueva cita">
+          <input type="text" class="form-control" placeholder="Fecha nueva cita" id="InputDatenew">
         </div>
       </div>
       <div class="col-md-2 col-xs-6">
         <div class="input-group">
           <span class="input-group-addon listpeople__azul "><span class="glyphicon glyphicon-time"></span></span>
-          <input type="text" class="form-control" placeholder="Hora nueva cita">
+          <input type="text" class="form-control" placeholder="Hora nueva cita" id="InputTimenew">
         </div>
       </div>
       <div class="input-group col-md-4">

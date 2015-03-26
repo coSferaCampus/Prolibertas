@@ -99,8 +99,8 @@
        views:{
          menupersona:{
            templateUrl: "historias.html",
-           controller: "HistoryController",
-           controllerAs: "historyCtrl" 
+           controller: "HistoriesController",
+           controllerAs: "historiesCtrl" 
          }
         }
       })
@@ -115,10 +115,12 @@
       })
 
     .state("persona.historia", {
-        url: "/historia",
+        url: "/historias/:historia_id",
         views:{
           menupersona:{
-          templateUrl: "historia.html" 
+          templateUrl: "historia.html",
+          controller: "HistoryController",
+          controllerAs: "historyCtrl"  
            }
           }
       });

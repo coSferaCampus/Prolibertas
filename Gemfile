@@ -25,7 +25,6 @@ gem 'jquery-rails', '~> 4.0.3'
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.3'
 # Datepicker para fechas
-gem 'bootstrap-datepicker-rails', '~>  1.4.0'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root to: "main#main"
   resources :users
   resources :people do
-  resources :alerts, only: [:index, :create]
-  resources :histories, only: [:index, :create]
+    resources :alerts, only: [:index, :create]
+    resources :histories, only: [:index, :create]
   end
   resources :services
   resources :used_services
