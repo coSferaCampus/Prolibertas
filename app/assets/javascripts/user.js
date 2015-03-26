@@ -69,12 +69,33 @@
     var scope = this;
     // variable para el formulario
     scope.userForm = {};
+    //variable para los errores
+    scope.errors = {};
+
+    scope.change = function(field) {
+      if(scope.errors[field.toLowerCase()]) {
+        $("#Input" + field).tooltip('destroy');
+        scope.errors[field.toLowerCase()] = false
+      }
+    };
+
 
     scope.guardarUsuario = function() {
       $http.post('/users.json', {user: scope.userForm})
         .success(function(data){
           $state.go('usuarios', { alertaCreado: 'true' });
         })
+        .error(function(data) {
+          scope.errors = data.errors;
+
+          for(var error in scope.errors) {
+            if(scope.errors[error]) {
+              $("#Input" + $rootScope.capitalize(error))
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+            }
+          }
+        });
+
     };
 
   }]);

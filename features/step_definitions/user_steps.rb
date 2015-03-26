@@ -133,13 +133,16 @@ Then(/^I should see a success message$/) do
 end
 
 # Test para vista crear usuario
+Given(/^I visit new user page$/) do
+  click_link 'createUser'
+end
 
 When(/^I fill user form with valid parameters$/) do
   parametros = FactoryGirl.attributes_for(:user)
-  fill_in 'InputUsername', with: parametros[:name]
-  fill_in 'InputPass', with: parametros[:password]
-  fill_in 'InputPassConfirmation', with: parametros[:password]
-  fill_in 'InputName', with: parametros[:full_name]
+  fill_in 'InputName', with: parametros[:name]
+  fill_in 'InputPassword', with: parametros[:password]
+  fill_in 'InputPassword_confirmation', with: parametros[:password]
+  fill_in 'InputFull_name', with: parametros[:full_name]
   if parametros[:role] == :director
     select('Director', from: 'InputRole')
   elsif parametros[:role] == :worker
@@ -171,3 +174,42 @@ end
 Then(/^I should see user created message$/) do
   expect(page).to have_css ".leo-message", text:"¡Ha creado satisfactoriamente un nuevo usuario!"
 end
+
+# Errores del formulario
+When(/^I fill user form with invalid parameters$/) do
+  parametros = FactoryGirl.attributes_for(:user)
+  fill_in 'InputPassword_confirmation', with: parametros[:email]
+  fill_in 'InputEmail', with: parametros[:email]
+  fill_in 'InputTlf', with: parametros[:tlf]
+  click_button 'InputSubmit'
+end
+
+Then(/^I should see tooltips for errors in create user form$/) do
+  expect(page).to have_css ".has-error #InputName"
+  expect(page).to have_css "#InputName ~ .tooltip", text:  I18n.t('mongoid.errors.messages.blank')
+  expect(page).to have_css ".has-error #InputPassword"
+  expect(page).to have_css "#InputPassword ~ .tooltip", text: I18n.t('mongoid.errors.messages.blank')
+  expect(page).to have_css ".has-error #InputPassword_confirmation"
+  expect(page).to have_css "#InputPassword_confirmation ~ .tooltip", text: I18n.t('mongoid.errors.messages.confirmation')
+  expect(page).to have_css ".has-error #InputFull_name"
+  expect(page).to have_css "#InputFull_name ~ .tooltip", text: I18n.t('mongoid.errors.messages.blank')
+end
+
+# Editar usuario
+
+Given(/^There is (\d+) user in the platform$/) do |amount|
+  FactoryGirl.create_list(:director, amount.to_i)
+end
+
+Given(/^I click the view icon of a user in user list view$/) do
+  usuario = User.first 
+  page.find("#user-show-#{usuario.id}").click
+end
+
+Then(/^I should see the edit form user$/) do
+end
+
+Then(/^I should see the user information in the form$/) do
+  pending # express the regexp above with the code you wish you had
+end
+

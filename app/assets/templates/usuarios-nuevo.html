@@ -3,33 +3,32 @@
     <h1 class="header-titule hidden-xs">Crear Usuario</h1>
     <div class="col-md-12">
       <div class="form-group col-md-4" ng-class="{ 'has-error':userFormCtrl.errors.name }">
-        <label for="InputUsername">Nombre de usuario</label>
-        <input ng-model="userFormCtrl.userForm.name" ng-change="userFormCtrl.change('Name')" type="text" class="form-control" id="InputUsername" data-placement="top">
+        <label for="InputName">Nombre de usuario</label>
+        <input ng-model="userFormCtrl.userForm.name" ng-change="userFormCtrl.change('Name')" type="text" class="form-control" id="InputName" data-placement="top">
       </div>
     </div>
     <div class="col-md-12">
-      <div class="form-group col-md-4" ng-class="{ 'has-error':userFormCtrl.errors.name }">
-        <label for="InputPass">Contraseña</label>
-        <input ng-model="userFormCtrl.userForm.password" ng-change="userFormCtrl.change('Password')" type="password" class="form-control" id="InputPass" data-placement="top">
+      <div class="form-group col-md-4" ng-class="{ 'has-error':userFormCtrl.errors.password }">
+        <label for="InputPassword">Contraseña</label>
+        <input ng-model="userFormCtrl.userForm.password" ng-change="userFormCtrl.change('Password')" type="password" class="form-control" id="InputPassword" data-placement="top">
       </div>
-      <div class="form-group col-md-4 col-offset-md-1">
-        <label for="InputPassConfirmation">Repetir Contraseña</label>
-        <input ng-model="userFormCtrl.userForm.password_confirmation" type="password" class="form-control" id="InputPassConfirmation" data-placement="top">
+      <div class="form-group col-md-4 col-offset-md-1" ng-class="{ 'has-error':userFormCtrl.errors.password_confirmation }">
+        <label for="InputPassword_confirmation">Repetir Contraseña</label>
+        <input ng-model="userFormCtrl.userForm.password_confirmation" ng-change="userFormCtrl.change('Password_confirmation')" type="password" class="form-control" id="InputPassword_confirmation" data-placement="top">
       </div>
     </div>   
     <div class="col-md-12">
-      <div class="form-group col-md-7" ng-class="{ 'has-error':userFormCtrl.errors.name }">
-        <label for="InputName">Nombre y Apellidos</label>
-        <input ng-model="userFormCtrl.userForm.full_name" ng-change="userFormCtrl.change('Fullname')" type="text" class="form-control" id="InputName" data-placement="top">
+      <div class="form-group col-md-7" ng-class="{ 'has-error':userFormCtrl.errors.full_name }">
+        <label for="InputFull_name">Nombre y Apellidos</label>
+        <input ng-model="userFormCtrl.userForm.full_name" ng-change="userFormCtrl.change('Full_name')" type="text" class="form-control" id="InputFull_name" data-placement="top">
       </div>
     </div>
     <div class="col-md-12 ">
-      <div class="form-group col-md-4" ng-class="{ 'has-error':userFormCtrl.errors.role }">
+      <div class="form-group col-md-4">
         <label for="InputRole">Tipo de usuario</label>
-        <select ng-model="userFormCtrl.userForm.role" ng-change="userCtrl.change('Role')" type="text" class="form-control" id="InputRole" data-placement="top">   
-          <option value="">Seleccione opción</option>
+        <select ng-model="userFormCtrl.userForm.role" type="text" class="form-control" id="InputRole" data-placement="top">
+          <option value="volunteer">Voluntario</option>          
           <option value="worker">Trabajador Social</option>
-          <option value="volunteer">Voluntario</option>
         </select>
       </div>
     </div>
