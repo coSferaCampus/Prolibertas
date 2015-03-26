@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def index
     @users = 
       if current_user.has_role? :director
-        User.all
+        User.with_all_roles(:volunteer, :worker)
       elsif current_user.has_role? :worker
         User.with_role :volunteer
       end

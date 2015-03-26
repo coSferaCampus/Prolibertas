@@ -24,10 +24,7 @@ RSpec.describe UsersController, type: :controller do
     @parameters = FactoryGirl.attributes_for(:user)
 
     # Para el test de update
-    @update_params = { 
-      name: 'nombre1' , full_name: "nombre1 apellido1", 
-      email: "email1@email.com", tlf: "957000001"
-    }
+    @update_params = FactoryGirl.attributes_for(:user)
   end
 
   before do
@@ -152,6 +149,13 @@ RSpec.describe UsersController, type: :controller do
         it "returns 200 HTTP status code when looking for a volunteer" do
           get :show, id: @volunteer.id.to_s
           expect(response).to have_http_status :ok
+        end
+      end
+
+      context "GET #index" do
+        it "returns only workers and volunteers" do
+          get :index
+          expect(assigns(:users).to_a).to match_array User.with_all_roles(:volunteer, :workers).to_a
         end
       end
 
