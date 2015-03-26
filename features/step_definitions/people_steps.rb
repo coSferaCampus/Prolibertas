@@ -194,7 +194,7 @@ Then(/^I should see the errors in the form$/) do
 end
 
 When(/^I fill input "(.*?)" with "(.*?)"$/) do |key, value|
-  if key == 'InputGenre'
+  if key == 'InputGenre' || key == 'InputType'
    select(value, from: key)
    else
     fill_in key, with: value

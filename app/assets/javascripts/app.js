@@ -67,7 +67,7 @@
     })
 
     .state("persona.alertas", {
-      url: "/alertas",
+      url: "/alertas?alertaCreado&alertaBorrado",
       views:{
         menupersona:{
           templateUrl: "alertas.html",
@@ -82,7 +82,9 @@
       url: "/alertas/nueva",
       views:{
         menupersona:{
-        templateUrl: "alerta-nueva.html"
+        templateUrl: "alerta-nueva.html",
+        controller: "AlertFormController",
+        controllerAs: "alertCtrl"
         }
       }
     })

@@ -14,3 +14,9 @@ Feature: Alert Show
   Scenario: Open alert view
     When I click the view icon of an alert in alerts list view
     Then I should go to a view of this alert
+
+  Scenario: Remove alert
+    Given I click the view icon of an alert in alerts list view
+    When I click the remove button in alert view
+    Then I should remove this alert
+    And I should see a success message of delete alert
