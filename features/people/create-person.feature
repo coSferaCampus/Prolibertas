@@ -22,14 +22,14 @@ Feature: Create person
     And  I fill input "InputName" with "Name"
     Then I should not see error on "InputName"
 
-  Scenario: Correct error parameters on InputPassword
+  Scenario: Correct error parameters on InputSurname
     When I fill person form with invalid parameters
-    And  I fill input "InputPassword" with "Password"
+    And  I fill input "InputSurname" with "Surname"
     Then I should not see error on "InputPassword"
 
-  Scenario: Correct error parameters on InputFull_name
+  Scenario: Correct error parameters on InputGenre
     When I fill person form with invalid parameters
-    And  I fill input "InputFull_name" with "Full_name"
-    Then I should not see error on "InputFull_name"
+    And  I fill input "InputGenre" with "Hombre"
+    Then I should not see error on "InputGenre"
 
 

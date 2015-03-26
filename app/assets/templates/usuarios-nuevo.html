@@ -1,6 +1,6 @@
 <div class="container col-xs-12 col-sm-12 col-md-12" id="userForm">
-  <form class="col-md-12" ng-submit="userFormCtrl.guardarUsuario()">
-    <h1 class="header-titule hidden-xs">Crear Usuario</h1>
+  <form class="col-md-12" ng-submit="userFormCtrl.actionForm()">
+    <h3 class="header-titule hidden-xs">{{prolibertas}}</h3>
     <div class="col-md-12">
       <div class="form-group col-md-4" ng-class="{ 'has-error':userFormCtrl.errors.name }">
         <label for="InputName">Nombre de usuario</label>

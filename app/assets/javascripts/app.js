@@ -29,6 +29,13 @@
       controllerAs: "userCtrl"
     })
 
+    .state("usuarioEditar", {
+      url: "/usuarios/:id/editar",
+      templateUrl: "usuarios-nuevo.html",
+      controller: "UserFormController",
+      controllerAs: "userFormCtrl"    
+    })
+
     .state("personas", {
       url: "/personas?alertaCreado&alertaBorrado",
       templateUrl: "personas.html",

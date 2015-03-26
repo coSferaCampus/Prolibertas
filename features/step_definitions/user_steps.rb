@@ -198,7 +198,7 @@ end
 # Editar usuario
 
 Given(/^There is (\d+) user in the platform$/) do |amount|
-  FactoryGirl.create_list(:director, amount.to_i)
+  FactoryGirl.create_list(:worker, amount.to_i)
 end
 
 Given(/^I click the view icon of a user in user list view$/) do
@@ -206,10 +206,56 @@ Given(/^I click the view icon of a user in user list view$/) do
   page.find("#user-show-#{usuario.id}").click
 end
 
-Then(/^I should see the edit form user$/) do
+When(/^I click the edit user button$/) do
+  page.find(".usuario__botones__edit").click
 end
 
-Then(/^I should see the user information in the form$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see the edit user form$/) do
+  expect(page).to have_css "#userForm"
 end
 
+Then(/^I should see the user information in the user form$/) do
+@user = User.first 
+  find_field('InputName').value.should eq @user.name
+  find_field('InputFull_name').value.should eq @user.full_name
+  find_field('InputRole').value.should eq @user.role.to_s
+  find_field('InputEmail').value.should eq @user.email
+  find_field('InputTlf').value.should eq @user.tlf
+end
+
+When(/^I update the user form$/) do
+@user = User.first 
+  page.find("#user-edit-#{@user.id}").click
+  fill_in 'InputName', with: "pepe"
+  fill_in 'InputFull_name', with: "pepe gonzalez"
+  fill_in 'InputEmail', with: "prolibertas@prolibertas.es"
+  fill_in 'InputTlf', with: "345345343"
+  page.find("#InputSubmit").click
+end
+
+Then(/^I should see the user updated$/) do
+  expect(page).to have_css "#user-edit-#{@user.id}"
+  expect(page).to have_css "#user_username", text: "pepe"
+  expect(page).to have_css "#user_full_name", text: "pepe gonzalez"
+  expect(page).to have_css "#user_email", text: "prolibertas@prolibertas.es"
+  expect(page).to have_css "#user_tlf", text: "345345343"
+end
+
+When(/^I fill user update form with invalid parameters$/) do
+  @user = User.first 
+  page.find("#user-edit-#{@user.id}").click
+  fill_in 'InputName', with: ""
+  fill_in 'InputFull_name', with: ""
+  fill_in 'InputPassword', with: ""
+  fill_in 'InputPassword_confirmation', with: "1"
+  page.find("#InputSubmit").click
+end
+
+Then(/^I should see the errors in the update user form$/) do
+  expect(page).to have_css ".has-error #InputName"
+  expect(page).to have_css "#InputName ~ .tooltip", text:  I18n.t('mongoid.errors.messages.blank')
+  expect(page).to have_css ".has-error #InputPassword_confirmation"
+  expect(page).to have_css "#InputPassword_confirmation ~ .tooltip", text: I18n.t('mongoid.errors.messages.confirmation')
+  expect(page).to have_css ".has-error #InputFull_name"
+  expect(page).to have_css "#InputFull_name ~ .tooltip", text: I18n.t('mongoid.errors.messages.blank')
+end
