@@ -358,7 +358,7 @@ end
 #Test cuando selecciono ducha
 When(/^I select service shower for "(.*?)"$/) do |apellido|
   persona = Person.where(surname: apellido).first
-  check("ropa_#{persona.id}")
+  check("ducha_#{persona.id}")
 end
 
 Then(/^I see that it has created a new use for shower service for "(.*?)"$/) do |apellido|
