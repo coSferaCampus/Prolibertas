@@ -5,13 +5,14 @@
   app.controller('PeopleController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope){
     var scope = this;
     scope.people = [];
+    scope.services = [];
     scope.alertaCreado = $state.params.alertaCreado;
 
-    // La alerta se oculta después de 3 segundos
+    // La alerta se oculta después de 5 segundos
     $timeout(function(){scope.alertaCreado = false;}, 5000);
 
     scope.alertaBorrado = $state.params.alertaBorrado;
-    // La alerta se oculta después de 3 segundos
+    // La alerta se oculta después de 5 segundos
     $timeout(function(){scope.alertaBorrado = false;}, 5000);
     $rootScope.prolibertas = "Lista de Personas"
 
@@ -20,6 +21,11 @@
         scope.people = data.people;
       })
 
+    $http.get('/services.json')
+      .success(function(data) {
+        scope.services = data.services;
+      });
+
     scope.genero = function(genero){
       if (genero == "man") {
         return 'H';
@@ -27,7 +33,35 @@
       else {
         return 'M';
       }
-    }
+    };
+
+    scope.createUsedService = function(person, service) {
+      $http.post('/used_services.json',
+      {used_service: {person_id: person.id, service_id: service.id}} )
+        .success(function(data) {
+          person.used_services_of_today_id[service.name] = data.used_service.id;
+        })
+    };
+
+    scope.deleteUsedService = function(person, service) {
+      $http.delete('/used_services/' + person.used_services_of_today_id[service.name] + '.json')
+        .success(function(data) {
+          person.used_services_of_today_id[service.name] = null;
+        })
+    };
+
+    // método que cambia a check si está desmarcado y viceversa
+    scope.changeCheckbox = function(person, service) {
+      if(person.used_services_of_today_id[service.name])
+        scope.deleteUsedService(person, service);
+      else
+      scope.createUsedService(person, service)
+    };
+
+    scope.getService = function(name) {
+      var result = $.grep(scope.services, function(e){ return e.name == name; });
+      return result[0];
+    };
   }]);
 
   app.controller('PersonController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {
@@ -55,9 +89,11 @@
       if (confirmed) {
         $http.delete('/people/' + person.id + '.json').success(function(data) {
           $state.go("personas", { alertaBorrado: 'true' })
-        }); 
+        });
       }
     };
+
+
 
   }]);
 
@@ -99,7 +135,7 @@
           for(var error in scope.errors) {
             if(scope.errors[error]) {
               $("#Input" + $rootScope.capitalize(error))
-                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');
             }
           }
         });
@@ -117,7 +153,7 @@
           for(var error in scope.errors) {
             if(scope.errors[error]) {
               $("#Input" + $rootScope.capitalize(error))
-                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');
             }
           }
         });
