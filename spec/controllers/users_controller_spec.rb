@@ -15,7 +15,7 @@ RSpec.describe UsersController, type: :controller do
     @model = User
 
     # Para el test de show
-    @resource = FactoryGirl.create(:user)
+    @resource = FactoryGirl.create(:volunteer)
 
     # Para el test de index
     @first_page_resources = User.all
