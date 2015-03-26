@@ -10,9 +10,14 @@
         <input ng-model="personCtrl.personForm.name" ng-change="personCtrl.change('Name')" type="text" class="form-control" id="InputName" data-placement="top">
 
       </div>
-      <div class="form-group col-md-4 col-md-offset-3" >
-        <label for="InputBirth">Fecha de nacimiento</label>
-        <input ng-model="personCtrl.personForm.birth" type="text" class="form-control datepicker" id="InputBirth">
+      <div class="form-group col-md-4 col-md-offset-3" >                                                                   
+        <label for="InputBirth">Fecha de nacimiento</label>                                                                
+        <div class="input-group datepicker">                                                                               
+          <span class="input-group-addon listpeople__azul">                                                                
+            <span class="glyphicon glyphicon-calendar"></span>                                                             
+          </span>                                                                                                          
+          <input ng-model="personCtrl.personForm.birth" type="text" class="form-control" id="InputBirth">                  
+        </div>                                                                                                             
       </div>
     </div>
     <div class="col-md-12 ">

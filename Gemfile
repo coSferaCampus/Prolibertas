@@ -5,6 +5,7 @@ gem 'rails', '4.2.0'
 
 # Convertir datos mongoDB en objetos de Ruby
 gem 'mongoid', '~> 4.0.1'
+gem 'mongoid_userstamp', '~> 0.4.0'
 
 # Para el registro de usuarios
 gem 'devise', '~> 3.4.1'
@@ -24,7 +25,8 @@ gem 'jquery-rails', '~> 4.0.3'
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.3.3'
 # Datepicker para fechas
-gem 'bootstrap-datepicker-rails', '~>  1.4.0'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 
 # Angular
 gem 'angular-rails-templates', '~> 0.1.3'

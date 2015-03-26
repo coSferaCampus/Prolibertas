@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-user']);
+  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user']);
 
   // Config
   app.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
@@ -98,7 +98,9 @@
        url: "/historias",
        views:{
          menupersona:{
-           templateUrl: "historias.html" 
+           templateUrl: "historias.html",
+           controller: "HistoriesController",
+           controllerAs: "historiesCtrl" 
          }
         }
       })
@@ -113,12 +115,14 @@
       })
 
     .state("persona.historia", {
-        url: "/historia",
+        url: "/historias/:historia_id",
         views:{
           menupersona:{
-          templateUrl: "historia.html" 
-           }
+            templateUrl: "historia.html",
+            controller: "HistoryController",
+            controllerAs: "historyCtrl"  
           }
+        }
       });
 
   });
