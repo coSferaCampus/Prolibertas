@@ -1,5 +1,6 @@
 (function() {
-  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user']);
+  
+  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-alert']);
 
   // Config
   app.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
@@ -66,19 +67,24 @@
     })
 
     .state("persona.alertas", {
-      url: "/alertas",
+      url: "/alertas?alertaCreado&alertaBorrado",
       views:{
         menupersona:{
-        templateUrl: "alertas.html"
+          templateUrl: "alertas.html",
+          controller: "AlertsController",
+          controllerAs: "alertsCtrl"
         }
-      }
+      },
+
     })
 
     .state("persona.alertasNueva", {
       url: "/alertas/nueva",
       views:{
         menupersona:{
-        templateUrl: "alerta-nueva.html"
+        templateUrl: "alerta-nueva.html",
+        controller: "AlertFormController",
+        controllerAs: "alertCtrl"
         }
       }
     })
@@ -87,7 +93,9 @@
       url: "/alertas/:alerta_id",
       views:{
         menupersona:{
-        templateUrl: "alerta.html"
+          templateUrl: "alerta.html",
+          controller: "AlertController",
+          controllerAs: "alertCtrl"
         }
       }
     })

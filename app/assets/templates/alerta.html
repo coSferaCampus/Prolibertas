@@ -1,27 +1,27 @@
-<div class="col-md-7">
+<div id="alert-show-page"class="col-md-7">
 
   <ul class="list-group">
     <li class="list-group-item person__list__el">
-      <strong class="person__list__text__left">Tipo:</strong> <span></span>
+      <strong class="person__list__text__left">Tipo:</strong> <span>{{ alertCtrl.tipo(alertCtrl.alert.type) }}</span>
     </li>
 
     <li class="list-group-item person__list__el">
-      <strong class="person__list__text__left">Descripción:</strong> <span></span>
+      <strong class="person__list__text__left">Descripción:</strong> <span>{{ alertCtrl.alert.description }}</span>
     </li>
 
     <li class="list-group-item person__list__el">
-      <strong class="person__list__text__left">Causa:</strong> <span></span>
+      <strong class="person__list__text__left">Causa:</strong> <span>{{ alertCtrl.alert.cause }}</span>
     </li>  
 
     <li class="list-group-item person__list__el">
-      <strong class="person__list__text__left">Hasta:</strong> <span></span>
+      <strong class="person__list__text__left">Hasta:</strong> <span>{{ alertCtrl.alert.pending }}</span>
     </li>
   </ul>
 
 </div>
 
 <div class="persona__botones col-md-7">
-  <a type="button" class="btn btn-danger persona__botones__remove">
+  <a id="remove-alert-btn" type="button" class="btn btn-danger persona__botones__remove" ng-click="alertCtrl.destroyAlert(alertCtrl.alert)">
     Eliminar
   </a>
   <button type="button" class="btn btn-primary persona__botones__edit">
