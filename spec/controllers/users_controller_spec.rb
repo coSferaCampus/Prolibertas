@@ -15,7 +15,7 @@ RSpec.describe UsersController, type: :controller do
     @model = User
 
     # Para el test de show
-    @resource = FactoryGirl.create(:user)
+    @resource = FactoryGirl.create(:volunteer)
 
     # Para el test de index
     @first_page_resources = User.all
@@ -155,7 +155,7 @@ RSpec.describe UsersController, type: :controller do
       context "GET #index" do
         it "returns only workers and volunteers" do
           get :index
-          expect(assigns(:users).to_a).to match_array User.with_all_roles(:volunteer, :workers).to_a
+          expect(assigns(:users).to_a).to match_array User.with_any_role(:volunteer, :worker).to_a
         end
       end
 
