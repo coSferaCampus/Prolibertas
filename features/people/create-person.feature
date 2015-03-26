@@ -25,7 +25,7 @@ Feature: Create person
   Scenario: Correct error parameters on InputSurname
     When I fill person form with invalid parameters
     And  I fill input "InputSurname" with "Surname"
-    Then I should not see error on "InputSurname"
+    Then I should not see error on "InputPassword"
 
   Scenario: Correct error parameters on InputGenre
     When I fill person form with invalid parameters

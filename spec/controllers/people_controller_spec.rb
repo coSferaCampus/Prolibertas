@@ -8,6 +8,7 @@ RSpec.describe PeopleController, type: :controller do
 
   before :all do
     @user = FactoryGirl.create(:user)
+
     # Para todos los tests
     @model = Person
 
@@ -17,10 +18,8 @@ RSpec.describe PeopleController, type: :controller do
     # Para el test de index
     @first_page_resources = Person.all
 
-
     # Para el test de create y destroy
     @parameters = FactoryGirl.attributes_for(:person)
-
 
     # Para el test de update
     @update_params = FactoryGirl.attributes_for(:person_update)
@@ -32,6 +31,4 @@ RSpec.describe PeopleController, type: :controller do
   end
 
   it_behaves_like "a REST controller", options, json_attributes
-
 end
-
