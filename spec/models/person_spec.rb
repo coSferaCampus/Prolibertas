@@ -25,6 +25,7 @@ RSpec.describe Person, type: :model do
 
   context "Relations" do
     it { is_expected.to have_many(:used_services) }
+    it { is_expected.to have_many(:alerts) }
   end
   
   context "Validations" do
