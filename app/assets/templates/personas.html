@@ -33,7 +33,7 @@
           <th>Nombre</th>
           <th>Apellidos</th>
           <th class="hidden-xs">Origen</th>
-          <th class="listpeople__centrado hidden-xs">S</th>  
+          <th class="listpeople__centrado hidden-xs">S</th>
           <th class="listpeople__centrado hidden-xs">Menú</th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/cutlery23.svg"></th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/tshirt18.svg"></th>
@@ -43,7 +43,6 @@
           <th class="listpeople__centrado hidden-xs"></th>
         </tr>
       </thead>
-
       <tbody >
         <tr ng-repeat="person in peopleCtrl.people | filter:search" id="person_{{person.id}}">
           <td>{{person.name}}</td>
@@ -51,18 +50,30 @@
           <td class="hidden-xs">{{person.origin}}</td>
           <td class="listpeople__centrado hidden-xs">{{peopleCtrl.genero(person.genre)}}</td>
           <td class="listpeople__centrado hidden-xs">{{person.menu}}</td>
-          <td class="listpeople__centrado"><input type="checkbox"></td>
-          <td class="listpeople__centrado"><input type="checkbox"></td>
-          <td class="listpeople__centrado"><input type="checkbox"></td>
+          <td class="listpeople__centrado">
+            <input id="comida_{{person.id}}" ng-model="person.used_services_of_today.comida"
+            ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('comida'))"
+            type="checkbox">
+          </td>
+          <td class="listpeople__centrado">
+            <input id="ropa_{{person.id}}" ng-model="person.used_services_of_today.ropa"
+            ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ropa'))"
+            type="checkbox">
+          </td>
+          <td class="listpeople__centrado">
+            <input id="ducha_{{person.id}}" ng-model="person.used_services_of_today.ducha"
+            ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ducha'))"
+            type="checkbox">
+          </td>
           <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></td>
-          <td class="listpeople__centrado"><a id="person-show-{{person.id}}" 
-            ui-sref="persona({ id: person.id })">
+          <td class="listpeople__centrado"><a id="person-show-{{person.id}}"
+              ui-sref="persona({ id: person.id })">
             <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
           </td>
-          
+
           <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-list listpeople__azul"></td>
         </tr>
       </tbody>
     </table>
     <div class="alert alert-success leo-message" ng-if="peopleCtrl.alertaCreado">¡Ha creado satisfactoriamente una nueva persona!</div>
-    <div class="alert alert-danger leo-message" ng-if="peopleCtrl.alertaBorrado">¡Borrado satisfactoriamente!</div>  
+    <div class="alert alert-danger leo-message" ng-if="peopleCtrl.alertaBorrado">¡Borrado satisfactoriamente!</div>
