@@ -5,6 +5,7 @@
   app.controller('UsersController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope){
     var scope = this;
     scope.users = [];
+    $rootScope.prolibertas = "Usuarios de Prolibertas"    
 
     scope.alertaBorrado = $state.params.alertaBorrado;
     // La alerta se oculta después de 5 segundos
@@ -40,7 +41,7 @@
     $http.get('/users/' + $state.params.id + '.json')
     .success(function(data){
       scope.user = data.user;
-      $rootScope.prolibertas = scope.user.name + ' ' + scope.user.surname
+      $rootScope.prolibertas = scope.user.name 
     });
 
     scope.rol = function(rol) {
@@ -68,7 +69,7 @@
   app.controller('UserFormController', ['$http', '$state', '$rootScope',function($http, $state, $rootScope) {
     var scope = this;
     // variable para el formulario
-    scope.userForm = {};
+    scope.userForm = {role: "volunteer"}; 
     //variable para los errores
     scope.errors = {};
 
@@ -95,8 +96,40 @@
             }
           }
         });
-
     };
+
+    scope.actualizarUsuario = function() {
+      $http.put("/users/" + $state.params.id + ".json",{user: scope.userForm})
+        .success(function() {
+          $state.go("usuario", {id: $state.params.id});
+          scope.errors = {};
+        })
+        .error(function(data) {
+          scope.errors = data.errors;
+
+          for(var error in scope.errors) {
+            if(scope.errors[error]) {
+              $("#Input" + $rootScope.capitalize(error))
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+            }
+          }
+        });
+    };
+
+    scope.actionForm = scope.guardarUsuario;
+
+    if ($state.params.id != undefined) {
+      scope.actionForm = scope.actualizarUsuario
+      $http.get('/users/' + $state.params.id + '.json')
+      .success(function(data){
+        scope.userForm = data.user;
+        $rootScope.prolibertas = "Editar Usuario"
+      });
+    }
+    else {
+      scope.actionForm = scope.guardarUsuario;
+      $rootScope.prolibertas = "Crear Usuario"
+    }
 
   }]);
 })();

@@ -10,7 +10,15 @@ Feature: Edit user
     And I go to users list page
     And I click the view icon of a user in users list view
 
-  Scenario: Visit edit form
-    When I click the edit button
-    Then I should see the edit form user
-    And I should see the user information in the form
+  Scenario: Visit edit user form 
+    When I click the edit user button
+    Then I should see the edit user form
+    And I should see the user information in the user form
+
+  Scenario: Update user form
+    When I update the user form
+    Then I should see the user updated
+
+  Scenario: Update user form with no text
+    When I fill user update form with invalid parameters
+    Then I should see the errors in the update user form
