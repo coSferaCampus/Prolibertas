@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def index
     @users = 
       if current_user.has_role? :director
-        User.with_all_roles(:volunteer, :worker)
+        User.with_any_role(:volunteer, :worker)
       elsif current_user.has_role? :worker
         User.with_role :volunteer
       end
@@ -52,6 +52,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:id, :name, :full_name, :email, :tlf, :password, :password_confirmation)
+    params.require(:user).permit(:id, :name, :full_name, :email, :tlf, :password, :password_confirmation, :role)
   end
 end

@@ -60,7 +60,7 @@
     <!--<img class="logo hidden-xs" src="/assets/logo-menu.svg">-->
 
     <div class="menu__users" title="Gestión de usuarios">
-      <a ui-sref="usuarios" class="glyphicon glyphicon-user" aria-hidden="true"></a>
+      <a ui-sref="usuarios" id="go-users" class="glyphicon glyphicon-user" aria-hidden="true"></a>
     </div>
         <div class="menu__logout" title="Cerrar sesión">
       <%= link_to destroy_user_session_path, id: "logout", method: :delete do %>

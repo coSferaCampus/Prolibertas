@@ -11,9 +11,8 @@ class User
          :rememberable, :trackable
 
   ## Database authenticatable
-  field :name,                type: String, default: ""
-  field :encrypted_password,  type: String, default: ""
-
+  field :name,               type: String, default: ""
+  field :encrypted_password, type: String, default: ""
 
   ## Rememberable
   field :remember_created_at, type: Time
@@ -29,6 +28,7 @@ class User
   field :full_name,           type: String, default: ""
   field :email,               type: String, default: ""
   field :tlf,                 type: String, default: ""
+  field :role,                type: String, default: ""
 
   # Validations
   validates :name,            presence: true, uniqueness: { case_sensitive: false }

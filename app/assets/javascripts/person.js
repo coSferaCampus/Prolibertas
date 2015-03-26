@@ -7,11 +7,11 @@
     scope.people = [];
     scope.alertaCreado = $state.params.alertaCreado;
 
-    // La alerta se oculta después de 3 segundos
+    // La alerta se oculta después de 5 segundos
     $timeout(function(){scope.alertaCreado = false;}, 5000);
 
     scope.alertaBorrado = $state.params.alertaBorrado;
-    // La alerta se oculta después de 3 segundos
+    // La alerta se oculta después de 5 segundos
     $timeout(function(){scope.alertaBorrado = false;}, 5000);
     $rootScope.prolibertas = "Lista de Personas"
 
