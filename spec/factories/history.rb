@@ -4,10 +4,9 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraph }
     liabilities { Faker::Lorem.paragraph }
     date { Faker::Date.forward(23)}
-    time { Faker::Lorem.word}
+    time { "#{'%02d' % rand(24)}:#{'%02d' % rand(60)}" }
     newdate { Faker::Date.forward(23)}
-    newtime { Faker::Lorem.word}
-
+    newtime { "#{'%02d' % rand(24)}:#{'%02d' % rand(60)}" }
   end
   # Sólo se debe usar con attributes_for
   factory :history_update, parent: :history do

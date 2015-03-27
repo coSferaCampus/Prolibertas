@@ -6,6 +6,7 @@ gem 'rails', '4.2.0'
 # Convertir datos mongoDB en objetos de Ruby
 gem 'mongoid', '~> 4.0.1'
 gem 'mongoid_userstamp', '~> 0.4.0'
+gem 'carrierwave-mongoid' #gema para subir ficheros
 
 # Para el registro de usuarios
 gem 'devise', '~> 3.4.1'
@@ -35,6 +36,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-ui-router', '~> 0.2.13'
   gem 'rails-assets-angular-local-storage', '~> 0.1.5'
   gem 'rails-assets-angular-permission', '~> 0.2.0'
+  gem 'rails-assets-ng-file-upload'
 end
 
 # Estas gemas sólo se usan en el entorno de desarrollo (development)

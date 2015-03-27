@@ -112,7 +112,7 @@
     })
 
     .state("persona.historias", {
-       url: "/historias",
+       url: "/historias?alertaCreado&alertaBorrado",
        views:{
          menupersona:{
            templateUrl: "historias.html",
@@ -126,7 +126,9 @@
         url: "/historias/nueva",
         views:{
          menupersona:{
-            templateUrl: "form_historia.html" 
+            templateUrl: "form_historia.html",
+            controller: "HistoryFormController",
+            controllerAs: "historyFormCtrl" 
          }
         }
       })
@@ -138,6 +140,17 @@
             templateUrl: "historia.html",
             controller: "HistoryController",
             controllerAs: "historyCtrl"  
+          }
+        }
+      })
+
+     .state("persona.historiaEditar", {
+        url: "/historias/:historia_id/editar",
+        views:{
+          menupersona:{
+            templateUrl: "form_historia.html",
+            controller: "HistoryFormController",
+            controllerAs: "historyFormCtrl"  
           }
         }
       });

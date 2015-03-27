@@ -31,7 +31,7 @@ class HistoriesController < ApplicationController
 
   def history_params
     params.require(:history).permit(
-      :description, :liabilities, :date, :time, :newdate, :newtime
+      :description, :liabilities, :date, :time, :newdate, :newtime, :file
       )
   end
 end
