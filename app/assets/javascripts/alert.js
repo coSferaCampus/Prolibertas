@@ -31,6 +31,21 @@
       }
     }
 
+    scope.alertClass = function(alert) {
+      if (alert.type == 'punishment') {
+        return 'danger';
+      }
+      else if (alert.type == 'warning') {
+        return 'warning';
+      }
+      else if (alert.type == 'advice') {
+        return 'success';
+      }
+      else {
+        return '';
+      } 
+    };
+
   }]);
 
   app.controller('AlertController',  ['$http', '$state', function($http, $state) {
@@ -73,17 +88,7 @@
    //variable para los errores
     scope.errors = {};
 
-
-    /*$('.datepicker').datepicker({
-      format: "dd/mm/yyyy",
-      startView: 2,
-      clearBtn: true,
-      language: "es",
-      orientation: "top auto",
-      autoclose: true
-    });*/
-
-
+    $('.datepicker').datetimepicker({locale: 'es', format: 'L'});
 
     scope.change = function(field) {
       if(scope.errors[field.toLowerCase()]) {
@@ -92,8 +97,12 @@
       }
     };
 
+    scope.formDates = function(){
+      scope.alertForm.pending = $('#InputPending').val();
+    };
 
     scope.guardarAlerta = function() {
+      scope.formDates();
       $http.post('/people/' + $state.params.id + '/alerts.json', {alert: scope.alertForm})
         .success(function(data){
           $state.go('persona.alertas', { id: $state.params.id, alertaCreado: 'true' });
@@ -111,6 +120,7 @@
     };
 
     scope.actualizarAlerta = function() {
+      scope.formDates();
       $http.put("/alerts/" + $state.params.alerta_id + ".json",{alert: scope.alertForm})
         .success(function() {
           $state.go("persona.alerta", {alerta_id: $state.params.alerta_id});

@@ -14,7 +14,7 @@
   </thead>
 
   <tbody >
-    <tr id="alert_{{alert.id}}" ng-repeat="alert in alertsCtrl.alerts | orderBy:'-pending'">
+    <tr id="alert_{{alert.id}}" ng-repeat="alert in alertsCtrl.alerts | orderBy:'-pending'" class="{{alertsCtrl.alertClass(alert)}}">
       <td>{{alertsCtrl.tipo(alert.type)}}</td>
       <td>{{alert.description}}</td>
       <td>{{alert.cause}}</td>

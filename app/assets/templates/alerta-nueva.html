@@ -21,7 +21,7 @@
     <textarea ng-model="alertCtrl.alertForm.cause" class="form-control" id="InputCause"></textarea>
   </div>
 
-  <div class="form-group col-md-7" ng-class="{ 'has-error':alertCtrl.errors.pending }">
+  <div class="form-group col-md-7 datepicker" ng-class="{ 'has-error':alertCtrl.errors.pending }">
     <label>Hasta</label>
     <input ng-model="alertCtrl.alertForm.pending" ng-change="alertCtrl.change('Pending')" type="text" class="form-control datepicker" id="InputPending">
   </div>
