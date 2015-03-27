@@ -104,7 +104,9 @@
       url: "/alertas/:alerta_id/editar",
       views:{
         menupersona:{
-        templateUrl: "alerta-nueva.html",   
+          templateUrl: "alerta-nueva.html",
+          controller: "AlertFormController",
+          controllerAs: "alertCtrl"
         }
       }
     })

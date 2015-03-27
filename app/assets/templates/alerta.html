@@ -2,19 +2,19 @@
 
   <ul class="list-group">
     <li class="list-group-item person__list__el">
-      <strong class="person__list__text__left">Tipo:</strong> <span>{{ alertCtrl.tipo(alertCtrl.alert.type) }}</span>
+      <strong class="person__list__text__left">Tipo:</strong> <span id="alert_type">{{ alertCtrl.tipo(alertCtrl.alert.type) }}</span>
     </li>
 
     <li class="list-group-item person__list__el">
-      <strong class="person__list__text__left">Descripción:</strong> <span>{{ alertCtrl.alert.description }}</span>
+      <strong class="person__list__text__left">Descripción:</strong> <span id="alert_description">{{ alertCtrl.alert.description }}</span>
     </li>
 
     <li class="list-group-item person__list__el">
-      <strong class="person__list__text__left">Causa:</strong> <span>{{ alertCtrl.alert.cause }}</span>
+      <strong class="person__list__text__left">Causa:</strong> <span id="alert_cause">{{ alertCtrl.alert.cause }}</span>
     </li>  
 
     <li class="list-group-item person__list__el">
-      <strong class="person__list__text__left">Hasta:</strong> <span>{{ alertCtrl.alert.pending }}</span>
+      <strong class="person__list__text__left">Hasta:</strong> <span id="alert_pending">{{ alertCtrl.alert.pending }}</span>
     </li>
   </ul>
 
@@ -24,9 +24,7 @@
   <a id="remove-alert-btn" type="button" class="btn btn-danger persona__botones__remove" ng-click="alertCtrl.destroyAlert(alertCtrl.alert)">
     Eliminar
   </a>
-  <button type="button" class="btn btn-primary persona__botones__edit">
-    <a a ui-sref="persona.alertaEditar({id: personCtrl.person.id})">
-      Editar
-    </a>
-  </button>
+  <a id="edit_alert_button" type="button" class="btn btn-primary persona__botones__edit" ui-sref="persona.alertaEditar({id: personCtrl.person.id, alerta_id: alertCtrl.alert.id })">
+    Editar
+  </a>
 </div>
