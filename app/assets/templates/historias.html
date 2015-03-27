@@ -1,0 +1,29 @@
+<div class="col-md-12">
+  <div class="row">
+    <a class="btn btn-primary addhistory col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 col-xs-offset-9 col-xs-3" id="createhistory" ui-sref="persona.historiaNueva">Añadir Historia</a>
+  </div>
+  <table class="table col-md-12 col-lg-12" id="list_histories">
+    <thead class="listpeople__cabecera">
+      <tr>
+        <th>Creador</th>
+        <th>Descripción</th>
+        <th>Compromisos</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr id="history_{{history.id}}" ng-repeat="history in historiesCtrl.histories">
+        <td></td>
+        <td>{{history.description}}</td>
+        <td>{{history.liabilities}}</td>
+        <td>{{history.date}}</td> 
+        <td>{{history.time}}</td> 
+        <td class="listpeople__centrado"><a id="history-show-{{history.id}}" ui-sref="persona.historia({historia_id: history.id})">
+            <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+        </td>  
+      </tr>
+    </tbody>
+ </table>
+</div>

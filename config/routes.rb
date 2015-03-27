@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {sessions: 'sessions'}
   root to: "main#main"
-  resources :people
+  resources :users
+  resources :people do
+    resources :alerts, only: [:index, :create]
+    resources :histories, only: [:index, :create]
+  end
   resources :services
   resources :used_services
-  devise_for :users, controllers: {sessions: 'sessions'}
-
+  resources :alerts, only: [:show, :update, :destroy]
+  resources :histories, only: [:show, :update, :destroy]
 end

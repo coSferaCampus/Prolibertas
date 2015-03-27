@@ -6,7 +6,7 @@ Feature: Create person
 
   Background: 
     Given I am loged in like user
-    Given I visit new person page
+    And I visit new person page
 
   Scenario: Parameters ok
     When I fill person form with valid parameters
