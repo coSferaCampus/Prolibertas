@@ -62,6 +62,22 @@
       var result = $.grep(scope.services, function(e){ return e.name == name; });
       return result[0];
     };
+
+    scope.alertClass = function(person) {
+      if (person.pending_alerts[0].type == 'punishment') {
+        return 'danger';
+      }
+      else if (person.pending_alerts[0].type == 'warning') {
+        return 'warning';
+      }
+      else if (person.pending_alerts[0].type == 'advice') {
+        return 'success';
+      }
+      else {
+        return '';
+      } 
+    };
+
   }]);
 
   app.controller('PersonController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {
