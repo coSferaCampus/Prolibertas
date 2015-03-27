@@ -1,3 +1,7 @@
+<a id="nuevaAlerta" ui-sref="persona.alertasNueva({id: personCtrl.person.id})" class="btn listalerts__boton col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 col-xs-offset-9 col-xs-3">
+  Añadir Alerta
+</a>
+
 <table id="alertsTable" class="table table-responsive col-md-12  col-lg-12">
   <thead class="listpeople__cabecera">
     <tr>
@@ -10,7 +14,7 @@
   </thead>
 
   <tbody >
-    <tr id="alert_{{alert.id}}" ng-repeat="alert in alertsCtrl.alerts">
+    <tr id="alert_{{alert.id}}" ng-repeat="alert in alertsCtrl.alerts | orderBy:'-pending'">
       <td>{{alertsCtrl.tipo(alert.type)}}</td>
       <td>{{alert.description}}</td>
       <td>{{alert.cause}}</td>
@@ -26,7 +30,3 @@
 
 <div class="alert alert-danger leo-message" ng-if="alertsCtrl.alertaBorrado">¡Borrada satisfactoriamente!
 </div>  
-
-<a id="nuevaAlerta" ui-sref="persona.alertasNueva({id: personCtrl.person.id})" class="btn listalerts__boton col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 col-xs-offset-9 col-xs-3">
-  Añadir Alerta
-</a>
