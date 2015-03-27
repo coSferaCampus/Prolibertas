@@ -113,7 +113,7 @@
     scope.actualizarAlerta = function() {
       $http.put("/alerts/" + $state.params.alerta_id + ".json",{alert: scope.alertForm})
         .success(function() {
-          $state.go("persona.alerta", {id: $state.params.id});
+          $state.go("persona.alerta", {alerta_id: $state.params.alerta_id});
           scope.errors = {};
         })
         .error(function(data) {

@@ -27,9 +27,9 @@ end
 
 #Test para ver una alerta
 When(/^I click the view icon of an alert in alerts list view$/) do
-  persona = Person.first
-  alerta = Alert.where(person: persona).first
-  page.find("#alert-show-#{alerta.id}").click
+  @persona = Person.first
+  @alerta = Alert.where(person: @persona).first
+  page.find("#alert-show-#{@alerta.id}").click
 end
 
 Then(/^I should go to a view of this alert$/) do
@@ -126,3 +126,48 @@ Then(/^I should see a success message of delete alert$/) do
   expect(page).to have_css ".leo-message", text:"¡Borrada satisfactoriamente!"
 end
 
+#Test de editar alerta
+When(/^I click the edit alert button$/) do
+  page.find("#edit_alert_button").click
+end
+
+Then(/^I should see the edit form alert$/) do
+  expect(page).to have_css "#alertForm"
+end
+
+Then(/^I should see the alert information in the form$/) do
+  find_field('InputType').value.should eq @alerta.type.to_s
+  find_field('InputDescription').value.should eq @alerta.description
+  find_field('InputCause').value.should eq @alerta.cause
+  find_field('InputPending').value.should eq @alerta.pending.to_s
+end
+
+When(/^I update the alert form$/) do
+  select('advertencia', from: 'InputType')
+  fill_in 'InputDescription', with: "Tuvo un problema"
+  fill_in 'InputCause', with: "Por el turno"
+  fill_in 'InputPending', with: "2015-06-03"
+  page.find("#InputSubmit").click
+end
+
+Then(/^I should see the alert updated$/) do
+  expect(page).to have_css "#alert-show-page"
+
+  expect(page).to have_css "#alert_type", text: "advertencia"
+  expect(page).to have_css "#alert_description", text: "Tuvo un problema"
+  expect(page).to have_css "#alert_cause", text: "Por el turno"
+  expect(page).to have_css "#alert_pending", text: "2015-06-03"
+end
+
+When(/^I fill alert update form with invalid parameters$/) do
+  select('Seleccione Tipo', from: 'InputType')
+  fill_in 'InputPending', with: ""
+  page.find("#InputSubmit").click
+end
+
+Then(/^I should see the errors in the update alert form$/) do
+  expect(page).to have_css ".has-error #InputType"
+  expect(page).to have_css "#InputType ~ .tooltip", text: I18n.t('mongoid.errors.messages.inclusion')
+  expect(page).to have_css ".has-error #InputPending"
+  expect(page).to have_css "#InputPending ~ .tooltip", text: I18n.t('mongoid.errors.messages.blank')
+end
