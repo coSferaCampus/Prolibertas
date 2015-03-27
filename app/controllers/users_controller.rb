@@ -53,6 +53,10 @@ class UsersController < ApplicationController
     respond_with @user
   end
 
+  def current
+    respond_with current_user
+  end
+
   private
 
   def user_params

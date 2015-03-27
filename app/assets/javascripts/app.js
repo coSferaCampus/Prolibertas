@@ -138,17 +138,17 @@
           }
         }
       });
-
   });
 
-  //app.factory('currentUser', function currentUserFactory() {
-
-  //});
-
-  app.run(function($rootScope, $state) {
+  // Funciones globales
+  app.run(function($rootScope, $state, $http) {
     // Capitalizar palabra
     $rootScope.capitalize = function(string) {
       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     };
+
+    // Obtener el usuario logeado
+    $rootScope.currentUser = {};
+    $http.get('/current.json').success(function(data) { $rootScope.currentUser = data.user; });
   });
 })();

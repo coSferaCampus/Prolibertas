@@ -13,7 +13,7 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <div class="menu__users" title="Gestión de usuarios">
-          <a ui-sref="usuario.perfil" class="glyphicon glyphicon-user" aria-hidden="true"></a>
+          <a ui-sref="usuario.perfil({id: currentUser.id})" class="glyphicon glyphicon-user" aria-hidden="true"></a>
         </div>
         <div class="menu__logout" title="Cerrar sesión">
           <%= link_to destroy_user_session_path, id: "logout", method: :delete do %>
@@ -60,7 +60,7 @@
     <!--<img class="logo hidden-xs" src="/assets/logo-menu.svg">-->
 
     <div class="menu__users" title="Gestión de usuarios">
-      <a ui-sref="usuario.perfil({id: '55129e2e5061740a26060000'})" class="glyphicon glyphicon-user" aria-hidden="true"></a>
+      <a ui-sref="usuario.perfil({id: currentUser.id})" class="glyphicon glyphicon-user" aria-hidden="true"></a>
     </div>
         <div class="menu__logout" title="Cerrar sesión">
       <%= link_to destroy_user_session_path, id: "logout", method: :delete do %>
