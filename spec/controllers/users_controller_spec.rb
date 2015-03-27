@@ -42,6 +42,7 @@ RSpec.describe UsersController, type: :controller do
       it "returns 200 HTTP status code" do
         get :current, id: @user.id.to_s 
         expect(response).to have_http_status :ok
+        
       end
     end
   end

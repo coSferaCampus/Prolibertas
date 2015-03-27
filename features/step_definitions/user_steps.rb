@@ -259,3 +259,26 @@ Then(/^I should see the errors in the update user form$/) do
   expect(page).to have_css ".has-error #InputFull_name"
   expect(page).to have_css "#InputFull_name ~ .tooltip", text: I18n.t('mongoid.errors.messages.blank')
 end
+
+When(/^I click the head icon in the layout$/) do
+  page.find("#perfil").click
+end
+
+Then(/^I should go to a view of my profile$/) do
+  expect(page).to have_css "#perfil-page"
+end
+
+When(/^I change my password$/) do
+  page.find("#perfil").click
+  fill_in 'InputPassword', with: "barfoobar"
+  fill_in 'InputPassword_confirmation', with: "barfoobar"
+  page.find("#perfil-submit").click
+  page.find("#logout").click
+  fill_in 'user_name', with: User.last.name
+  fill_in 'user_password', with: 'barfoobar'
+  page.find("#buttomlogin").click
+end
+
+Then(/^I should see my password changed$/) do
+  expect(page).to have_css "#principal"
+end
