@@ -21,6 +21,7 @@
       })
     
     scope.rol = function(rol) {
+      console.log(rol);
       if (rol == "worker") {
         return 'Trabajador Social';
       }

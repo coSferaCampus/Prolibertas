@@ -12,20 +12,17 @@ FactoryGirl.define do
     before( :create ) do |user|
       user.add_role "director"
     end
-    role "director"
   end
 
   factory :worker, parent: :user do
     before( :create ) do |user|
       user.add_role "worker"
     end
-    role "worker"
   end
 
   factory :volunteer, parent: :user do
     before( :create ) do |user|
       user.add_role "volunteer"
     end
-    role "volunteer"
   end
 end

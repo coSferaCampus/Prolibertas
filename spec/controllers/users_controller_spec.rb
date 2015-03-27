@@ -33,6 +33,19 @@ RSpec.describe UsersController, type: :controller do
 
   it_behaves_like "a REST controller", options, json_attributes
 
+  # context "currentUser" do
+  #   before do
+  #     sign_in @user
+  #   end
+
+  #   context "GET #current" do
+  #     it "returns 200 HTTP status code" do
+  #       get :current, id: @suer.id.to_s 
+  #       expect(response).to have_http_status :ok
+  #     end
+  #   end
+  # end
+
   context "abilities" do 
 
     context "volunteer" do

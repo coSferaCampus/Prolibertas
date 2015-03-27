@@ -36,6 +36,6 @@ class User
   validates :password,        confirmation: true
 
   def role
-    roles
+    roles.first.name if roles.first
   end
 end

@@ -141,6 +141,10 @@
 
   });
 
+  //app.factory('currentUser', function currentUserFactory() {
+
+  //});
+
   app.run(function($rootScope, $state) {
     // Capitalizar palabra
     $rootScope.capitalize = function(string) {
