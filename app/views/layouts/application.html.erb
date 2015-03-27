@@ -13,14 +13,13 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <div class="menu__users" title="Gestión de usuarios">
-          <a ui-sref="usuarios" class="glyphicon glyphicon-user" aria-hidden="true"></a>
+          <a ui-sref="usuario.perfil({id: currentUser.id})" id="perfil" class="glyphicon glyphicon-user" aria-hidden="true"></a>
         </div>
         <div class="menu__logout" title="Cerrar sesión">
           <%= link_to destroy_user_session_path, id: "logout", method: :delete do %>
           <i class="glyphicon glyphicon-log-out"></i>
           <% end %>
         </div>
-
 
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-movil" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
@@ -33,34 +32,35 @@
       <div id="navbar-movil" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
         <ul class="nav navbar-nav menu ">
 
-          <li><a ui-sref="personas"
+          <li><a ui-sref="personas" 
             class="list-group-item menu__el col-xs-12" ><span class="menu__el__text">PERSONAS</span></a>
           </li>
 
           <li><a href="#" 
-            class="list-group-item menu__el col-xs-12 "><span class="menu__el__text">FAMILIAS</span></a>
+            class="list-group-item menu__el col-xs-12"><span class="menu__el__text">FAMILIAS</span></a>
           </li>
 
           <li><a href="#" 
-            class="list-group-item menu__el col-xs-12 "><span class="menu__el__text">SERVICIOS</span></a>
+            class="list-group-item menu__el col-xs-12"><span class="menu__el__text">SERVICIOS</span></a>
           </li>
 
           <li><a href="#" 
-            class="list-group-item menu__el  col-xs-12 "><span class="menu__el__text">INFORMES</span></a>
+            class="list-group-item menu__el col-xs-12"><span class="menu__el__text">INFORMES</span></a>
+          </li>
+          <li><a ui-sref="usuarios" id="go-users"
+            class="list-group-item menu__el col-xs-12" title="Gestión de usuarios"><span class="menu__el__text">USUARIOS</span></a>
           </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
   </nav>
 
-
-
   <div class="list-group nav navbar-nav col-md-2 col-xs-12 col-sm-2 hidden-xs">
 
     <!--<img class="logo hidden-xs" src="/assets/logo-menu.svg">-->
 
     <div class="menu__users" title="Gestión de usuarios">
-      <a ui-sref="usuarios" id="go-users" class="glyphicon glyphicon-user" aria-hidden="true"></a>
+      <a ui-sref="usuario.perfil({id: currentUser.id})" id="perfil" class="glyphicon glyphicon-user" aria-hidden="true"></a>
     </div>
         <div class="menu__logout" title="Cerrar sesión">
       <%= link_to destroy_user_session_path, id: "logout", method: :delete do %>
@@ -83,9 +83,11 @@
       </li>
       
       <li><a href="#" 
-        class="list-group-item menu__el  col-xs-12"><span class="menu__el__text">INFORMES</span></a>
+        class="list-group-item menu__el col-xs-12"><span class="menu__el__text">INFORMES</span></a>
       </li>
-
+      <li><a ui-sref="usuarios" id="go-users"
+        class="list-group-item menu__el col-xs-12" title="Gestión de usuarios"><span class="menu__el__text">USUARIOS</span></a>
+      </li>
     </ul>
     
     <div class="info col-md-3.col-sm-3 hidden-xs ">
@@ -96,12 +98,10 @@
     </div>
 
   </div> 
-
   <!-- FIN MENU LATERAL -->
 
   <!-- VISTA DINÁMICA CON ANGULARJS -->
-  <div ui-view class="vista col-md-10 col-md-offset-2 col-xs-12 col-sm-10 col-sm-offset-2"></div>
+  <div id="principal" ui-view class="vista col-md-10 col-md-offset-2 col-xs-12 col-sm-10 col-sm-offset-2"></div>
   <!-- FIN DE VISTA DINÁMICA CON ANGULARJS -->
-
 </body>
 </html>

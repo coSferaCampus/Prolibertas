@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :used_services
   resources :alerts, only: [:show, :update, :destroy]
   resources :histories, only: [:show, :update, :destroy]
+
+  get '/current' => 'users#current'
 end

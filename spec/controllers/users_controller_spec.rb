@@ -33,6 +33,20 @@ RSpec.describe UsersController, type: :controller do
 
   it_behaves_like "a REST controller", options, json_attributes
 
+  context "currentUser" do
+    before do
+      sign_in @user
+    end
+
+    context "GET #current" do
+      it "returns 200 HTTP status code" do
+        get :current, id: @user.id.to_s 
+        expect(response).to have_http_status :ok
+        
+      end
+    end
+  end
+
   context "abilities" do 
 
     context "volunteer" do
@@ -172,6 +186,13 @@ RSpec.describe UsersController, type: :controller do
           @parameters[:role] = "worker"
           put :update, id: @volunteer.id.to_s, user: @parameters 
           expect(User.where(id: @volunteer.id.to_s).first).to have_role :worker
+        end
+
+        it "can update my own password" do
+          director = FactoryGirl.create(:director)
+          sign_in director
+          put :update, id: director.id.to_s, user: { password: 'foofoobar', password_confirmation: 'foofoobar' }
+          expect(response).to have_http_status :no_content
         end
       end
 

@@ -41,6 +41,10 @@ class UsersController < ApplicationController
       @user.add_role(rol)
     end
 
+    if @user == current_user
+      sign_in @user, bypass: true
+    end
+
     respond_with @user
   end
 
@@ -49,9 +53,13 @@ class UsersController < ApplicationController
     respond_with @user
   end
 
+  def current
+    respond_with current_user
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:id, :name, :full_name, :email, :tlf, :password, :password_confirmation, :role)
+    params.require(:user).permit(:id, :name, :full_name, :email, :tlf, :password, :password_confirmation)
   end
 end
