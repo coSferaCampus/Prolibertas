@@ -44,4 +44,9 @@ class Person
     Hash[resultado]
   end
 
+  # Método que devuelve las alertas pendientes
+  def pending_alerts
+    alerts.where(:pending.gt => Date.today).desc(:created_at)
+  end
+
 end

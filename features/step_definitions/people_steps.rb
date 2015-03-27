@@ -31,6 +31,11 @@ Given(/^I have the following people$/) do |table|
         FactoryGirl.create(:used_service, person: person, service: service)
       end
     end
+
+    if hash['alerta'].present?
+      FactoryGirl.create(:alert, person: person, type: hash['alerta'])
+    end
+
   end
 end
 
@@ -85,7 +90,7 @@ Then(/^I should see the list of the people with "(.*?)" and "(.*?)" as surname a
   end
 end
 
-# PERSON SHOW
+# PERSON SHOW  
 
 When(/^I click the view icon of a person in people list view$/) do
   persona = Person.first
@@ -365,4 +370,23 @@ Then(/^I see that it has created a new use for shower service for "(.*?)"$/) do 
   persona = Person.where(surname: apellido).first
   page.driver.browser.navigate.refresh
   expect(page).to have_checked_field("ducha_#{persona.id}")
+end
+
+# Alertas en la lista de personas 
+
+Then(/^I should see colours over people that have any alert$/) do
+  Person.each do |persona|
+    alerta = persona.alerts.first
+    if alerta 
+      if alerta.type == :punishment
+        expect(page).to have_css "tr#person_#{persona.id}.danger"
+      elsif alerta.type == :warning
+        expect(page).to have_css "tr#person_#{persona.id}.warning"
+      elsif alerta.type == :advice
+        expect(page).to have_css "tr#person_#{persona.id}.success"
+      end
+    else 
+      expect(page).to have_css "tr#person_#{persona.id}"
+    end
+  end
 end

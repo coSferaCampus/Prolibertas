@@ -63,5 +63,16 @@ RSpec.describe Person, type: :model do
           .to eql({'comida' => servicio_comida.id.to_s, 'ducha' => servicio_ducha.id.to_s})
       end
     end
+
+    context "#pending_alerts" do
+      it "should return the alerts from de future" do
+        persona = FactoryGirl.create(:person)
+        alertFuture = FactoryGirl.create(:alert, person: persona, pending: 2.months.from_now)
+        alertPass = FactoryGirl.create(:alert, person: persona, pending: 2.months.until)
+
+        expect(persona.pending_alerts).to include(alertFuture)
+        expect(persona.pending_alerts).to_not include(alertPass)
+      end
+    end
   end
 end
