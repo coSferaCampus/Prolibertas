@@ -21,7 +21,7 @@ Feature: Create person
     When I fill person form with invalid parameters
     And  I fill input "InputName" with "Name"
     Then I should not see error on "InputName"
-@wip
+
   Scenario: Correct error parameters on InputSurname
     When I fill person form with invalid parameters
     And  I fill input "InputSurname" with "Surname"
