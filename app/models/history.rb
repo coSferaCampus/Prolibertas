@@ -2,7 +2,8 @@ class History
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Userstamp
-
+  
+  mount_uploader :file, FileUploader
 
   field :description, type: String
   field :liabilities, type: String

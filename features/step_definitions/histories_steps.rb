@@ -33,25 +33,45 @@ end
 
 When(/^I fill history form with valid parameters$/) do
   parametros = FactoryGirl.attributes_for(:history)
-  fill_in 'InputDescriptionHistory', with: parametros[:description]
+  fill_in 'InputDescription', with: parametros[:description]
   fill_in 'InputLiabilities', with: parametros[:liabilities]
-  fill_in 'InputDateHistory', with: parametros[:date]
+  fill_in 'InputDate', with: parametros[:date].strftime('%d/%m/%Y')
   fill_in 'InputTime', with: parametros[:time]
-  fill_in 'InputDatenew', with: parametros[:newdate]
+  fill_in 'InputDatenew', with: parametros[:newdate].strftime('%d/%m/%Y')
   fill_in 'InputTimenew', with: parametros[:newtime]
+  attach_file('InputFile', "#{Rails.root}/spec/samples/file.pdf")
+  click_button 'InputSubmit'
 end
 
 Then(/^I should see the new history in histories list$/) do
-  expect(page).to have_css "#List_histories"
+  expect(page).to have_css "#list_histories"
 
   historia = Person.first.histories.last
 
-  expect(page).to have_css "tr#history_#{history.id} td:nth-child(2)", text:history.description
-  expect(page).to have_css "tr#history_#{history.id} td:nth-child(3)", text:history.liabilities
-  expect(page).to have_css "tr#history_#{history.id} td:nth-child(4)", text:history.date.strftime("%Y-%m-%d")
-  expect(page).to have_css "tr#history_#{history.id} td:nth-child(5)", text:history.time
+  expect(page).to have_css "tr#history_#{historia.id} td:nth-child(2)", text:historia.description
+  expect(page).to have_css "tr#history_#{historia.id} td:nth-child(3)", text:historia.liabilities
+  expect(page).to have_css "tr#history_#{historia.id} td:nth-child(4)", text:historia.date.strftime("%Y-%m-%d")
+  expect(page).to have_css "tr#history_#{historia.id} td:nth-child(5)", text:historia.time
 end
 
 Then(/^I should see history created message$/) do
   expect(page).to have_css ".leo-message", text:"¡Ha creado satisfactoriamente una nueva historia!"
+end
+
+When(/^I fill history form with invalid parameters$/) do
+  parametros = FactoryGirl.attributes_for(:history)
+  fill_in 'InputLiabilities', with: parametros[:liabilities]
+  fill_in 'InputDatenew', with: parametros[:newdate].strftime('%d/%m/%Y')
+  fill_in 'InputTimenew', with: parametros[:newtime]
+  attach_file('InputFile', "#{Rails.root}/spec/samples/file.pdf")
+  click_button 'InputSubmit'
+end
+Then(/^I should see the errors in the history form$/) do
+  expect(page).to have_css ".has-error #InputDescription"
+  expect(page).to have_css "#InputDescription ~ .tooltip", text:  I18n.t('mongoid.errors.messages.blank')
+  expect(page).to have_css ".has-error #InputDate"
+  expect(page).to have_css "#InputDate ~ .tooltip", text: I18n.t('mongoid.errors.messages.blank')
+  expect(page).to have_css ".has-error #InputTime"
+  expect(page).to have_css "#InputTime ~ .tooltip", text: I18n.t('mongoid.errors.messages.blank')
+
 end
