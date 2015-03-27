@@ -173,6 +173,13 @@ RSpec.describe UsersController, type: :controller do
           put :update, id: @volunteer.id.to_s, user: @parameters 
           expect(User.where(id: @volunteer.id.to_s).first).to have_role :worker
         end
+
+        it "can update my own password" do
+          director = FactoryGirl.create(:director)
+          sign_in director
+          put :update, id: director.id.to_s, user: { password: 'foofoobar', password_confirmation: 'foofoobar' }
+          expect(response).to have_http_status :no_content
+        end
       end
 
       context "DELETE #destroy" do

@@ -41,6 +41,10 @@ class UsersController < ApplicationController
       @user.add_role(rol)
     end
 
+    if @user == current_user
+      sign_in @user, bypass: true
+    end
+
     respond_with @user
   end
 

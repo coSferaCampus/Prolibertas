@@ -36,6 +36,13 @@
       controllerAs: "userFormCtrl"    
     })
 
+    .state("usuario.perfil", {
+      url: "/perfil",
+      templateUrl: "perfil.html",
+      controller: "UserFormController",
+      controllerAs: "userFormCtrl"    
+    })
+
     .state("personas", {
       url: "/personas?alertaCreado&alertaBorrado",
       templateUrl: "personas.html",
