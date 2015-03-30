@@ -17,12 +17,12 @@ Feature: Edit History
    Then I should see the edit form history
    And I should see the history information in the form
 
-  Scenario: update alert form
+  Scenario: update history form
    Given I click the edit history button
    When I update the history form
    Then I should see the history updated
 
-  Scenario: Update alert form with no text
+  Scenario: Update history form with no text
    Given I click the edit history button
    When I fill history update form with invalid parameters
    Then I should see the errors in the update history form
