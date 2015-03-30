@@ -78,7 +78,7 @@ end
 
 Then(/^I should see the list of all users$/) do
   expect(page).to have_css "#usersTable"
-  User.each do |user|
+  User.with_role(:worker).each do |user|
     expect(page).to have_css "tr#user_#{user.id} td:nth-child(1)", text: user.name
     expect(page).to have_css "tr#user_#{user.id} td:nth-child(2)", text: user.full_name
     expect(page).to have_css "tr#user_#{user.id} td:nth-child(3)", text: 
