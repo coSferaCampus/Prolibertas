@@ -16,4 +16,4 @@ Feature: User Show
   Scenario: Remove user
     When I click the remove button in users view
     Then I should remove this user
-    And  I should see a success message
+    And  I should see a remove user success message

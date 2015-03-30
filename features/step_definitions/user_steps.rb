@@ -128,7 +128,7 @@ Then(/^I should remove this user$/) do
   expect(page).to_not have_css "#user-show-#{@usuario.id}"
 end
 
-Then(/^I should see a success message$/) do
+Then(/^I should see a remove user success message$/) do
   expect(page).to have_css ".leo-message", text:"¡Borrado satisfactoriamente!"
 end
 
