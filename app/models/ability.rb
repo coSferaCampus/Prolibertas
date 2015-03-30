@@ -21,7 +21,8 @@ class Ability
         usuario.has_role? :worker or usuario.has_role? :director
       end
     elsif user.has_role? :volunteer
-      cannot :manage, User
+      cannot  :manage, User
+      cannot  :manage, History
     end
   end
 end

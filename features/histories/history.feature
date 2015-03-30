@@ -7,7 +7,7 @@ Feature: Histories
  Background:
    Given There are 1 person in the platform
    Given There are 3 histories of this person
-   Given I am loged in like user
+   Given I am loged in like director
    Given I click the view icon of a person in people list view
    When I click the histories tab of the person
 
