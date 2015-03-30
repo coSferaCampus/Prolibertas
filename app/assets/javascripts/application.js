@@ -14,10 +14,12 @@
 //= require jquery_ujs
 //= require bootstrap/collapse
 //= require bootstrap/tooltip
-//= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
+//= require moment
+//= require moment/es
+//= require bootstrap-datetimepicker
 //= require angular
 //= require angular-ui-router
 //= require angular-rails-templates
+//= require ng-file-upload
 //= require_tree .
 //= require_tree ../templates

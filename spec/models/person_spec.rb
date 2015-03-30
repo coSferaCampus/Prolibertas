@@ -25,11 +25,54 @@ RSpec.describe Person, type: :model do
 
   context "Relations" do
     it { is_expected.to have_many(:used_services) }
+    it { is_expected.to have_many(:alerts) }
   end
-  
+
   context "Validations" do
   	it { is_expected.to validate_presence_of(:name) }
   	it { is_expected.to validate_presence_of(:surname) }
     it { is_expected.to validate_inclusion_of(:genre).to_allow([:man, :woman]) }
+  end
+
+  context "custom methods" do
+    context "#used_services_of_today" do
+      it "should return used services of today" do
+        # Estos datos son para crear un servicio usado por la persona(comida, ducha)
+        persona = FactoryGirl.create(:person)
+        comida = Service.where(name: 'comida').first
+        ducha = Service.where(name: 'ducha').first
+        FactoryGirl.create(:used_service, person: persona, service: comida)
+        FactoryGirl.create(:used_service, person: persona, service: ducha)
+
+        expect(persona.used_services_of_today).to eql({'comida' => true, 'ducha' => true})
+      end
+
+
+    end
+
+    context "#used_services_of_today_id" do
+      it "should return used services of today with id" do
+        # Estos datos son para crear un servicio usado por la persona(comida, ducha)
+        persona = FactoryGirl.create(:person)
+        comida = Service.where(name: 'comida').first
+        ducha = Service.where(name: 'ducha').first
+        servicio_comida = FactoryGirl.create(:used_service, person: persona, service: comida)
+        servicio_ducha = FactoryGirl.create(:used_service, person: persona, service: ducha)
+
+        expect(persona.used_services_of_today_id)
+          .to eql({'comida' => servicio_comida.id.to_s, 'ducha' => servicio_ducha.id.to_s})
+      end
+    end
+
+    context "#pending_alerts" do
+      it "should return the alerts from de future" do
+        persona = FactoryGirl.create(:person)
+        alertFuture = FactoryGirl.create(:alert, person: persona, pending: 2.months.from_now)
+        alertPass = FactoryGirl.create(:alert, person: persona, pending: 2.months.until)
+
+        expect(persona.pending_alerts).to include(alertFuture)
+        expect(persona.pending_alerts).to_not include(alertPass)
+      end
+    end
   end
 end

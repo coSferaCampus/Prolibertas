@@ -21,10 +21,10 @@ es:
       template:
         <<: *template
       messages:
-        invalid: 'es inválido'
+        invalid: 'Es inválido'
         blank: 'Este campo es obligatorio'
-        confirmation: 'no coincide con la confirmación'
-        taken: 'ya está en uso'
+        confirmation: 'No coincide con la confirmación'
+        taken: 'Ya está en uso'
         inclusion: 'Debe elegir una opción'
-        too_long: 'es demasiado largo'
-        not_a_number: 'tiene que ser un número'
+        too_long: 'Es demasiado largo'
+        not_a_number: 'Tiene que ser un número'
