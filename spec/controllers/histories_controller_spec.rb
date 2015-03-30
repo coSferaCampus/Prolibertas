@@ -9,6 +9,7 @@ RSpec.describe HistoriesController, type: :controller do
   before :all do
     @user = FactoryGirl.create(:user)
     @person = FactoryGirl.create(:person)
+    @volunteer = FactoryGirl.create(:volunteer)
     
     # Para todos los tests
     @model = History
@@ -41,4 +42,34 @@ RSpec.describe HistoriesController, type: :controller do
   end
 
   it_behaves_like "a REST controller", options, json_attributes
+
+  context "abilities" do 
+
+    context "volunteer" do
+      before do
+        sign_in @volunteer
+      end
+
+      context "GET #show" do
+        it "returns 403 HTTP status code" do
+          get :show, id: @resource.id.to_s 
+          expect(response).to have_http_status :forbidden
+        end
+      end
+
+      context "PUT #update" do
+        it "returns 403 HTTP status code" do
+          put :update, id: @resource.id.to_s
+          expect(response).to have_http_status :forbidden
+        end
+      end
+
+      context "DELETE #destroy" do
+        it "returns 403 HTTP status code" do
+          delete :destroy, id: @resource.id.to_s
+          expect(response).to have_http_status :forbidden
+        end
+      end
+    end
+  end
 end
