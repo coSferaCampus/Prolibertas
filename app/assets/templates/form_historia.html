@@ -1,6 +1,6 @@
 <div class="container col-xs-12 col-sm-12 col-md-12">
   <h3>{{prolibertas}}</h3>
-  <form ng-submit="historyFormCtrl.actionForm()">
+  <form ng-submit="historyFormCtrl.actionForm()" id="historyform">
     <div class="form-group" ng-class="{'has-error':historyFormCtrl.errors.description}">
       <textarea class="form-control" ng-change="historyFormCtrl.change('Description')" ng-model="historyFormCtrl.historyForm.description" id="InputDescription" placeholder="Descripción de la nueva historia" rows="3"></textarea>
     </div>
