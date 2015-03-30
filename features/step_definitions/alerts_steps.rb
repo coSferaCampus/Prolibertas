@@ -119,7 +119,7 @@ end
 Then(/^I should remove this alert$/) do
   persona = Person.first
   alert = Alert.where(person: persona).first
-  expect(page).to have_css "tr#alert_#{alert.id}"
+  expect(page).to_not have_css "tr#alert_#{alert.id}"
 end
 
 Then(/^I should see a success message of delete alert$/) do
@@ -146,7 +146,6 @@ When(/^I update the alert form$/) do
   select('advertencia', from: 'InputType')
   fill_in 'InputDescription', with: "Tuvo un problema"
   fill_in 'InputCause', with: "Por el turno"
-  fill_in 'InputPending', with: "2015-06-03"
   page.find("#InputSubmit").click
 end
 
@@ -156,7 +155,6 @@ Then(/^I should see the alert updated$/) do
   expect(page).to have_css "#alert_type", text: "advertencia"
   expect(page).to have_css "#alert_description", text: "Tuvo un problema"
   expect(page).to have_css "#alert_cause", text: "Por el turno"
-  expect(page).to have_css "#alert_pending", text: "2015-06-03"
 end
 
 When(/^I fill alert update form with invalid parameters$/) do
@@ -170,4 +168,26 @@ Then(/^I should see the errors in the update alert form$/) do
   expect(page).to have_css "#InputType ~ .tooltip", text: I18n.t('mongoid.errors.messages.inclusion')
   expect(page).to have_css ".has-error #InputPending"
   expect(page).to have_css "#InputPending ~ .tooltip", text: I18n.t('mongoid.errors.messages.blank')
+end
+
+#Test para los colores de la lita de alertas
+Given(/^I have the following alerts$/) do |table|
+  persona = FactoryGirl.create(:person)
+  table.hashes.each do |hash|
+    alert = FactoryGirl.create(
+    :alert, type: hash['tipo'], person: persona)
+  end
+end
+
+Then(/^I should see colours over alerts$/) do
+  persona = Person.first
+  persona.alerts.each do |alerta|
+    if alerta.type == :punishment
+      expect(page).to have_css "tr#alert_#{alerta.id}.danger"
+    elsif alerta.type == :warning
+      expect(page).to have_css "tr#alert_#{alerta.id}.warning"
+    elsif alerta.type == :advice
+      expect(page).to have_css "tr#alert_#{alerta.id}.success"
+    end
+  end
 end
