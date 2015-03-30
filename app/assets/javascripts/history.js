@@ -79,27 +79,23 @@
             }
           }
         });
-     /* $http.post("/people/" + $state.params.id + "/histories.json" , {history: scope.historyForm})
-        .success(function(data){
-          $state.go('persona.historias', { alertaCreado: 'true' });
-        })
-        .error(function(data) {
-          scope.errors = data.errors;
-
-          for(var error in scope.errors) {
-            if(scope.errors[error]) {
-              $("#Input" + $rootScope.capitalize(error))
-                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');
-            }
-          }
-        });*/
     };
 
     scope.actualizarHistoria = function() {
       scope.formDates();
-      $http.put("/people/" + $state.params.id + ".json",{history: scope.historyForm})
+      //$http.put("/histories/" + $state.params.historia_id + ".json",{history: scope.historyForm})
+      $upload.upload({
+        url: "/histories/" + $state.params.historia_id + ".json",
+        method: "PUT",
+        fields: scope.historyForm,
+        file: scope.historyForm.file,
+        fileFormDataName: "history[file]",
+        formDataAppender: function(fd, key, val){
+          fd.append('history[' + key + ']', val || '');
+        }
+      })
         .success(function() {
-          $state.go("persona", {id: $state.params.id});
+          $state.go("persona.historia", {id: $state.params.id, historia_id: $state.params.historia_id});
           scope.errors = {};
         })
         .error(function(data) {
@@ -118,8 +114,9 @@
 
     if ($state.params.historia_id != undefined) {
       scope.actionForm = scope.actualizarHistoria;
-      $http.get('/people/' + $state.params.id + '.json')
+      $http.get('/histories/' + $state.params.historia_id + '.json')
       .success(function(data){
+        console.log(data.history);
         scope.historyForm = data.history;
         $rootScope.prolibertas = "Editar Historia"
       });

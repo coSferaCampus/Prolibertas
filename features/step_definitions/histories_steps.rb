@@ -75,3 +75,44 @@ Then(/^I should see the errors in the history form$/) do
   expect(page).to have_css "#InputTime ~ .tooltip", text: I18n.t('mongoid.errors.messages.blank')
 
 end
+
+#editar historia
+
+When(/^I click the edit history button$/) do
+  page.find(".historia__btn__edit").click
+end
+
+Then(/^I should see the edit form history$/) do
+  expect(page).to have_css "#historyform"
+end
+
+Then(/^I should see the history information in the form$/) do
+  historia = Person.first.histories.first 
+  find_field('InputDescription').value.should eq historia.description
+  find_field('InputLiabilities').value.should eq historia.liabilities
+end
+
+When(/^I update the history form$/) do
+  fill_in 'InputDescription', with: "Descripcion de la historia"
+  fill_in 'InputLiabilities', with: "Estos son los compromisos"
+  page.find("#InputSubmit").click
+end
+
+Then(/^I should see the history updated$/) do
+  expect(page).to have_css "#history-show-page"
+
+  expect(page).to have_css "#descripcionhistoria", text: "Descripcion de la historia"
+  expect(page).to have_css "#compromisos", text: "Estos son los compromisos"
+end
+
+When(/^I fill history update form with invalid parameters$/) do
+  fill_in 'InputDescription', with: ""
+  fill_in 'InputDate', with: ""
+  fill_in 'InputTime', with: ""
+  page.find("#InputSubmit").click
+end
+
+Then(/^I should see the errors in the update history form$/) do
+  
+end
+  
