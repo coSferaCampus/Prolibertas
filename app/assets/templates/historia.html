@@ -15,6 +15,12 @@
     <li class="list-group-item person__list__el">
        <strong class="person__list__text__left">Hora:</strong> <span id="horahistoria">{{ historyCtrl.history.time }}</span> 
     </li>
+    <li class="list-group-item person__list__el">
+       <strong class="person__list__text__left">Fecha proxima cita:</strong> <span id="horanewhistoria">{{ historyCtrl.history.newdate }}</span> 
+    </li>
+    <li class="list-group-item person__list__el">
+       <strong class="person__list__text__left">Hora proxima cita:</strong> <span id="horanewhistoria">{{ historyCtrl.history.newtime }}</span> 
+    </li>
       <div class="col-md-12 btn_view_history">
         <a id="remove-history-btn" type="button" class="btn btn-danger historia__btn__remove">Eliminar</a>
         <button type="button" class="btn btn-primary historia__btn__edit" ui-sref="persona.historiaEditar({historia_id: historyCtrl.history.id})">Editar</button>
