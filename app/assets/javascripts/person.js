@@ -64,18 +64,20 @@
     };
 
     scope.alertClass = function(person) {
-      if (person.pending_alerts[0].type == 'punishment') {
-        return 'danger';
+      if (person.pending_alerts.length > 0){
+        if (person.pending_alerts[0].type == 'punishment') {
+          return 'danger';
+        }
+        else if (person.pending_alerts[0].type == 'warning') {
+          return 'warning';
+        }
+        else if (person.pending_alerts[0].type == 'advice') {
+          return 'success';
+        }
+        else {
+          return '';
+        } 
       }
-      else if (person.pending_alerts[0].type == 'warning') {
-        return 'warning';
-      }
-      else if (person.pending_alerts[0].type == 'advice') {
-        return 'success';
-      }
-      else {
-        return '';
-      } 
     };
 
   }]);
