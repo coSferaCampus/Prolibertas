@@ -23,6 +23,7 @@ class Ability
     elsif user.has_role? :volunteer
       cannot  :manage, User
       cannot  :manage, History
+      cannot  :manage, Alert
     end
   end
 end
