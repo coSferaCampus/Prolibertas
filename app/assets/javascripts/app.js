@@ -173,5 +173,6 @@
     // Obtener el usuario logeado
     $rootScope.currentUser = {};
     $http.get('/current.json').success(function(data) { $rootScope.currentUser = data.user; });
+    
   });
 })();
