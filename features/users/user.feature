@@ -20,5 +20,6 @@ Feature: User Show
 
   Scenario: Not view users tab
     Given There is 1 volunteer user in the platform
+    And There is no user sesion
     When I am loged in like volunteer
     Then I cannot view users tab

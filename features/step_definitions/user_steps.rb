@@ -282,3 +282,25 @@ end
 Then(/^I should see my password changed$/) do
   expect(page).to have_css "#principal"
 end
+
+#Test permiso de Voluntario
+Given(/^There is (\d+) volunteer user in the platform$/) do |arg1|
+  @voluntario = FactoryGirl.create(:volunteer)
+end
+
+Given(/^There is no user sesion$/) do
+  page.find("#logout").click
+end
+
+When(/^I am loged in like volunteer$/) do
+  visit new_user_session_path
+  fill_in 'user_name', with: @voluntario.name
+  fill_in 'user_password', with: 'foobarfoo'
+  #click_button 'buttomlogin'
+  #page.execute_script "$('body').scrollTo('#buttomlogin');"
+  page.find("#buttomlogin").click
+end
+
+Then(/^I cannot view users tab$/) do
+  expect(page).to_not have_css "#go-users"
+end
