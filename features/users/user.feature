@@ -17,3 +17,8 @@ Feature: User Show
     When I click the remove button in users view
     Then I should remove this user
     And  I should see a remove user success message
+
+  Scenario: Not view users tab
+    Given There is 1 volunteer user in the platform
+    When I am loged in like volunteer
+    Then I cannot view users tab
