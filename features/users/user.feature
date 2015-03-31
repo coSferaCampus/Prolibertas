@@ -23,3 +23,12 @@ Feature: User Show
     And There is no user sesion
     When I am loged in like volunteer
     Then I cannot view users tab
+
+  Scenario: Volunteer tabs
+    Given There is 1 person in the platform
+    Given There is 1 volunteer user in the platform
+    And There is no user sesion
+    When I am loged in like volunteer
+    And I click the view icon of a person in people list view
+    Then I should go to a view of this person
+    And I shouldn't view history tab and alerts tab
