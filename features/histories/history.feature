@@ -17,3 +17,9 @@ Feature: Histories
   Scenario: Open history view
     When I click the view icon of a history in histories list view
     Then I should go to a view of this history
+
+  Scenario: Remove history
+    When I click the view icon of a history in histories list view
+    And I click the remove button in history view
+    Then I should see history list
+    And  I should see a history destroy message

@@ -27,6 +27,15 @@
       .success(function(data){
         scope.history = data.history;
       })
+
+    scope.destroyHistory = function(history) {
+      var confirmed = confirm('¿Desea borrar la historia?');
+      if (confirmed) {
+        $http.delete('/histories/' + history.id + '.json').success(function(data) {
+          $state.go("persona.historias", { alertaBorrado: 'true' })
+        });
+      }
+    };
   }]);
 
   app.controller('HistoryFormController', ['$http', '$state', '$rootScope','$upload', function($http, $state, $rootScope, $upload) {
@@ -125,7 +134,5 @@
       scope.actionForm = scope.guardarHistoria;
       $rootScope.prolibertas = "Historia nueva"
     }
-
   }]);
-
 })();

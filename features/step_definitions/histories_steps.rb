@@ -115,4 +115,18 @@ end
 Then(/^I should see the errors in the update history form$/) do
   
 end
-  
+
+
+When(/^I click the remove button in history view$/) do
+  @historia = History.first
+  page.find("#remove-history-btn").click
+  page.driver.browser.switch_to.alert.accept
+end
+
+Then(/^I should see history list$/) do
+  expect(page).to have_css "#list_histories" 
+end
+
+Then(/^I should see a history destroy message$/) do
+  expect(page).to have_css ".leo-message", text: "¡Historia borrada satisfactoriamente!"
+end
