@@ -55,8 +55,14 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context "GET #show" do
-        it "returns 403 HTTP status code" do
+        it "returns 200 HTTP status code when looking for himself" do
           get :show, id: @volunteer.id.to_s 
+          expect(response).to have_http_status :ok
+        end
+
+        it "returns 403 HTTP status code when looking for other volunteer" do
+          voluntario = FactoryGirl.create(:volunteer)
+          get :show, id: voluntario.id.to_s 
           expect(response).to have_http_status :forbidden
         end
       end
