@@ -20,14 +20,14 @@
               </span>
             </div>
           </div>
-          <a id="createPerson" ui-sref="personasNueva" class="btn listpeople__boton col-md-1 col-sm-1 col-md-offset-3 col-sm-offset-3 col-xs-1"><img src="/assets/add-person.svg"></a>
+          <a id="createPerson" ui-sref="personasNueva" class="btn btn-primary col-sm-offset-1 col-md-offset-2 "><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button hidden-xs"><strong> PERSONA</strong><span></a>
         </form>
       </div>
     </div>
   </nav>
 
   <section class="listpeople__tabla col-md-12">
-    <table class="table table-responsive col-md-12  col-lg-12" id="peopleTable">
+    <table class="table table-responsive table-hover table-condensed col-md-12  col-lg-12" id="peopleTable">
       <thead class="listpeople__cabecera">
         <tr>
           <th>Nombre</th>
@@ -43,7 +43,7 @@
           <th class="listpeople__centrado hidden-xs"></th>
         </tr>
       </thead>
-      <tbody >
+      <tbody>
         <tr ng-repeat="person in peopleCtrl.people | filter:search" id="person_{{person.id}}" class="{{peopleCtrl.alertClass(person)}}">
           <td>{{person.name}}</td>
           <td>{{person.surname}}</td>
@@ -65,15 +65,18 @@
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ducha'))"
             type="checkbox">
           </td>
-          <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></td>
+          <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></i>
+          </td>
           <td class="listpeople__centrado"><a id="person-show-{{person.id}}"
-              ui-sref="persona({ id: person.id })">
+            ui-sref="persona({ id: person.id })">
             <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
           </td>
 
-          <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-list listpeople__azul"></td>
+          <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-list listpeople__azul"></i></td>
         </tr>
       </tbody>
     </table>
-    <div class="alert alert-success leo-message" ng-if="peopleCtrl.alertaCreado">¡Ha creado satisfactoriamente una nueva persona!</div>
-    <div class="alert alert-danger leo-message" ng-if="peopleCtrl.alertaBorrado">¡Borrado satisfactoriamente!</div>
+  </section>
+
+  <div class="alert alert-success leo-message" ng-if="peopleCtrl.alertaCreado">¡Ha creado satisfactoriamente una nueva persona!</div>
+  <div class="alert alert-danger leo-message" ng-if="peopleCtrl.alertaBorrado">¡Borrado satisfactoriamente!</div>
