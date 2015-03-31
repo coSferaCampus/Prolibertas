@@ -21,9 +21,12 @@ class Ability
         usuario.has_role? :worker or usuario.has_role? :director
       end
     elsif user.has_role? :volunteer
-      cannot  :manage, User
-      cannot  :manage, History
-      cannot  :manage, Alert
+      cannot [:index, :create, :update, :destroy], User
+      cannot :show, User do |usuario|
+        user != usuario
+      end
+      cannot :manage, History
+      cannot :manage, Alert
     end
   end
 end
