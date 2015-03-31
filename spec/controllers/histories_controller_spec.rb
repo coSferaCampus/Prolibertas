@@ -57,6 +57,20 @@ RSpec.describe HistoriesController, type: :controller do
         end
       end
 
+      context "GET #index" do
+        it "returns 403 HTTP status code" do
+          get :index, person_id: @person.id.to_s
+          expect(response).to have_http_status :forbidden
+        end
+      end
+
+      context "POST #create" do
+        it "returns 403 HTTP status code" do
+          post :create, person_id: @person.id.to_s, id: @resource.id.to_s, history: @create_params
+          expect(response).to have_http_status :forbidden
+        end
+      end
+
       context "PUT #update" do
         it "returns 403 HTTP status code" do
           put :update, id: @resource.id.to_s
