@@ -1,31 +1,31 @@
 <div class="col-md-12">
-  <div class="row">
-    <a class="btn btn-primary addhistory col-md-offset-10 col-md-2 col-sm-offset-10 col-sm-2 col-xs-offset-9 col-xs-3" id="createhistory" ui-sref="persona.historiaNueva">Añadir Historia</a>
+  <div class="row__button__create">
+    <a class="btn btn-primary col-md-offset-10 col-md-2 col-sm-offset-9 col-sm-3 col-xs-offset-9 col-xs-3" id="createhistory" ui-sref="persona.historiaNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="hidden-xs"><strong> HISTORIA</strong><span></a>
   </div>
-  <table class="table col-md-12 col-lg-12" id="list_histories">
+  <table class="table table-responsive table-hover table-condensed " id="list_histories">
     <thead class="listpeople__cabecera">
       <tr>
-        <th>Creador</th>
+        <th class="hidden-xs">Creador</th>
         <th>Descripción</th>
-        <th>Compromisos</th>
+        <th class="hidden-xs">Compromisos</th>
         <th>Fecha</th>
         <th>Hora</th>
         <th></th>
       </tr>
     </thead>
-    <tbody >
+    <tbody>
       <tr id="history_{{history.id}}" ng-repeat="history in historiesCtrl.histories">
-        <td></td>
+        <td class="hidden-xs"></td>
         <td>{{history.description}}</td>
-        <td>{{history.liabilities}}</td>
+        <td class="hidden-xs">{{history.liabilities}}</td>
         <td>{{history.date}}</td> 
         <td>{{history.time}}</td> 
-        <td class="listpeople__centrado"><a id="history-show-{{history.id}}" ui-sref="persona.historia({historia_id: history.id})">
-            <span class="glyphicon glyphicon-eye-open listpeople__azul" id="views_history"></span></a>
+        <td class="listpeople__centrado"><a id="history-show-{{history.id}}" ui-sref="persona.historia({historia_id: history.id})"><span class="glyphicon glyphicon-eye-open listpeople__azul" id="views_history"></span></a>
         </td>  
       </tr>
     </tbody>
  </table>
 </div>
 <div class="alert alert-success leo-message" ng-if="historiesCtrl.alertaCreado">¡Ha creado satisfactoriamente una nueva historia!</div>
+
  <div class="alert alert-danger leo-message" ng-if="historiesCtrl.alertaBorrado">¡Historia borrada satisfactoriamente!</div>
