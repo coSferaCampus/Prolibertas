@@ -23,7 +23,7 @@
           <strong class="user__list__text__left">Tipo de usuario:</strong> <span id="user_role">{{ userCtrl.rol(userCtrl.user.role) }}</span>
         </li>
       </ul>
-      <div class="usuario__botones col-md-6">
+      <div class="usuario__botones col-md-6" ng-if="currentUser.id !== userCtrl.user.id">
         <a id="remove-user-btn" type="button" class="btn btn-danger usuario__botones__remove"
         ng-click="userCtrl.destroyuser(userCtrl.user)">Eliminar</a>
         <button id="user-edit-{{userCtrl.user.id}}" ui-sref="usuarioEditar({id:userCtrl.user.id})" type="button" class="btn btn-primary usuario__botones__edit">Editar</button>

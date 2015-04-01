@@ -5,7 +5,7 @@
   app.controller('UsersController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope){
     var scope = this;
     scope.users = [];
-    $rootScope.prolibertas = "Usuarios de Prolibertas"    
+    $rootScope.prolibertas = "Usuarios de Prolibertas";
 
     scope.alertaBorrado = $state.params.alertaBorrado;
     // La alerta se oculta después de 5 segundos
