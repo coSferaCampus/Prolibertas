@@ -56,7 +56,7 @@ parametros = FactoryGirl.attributes_for(:alert)
   end
   fill_in 'InputDescription', with: parametros[:description]
   fill_in 'InputCause', with: parametros[:cause]
-  fill_in 'InputPending', with: parametros[:pending]
+  fill_in 'InputPending', with: parametros[:pending].strftime('%d/%m/%Y')
   click_button 'InputSubmit'
 end
 

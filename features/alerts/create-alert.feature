@@ -31,5 +31,5 @@ Feature: Create alert
 
   Scenario: Correct error parameters on InputPending
     When I fill alert form with invalid parameters
-    And  I fill input "InputPending" with "InputPending"
+    And  I fill input "InputPending" with "20/03/2016"
     Then I should not see error on "InputPending"
