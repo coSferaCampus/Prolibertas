@@ -23,7 +23,12 @@
 
   <div class="form-group col-md-7 datepicker" ng-class="{ 'has-error':alertCtrl.errors.pending }">
     <label>Hasta</label>
-    <input ng-model="alertCtrl.alertForm.pending" ng-change="alertCtrl.change('Pending')" type="text" class="form-control datepicker" id="InputPending">
+    <div class="input-group datepicker">
+      <span class="input-group-addon listpeople__azul">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+      <input ng-model="alertCtrl.alertForm.pending" ng-change="alertCtrl.change('Pending')" type="text" class="form-control" id="InputPending">
+    </div>
   </div>
 
   <div class="submit-group col-md-7">
