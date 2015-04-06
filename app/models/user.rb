@@ -1,6 +1,9 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Userstamp::User
+
+  mongoid_userstamp_user reader: :current_user
 
   # Roles
   rolify

@@ -15,7 +15,7 @@
     </thead>
     <tbody>
       <tr id="history_{{history.id}}" ng-repeat="history in historiesCtrl.histories">
-        <td class="hidden-xs"></td>
+        <td class="hidden-xs">{{history.created_by.name}}</td>
         <td>{{history.description}}</td>
         <td class="hidden-xs">{{history.liabilities}}</td>
         <td>{{history.date}}</td> 

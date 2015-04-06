@@ -1,5 +1,6 @@
 Given(/^There (?:are|is) (\d+) (?:histories|history) of this person$/) do |amount|
   history_person = Person.first
+  history_user = User.first
   FactoryGirl.create_list(:history, amount.to_i, person: history_person)
 end
 
@@ -48,6 +49,7 @@ Then(/^I should see the new history in histories list$/) do
 
   historia = Person.first.histories.last
 
+  expect(page).to have_css "tr#history_#{historia.id} td:nth-child(1)", text:historia.created_by
   expect(page).to have_css "tr#history_#{historia.id} td:nth-child(2)", text:historia.description
   expect(page).to have_css "tr#history_#{historia.id} td:nth-child(3)", text:historia.liabilities
   expect(page).to have_css "tr#history_#{historia.id} td:nth-child(4)", text:historia.date.strftime("%Y-%m-%d")

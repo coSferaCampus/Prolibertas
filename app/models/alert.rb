@@ -1,6 +1,9 @@
 class Alert
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Userstamp
+
+  mongoid_userstamp user_model: 'User'
 
   field :type,   		type: Symbol
   field :description,   type: String

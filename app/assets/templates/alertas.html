@@ -7,6 +7,7 @@
   <table id="alertsTable" class="table table-hover table-responsive">
     <thead class="listpeople__cabecera">
       <tr>
+        <th class="hidden-xs">Creador</th>
         <th class="hidden-xs">Tipo</th>
         <th>Descripción</th>
         <th class="hidden-xs">Causa</th>
@@ -17,6 +18,7 @@
 
     <tbody>
       <tr id="alert_{{alert.id}}" ng-repeat="alert in alertsCtrl.alerts | orderBy:'-pending'" class="{{alertsCtrl.alertClass(alert)}}">
+        <td>{{alert.created_by.name}}</td>
         <td class="hidden-xs">{{alertsCtrl.tipo(alert.type)}}</td>
         <td>{{alert.description}}</td>
         <td class="hidden-xs">{{alert.cause}}</td>
