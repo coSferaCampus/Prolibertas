@@ -67,7 +67,7 @@
     };
   }]);
 
-  app.controller('UserFormController', ['$http', '$state', '$rootScope', '$location', function($http, $state, $rootScope, $location) {
+  app.controller('UserFormController', ['$http', '$state', '$rootScope', function($http, $state, $rootScope) {
     var scope = this;
     // variable para el formulario
     scope.userForm = {role: "volunteer"}; 
