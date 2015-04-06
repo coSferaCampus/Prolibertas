@@ -67,7 +67,7 @@
     };
   }]);
 
-  app.controller('UserFormController', ['$http', '$state', '$rootScope',function($http, $state, $rootScope) {
+  app.controller('UserFormController', ['$http', '$state', '$rootScope', '$location', function($http, $state, $rootScope, $location) {
     var scope = this;
     // variable para el formulario
     scope.userForm = {role: "volunteer"}; 
@@ -102,7 +102,11 @@
     scope.actualizarUsuario = function() {
       $http.put("/users/" + $state.params.id + ".json",{user: scope.userForm})
         .success(function() {
-          $state.go("usuario", {id: $state.params.id});
+          if ($state.params.id === $rootScope.currentUser.id) {
+            $state.go("personas");
+          } else {
+            $state.go("usuario", {id: $state.params.id});
+          }
           scope.errors = {};
         })
         .error(function(data) {
