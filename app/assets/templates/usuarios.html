@@ -3,35 +3,36 @@
       <div class="col-md-12 col-sm-12 col-xs-12 listusers__buscadores">
         <p class="col-md-5 col-sm-6 hidden-xs">Usuarios de Prolibertas
         </p>
-        <a id="createPerson" ui-sref="usuariosNuevo" class="btn btn-primary col-sm-offset-1 col-md-offset-5 "><span class="glyphicon glyphicon-plus-sign"></span> <span class="listpeople__txt__button hidden-xs"><strong> USUARIO</strong></span>
-        </a>
+        <div class="form-group col-md-4 col-sm-6 col-xs-2">
+        <a class="btn btn-primary col-md-7 col-md-offset-12 col-sm-8" id="createPerson" ui-sref="usuariosNuevo"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button hidden-xs"> USUARIO<span></a>
+        </div>
       </div>
     </div>
   </nav>
 
-    <section class="listpeople__tabla col-md-12">
+  <section class="listpeople__tabla col-md-12">
     <table class="table table-responsive col-md-12 col-lg-12" id="usersTable">
-        <thead class="listpeople__cabecera">
-          <tr>
-            <th>Usuario</th>
-            <th class="hidden-xs">Nombre completo</th>
-            <th class="listpeople__centrado">Tipo de usuario</th>
-            <th class="listpeople__centrado"></th>
-          </tr>
-        </thead>
+      <thead class="listpeople__cabecera">
+        <tr>
+          <th>Usuario</th>
+          <th class="hidden-xs">Nombre completo</th>
+          <th class="listpeople__centrado">Tipo de usuario</th>
+          <th class="listpeople__centrado"></th>
+        </tr>
+      </thead>
 
-        <tbody>
-          <tr ng-repeat="user in usersCtrl.users" id="user_{{user.id}}">
-            <td>{{user.name}}</td>
-            <td class="hidden-xs">{{user.full_name}}</td>
-            <td class="listpeople__centrado">{{usersCtrl.rol(user.role)}}</td>
-            <td><a id="user-show-{{user.id}}" ui-sref="usuario({ id: user.id })">
-              <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+      <tbody>
+        <tr ng-repeat="user in usersCtrl.users" id="user_{{user.id}}">
+          <td>{{user.name}}</td>
+          <td class="hidden-xs">{{user.full_name}}</td>
+          <td class="listpeople__centrado">{{usersCtrl.rol(user.role)}}</td>
+          <td><a id="user-show-{{user.id}}" ui-sref="usuario({ id: user.id })">
+            <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
 
   <div class="alert alert-danger leo-message" ng-if="usersCtrl.alertaBorrado">¡Borrado satisfactoriamente!
