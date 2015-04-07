@@ -9,7 +9,7 @@
 </head>
 <body>
   <!-- MENU LATERAL -->
-  <nav class="navbar navbar-default barra navbar-fixed-top barra hidden-sm hidden-md hidden-lg">
+  <nav class="navbar navbar-default barra navbar-fixed-top barra hidden-sm hidden-md hidden-lg" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
         <div class="menu__users" title="Gestión de usuarios">
@@ -62,7 +62,7 @@
     <!--<img class="logo hidden-xs" src="/assets/logo-menu.svg">-->
     
     <div class="menu__users" title="Gestión de usuarios">
-      <a ui-sref="usuario.perfil({id: currentUser.id})" id="perfil" class="glyphicon glyphicon-user" aria-hidden="true"></a>
+      <a ui-sref="usuario.perfil({id: currentUser.id})"  ui-sref-active="active" id="perfil" class="glyphicon glyphicon-user" aria-hidden="true"></a>
     </div>
         <div class="menu__logout" title="Cerrar sesión">
       <%= link_to destroy_user_session_path, id: "logout", method: :delete do %>
@@ -72,8 +72,8 @@
 
     <ul class="list-group menu">
 
-      <li><a ui-sref="personas"
-        class="list-group-item menu__el col-xs-12 active"><span class="menu__el__text">PERSONAS</span></a>
+      <li><a ui-sref="personas" ui-sref-active="active"
+        class="list-group-item menu__el col-xs-12"><span class="menu__el__text">PERSONAS</span></a>
       </li>
       
       <li><a href="#" 
@@ -89,7 +89,7 @@
       </li>
       <% if current_user.role == 'director' or current_user.role == 'worker' %>
       <li>
-        <a ui-sref="usuarios" id="go-users"
+        <a ui-sref="usuarios"  ui-sref-active="active" id="go-users"
         class="list-group-item menu__el col-xs-12" title="Gestión de usuarios"><span class="menu__el__text">USUARIOS</span></a>
       </li>
       <% end %>
