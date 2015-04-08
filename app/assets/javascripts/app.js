@@ -1,6 +1,6 @@
 (function() {
   
-  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-alert']);
+  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-alert', 'prolibertas-service']);
 
   // Config
   app.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
@@ -160,7 +160,14 @@
             controllerAs: "historyFormCtrl"  
           }
         }
-      });
+      })
+
+     .state("servicios", {
+      url: "/servicios?alertaCreado&alertaBorrado",
+      templateUrl: "services.html",
+      controller: "ServicesController",
+      controllerAs: "servicesCtrl"
+     });
   });
 
   // Funciones globales

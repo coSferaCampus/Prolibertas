@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe ServicesController, type: :controller do
   set_content_type 'application/json'
 
-  options = [:show, :index]
+  options = [:show, :index, :create, :destroy]
   json_attributes = FactoryGirl.attributes_for(:service).keys
 
 
   before :all do
-    @user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:director)
 
     # Para todos los tests
     @model = Service
@@ -18,6 +18,12 @@ RSpec.describe ServicesController, type: :controller do
 
     # Para el test de index
     @first_page_resources = Service.all
+
+    # Para el test de create y destroy
+    @parameters = FactoryGirl.attributes_for(:service)
+
+    # Para el test de update
+    @update_params = {name: "prueba", primary: false}
 
   end
 
