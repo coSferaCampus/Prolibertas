@@ -1,0 +1,31 @@
+<div class="col-md-5 col-sx-4">
+  <h3 class="hidden-xs">Servicios</h3>
+  <table class="table table-responsive table-hover table-condensed " id="list_histories">
+    <thead class="listpeople__cabecera">
+      <tr>
+        <th class="hidden-xs">Nombre del servicio</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="service in servicesCtrl.services">
+        <td>{{service.name}}</td>
+        <td class="listpeople__centrado"><a href="#">
+            <span class="glyphicon glyphicon-trash listpeople__azul" ng-click="servicesCtrl.destroyService(service)"></span></a>
+          </td>
+      </tr>
+    </tbody>
+ </table>
+</div>
+<div class="col-md-offset-1 col-md-4 servicionuevo" ng-class="{'has-error':servicesCtrl.errors.name}">
+  <form ng-submit="servicesCtrl.guardarServicio()" id="serviceform">
+    <div class="form-group">
+      <input class="form-control" ng-model="servicesCtrl.serviceForm.name" ng-change="servicesCtrl.change('Name')" id="InputName" placeholder="Introduce nombre del nuevo servicio">
+    </div>
+    <button type="submit" class="btn btn-primary">Nuevo servicio</button>
+  </form>
+</div>
+<div class="alert alert-success leo-message" ng-if="servicesCtrl.alertaCreado">¡Ha creado satisfactoriamente un nuevo servicio!</div>
+
+ <div class="alert alert-danger leo-message" ng-if="servicesCtrl.alertaBorrado">Servicio borrado satisfactoriamente!</div>
+
