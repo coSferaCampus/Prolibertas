@@ -80,7 +80,7 @@
       <li><a href="#" 
         class="list-group-item menu__el col-xs-12"><span class="menu__el__text">FAMILIAS</span></a>
       </li>
-      
+      <% if current_user.role == 'director' or current_user.role == 'worker' %>
       <li><a ui-sref="servicios"  
         class="list-group-item menu__el col-xs-12"><span class="menu__el__text">SERVICIOS</span></a>
       </li>
@@ -88,7 +88,7 @@
       <li><a href="#" 
         class="list-group-item menu__el col-xs-12"><span class="menu__el__text">INFORMES</span></a>
       </li>
-      <% if current_user.role == 'director' or current_user.role == 'worker' %>
+      
       <li>
         <a ui-sref="usuarios"  ui-sref-active="active" id="go-users"
         class="list-group-item menu__el col-xs-12" title="Gestión de usuarios"><span class="menu__el__text">USUARIOS</span></a>
