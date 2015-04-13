@@ -4,6 +4,11 @@ body { overflow-x: hidden; }
   stroke: #fff;
 }
 
+.arc text {
+  font-size: 24px;
+  fill: #fff;
+}
+
 .bootstrap-datetimepicker-widget  {
   z-index: 99999999999 !important;
 }

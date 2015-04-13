@@ -1,13 +1,8 @@
 class Report
-  def genre
-    data = [{genre: 'hombres', amount: 60}, {genre: 'mujeres', amount: 90}]
-    
-    # man_amount = Person.where(genre: 'man').count
-    # data << { "Hombres" => man_amount}
+  def self.genre
+    man_amount = Person.where(genre: 'man').count
+    woman_amount = Person.where(genre: 'woman').count
 
-    # woman_amount = Person.where(genre: 'woman').count
-    # data << { "Mujeres" => woman_amount}
-
-    data
+    data = [{genre: 'hombres', amount: man_amount}, {genre: 'mujeres', amount: woman_amount}]
   end
 end
