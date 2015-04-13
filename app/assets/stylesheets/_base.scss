@@ -1,5 +1,9 @@
 body { overflow-x: hidden; }
 
+.arc path {
+  stroke: #fff;
+}
+
 .bootstrap-datetimepicker-widget  {
   z-index: 99999999999 !important;
 }

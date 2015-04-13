@@ -8,6 +8,8 @@ gem 'mongoid', '~> 4.0.1'
 gem 'mongoid_userstamp', '~> 0.4.0'
 gem 'carrierwave-mongoid' #gema para subir ficheros
 
+gem 'd3-rails', '~> 3.5.5'
+
 # Para el registro de usuarios
 gem 'devise', '~> 3.4.1'
 # Roles
