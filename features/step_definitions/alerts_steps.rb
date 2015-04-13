@@ -76,9 +76,9 @@ Then(/^I should see the new alert in alerts list$/) do
       "consejo"
     end
 
-  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(4)", text: alert.description
-  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(5)", text: alert.cause
-  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(6)", text: alert.pending.strftime("%Y-%m-%d")
+  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(3)", text: alert.description
+  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(4)", text: alert.cause
+  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(5)", text: alert.pending.strftime("%Y-%m-%d")
 
 end
 
