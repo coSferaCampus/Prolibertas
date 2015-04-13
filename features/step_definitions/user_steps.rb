@@ -136,6 +136,9 @@ Then(/^I should see a remove user success message$/) do
 end
 
 # Test para vista crear usuario
+Given(/^I visit new user page$/) do
+  page.find("#createUser").click
+end
 
 When(/^I fill user form with valid parameters$/) do
   parametros = FactoryGirl.attributes_for(:user)
