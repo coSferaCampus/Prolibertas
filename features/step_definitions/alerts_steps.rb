@@ -63,7 +63,7 @@ end
 Then(/^I should see the new alert in alerts list$/) do
   expect(page).to have_css "#alertsTable"
 
-  alert = Alert.last
+  alert = Alert.first
   expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(1)", text:
     if alert.type == :punishment
       "castigo"

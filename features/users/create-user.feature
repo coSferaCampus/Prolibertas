@@ -7,7 +7,6 @@ Feature: Create user
   Background: 
     Given I am loged in like director
     And I go to users list page
-    And I visit new user page
 
   Scenario: Parameters ok
     When I fill user form with valid parameters

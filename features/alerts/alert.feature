@@ -7,7 +7,7 @@ Feature: Alert Show
   Background:
     Given There are 1 person in the platform
     Given There are 3 alerts of this person
-    Given I am loged in like user
+    Given I am loged in like director
     Given I click the view icon of a person in people list view
     Given I click the alerts tab of the person
 
