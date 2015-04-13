@@ -26,9 +26,11 @@ class Ability
       end
     elsif user.has_role? :volunteer
       cannot [:index, :create, :destroy], User
-      cannot :show, :update, User do |usuario|
+
+      cannot [:show, :update], User do |usuario|
         user != usuario
       end
+
       cannot :manage, History
       cannot :manage, Alert
     end

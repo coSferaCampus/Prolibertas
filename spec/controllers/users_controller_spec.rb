@@ -83,7 +83,8 @@ RSpec.describe UsersController, type: :controller do
 
       context "PUT #update" do
         it "returns 403 HTTP status code" do
-          put :update, id: @volunteer.id.to_s, user: @parameters 
+          voluntario = FactoryGirl.create(:volunteer)
+          put :update, id: voluntario.id.to_s , user: @parameters 
           expect(response).to have_http_status :forbidden
         end
       end
@@ -108,7 +109,8 @@ RSpec.describe UsersController, type: :controller do
         end
 
         it "returns 403 HTTP status code when looking for a worker" do
-          get :show, id: @worker.id.to_s
+          trabajador = FactoryGirl.create(:worker)
+          get :show, id: trabajador.id.to_s
           expect(response).to have_http_status :forbidden
         end
 
