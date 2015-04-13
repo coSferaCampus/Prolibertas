@@ -10,7 +10,7 @@ var arc = d3.svg.arc()
 
 var pie = d3.layout.pie()
     .sort(null)
-    .value(function(d) { return d.population; });
+    .value(function(d) { return d.amount; });
 
 var svg = d3.select("body").append("svg")
     .attr("width", width)
@@ -18,10 +18,11 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-d3.csv("data.csv", function(error, data) {
+
+d3.json("/reports/genre.json", function(error, data) {
 
   data.forEach(function(d) {
-    d.genre = +d.genre;
+    d.amount = +d.amount;
   });
 
   var g = svg.selectAll(".arc")
@@ -31,12 +32,12 @@ d3.csv("data.csv", function(error, data) {
 
   g.append("path")
       .attr("d", arc)
-      .style("fill", function(d) { return color(d.data.age); });
+      .style("fill", function(d) { return color(d.data.genre); });
 
   g.append("text")
       .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
       .attr("dy", ".35em")
       .style("text-anchor", "middle")
-      .text(function(d) { return d.data.age; });
+      .text(function(d) { return d.data.genre; });
 
 });
