@@ -11,7 +11,7 @@ end
 Then(/^I should see the list of the alerts$/) do
   expect(page).to have_css "#alertsTable"
   Person.first.alerts.each do |alert|
-    expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(1)", text:
+    expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(2)", text:
       if alert.type == :punishment
         "castigo"
       elsif alert.type == :warning
@@ -19,9 +19,10 @@ Then(/^I should see the list of the alerts$/) do
       elsif alert.type == :advice
         "consejo"
       end
-    expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(2)", text: alert.description
-    expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(3)", text: alert.cause
-    expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(4)", text: alert.pending.strftime("%Y-%m-%d")
+
+    expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(3)", text: alert.description
+    expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(4)", text: alert.cause
+    expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(5)", text: alert.pending.strftime("%Y-%m-%d")
   end
 end
 
@@ -54,9 +55,11 @@ parametros = FactoryGirl.attributes_for(:alert)
   elsif parametros[:type] == :advice
     select('consejo', from: 'InputType')
   end
+
   fill_in 'InputDescription', with: parametros[:description]
   fill_in 'InputCause', with: parametros[:cause]
   fill_in 'InputPending', with: parametros[:pending].strftime('%d/%m/%Y')
+
   click_button 'InputSubmit'
 end
 
@@ -64,7 +67,7 @@ Then(/^I should see the new alert in alerts list$/) do
   expect(page).to have_css "#alertsTable"
 
   alert = Alert.last
-  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(1)", text:
+  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(2)", text:
     if alert.type == :punishment
       "castigo"
     elsif alert.type == :warning
@@ -72,9 +75,10 @@ Then(/^I should see the new alert in alerts list$/) do
     elsif alert.type == :advice
       "consejo"
     end
-  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(2)", text: alert.description
-  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(3)", text: alert.cause
-  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(4)", text: alert.pending.strftime("%Y-%m-%d")
+
+  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(4)", text: alert.description
+  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(5)", text: alert.cause
+  expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(6)", text: alert.pending.strftime("%Y-%m-%d")
 
 end
 
@@ -111,15 +115,14 @@ end
 #Test para borrar alerta
 When(/^I click the remove button in alert view$/) do
   persona = Person.first
-  alert = Alert.where(person: persona).first
+  @alert = Alert.where(person: persona).first
   page.find("#remove-alert-btn").click
   page.driver.browser.switch_to.alert.accept
 end
 
 Then(/^I should remove this alert$/) do
   persona = Person.first
-  alert = Alert.where(person: persona).first
-  expect(page).to_not have_css "tr#alert_#{alert.id}"
+  expect(page).to_not have_css "#alert_#{@alert.id}"
 end
 
 Then(/^I should see a success message of delete alert$/) do

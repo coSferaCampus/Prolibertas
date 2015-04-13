@@ -5,22 +5,24 @@ end
 # Para iniciar sesión
 
 Given(/^I am loged in like user$/) do
-  usuario = FactoryGirl.create(:user)
+  usuario = FactoryGirl.create(:director)
+
   visit new_user_session_path
+
   fill_in 'user_name', with: usuario.name
   fill_in 'user_password', with: 'foobarfoo'
-  #click_button 'buttomlogin'
-  #page.execute_script "$('body').scrollTo('#buttomlogin');"
+
   page.find("#buttomlogin").click
 end
 
 Given(/^I am loged in like director$/) do
   usuario = FactoryGirl.create(:director)
+
   visit new_user_session_path
+
   fill_in 'user_name', with: usuario.name
   fill_in 'user_password', with: 'foobarfoo'
-  #click_button 'buttomlogin'
-  #page.execute_script "$('body').scrollTo('#buttomlogin');"
+
   page.find("#buttomlogin").click
 end
 
@@ -35,10 +37,11 @@ Then(/^I should see message to say that name and password are invalid$/) do
 end
 
 When(/^I fill user login form with valid parameters$/) do
-  usuario = FactoryGirl.create(:user)
+  usuario = FactoryGirl.create(:director)
+
   fill_in 'user_name', with: usuario.name
   fill_in 'user_password', with: 'foobarfoo'
-  #click_button 'buttomlogin'
+
   page.find("#buttomlogin").click
 end
 
@@ -134,7 +137,7 @@ end
 
 # Test para vista crear usuario
 Given(/^I visit new user page$/) do
-  click_link 'createUser'
+  page.find("#createUser").click
 end
 
 When(/^I fill user form with valid parameters$/) do
