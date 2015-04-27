@@ -4,7 +4,7 @@
 .fondoimagen{
   height: 100%;
 }
-.fill { 
+.fill {
   min-height: 100%;
   height: 100%
 }
@@ -13,7 +13,7 @@
 }
 .container_imagen{
   width: 100%;
-  background: url(/assets/fondo_manos.jpg)no-repeat center center fixed; 
+  background: url(/assets/fondo_manos.jpg)no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -21,13 +21,13 @@
 }
 .botoniniciar{
 	background-color: $brand_light;
-	border-color: $brand; 
+	border-color: $brand;
 	color: white;
 }
 .botoniniciar:hover{
 	background-color: $brand_dark;
 	color: white;
-	border-color: $brand; 
+	border-color: $brand;
 }
 .field{
 	margin-top: 10px;
@@ -88,7 +88,7 @@
 
 .errormessage{
   font-size: 16px;
-  color: $brand;
+  color: red;
 }
 
 @media only screen and (max-width: 1200px) {
