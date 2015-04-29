@@ -8,60 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-  <!-- MENU LATERAL -->
 
-  <nav class="navbar navbar-default barra navbar-fixed-top barra hidden-sm hidden-md hidden-lg" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <div class="menu__users" title="Gestión de usuarios"> 
-          <a ui-sref="usuario.perfil({id: currentUser.id})" id="perfil" class="glyphicon glyphicon-user" aria-hidden="true"></a>
-        </div>
-        <div class="menu__logout" title="Cerrar sesión">
-          <%= link_to destroy_user_session_path, id: "logout", method: :delete do %>
-          <i class="glyphicon glyphicon-log-out"></i><span>CERRAR SESION</span>
-          <% end %> 
-        </div>
+  <div class="list-group nav navbar-nav col-md-2">
 
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-movil" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar" ></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"><span class="barra__text">{{prolibertas}}</span></a>
-      </div>
-      <div id="navbar-movil" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-        <ul class="nav navbar-nav menu ">
+    <!--<img class="logo" src="/assets/logo-menu.svg">-->
 
-          <li><a ui-sref="personas" 
-            class="list-group-item menu__el col-xs-12" ><span class="menu__el__text">PERSONAS</span></a>
-          </li>
-
-          <li><a href="#" 
-            class="list-group-item menu__el col-xs-12"><span class="menu__el__text">FAMILIAS</span></a>
-          </li>
-
-          <li><a ui-sref="servicios" 
-            class="list-group-item menu__el col-xs-12"><span class="menu__el__text">SERVICIOS</span></a>
-          </li>
-
-          <li><a href="#" 
-            class="list-group-item menu__el col-xs-12"><span class="menu__el__text">INFORMES</span></a>
-          </li>
-          <% if current_user.role == 'director' or current_user.role == 'worker' %>
-          <li><a ui-sref="usuarios" id="go-users"
-            class="list-group-item menu__el col-xs-12" title="Gestión de usuarios"><span class="menu__el__text">USUARIOS</span></a>
-          </li>
-          <% end %>
-        </ul>
-      </div><!--/.nav-collapse -->
-    </div><!--/.container-fluid -->
-  </nav>
-</div>
-  <div class="list-group nav navbar-nav col-md-2 col-xs-12 col-sm-2 hidden-xs">
-
-    <!--<img class="logo hidden-xs" src="/assets/logo-menu.svg">-->
-    
     <div class="menu__users" title="Gestión de usuarios">
       <a ui-sref="usuario.perfil({id: currentUser.id})"  ui-sref-active="active" id="perfil" class="glyphicon glyphicon-user" aria-hidden="true"></a>
     </div>
@@ -74,40 +25,40 @@
     <ul class="list-group menu">
 
       <li><a ui-sref="personas" ui-sref-active="active"
-        class="list-group-item menu__el col-xs-12"><span class="menu__el__text">PERSONAS</span></a>
+        class="list-group-item menu__el"><span class="menu__el__text">PERSONAS</span></a>
       </li>
-      
-      <li><a href="#" 
-        class="list-group-item menu__el col-xs-12"><span class="menu__el__text">FAMILIAS</span></a>
+
+      <li><a href="#"
+        class="list-group-item menu__el"><span class="menu__el__text">FAMILIAS</span></a>
       </li>
       <% if current_user.role == 'director' or current_user.role == 'worker' %>
-      <li><a ui-sref="servicios"  
-        class="list-group-item menu__el col-xs-12"><span class="menu__el__text">SERVICIOS</span></a>
+      <li><a ui-sref="servicios"
+        class="list-group-item menu__el"><span class="menu__el__text">SERVICIOS</span></a>
       </li>
-      
-      <li><a href="#" 
-        class="list-group-item menu__el col-xs-12"><span class="menu__el__text">INFORMES</span></a>
+
+      <li><a href="#"
+        class="list-group-item menu__el"><span class="menu__el__text">INFORMES</span></a>
       </li>
-      
+
       <li>
         <a ui-sref="usuarios"  ui-sref-active="active" id="go-users"
-        class="list-group-item menu__el col-xs-12" title="Gestión de usuarios"><span class="menu__el__text">USUARIOS</span></a>
+        class="list-group-item menu__el" title="Gestión de usuarios"><span class="menu__el__text">USUARIOS</span></a>
       </li>
       <% end %>
     </ul>
-    
-    <div class="info col-md-3.col-sm-3 hidden-xs ">
+
+    <div class="info col-md-3">
       <img class="info__logo" src="/assets/fondo_casa.png">
       <p class="info__text">
-        
+
       </p>
     </div>
 
-  </div> 
+  </div>
   <!-- FIN MENU LATERAL -->
-        
+
   <!-- VISTA DINÁMICA CON ANGULARJS -->
-  <div id="principal" ui-view class="vista col-md-10 col-md-offset-2 col-xs-12 col-sm-10 col-sm-offset-2"></div>
+  <div id="principal" ui-view class="vista col-md-10 col-md-offset-2"></div>
   <!-- FIN DE VISTA DINÁMICA CON ANGULARJS -->
 </body>
 </html>

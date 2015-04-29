@@ -6,15 +6,15 @@
   margin-bottom: 20px;
 }
 
-.lineablanca{
+.lineablanca {
   width: 100%;
   height: 20px;
 }
 
 .navPersona__el__text {
-  color: white; 
+  color: white;
   border-radius: 5px;
-  margin-left: 16px; 
+  margin-left: 16px;
 }
 
 .persona__botones__edit {
@@ -29,30 +29,10 @@
   right: 100px;
 }
 
-.person__list__el {
-
-}
-
 .person__list__text__left {
   font-family: istokBold, sans-serif;
 }
 
 .person__list__text__right {
   font-family: istokRegular, sans-serif;
-}
-
-
-@media only screen and (max-width: 767px) {
-  .navPersona__el {
-    width: 24%;
-    text-align: center;
-    padding: 0px;
-  }
-  .navPersona__el__text {
-    margin-left: auto; 
-    margin-right: auto;
-  }
-  .navPersona__el:last-child .navPersona__el__text {
-    margin-left: 0px; 
-}
 }

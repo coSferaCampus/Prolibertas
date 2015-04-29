@@ -1,8 +1,8 @@
-  <nav class="navbar-fixed-top col-md-offset-2 col-md-10 col-sm-offset-2 col-sm-10 col-xs-12">
+  <nav class="navbar-fixed-top col-md-offset-2 col-md-10">
     <div class="row" >
-      <div class="col-md-12 col-sm-12 col-xs-12 listpeople__buscadores">
+      <div class="col-md-12 listpeople__buscadores">
         <form class="form-inline">
-          <div class="form-group  col-md-4 col-sm-4 col-xs-12">
+          <div class="form-group  col-md-4">
             <label class="sr-only"></label>
             <div class="input-group">
               <input id="searchsurname" ng-model="search.surname" type="text" class="form-control" placeholder="Buscar por apellidos...">
@@ -11,7 +11,7 @@
               </span>
             </div>
           </div>
-          <div class="form-group col-md-4 col-sm-4 col-xs-9">
+          <div class="form-group col-md-4">
             <label class="sr-only"></label>
             <div class="input-group">
               <input id="searchorigin" ng-model="search.origin" type="text" class="form-control" placeholder="Buscar por origen...">
@@ -20,8 +20,8 @@
               </span>
             </div>
           </div>
-          <div class="form-group col-md-4 col-sm-4 col-xs-2">
-            <a class="btn btn-primary col-md-7 col-md-offset-5 col-sm-12" id="createPerson" ui-sref="personasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button hidden-xs"> PERSONA<span></a>
+          <div class="form-group col-md-4">
+            <a class="btn btn-primary col-md-7 col-md-offset-5" id="createPerson" ui-sref="personasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> PERSONA<span></a>
           </div>
         </form>
       </div>
@@ -35,14 +35,14 @@
           <th>Nombre</th>
           <th>Apellidos</th>
           <th class="hidden-xs">Origen</th>
-          <th class="listpeople__centrado hidden-xs">S</th>
-          <th class="listpeople__centrado hidden-xs">Menú</th>
+          <th class="listpeople__centrado">S</th>
+          <th class="listpeople__centrado">Menú</th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/cutlery23.svg"></th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/tshirt18.svg"></th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/shower17.svg"></th>
-          <th class="listpeople__centrado hidden-xs">MÁS</th>
+          <th class="listpeople__centrado">MÁS</th>
           <th class="listpeople__centrado"></th>
-          <th class="listpeople__centrado hidden-xs"></th>
+          <th class="listpeople__centrado"></th>
         </tr>
       </thead>
       <tbody>
@@ -50,8 +50,8 @@
           <td>{{person.name}}</td>
           <td>{{person.surname}}</td>
           <td class="hidden-xs">{{person.origin}}</td>
-          <td class="listpeople__centrado hidden-xs">{{peopleCtrl.genero(person.genre)}}</td>
-          <td class="listpeople__centrado hidden-xs">{{person.menu}}</td>
+          <td class="listpeople__centrado">{{peopleCtrl.genero(person.genre)}}</td>
+          <td class="listpeople__centrado">{{person.menu}}</td>
           <td class="listpeople__centrado">
             <input id="comida_{{person.id}}" ng-model="person.used_services_of_today.comida"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('comida'))"
@@ -67,14 +67,14 @@
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ducha'))"
             type="checkbox">
           </td>
-          <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></i>
+          <td class="listpeople__centrado"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></i>
           </td>
           <td class="listpeople__centrado"><a id="person-show-{{person.id}}"
             ui-sref="persona({ id: person.id })">
             <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
           </td>
 
-          <td class="listpeople__centrado hidden-xs"><i class="glyphicon glyphicon-list listpeople__azul"></i></td>
+          <td class="listpeople__centrado"><i class="glyphicon glyphicon-list listpeople__azul"></i></td>
         </tr>
       </tbody>
     </table>
