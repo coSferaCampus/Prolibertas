@@ -32,8 +32,8 @@
     <table class="table table-responsive table-hover table-condensed col-md-12  col-lg-12" id="peopleTable">
       <thead class="listpeople__cabecera">
         <tr>
-          <th>Nombre</th>
           <th>Apellidos</th>
+          <th>Nombre</th>
           <th class="hidden-xs">Origen</th>
           <th class="listpeople__centrado">S</th>
           <th class="listpeople__centrado">Menú</th>
@@ -47,8 +47,8 @@
       </thead>
       <tbody>
         <tr ng-repeat="person in peopleCtrl.people | filter:search | orderBy: 'surname'" id="person_{{person.id}}" class="{{peopleCtrl.alertClass(person)}}">
-          <td>{{person.name}}</td>
           <td>{{person.surname}}</td>
+          <td>{{person.name}}</td>
           <td class="hidden-xs">{{person.origin}}</td>
           <td class="listpeople__centrado">{{peopleCtrl.genero(person.genre)}}</td>
           <td class="listpeople__centrado">{{person.menu}}</td>
