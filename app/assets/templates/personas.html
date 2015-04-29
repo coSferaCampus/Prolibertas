@@ -34,7 +34,7 @@
         <tr>
           <th>Apellidos</th>
           <th>Nombre</th>
-          <th class="hidden-xs">Origen</th>
+          <th>Origen</th>
           <th class="listpeople__centrado">S</th>
           <th class="listpeople__centrado">Menú</th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/cutlery23.svg"></th>
@@ -49,7 +49,7 @@
         <tr ng-repeat="person in peopleCtrl.people | filter:search | orderBy: 'surname'" id="person_{{person.id}}" class="{{peopleCtrl.alertClass(person)}}">
           <td>{{person.surname}}</td>
           <td>{{person.name}}</td>
-          <td class="hidden-xs">{{person.origin}}</td>
+          <td>{{person.origin}}</td>
           <td class="listpeople__centrado">{{peopleCtrl.genero(person.genre)}}</td>
           <td class="listpeople__centrado">{{person.menu}}</td>
           <td class="listpeople__centrado">
