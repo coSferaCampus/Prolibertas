@@ -90,7 +90,7 @@ Then(/^I should see the list of the people with "(.*?)" and "(.*?)" as surname a
   end
 end
 
-# PERSON SHOW  
+# PERSON SHOW
 
 When(/^I click the view icon of a person in people list view$/) do
   persona = Person.first
@@ -152,8 +152,8 @@ Then(/^I should see the new person in people list$/) do
   expect(page).to have_css "#peopleTable"
 
   person = Person.last
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
+  expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.surname
+  expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.name
   expect(page).to have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
   expect(page).to have_css "tr#person_#{person.id} td:nth-child(4)", text:
     if person.genre == :man
@@ -372,12 +372,12 @@ Then(/^I see that it has created a new use for shower service for "(.*?)"$/) do 
   expect(page).to have_checked_field("ducha_#{persona.id}")
 end
 
-# Alertas en la lista de personas 
+# Alertas en la lista de personas
 
 Then(/^I should see colours over people that have any alert$/) do
   Person.each do |persona|
     alerta = persona.alerts.first
-    if alerta 
+    if alerta
       if alerta.type == :punishment
         expect(page).to have_css "tr#person_#{persona.id}.danger"
       elsif alerta.type == :warning
@@ -385,7 +385,7 @@ Then(/^I should see colours over people that have any alert$/) do
       elsif alerta.type == :advice
         expect(page).to have_css "tr#person_#{persona.id}.success"
       end
-    else 
+    else
       expect(page).to have_css "tr#person_#{persona.id}"
     end
   end
