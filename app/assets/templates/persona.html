@@ -2,29 +2,19 @@
 
   <h2 class="hidden-xs">Ficha de {{ personCtrl.person.name }} {{ personCtrl.person.surname }}</h2>
 
-  <div class="row">
-    <div class="col-md-12 col-xs-12">
-      <ul class="navPersona">
-        <li type="button" class="navPersona__el col-md-2 col-xs-2">
-          <a href="#"><span class="navPersona__el__text">Servicios</span></a>
-        </li>
-      
-        <li type="button" class="navPersona__el col-md-2 col-xs-2">
-          <a href="#"><span class="navPersona__el__text">Historias</span></a>
-        </li>
-
-        <li type="button" class="navPersona__el col-md-2 col-xs-2">
-          <a href="#"><span class="navPersona__el__text">Adjuntos</span></a>
-        </li>
-
-        <li type="button" class="navPersona__el col-md-2 col-xs-2">
-          <a href="#"><span class="navPersona__el__text">Alertas</span></a>
-        </li>
-      </ul>  
+  <div class="row fondo_menu_persona">
+    <div class="col-md-12 col-xs-12 ">
+      <ul class="nav nav-tabs">
+        <li><a ui-sref="persona({id: personCtrl.person.id})"data-toggle="tab">Ficha persona</a></li>
+        <li><a data-toggle="tab">Servicios</a></li>
+        <li class="navPersona__el" ng-if="currentUser.role !== 'volunteer'"><a id="person_histories" ui-sref="persona.historias({id: personCtrl.person.id})" data-toggle="tab">Historia</a></li>
+        <li class="navPersona__el" ng-if="currentUser.role !== 'volunteer'"><a id="person__alerts" ui-sref="persona.alertas({id: personCtrl.person.id})"data-toggle="tab">Alertas</a></li>
+      </ul>
     </div>
   </div>  
+  <div class="lineablanca"></div>
 
-  <div class="row col-md-12">
+  <div class="row col-md-12" ui-view="menupersona">
     <div class="col-md-6">
       <ul class="list-group">
         <li class="list-group-item person__list__el">
@@ -106,13 +96,12 @@
         </li>
       </ul>
     </div>
-  </div>
-
-  <div class="persona__botones col-md-6">
-    <a  id="remove-person-btn" type="button" class="btn btn-danger persona__botones__remove"
+     <div class="persona__botones col-md-6">
+        <a id="remove-person-btn" type="button" class="btn btn-danger persona__botones__remove"
         ng-click="personCtrl.destroyPerson(personCtrl.person)">Eliminar
-    </a>
-    <button id="person-edit-{{personCtrl.person.id}}" ui-sref="personaEditar({id:personCtrl.person.id})" type="button" class="btn btn-primary persona__botones__edit">Editar</button>
+        </a>
+        <button id="person-edit-{{personCtrl.person.id}}" ui-sref="personaEditar({id:personCtrl.person.id})" type="button" class="btn btn-primary persona__botones__edit">Editar</button>
+     </div>
   </div>
-
+  
 </div>

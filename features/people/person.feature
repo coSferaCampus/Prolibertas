@@ -15,4 +15,4 @@ Feature: Person Show
   Scenario: Remove person
     When I click the remove button in people view
     Then I should remove this person
-    And  I should see a success message
+    And  I should see a remove person success message
