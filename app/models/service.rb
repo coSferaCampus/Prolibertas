@@ -8,8 +8,6 @@ class Service
 
   has_many :used_services
 
-
-
   validates :name,        presence: true, uniqueness: {case_sensitive: false}
   validates :primary,     presence: true
 end

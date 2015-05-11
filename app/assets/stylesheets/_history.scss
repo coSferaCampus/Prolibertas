@@ -1,0 +1,30 @@
+@import "variables";
+
+.nuevacita{
+  background-color: $grey_20;
+  padding: 10px;
+  top: 50px;
+}
+
+.btn_view_history{
+  top: 15px;
+}
+
+.historia__btn__edit{
+  position: absolute;
+  right: 0px;
+}
+
+.historia__btn__remove{
+  position: absolute;
+  right: 70px;
+}
+
+.historia_btn_guardar{
+  position: absolute;
+  right: 0px;
+}
+
+.addhistory{
+  bottom: 10px;
+}

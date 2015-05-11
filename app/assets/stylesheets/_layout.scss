@@ -3,25 +3,26 @@
 $lista_height:  60px;
 
 .barra {
-    z-index: 5000;
-    margin-bottom: 50px;
-    background-color: $brand_dark;
-    display: block;
+  z-index: 5000;
+  margin-bottom: 50px;
+  background-color: $brand_dark;
+  display: block;
 }
 
 .barra__text {
   color: white;
   text-align: center;
+  font-size: 14px;
 }
 
-.collapsed.navbar-toggle { 
+.collapsed.navbar-toggle {
   background-color: $brand;
   border-color: white;
 }
 
 .collapsed.navbar-toggle:hover,
 .collapsed.navbar-toggle:focus {
-    background-color: $brand_light;
+  background-color: $brand_light;
 }
 
 .icon-bar {
@@ -34,6 +35,7 @@ $lista_height:  60px;
   margin-left: auto;
   margin-right: auto;
   left: 0px;
+  background: url(/assets/fondo_casa.png)no-repeat center bottom;
   position: fixed;
   top: 0px;
   height: 100%;
@@ -46,25 +48,28 @@ $lista_height:  60px;
 
 .menu {
   position: absolute;
-  top: 40px;
+  top: 60px;
   left:0;
   margin-right: 0;
   margin-left: 0;
   width: 100%;
-
 }
 
-/*.logo {
-  padding: 5%;
-  margin: 0;
-  width: 95%;
-  margin-bottom: -40px;
+.menu__users {
+  top: 22px;
+  left: 35%;
+  position: absolute;
+  font-size: 20px;
+  opacity: 0.9;
+
+  a {
+    text-decoration: none;
+  }
 }
-*/
 
 .menu__logout {
-  top: 12px;
-  left: calc(50% - 10px);
+  top: 22px;
+  left: 55%;
   position: absolute;
   font-size: 20px;
   opacity: 0.9;
@@ -78,6 +83,7 @@ $lista_height:  60px;
   margin-top: 10px;
   height: $lista_height;
   width: 100%;
+  border-radius: 0 !important;
   background-color: $brand;
   text-align: center;
   border: none;
@@ -98,15 +104,17 @@ li .menu__el.active {
 
 .info {
   position: absolute;
-    left: 0px;
-  bottom: 0px;
+  display: none;
+  left: 0px;
+  bottom: 50px;
+  margin-left: calc(50% - 20px);
 }
 
 .info__logo {
   margin-top: 60px;
+  display: none;
   height: 40px;
   margin-left: calc(50% - 20px);
-
 }
 
 .info__text {
@@ -115,43 +123,5 @@ li .menu__el.active {
   letter-spacing: 0.3px;
   padding: 5%;
   color: white;
-}
-
-
-
-@media only screen and (max-width: 767px) {
-  .vista {
-    margin-left: auto;
-    margin-right: auto;
-    top: 100px;
-  }
-  
-  .navbar-nav {
-    display: block;
-    margin: 0;
-    left: 0px;
-    position: fixed;
-    top: 0px;
-    height: 35%;
-    border-radius: 0;
-    border: none;
-    background-color: $brand_dark;
-    overflow-y: auto;
-  }
-
-  .menu {
-    margin: 0;
-    margin-top: 50px;
-    width: 100%;
-  }
-
-  .menu__logout {
-    left: calc(100% - 120px);
-  }
-
-  .menu__el {
-    margin-top: 7px;
-    height: 60px;
-    width: 100%;
-  }
+  display: none;
 }

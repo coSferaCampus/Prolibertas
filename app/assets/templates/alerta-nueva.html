@@ -1,0 +1,39 @@
+<h3 class="header-titule hidden-xs">{{prolibertas}}</h3>
+<form class="col-md-12" id="alertForm" ng-submit="alertCtrl.actionForm()">
+
+  <div class="form-group col-md-7" ng-class="{ 'has-error':alertCtrl.errors.type }">
+    <label>Tipo</label>
+    <select ng-model="alertCtrl.alertForm.type" ng-change="alertCtrl.change('Type')" type="text" class="form-control" data-placement="top" id="InputType">   
+      <option value="">Seleccione Tipo</option>
+      <option value="punishment">castigo</option>
+      <option value="advice">consejo</option>
+      <option value="warning">advertencia</option>
+    </select>
+  </div>
+
+  <div class="form-group col-md-7">
+    <label>Descripción</label>
+    <textarea ng-model="alertCtrl.alertForm.description" class="form-control" id="InputDescription"></textarea>
+  </div>
+
+  <div class="form-group col-md-7">
+    <label>Causa</label>
+    <textarea ng-model="alertCtrl.alertForm.cause" class="form-control" id="InputCause"></textarea>
+  </div>
+
+  <div class="form-group col-md-7" ng-class="{ 'has-error':alertCtrl.errors.pending }">
+    <label>Hasta</label>
+    <div class="input-group datepicker">
+      <span class="input-group-addon listpeople__azul">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+      <input ng-model="alertCtrl.alertForm.pending" ng-change="alertCtrl.change('Pending')" type="text" class="form-control" id="InputPending">
+    </div>
+  </div>
+
+  <div class="submit-group col-md-7">
+    <button class="btn btn-primary" type="submit" id="InputSubmit">Guardar</button>
+  </div>
+
+</form>
+

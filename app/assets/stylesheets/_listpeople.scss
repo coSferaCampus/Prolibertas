@@ -2,47 +2,36 @@
 @import "variables";
 
 .listpeople__buscadores {
-	background-color: $grey_20;
-	padding: 20px;
+  background-color: $grey_20;
+  padding: 20px;
 }
 
 .listpeople__azul {
-	color: $brand;
+  color: $brand;
 }
 
 .listpeople__tabla {
-	padding: 0px;
-	margin-top: 82px;
-	padding-left: 0px;
+  padding: 0px;
+  margin-top: 82px;
+  padding-left: 0px;
 }
 
 .listpeople__cabecera {
-	background-color: $grey_20;
+  background-color: $grey_20;
 }
 
 .listpeople__centrado {
-	 text-align: center;
-	 vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .listpeople__iconos {
-	width: 20px;
+  width: 20px;
 }
 
 .listpeople__boton {
-	background-color: $brand;
-	color: white;
-	width: 40px;
-	height: 32px;
-}
-
-.listpeople__boton__img {
-	width: 20px;
-}
-
-	@media only screen and (max-width: 767px) {
-
-		.listpeople__buscadores {
-			margin-top: 50px;
-		}
+  background-color: $brand;
+  color: white;
+  width: 40px;
+  height: 32px;
 }

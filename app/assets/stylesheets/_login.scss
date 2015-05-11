@@ -1,48 +1,54 @@
 //login
 @import "variables.scss";
 
-.fondoimagen{
+.fondoimagen {
   height: 100%;
 }
-.fill { 
+
+.fill {
   min-height: 100%;
   height: 100%
 }
-.containerall{
+
+.containerall {
   height: 100%;
 }
-.container_imagen{
+
+.container_imagen {
   width: 100%;
-  background: url(/assets/fondo_manos.jpg)no-repeat center center fixed; 
+  background: url(/assets/fondo_manos.jpg)no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-.botoniniciar{
-	background-color: $brand_light;
-	border-color: $brand; 
-	color: white;
-}
-.botoniniciar:hover{
-	background-color: $brand_dark;
-	color: white;
-	border-color: $brand; 
-}
-.field{
-	margin-top: 10px;
+
+.botoniniciar {
+  background-color: $brand_light;
+  border-color: $brand;
+  color: white;
 }
 
-.logologin{
-	padding-bottom: 20px;
-}
-.invalid{
-	background-color: red;
+.botoniniciar:hover {
+  background-color: $brand_dark;
+  color: white;
+  border-color: $brand;
 }
 
-.col-lg-offset-4.col-lg-4{
+.field {
+  margin-top: 10px;
+}
+
+.logologin {
+  padding-bottom: 20px;
+}
+.invalid {
+  background-color: red;
+}
+
+.col-lg-offset-4.col-lg-4 {
   height: 100%;
-	background-color: rgba(255,255,255, 0.7);
+  background-color: rgba(255,255,255, 0.7);
 }
 
 .center-block {
@@ -50,16 +56,19 @@
   margin: 0 auto;
 }
 
-.glyphicon.glyphicon-user{
-	color: white;
+.glyphicon.glyphicon-user {
+  color: white;
 }
-.glyphicon.glyphicon-lock{
-	color: white;
+
+.glyphicon.glyphicon-lock {
+  color: white;
 }
-.input-group-addon{
-	background-color: $brand_light;
+
+.input-group-addon {
+  background-color: $brand_light;
 }
-.form-signin{
+
+.form-signin {
   max-width: 330px;
   margin: 0 auto;
   position: absolute;
@@ -70,24 +79,26 @@
   -o-transform: translate(-50% , -50%);
   -ms-transform: translate(-50% , -50%);
 }
-.imgfooter{
-	padding: 10px;
-	left: 30px;
+
+.imgfooter {
+  padding: 10px;
+  left: 30px;
 }
-.correofooter{
-	padding: 20px;
-	color: $grey_80;
+
+.correofooter {
+  padding: 20px;
+  color: $grey_80;
 }
+
 .form-signin .checkbox {
   font-weight: normal;
 }
 
-.colordefondo{
-	background-color: white;
+.colordefondo {
+  background-color: white;
 }
 
-@media only screen and (max-width: 1200px) {
-
+.errormessage {
+  font-size: 16px;
+  color: red;
 }
-
-

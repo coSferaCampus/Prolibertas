@@ -8,7 +8,7 @@ Then(/^I should see the list of the people$/) do
     expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
     expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
     expect(page).to have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
-    expect(page).to have_css "tr#person_#{person.id} td:nth-child(4)", text: 
+    expect(page).to have_css "tr#person_#{person.id} td:nth-child(4)", text:
       if person.genre == :man
         "H"
       else
@@ -20,7 +20,22 @@ end
 
 Given(/^I have the following people$/) do |table|
   table.hashes.each do |hash|
-    FactoryGirl.create(:person, name: hash['nombre'], surname: hash['apellidos'], origin: hash['origen'])
+    person = FactoryGirl.create(
+    :person, name: hash['nombre'],
+    surname: hash['apellidos'], origin: hash['origen']
+    )
+
+    %w( comida ducha ropa).each do | service_name |
+      if hash[service_name] == 'true'
+        service = Service.where(name: service_name).first
+        FactoryGirl.create(:used_service, person: person, service: service)
+      end
+    end
+
+    if hash['alerta'].present?
+      FactoryGirl.create(:alert, person: person, type: hash['alerta'])
+    end
+
   end
 end
 
@@ -29,7 +44,7 @@ When(/^I type "(.*?)" in the input surname search$/) do |surname|
 end
 
 Then(/^I should see the list of the people with "(.*?)" as surname$/) do |surname|
-  Person.each do |person|  
+  Person.each do |person|
     if surname == person.surname
       expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
       expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
@@ -47,7 +62,7 @@ When(/^I type "(.*?)" in the input origin search$/) do |origin|
 end
 
 Then(/^I should see the list of the people with "(.*?)" as origin$/) do |origin|
-  Person.each do |person|  
+  Person.each do |person|
     if origin == person.origin
       expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
       expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
@@ -61,8 +76,8 @@ Then(/^I should see the list of the people with "(.*?)" as origin$/) do |origin|
 end
 
 Then(/^I should see the list of the people with "(.*?)" and "(.*?)" as surname and origin respectively$/) do |surname, origin|
-  
-  Person.each do |person|  
+
+  Person.each do |person|
     if surname == person.surname and origin == person.origin
       expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
       expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
@@ -78,7 +93,7 @@ end
 # PERSON SHOW
 
 When(/^I click the view icon of a person in people list view$/) do
-  persona = Person.first 
+  persona = Person.first
   page.find("#person-show-#{persona.id}").click
 end
 
@@ -87,7 +102,7 @@ Then(/^I should go to a view of this person$/) do
 end
 #eliminar persona
 When(/^I click the remove button in people view$/) do
-  @persona = Person.first 
+  @persona = Person.first
   page.find("#person-show-#{@persona.id}").click
   page.find("#remove-person-btn").click
   page.driver.browser.switch_to.alert.accept
@@ -98,7 +113,7 @@ Then(/^I should remove this person$/) do
   expect(page).to_not have_css "#person-show-#{@persona.id}"
 end
 
-Then(/^I should see a success message$/) do
+Then(/^I should see a remove person success message$/) do
   expect(page).to have_css ".leo-message", text:"¡Borrado satisfactoriamente!"
 end
 
@@ -137,16 +152,16 @@ Then(/^I should see the new person in people list$/) do
   expect(page).to have_css "#peopleTable"
 
   person = Person.last
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
+  expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.surname
+  expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.name
   expect(page).to have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(4)", text: 
+  expect(page).to have_css "tr#person_#{person.id} td:nth-child(4)", text:
     if person.genre == :man
       "H"
     else
       "M"
     end
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(5)", text: person.menu  
+  expect(page).to have_css "tr#person_#{person.id} td:nth-child(5)", text: person.menu
 end
 
 Then(/^I should see person created message$/) do
@@ -184,12 +199,12 @@ Then(/^I should see the errors in the form$/) do
 end
 
 When(/^I fill input "(.*?)" with "(.*?)"$/) do |key, value|
-  if key == 'InputGenre'
+  if key == 'InputGenre' || key == 'InputType'
    select(value, from: key)
    else
     fill_in key, with: value
   end
-  click_button 'InputSubmit'  
+  click_button 'InputSubmit'
 end
 
 Then(/^I should not see error on "(.*?)"$/) do |key|
@@ -208,7 +223,7 @@ Then(/^I should see the edit form person$/) do
 end
 
 Then(/^I should see the person information in the form$/) do
-  @person = Person.first 
+  @person = Person.first
   find_field('InputName').value.should eq @person.name
   find_field('InputSurname').value.should eq @person.surname
   find_field('InputNif').value.should eq @person.nif
@@ -229,7 +244,7 @@ end
 
 
 When(/^I update the form$/) do
-  @person = Person.first 
+  @person = Person.first
   page.find("#person-edit-#{@person.id}").click
   fill_in 'InputName', with: "pepe"
   fill_in 'InputSurname', with: "gonzalez"
@@ -270,7 +285,7 @@ end
 
 # Test para los errores del formulario
 When(/^I fill person update form with invalid parameters$/) do
-  @person = Person.first 
+  @person = Person.first
   page.find("#person-edit-#{@person.id}").click
   fill_in 'InputName', with: ""
   fill_in 'InputSurname', with: ""
@@ -286,10 +301,92 @@ Then(/^I should see the errors in the update form$/) do
 end
 
 
+# Test para asignar servicios
+# Test que comprueba que comida está marcada
+Then(/^I see "(.*?)" has food checked$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  expect(page).to have_checked_field("comida_#{persona.id}")
+end
+
+Then(/^I see "(.*?)" has food unchecked$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  expect(page).to have_unchecked_field("comida_#{persona.id}")
+end
+
+#Test que comprueba que ropa está marcada
+Then(/^I see "(.*?)" has clothes checked$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  expect(page).to have_checked_field("ropa_#{persona.id}")
+end
+
+Then(/^I see "(.*?)" has clothes unchecked$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  expect(page).to have_unchecked_field("ropa_#{persona.id}")
+end
+
+#Test que comprueba que ducha está marcada
+Then(/^I see "(.*?)" has shower checked$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  expect(page).to have_checked_field("ducha_#{persona.id}")
+end
+
+Then(/^I see "(.*?)" has shower unchecked$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  expect(page).to have_unchecked_field("ducha_#{persona.id}")
+end
 
 
+# Test cuando selecciono comida
+When(/^I select service food for "(.*?)"$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  check("comida_#{persona.id}")
+end
 
+Then(/^I see that it has created a new use for food service for "(.*?)"$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  page.driver.browser.navigate.refresh
+  expect(page).to have_checked_field("comida_#{persona.id}")
+end
 
+#Test cuando selecciono ropa
+When(/^I select service clothes for "(.*?)"$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  check("ropa_#{persona.id}")
+end
 
+Then(/^I see that it has created a new use for clothes service for "(.*?)"$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  page.driver.browser.navigate.refresh
+  expect(page).to have_checked_field("ropa_#{persona.id}")
+end
 
+#Test cuando selecciono ducha
+When(/^I select service shower for "(.*?)"$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  check("ducha_#{persona.id}")
+end
 
+Then(/^I see that it has created a new use for shower service for "(.*?)"$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  page.driver.browser.navigate.refresh
+  expect(page).to have_checked_field("ducha_#{persona.id}")
+end
+
+# Alertas en la lista de personas
+
+Then(/^I should see colours over people that have any alert$/) do
+  Person.each do |persona|
+    alerta = persona.alerts.first
+    if alerta
+      if alerta.type == :punishment
+        expect(page).to have_css "tr#person_#{persona.id}.danger"
+      elsif alerta.type == :warning
+        expect(page).to have_css "tr#person_#{persona.id}.warning"
+      elsif alerta.type == :advice
+        expect(page).to have_css "tr#person_#{persona.id}.success"
+      end
+    else
+      expect(page).to have_css "tr#person_#{persona.id}"
+    end
+  end
+end
