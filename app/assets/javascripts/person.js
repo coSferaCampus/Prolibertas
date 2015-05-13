@@ -102,6 +102,12 @@
       }
     };
 
+    scope.asistencia = function(value){
+      if (value === 0) { return 'Primera vez'; }
+      else if(value === 1) { return 'Habitual'; }
+      else if(value === 2) { return 'Reincidente'; }
+    };
+
     scope.destroyPerson = function(person) {
       var confirmed = confirm('¿Desea borrar a ' + person.name + ' ' + person.surname + '?');
       if (confirmed) {

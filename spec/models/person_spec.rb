@@ -9,18 +9,23 @@ RSpec.describe Person, type: :model do
     it { is_expected.to have_field(:origin).of_type(String) }
     it { is_expected.to have_field(:genre).of_type(Symbol) }
     it { is_expected.to have_field(:phone).of_type(String) }
-    it { is_expected.to have_field(:assistance).of_type(String) }
+    it { is_expected.to have_field(:assistance).of_type(Integer) }
     it { is_expected.to have_field(:home).of_type(String) }
     it { is_expected.to have_field(:family_status).of_type(String) }
     it { is_expected.to have_field(:health_status).of_type(String) }
     it { is_expected.to have_field(:birth).of_type(Date) }
     it { is_expected.to have_field(:nif).of_type(String) }
-    it { is_expected.to have_field(:social_services).of_type(String) }
+    it { is_expected.to have_field(:social_services).of_type(Integer) }
     it { is_expected.to have_field(:menu).of_type(String) }
     it { is_expected.to have_field(:income).of_type(String) }
     it { is_expected.to have_field(:address).of_type(String) }
     it { is_expected.to have_field(:contact_family).of_type(String) }
     it { is_expected.to have_field(:notes).of_type(String) }
+    it { is_expected.to have_field(:documentation).of_type(Integer) }
+    it { is_expected.to have_field(:address_type).of_type(Integer) }
+    it { is_expected.to have_field(:residence).of_type(Integer) }
+    it { is_expected.to have_field(:have_income).of_type(Integer) }
+    it { is_expected.to have_field(:city).of_type(Symbol) }
   end
 
   context "Relations" do
@@ -29,12 +34,24 @@ RSpec.describe Person, type: :model do
   end
 
   context "Validations" do
-  	it { is_expected.to validate_presence_of(:name) }
-  	it { is_expected.to validate_presence_of(:surname) }
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:surname) }
     it { is_expected.to validate_inclusion_of(:genre).to_allow([:man, :woman]) }
   end
 
   context "custom methods" do
+    context "#is_spanish" do
+      it "should return true if origin is 'España'" do
+        persona = FactoryGirl.create(:person, origin: "España")
+        expect(persona.is_spanish).to eql(true)
+      end
+
+      it "should return false if origin is not 'España'" do
+        persona = FactoryGirl.create(:person, origin: "Italia")
+        expect(persona.is_spanish).to eql(false)
+      end
+    end
+
     context "#used_services_of_today" do
       it "should return used services of today" do
         # Estos datos son para crear un servicio usado por la persona(comida, ducha)
@@ -46,8 +63,6 @@ RSpec.describe Person, type: :model do
 
         expect(persona.used_services_of_today).to eql({'comida' => true, 'ducha' => true})
       end
-
-
     end
 
     context "#used_services_of_today_id" do
