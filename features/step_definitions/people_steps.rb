@@ -25,7 +25,7 @@ Given(/^I have the following people$/) do |table|
     surname: hash['apellidos'], origin: hash['origen']
     )
 
-    %w( comida ducha ropa).each do | service_name |
+    %w( comida ducha ropa desayuno).each do | service_name |
       if hash[service_name] == 'true'
         service = Service.where(name: service_name).first
         FactoryGirl.create(:used_service, person: person, service: service)
@@ -335,6 +335,17 @@ Then(/^I see "(.*?)" has shower unchecked$/) do |apellido|
   expect(page).to have_unchecked_field("ducha_#{persona.id}")
 end
 
+#Test que comprueba que desayuno está marcado
+Then(/^I see "(.*?)" has desayuno checked$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  expect(page).to have_checked_field("desayuno_#{persona.id}")
+end
+
+Then(/^I see "(.*?)" has desayuno unchecked$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  expect(page).to have_unchecked_field("desayuno_#{persona.id}")
+end
+
 
 # Test cuando selecciono comida
 When(/^I select service food for "(.*?)"$/) do |apellido|
@@ -372,6 +383,17 @@ Then(/^I see that it has created a new use for shower service for "(.*?)"$/) do 
   expect(page).to have_checked_field("ducha_#{persona.id}")
 end
 
+#Test cuando selecciono desayuno
+When(/^I select service desayuno for "(.*?)"$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  check("desayuno_#{persona.id}")
+end
+
+Then(/^I see that it has created a new use for desayuno service for "(.*?)"$/) do |apellido|
+  persona = Person.where(surname: apellido).first
+  page.driver.browser.navigate.refresh
+  expect(page).to have_checked_field("desayuno_#{persona.id}")
+end
 # Alertas en la lista de personas
 
 Then(/^I should see colours over people that have any alert$/) do
