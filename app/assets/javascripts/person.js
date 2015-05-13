@@ -125,7 +125,7 @@
 
     $('.datepicker').datetimepicker({
       locale: 'es',
-      format: 'L',
+      format: 'YYYY-MM-DD',
     });
 
 
@@ -137,8 +137,12 @@
       }
     };
 
+    scope.formDates = function(){
+      scope.personForm.birth= $('#InputBirth').val();
+    };
 
     scope.guardarPersona = function() {
+      scope.formDates();
       $http.post('/people.json', {person: scope.personForm})
         .success(function(data){
           $state.go('personas', { alertaCreado: 'true' });
@@ -156,6 +160,7 @@
     };
 
     scope.actualizarPersona = function() {
+      scope.formDates();
       $http.put("/people/" + $state.params.id + ".json",{person: scope.personForm})
         .success(function() {
           $state.go("persona", {id: $state.params.id});
