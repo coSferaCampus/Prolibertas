@@ -6,10 +6,10 @@ Feature: Assign service
 
   Background:
     Given I have the following people
-      | nombre | apellidos | origen | comida | ropa | ducha |
-      | Joao | Coelho | Portugal | true | true | false |
-      | Luis | Mohamed | Marruecos | false | false | true |
-      | Pepe | Reina | España |  true | false | false |
+      | nombre | apellidos | origen | comida | ropa | ducha | desayuno |
+      | Joao | Coelho | Portugal | true | true | false | true |
+      | Luis | Mohamed | Marruecos | false | false | true | false |
+      | Pepe | Reina | España |  true | false | false | true |
 
     Given I am loged in like user
 
@@ -28,6 +28,11 @@ Feature: Assign service
     And I see "Mohamed" has shower checked
     And I see "Reina" has shower unchecked
 
+  Scenario: See used services for desayuno checked
+    Then I see "Coelho" has desayuno checked
+    And I see "Mohamed" has desayuno unchecked
+    And I see "Reina" has desayuno checked
+
   Scenario: Choose service food
     When I select service food for "Mohamed"
     Then I see that it has created a new use for food service for "Mohamed"
@@ -39,3 +44,7 @@ Feature: Assign service
   Scenario: Choose service shower
     When I select service shower for "Reina"
     Then I see that it has created a new use for shower service for "Reina"
+
+  Scenario: Choose service desayuno
+    When I select service desayuno for "Mohamed"
+    Then I see that it has created a new use for desayuno service for "Mohamed"

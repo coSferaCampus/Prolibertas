@@ -11,3 +11,7 @@ end
 if Service.where(name: 'ropa').empty?
   Service.create(name: 'ropa', primary: true)
 end
+
+if Service.where(name: 'desayuno').empty?
+  Service.create(name: 'desayuno', primary: true)
+end

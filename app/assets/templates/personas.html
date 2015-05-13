@@ -40,7 +40,7 @@
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/cutlery23.svg"></th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/tshirt18.svg"></th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/shower17.svg"></th>
-          <th class="listpeople__centrado">MÁS</th>
+          <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/hot51.svg"></th>
           <th class="listpeople__centrado"></th>
           <th class="listpeople__centrado"></th>
         </tr>
@@ -67,14 +67,16 @@
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ducha'))"
             type="checkbox">
           </td>
-          <td class="listpeople__centrado"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></i>
+            <td class="listpeople__centrado">
+            <input id="desayuno_{{person.id}}" ng-model="person.used_services_of_today.desayuno"
+            ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('desayuno'))"
+            type="checkbox">
           </td>
+
           <td class="listpeople__centrado"><a id="person-show-{{person.id}}"
             ui-sref="persona({ id: person.id })">
             <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
           </td>
-
-          <td class="listpeople__centrado"><i class="glyphicon glyphicon-list listpeople__azul"></i></td>
         </tr>
       </tbody>
     </table>
