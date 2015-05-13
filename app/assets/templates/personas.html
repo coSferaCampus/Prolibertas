@@ -2,7 +2,7 @@
     <div class="row" >
       <div class="col-md-12 listpeople__buscadores">
         <form class="form-inline">
-          <div class="form-group  col-md-4">
+          <div class="form-group  col-md-3">
             <label class="sr-only"></label>
             <div class="input-group">
               <input id="searchsurname" ng-model="filtro.surname" type="text" class="form-control" placeholder="Buscar por apellidos...">
@@ -11,7 +11,7 @@
               </span>
             </div>
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-3">
             <label class="sr-only"></label>
             <div class="input-group">
               <input id="searchorigin" ng-model="filtro.origin" type="text" class="form-control" placeholder="Buscar por origen...">
@@ -20,6 +20,15 @@
               </span>
             </div>
           </div>
+
+          <div class="form-group col-md-2">
+           <select data-ng-model="search.is_spanish">
+             <option value="" selected>Todos</option>
+             <option value="true">Españoles</option>
+             <option value="false">Extranjeros</option>
+           </select>
+         </div>
+
           <div class="form-group col-md-4">
             <a class="btn btn-primary col-md-7 col-md-offset-5" id="createPerson" ui-sref="personasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> PERSONA<span></a>
           </div>
@@ -46,7 +55,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="person in peopleCtrl.people | filteri18n:{surname:filtro.surname} | filteri18n:{origin:filtro.origin} | orderBy: 'surname'" id="person_{{person.id}}" class="{{peopleCtrl.alertClass(person)}}">
+        <tr ng-repeat="person in peopleCtrl.people | filteri18n:{surname:filtro.surname} | filteri18n:{origin:filtro.origin} | filter:search | orderBy: 'surname'" id="person_{{person.id}}" class="{{peopleCtrl.alertClass(person)}}">
           <td>{{person.surname}}</td>
           <td>{{person.name}}</td>
           <td>{{person.origin}}</td>
