@@ -86,10 +86,6 @@
     var scope = this;
     scope.person = {};
 
-    scope.is_foreign = function(person) {
-      return !person.is_spanish;
-    };
-
     $http.get('/people/' + $state.params.id + '.json')
     .success(function(data){
       scope.person = data.person;
