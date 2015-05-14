@@ -8,7 +8,6 @@ class Person
   field :genre,               type: Symbol
   field :phone,              type: String
   field :assistance,        type: Integer
-  field :home,               type: String
   field :family_status,   type: String
   field :health_status,   type: String
   field :birth,                type: Date

@@ -10,7 +10,6 @@ RSpec.describe Person, type: :model do
     it { is_expected.to have_field(:genre).of_type(Symbol) }
     it { is_expected.to have_field(:phone).of_type(String) }
     it { is_expected.to have_field(:assistance).of_type(Integer) }
-    it { is_expected.to have_field(:home).of_type(String) }
     it { is_expected.to have_field(:family_status).of_type(String) }
     it { is_expected.to have_field(:health_status).of_type(String) }
     it { is_expected.to have_field(:birth).of_type(Date) }
