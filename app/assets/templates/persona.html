@@ -38,9 +38,9 @@
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Tipo de vivienda:</strong> <span id="person_home">{{ personCtrl.person.home }}</span>
-
+          <strong class="person__list__text__left">Tipo de vivienda:</strong> <span id="person_address_type">{{ personCtrl.vivienda(personCtrl.person.address_type) }}</span>
         </li>
+
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Situación familiar:</strong> <span id="person_family">{{ personCtrl.person.family_status }}</span>
 
@@ -48,6 +48,15 @@
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Situación sanitaria:</strong> <span id="person_health">{{ personCtrl.person.health_status }}</span>
         </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Documentación:</strong> <span id="person_documentation">{{ personCtrl.documentacion(personCtrl.person.documentation) }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Servicios sociales:</strong> <span id="person_social_services">{{ personCtrl.si_o_no(personCtrl.person.social_services) }}</span>
+        </li>
+
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Notas:</strong> <span id="person_notes">{{ personCtrl.person.notes }}</span>
         </li>
@@ -66,6 +75,10 @@
           <strong class="person__list__text__left">Origen:</strong> <span id="person_origin">{{ personCtrl.person.origin }}</span>
         </li>
 
+        <li ng-if="personCtrl.person.is_spanish" class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Provincia:</strong> <span id="city">{{ personCtrl.provincia(personCtrl.person.city) }}</span>
+        </li>
+
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Tipo de menú:</strong> <span id="person_menu">{{ personCtrl.person.menu}}</span>
         </li>
@@ -75,11 +88,7 @@
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Servicios sociales:</strong> <span id="person_social">{{ personCtrl.person.social_services }}</span>
-        </li>
-
-        <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Vivienda:</strong> <span id="person_home">{{ personCtrl.person.home }}</span>
+          <strong class="person__list__text__left">¿Tiene ingresos?:</strong> <span id="person_have_income">{{ personCtrl.si_o_no(personCtrl.person.have_income) }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
@@ -90,9 +99,14 @@
           <strong class="person__list__text__left">Dirección:</strong> <span id="person_address">{{ personCtrl.person.address }}</span>
         </li>
 
+          <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Residencia:</strong> <span id="person_residence">{{ personCtrl.residencia(personCtrl.person.residence) }}</span>
+        </li>
+
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Familiar de contacto:</strong> <span id="person_contact">{{ personCtrl.person.contact_family }}</span>
         </li>
+
       </ul>
     </div>
      <div class="persona__botones col-md-6">

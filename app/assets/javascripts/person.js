@@ -30,7 +30,7 @@
       if (genero == "man") {
         return 'H';
       }
-      else {
+      else if (genero == "woman") {
         return 'M';
       }
     };
@@ -86,6 +86,9 @@
     var scope = this;
     scope.person = {};
 
+    scope.is_foreign = function(person) {
+      return !person.is_spanish;
+    };
 
     $http.get('/people/' + $state.params.id + '.json')
     .success(function(data){
@@ -97,15 +100,92 @@
       if (genero == "man") {
         return 'Hombre';
       }
-      else {
+      else if (genero == "woman") {
         return 'Mujer';
       }
     };
 
-    scope.asistencia = function(value){
+    scope.asistencia = function(value) {
       if (value === 0) { return 'Primera vez'; }
       else if(value === 1) { return 'Habitual'; }
       else if(value === 2) { return 'Reincidente'; }
+    };
+
+    scope.documentacion = function(value) {
+      if (value === 0) { return 'Indocumentado'; }
+      else if(value === 1) { return 'Regularizado'; }
+      else if(value === 2) { return 'Sin Regularizar'; }
+    };
+
+    scope.vivienda = function(value ) {
+      if (value === 0) { return 'Sin vivienda'; }
+      else if(value === 1) { return 'Vivienda'; }
+      else if(value === 2) { return 'Infravivienda'; }
+    };
+
+    scope.si_o_no = function(value) {
+      if (value === 0) { return 'No'; }
+      else if(value === 1) { return 'Si'; }
+    };
+
+    scope.residencia = function(value) {
+      if (value === 0) { return 'De paso'; }
+      else if(value === 1) { return 'Residente'; }
+    };
+
+    scope.provincia = function(value ) {
+      if (value === 'Alava') { return 'Álava'; }
+      else if(value === 'Albacete') { return 'Albacete'; }
+      else if(value === 'Alicante') { return 'Alicante'; }
+      else if(value === 'Almeria') { return 'Almería'; }
+      else if(value === 'Asturias') { return 'Asturias'; }
+      else if(value === 'Avila') { return 'Ávila'; }
+      else if(value === 'Badajoz') { return 'Badajoz'; }
+      else if(value === 'Baleares') { return 'Baleares'; }
+      else if(value === 'Barcelona') { return 'Barcelona'; }
+      else if(value === 'Burgos') { return 'Burgos'; }
+      else if(value === 'Caceres') { return 'Cáceres'; }
+      else if(value === 'Cadiz') { return 'Cadiz'; }
+      else if(value === 'Cantabria') { return 'Cantabria'; }
+      else if(value === 'Castellon') { return 'Castellon'; }
+      else if(value === 'Ceuta') { return 'Ceuta'; }
+      else if(value === 'Ciudad_Real') { return 'Ciudad Real'; }
+      else if(value === 'Cordoba') { return 'Córdoba'; }
+      else if(value === 'Cuenca') { return 'Cuenca'; }
+      else if(value === 'Girona') { return 'Girona'; }
+      else if(value === 'Granada') { return 'Granada'; }
+      else if(value === 'Guadalajara') { return 'Guadalajara'; }
+      else if(value === 'Guipuzcoa') { return 'Guipuzcoa'; }
+      else if(value === 'Huelva') { return 'Huelva'; }
+      else if(value === 'Huesca') { return 'Huesca'; }
+      else if(value === 'Jaen') { return 'Jaén'; }
+      else if(value === 'La_Coruna') { return 'La Coruña'; }
+      else if(value === 'La_Rioja') { return 'La Rioja'; }
+      else if(value === 'Las_Palmas') { return 'Las Palmas'; }
+      else if(value === 'Leon') { return 'León'; }
+      else if(value === 'Lerida') { return 'Lérida'; }
+      else if(value === 'Lugo') { return 'Lugo'; }
+      else if(value === 'Madrid') { return 'Madrid'; }
+      else if(value === 'Malaga') { return 'Málaga'; }
+      else if(value === 'Melilla') { return 'Melilla'; }
+      else if(value === 'Murcia') { return 'Murcia'; }
+      else if(value === 'Navarra') { return 'Navarra'; }
+      else if(value === 'Orense') { return 'Orense'; }
+      else if(value === 'Palencia') { return 'Palencia'; }
+      else if(value === 'Pontevedra') { return 'Pontevedra'; }
+      else if(value === 'Salamanca') { return 'Salamanca'; }
+      else if(value === 'Segovia') { return 'Segovia'; }
+      else if(value === 'Sevilla') { return 'Sevilla'; }
+      else if(value === 'Soria') { return 'Soria'; }
+      else if(value === 'Tarragona') { return 'Tarragona'; }
+      else if(value === 'Tenerife') { return 'Tenerife'; }
+      else if(value === 'Teruel') { return 'Teruel'; }
+      else if(value === 'Toledo') { return 'Toledo'; }
+      else if(value === 'Valencia') { return 'Valencia'; }
+      else if(value === 'Valladolid') { return 'Valladolid'; }
+      else if(value === 'Vizcaya') { return 'Vizcaya'; }
+      else if(value === 'Zamora') { return 'Zamora'; }
+      else if(value === 'Zaragoza') { return 'Zaragoza'; }
     };
 
     scope.destroyPerson = function(person) {
