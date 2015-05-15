@@ -33,8 +33,6 @@
     var ano =  e[0];
     var mes =  e[1];
     var dia =  e[2];
-
-    console.log({ano});
     
     fecha_hoy = new Date();
     ahora_ano = fecha_hoy.getYear();
