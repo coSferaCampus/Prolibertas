@@ -7,7 +7,6 @@ FactoryGirl.define do
     genre { [:man, :woman].sample }
     phone { Faker::PhoneNumber.cell_phone }
     assistance { [0, 1, 2].sample }
-    home { Faker::Lorem.word}
     family_status { [:single, :married, :divorced, :widower].sample  }
     health_status {[:drug_addict, :alcoholic, :sic, :healthy].sample  }
     birth { Faker::Date.between(60.years.ago, 18.years.ago) }
@@ -32,7 +31,6 @@ FactoryGirl.define do
     genre { [:man, :woman].sample }
     phone "A new phone"
     assistance { [0, 1, 2].sample }
-    home "A new home"
     family_status "A new family_status"
     health_status "A new health_status"
     birth { Faker::Date.between(60.years.ago, 18.years.ago) }
