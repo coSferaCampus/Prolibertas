@@ -16,7 +16,7 @@
         <label for="InputPassword_confirmation">Repetir Contraseña</label>
         <input ng-model="userFormCtrl.userForm.password_confirmation" ng-change="userFormCtrl.change('Password_confirmation')" type="password" class="form-control" id="InputPassword_confirmation" data-placement="top">
       </div>
-    </div>   
+    </div>
     <div class="col-md-12">
       <div class="form-group col-md-7" ng-class="{ 'has-error':userFormCtrl.errors.full_name }">
         <label for="InputFull_name">Nombre y Apellidos</label>
@@ -27,8 +27,8 @@
       <div class="form-group col-md-4">
         <label for="InputRole">Tipo de usuario</label>
         <select ng-model="userFormCtrl.userForm.role" type="text" class="form-control" id="InputRole" data-placement="top">
-          <option value="volunteer">Voluntario</option>          
-          <option value="worker">Trabajador Social</option>
+          <option value="volunteer">Voluntario</option>
+          <option value="worker" ng-if="currentUser.role === 'director'">Trabajador Social</option>
         </select>
       </div>
     </div>

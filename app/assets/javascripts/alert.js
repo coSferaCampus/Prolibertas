@@ -1,14 +1,14 @@
 (function(){
   var app = angular.module('prolibertas-alert', ['ui.router']);
 
-  app.controller('AlertsController', ['$http', '$timeout', '$state', function($http, $timeout, $state){
+  app.controller('AlertsController', ['$http', '$timeout', '$state', function($http, $timeout, $state) {
     var scope = this;
     scope.alerts = [];
     scope.alertaCreado = $state.params.alertaCreado;
 
     // La alerta se oculta después de 3 segundos
     $timeout(function(){scope.alertaCreado = false;}, 5000);
-    
+
     scope.alertaBorrado = $state.params.alertaBorrado;
     // La alerta se oculta después de 3 segundos
     $timeout(function(){scope.alertaBorrado = false;}, 5000);
@@ -18,7 +18,7 @@
       .success(function(data){
         scope.alerts = data.alerts;
       })
-    
+
     scope.tipo = function(tipo){
       if (tipo == "punishment") {
         return 'castigo';
@@ -43,7 +43,7 @@
       }
       else {
         return '';
-      } 
+      }
     };
 
   }]);
@@ -75,7 +75,7 @@
       if (confirmed) {
         $http.delete('/alerts/' + $state.params.alerta_id + '.json').success(function(data) {
           $state.go("persona.alertas", { alertaBorrado: 'true' })
-        }); 
+        });
       }
     };
 
@@ -113,7 +113,7 @@
           for(var error in scope.errors) {
             if(scope.errors[error]) {
               $("#Input" + $rootScope.capitalize(error))
-                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');
             }
           }
         });
@@ -132,7 +132,7 @@
           for(var error in scope.errors) {
             if(scope.errors[error]) {
               $("#Input" + $rootScope.capitalize(error))
-                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');
             }
           }
         });

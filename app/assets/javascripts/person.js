@@ -2,7 +2,7 @@
   var app = angular.module('prolibertas-person', ['ui.router']);
 
   // Controllers
-  app.controller('PeopleController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope){
+  app.controller('PeopleController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope) {
     var scope = this;
     scope.people = [];
     scope.services = [];
@@ -29,21 +29,21 @@
   //función para calcular la edad a partir de la fecha de nacimiento
    scope.anos = function (birth){
     var e = birth.split("-");
- 
+
     var ano =  e[0];
     var mes =  e[1];
     var dia =  e[2];
-    
+
     fecha_hoy = new Date();
     ahora_ano = fecha_hoy.getYear();
     ahora_mes = fecha_hoy.getMonth();
     ahora_dia = fecha_hoy.getDate();
     edad = (ahora_ano + 1900) - ano;
-    
+
       if ( ahora_mes < (mes - 1)){
         edad--;
      }
-     if (((mes - 1) == ahora_mes) && (ahora_dia < dia)){ 
+     if (((mes - 1) == ahora_mes) && (ahora_dia < dia)){
        edad--;
      }
      if (edad > 1900){
