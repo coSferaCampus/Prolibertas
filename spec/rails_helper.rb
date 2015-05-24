@@ -37,14 +37,17 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   # Configure mongoid-rspec
-  include Mongoid::Matchers, type: :model
+  config.include Mongoid::Matchers, type: :model
   # Configure controller macros
   config.extend ControllerMacros, type: :controller
+  #Devise TestHelpers
+  config.include Devise::TestHelpers, type: :controller
 
   # Configure DatabaseCleaner
   config.before(:suite) do
     DatabaseCleaner.orm = 'mongoid'
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :truncation, { except: %w( services roles ) }
+    Service.where(:name.nin => %w(comida ducha ropa)).destroy_all
   end
 
   config.before(:all) do

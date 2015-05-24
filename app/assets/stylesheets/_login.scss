@@ -1,0 +1,104 @@
+//login
+@import "variables.scss";
+
+.fondoimagen {
+  height: 100%;
+}
+
+.fill {
+  min-height: 100%;
+  height: 100%
+}
+
+.containerall {
+  height: 100%;
+}
+
+.container_imagen {
+  width: 100%;
+  background: url(/assets/fondo_manos.jpg)no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.botoniniciar {
+  background-color: $brand_light;
+  border-color: $brand;
+  color: white;
+}
+
+.botoniniciar:hover {
+  background-color: $brand_dark;
+  color: white;
+  border-color: $brand;
+}
+
+.field {
+  margin-top: 10px;
+}
+
+.logologin {
+  padding-bottom: 20px;
+}
+.invalid {
+  background-color: red;
+}
+
+.col-lg-offset-4.col-lg-4 {
+  height: 100%;
+  background-color: rgba(255,255,255, 0.7);
+}
+
+.center-block {
+  display: block;
+  margin: 0 auto;
+}
+
+.glyphicon.glyphicon-user {
+  color: white;
+}
+
+.glyphicon.glyphicon-lock {
+  color: white;
+}
+
+.input-group-addon {
+  background-color: $brand_light;
+}
+
+.form-signin {
+  max-width: 330px;
+  margin: 0 auto;
+  position: absolute;
+  left:50%;
+  top:50%;
+  -webkit-transform: translate(-50% , -50%);
+  -moz-transform: translate(-50% , -50%);
+  -o-transform: translate(-50% , -50%);
+  -ms-transform: translate(-50% , -50%);
+}
+
+.imgfooter {
+  padding: 10px;
+  left: 30px;
+}
+
+.correofooter {
+  padding: 20px;
+  color: $grey_80;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.colordefondo {
+  background-color: white;
+}
+
+.errormessage {
+  font-size: 16px;
+  color: red;
+}

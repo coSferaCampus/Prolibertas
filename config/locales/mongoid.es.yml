@@ -1,0 +1,30 @@
+es:
+  errors:
+    template: &template
+      header:
+        one: 'Revise el siguiente campo'
+        other: 'Revise los siguientes campos'
+      body: ""
+  activerecord:
+    errors:
+      template:
+        <<: *template
+  mongoid:
+    models:
+      user: 'Usuario'
+    attributes:
+      user:
+        name: 'Nombre'
+        password: 'Contraseña'
+        remember_me: "Recordar sesión"
+    errors:
+      template:
+        <<: *template
+      messages:
+        invalid: 'Es inválido'
+        blank: 'Este campo es obligatorio'
+        confirmation: 'No coincide con la confirmación'
+        taken: 'Ya está en uso'
+        inclusion: 'Debe elegir una opción'
+        too_long: 'Es demasiado largo'
+        not_a_number: 'Tiene que ser un número'

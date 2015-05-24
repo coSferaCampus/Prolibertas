@@ -1,0 +1,198 @@
+<div class="container col-xs-12 col-sm-12 col-md-12" id="personform">
+  <form class="col-md-12" ng-submit="personCtrl.actionForm()">
+
+    <h3 class="header-titule hidden-xs">{{prolibertas}}</h3>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.name }">
+        <label for="InputName">Nombre</label>
+        <input ng-model="personCtrl.personForm.name" ng-change="personCtrl.change('Name')" type="text" class="form-control" id="InputName" data-placement="top">
+      </div>
+
+      <div class="form-group col-md-6" >
+        <label for="InputBirth">Fecha de Nacimiento</label>
+        <div class="input-group datepicker">
+          <span class="input-group-addon listpeople__azul">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+          <input ng-model="personCtrl.personForm.birth" type="text" class="form-control" id="InputBirth">
+        </div>
+      </div>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.surname }">
+        <label for="InputSurname">Apellidos</label>
+        <input ng-model="personCtrl.personForm.surname" ng-change="personCtrl.change('Surname')" type="text" class="form-control" id="InputSurname" data-placement="top" >
+      </div>
+      <div class="form-group col-md-6">
+        <label for="InputNif">NIF</label>
+        <input ng-model="personCtrl.personForm.nif" type="text" class="form-control" id="InputNif">
+      </div>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.genre }">
+        <label for="InputGenre">Género</label>
+        <select ng-model="personCtrl.personForm.genre" ng-change="personCtrl.change('Genre')" type="text" class="form-control" id="InputGenre" data-placement="top">
+          <option value="man">Hombre</option>
+          <option value="woman">Mujer</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="InputSocialServices">Servicios Sociales</label>
+        <input ng-model="personCtrl.personForm.social_services" type="text" class="form-control" id="InputSocialServices">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="InputPhone">Teléfono</label>
+        <input ng-model="personCtrl.personForm.phone" type="text" class="form-control" id="InputPhone">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="InputMenu">Tipo de Menú</label>
+        <input ng-model="personCtrl.personForm.menu" type="text" class="form-control" id="InputMenu">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="InputOrigin">Origen</label>
+        <input ng-model="personCtrl.personForm.origin" type="text" class="form-control" id="InputOrigin">
+      </div>
+
+      <div ng-if="personCtrl.personForm.is_spanish" class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.city }">
+        <label for="InputCity">Provincia</label>
+        <select ng-model="personCtrl.personForm.city" ng-change="personCtrl.change('City')" type="text" class="form-control" id="InputCity" data-placement="top">
+          <option value='Alava'>Álava</option>
+          <option value='Albacete'>Albacete</option>
+          <option value='Alicante'>Alicante</option>
+          <option value='Almeria'>Almería</option>
+          <option value='Asturias'>Asturias</option>
+          <option value='Avila'>Ávila</option>
+          <option value='Badajoz'>Badajoz</option>
+          <option value='Baleares'>Baleares</option>
+          <option value='Barcelona'>Barcelona</option>
+          <option value='Burgos'>Burgos</option>
+          <option value='Caceres'>Cáceres</option>
+          <option value='Cadiz'>Cadiz</option>
+          <option value='Cantabria'>Cantabria</option>
+          <option value='Castellon'>Castellon</option>
+          <option value='Ceuta'>Ceuta</option>
+          <option value='Ciudad_Real'>Ciudad Real</option>
+          <option value='Cordoba'>Córdoba</option>
+          <option value='Cuenca'>Cuenca</option>
+          <option value='Girona'>Girona</option>
+          <option value='Granada'>Granada</option>
+          <option value='Guadalajara'>Guadalajara</option>
+          <option value='Guipuzcoa'>Guipuzcoa</option>
+          <option value='Huelva'>Huelva</option>
+          <option value='Huesca'>Huesca</option>
+          <option value='Jaen'>Jaén</option>
+          <option value='La_Coruna'>La Coruña</option>
+          <option value='La_Rioja'>La Rioja</option>
+          <option value='Las_Palmas'>Las Palmas</option>
+          <option value='Leon'>León</option>
+          <option value='Lerida'>Lérida</option>
+          <option value='Lugo'>Lugo</option>
+          <option value='Madrid'>Madrid</option>
+          <option value='Malaga'>Málaga</option>
+          <option value='Melilla'>Melilla</option>
+          <option value='Murcia'>Murcia</option>
+          <option value='Navarra'>Navarra</option>
+          <option value='Orense'>Orense</option>
+          <option value='Palencia'>Palencia</option>
+          <option value='Pontevedra'>Pontevedra</option>
+          <option value='Salamanca'>Salamanca</option>
+          <option value='Segovia'>Segovia</option>
+          <option value='Sevilla'>Sevilla</option>
+          <option value='Soria'>Soria</option>
+          <option value='Tarragona'>Tarragona</option>
+          <option value='Tenerife'>Tenerife</option>
+          <option value='Teruel'>Teruel</option>
+          <option value='Toledo'>Toledo</option>
+          <option value='Valencia'>Valencia</option>
+          <option value='Valladolid'>Valladolid</option>
+          <option value='Vizcaya'>Vizcaya</option>
+          <option value='Zamora'>Zamora</option>
+          <option value='Zaragoza'>Zaragoza</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.assistance }">
+        <label for="InputAssistance">Asistencia</label>
+        <select ng-model="personCtrl.personForm.assistance" ng-change="personCtrl.change('Assistance')" type="number" class="form-control" id="InputAssistance" data-placement="top">
+          <option value='0'>0 - Primera vez</option>
+          <option value='1'>1 - Habitual</option>
+          <option value='2'>2 - Reincidente</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.have_income }">
+        <label for="InputSocial_have_income">¿Tiene ingresos?</label>
+        <select ng-model="personCtrl.personForm.have_income" ng-change="personCtrl.change('Have_income')" type="number" class="form-control" id="InputHave_income" data-placement="top">
+          <option value='0'>0 - No</option>
+          <option value='1'>1 - Si</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="InputIncome">Ingresos</label>
+        <input ng-model="personCtrl.personForm.income" type="text" class="form-control" id="InputIncome">
+      </div>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.address_type }">
+        <label for="InputAddress_type">Tipo de Vivienda</label>
+        <select ng-model="personCtrl.personForm.address_type" ng-change="personCtrl.change('Address_type')" type="number" class="form-control" id="InputAddress_type" data-placement="top">
+          <option value='0'>0 - Sin vivienda</option>
+          <option value='1'>1 - Vivienda</option>
+          <option value='2'>2 - Infravivienda</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="InputAddress">Dirección</label>
+        <input ng-model="personCtrl.personForm.address" type="text" class="form-control" id="InputAddress">
+      </div>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.residence }">
+        <label for="InputSocial_residence">Residencia</label>
+        <select ng-model="personCtrl.personForm.residence" ng-change="personCtrl.change('Residence')" type="number" class="form-control" id="InputResidence" data-placement="top">
+          <option value='0'>0 - De paso</option>
+          <option value='1'>1 - Residente</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="InputFamilyStatus">Situación Familiar</label>
+        <textarea ng-model="personCtrl.personForm.family_status" class="form-control" rows="2" id="InputFamilyStatus"></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="InputContactFamily">Familiar de contacto</label>
+        <textarea ng-model="personCtrl.personForm.contact_family" class="form-control" rows="2" id="InputContactFamily"></textarea>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="InputHealthStatus">Situación Sanitaria</label>
+        <textarea ng-model="personCtrl.personForm.health_status" class="form-control" rows="2" id="InputHealthStatus"></textarea>
+      </div>
+
+       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.documentation }">
+        <label for="InputDocumentation">Documentación</label>
+        <select ng-model="personCtrl.personForm.documentation" ng-change="personCtrl.change('Documentation')" type="number" class="form-control" id="InputDocumentation" data-placement="top">
+          <option value='0'>0 - Indocumentado</option>
+          <option value='1'>1 - Regularizado</option>
+          <option value='2'>2 - Sin Regularizar</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.social_services }">
+        <label for="InputSocial_services">Servicios Sociales</label>
+        <select ng-model="personCtrl.personForm.social_services" ng-change="personCtrl.change('Social_services')" type="number" class="form-control" id="InputSocial_services" data-placement="top">
+          <option value='0'>0 - No</option>
+          <option value='1'>1 - Si</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="InputNotes">Notas</label>
+        <textarea ng-model="personCtrl.personForm.notes" class="form-control" rows="2" id="InputNotes"></textarea>
+      </div>
+
+      <div class="submit-group col-md-6">
+        <button class="btn btn-primary" type="submit" id="InputSubmit">Guardar</button>
+      </div>
+  </form>
+</div>
+

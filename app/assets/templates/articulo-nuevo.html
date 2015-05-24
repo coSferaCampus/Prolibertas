@@ -1,0 +1,64 @@
+<h3 class="header-titule hidden-xs">{{prolibertas}}</h3>
+<form class="col-md-12" id="articleForm" ng-submit="articleCtrl.actionForm()">
+
+  <div class="form-group col-md-7" ng-class="{ 'has-error':articleCtrl.errors.type }">
+    <label>Tipo</label>
+    <select ng-model="articleCtrl.articleForm.type" ng-change="articleCtrl.change('Type')" type="text" class="form-control" data-placement="top" id="InputType">   
+      <option value="">Seleccione Tipo</option>
+      <option value="blanket">manta</option>
+      <option value="sheet">sábana</option>
+      <option value="jacket">chaqueta</option>
+      <option value="shoes">zapatos</option>
+      <option value="others1">otros 1</option>
+      <option value="others2">otros 2</option>
+      <option value="others3">otros 3</option>
+    </select>
+  </div>
+
+  <div class="form-group col-md-7">
+    <label>Cantidad</label>
+    <select ng-model="articleCtrl.articleForm.amount" ng-change="articleCtrl.change('Amount')" type="text" class="form-control" data-placement="top" id="InputAmount">   
+      <option value="">Seleccione Cantidad</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>            
+    </select>
+  </div>
+
+  <div class="form-group col-md-7" ng-class="{ 'has-error':articleCtrl.errors.requested }">
+    <label>Pedidas</label>
+    <div class="input-group datepicker">
+      <span class="input-group-addon listpeople__azul">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+      <input id="InputRequested" ng-model="articleCtrl.articleForm.requested" ng-change="articleCtrl.change('Requested')" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-7">
+    <label>Entregadas</label>
+    <div class="input-group datepicker">
+      <span class="input-group-addon listpeople__azul">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+      <input id="InputDispensed" ng-model="articleCtrl.articleForm.dispensed" ng-change="articleCtrl.change('Dispensed')" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-7">
+    <label>Observaciones</label>
+    <textarea ng-model="articleCtrl.articleForm.observations" class="form-control" id="InputObservations"></textarea>
+  </div>
+
+  <div class="submit-group col-md-7">
+    <button class="btn btn-primary" type="submit" id="InputSubmit">Guardar</button>
+  </div>
+
+</form>

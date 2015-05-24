@@ -1,0 +1,39 @@
+<div class="col-md-12">
+  <div class="row__button__create">
+    <a id="nuevoArticulo" ui-sref="persona.articulosNuevo" class="btn btn-primary col-md-offset-10 col-md-2 col-sm-offset-9 col-sm-3 col-xs-offset-9 col-xs-3"><span class="glyphicon glyphicon-plus-sign"></span><span class="hidden-xs"> ARTÍCULO<span>
+    </a>
+  </div>
+
+  <table id="articlesTable" class="table table-hover table-responsive">
+    <thead class="listpeople__cabecera">
+      <tr>
+        <th>Creador</th>
+        <th>Tipo</th>
+        <th>Cantidad</th>
+        <th>Pedidas</th>
+        <th>Entregadas</th>
+        <th>Observaciones</th>        
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr id="article_{{article.id}}" ng-repeat="article in articlesCtrl.articles | orderBy:'-pending'">
+        <td>{{article.created_by.name}}</td>
+        <td>{{articlesCtrl.tipo(article.type)}}</td>
+        <td>{{articlesCtrl.cantidad(article.amount)}}</td>
+        <td>{{article.requested}}</td>
+        <td>{{article.dispensed}}</td>
+        <td>{{article.observations}}</td>        
+        <td>
+          <a id="article-show-{{article.id}}" ui-sref="persona.articulo({id: personCtrl.person.id, articulo_id: article.id})"><span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<div class="alert alert-success leo-message" ng-if="articlesCtrl.alertaCreado">¡Ha creado satisfactoriamente un nuevo artículo!
+</div>
+
+<div class="alert alert-danger leo-message" ng-if="articlesCtrl.alertaBorrado">¡Borrado satisfactoriamente!
+</div>  

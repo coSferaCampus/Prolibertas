@@ -1,0 +1,29 @@
+<div class="container container_imagen containerall">
+  <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-offset-2 col-sm-8 fill"> 
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: "form-signin"}) do |f| %>
+        <img class="center-block logologin" src="/assets/logo.svg">
+
+            <div class="input-group input-group-lg">
+               <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+               <%= f.text_field :name, autofocus: true, class:"form-control", placeholder:User.human_attribute_name("name"), "aria-describedby" => "sizing-addon1"%>
+            </div>
+              <span>&nbsp</span>
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+             <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:User.human_attribute_name("password"), "aria-describedby" => "sizing-addon1" %>
+           </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+          <div class="actions">
+            <%= f.submit "Acceder", class:"btn btn-lg btn-block botoniniciar", id:"buttomlogin"%>
+          </div>
+          <div id="invalid" class="errormessage"><%=alert%></div>  
+        <% end %>
+  </div>
+</div>
+
