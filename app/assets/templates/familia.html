@@ -2,7 +2,17 @@
 
   <h2>Ficha de {{ familyCtrl.family.name }} {{ familyCtrl.family.surname }}</h2>
 
-  <div class="row col-md-12" ui-view="menupersona">
+  <div class="row col-md-12" ui-view="menufamilia">
+    <div class="col-md-12 col-xs-12 ">
+      <ul class="nav nav-tabs">
+        <li><a ui-sref="familia({id: familyCtrl.family.id})"data-toggle="tab">Ficha familiar</a></li>
+        <li class="navPersona__el" ng-if="currentUser.role !== 'volunteer'"><a id="family_histories" ui-sref="familia.historias({id: familyCtrl.family.id})" data-toggle="tab">Historia</a></li>
+        <li class="navPersona__el" ng-if="currentUser.role !== 'volunteer'"><a id="family__alerts" ui-sref="familia.alertas({id: familyCtrl.family.id})"data-toggle="tab">Alertas</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="lineablanca"></div>
+
     <div class="col-md-6">
       <ul class="list-group">
         <li class="list-group-item person__list__el">

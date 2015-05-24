@@ -3,7 +3,7 @@ FactoryGirl.define do
     name { Faker::Name.first_name }
     surname { Faker::Name.last_name }
     origin { Faker::Address.country }
-    menu { [:standar, :muslim].sample }
+    menu { ["standar", "muslim"].sample }
     genre { [:man, :woman].sample }
     phone { Faker::PhoneNumber.cell_phone }
     adults { rand(1...3) }
@@ -24,7 +24,7 @@ FactoryGirl.define do
     name "Nombre nuevo"
     surname { Faker::Name.last_name }
     origin { Faker::Address.country }
-    menu { [:standar, :muslim].sample }
+    menu { ["standar", "muslim"].sample }
     genre { [:man, :woman].sample }
     phone { Faker::PhoneNumber.cell_phone }
     adults { rand(1...3) }
