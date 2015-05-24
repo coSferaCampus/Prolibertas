@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :alerts, only: [:index, :create]
     resources :histories, only: [:index, :create]
   end
+  resources :families
   resources :services
   resources :used_services
   resources :alerts, only: [:show, :update, :destroy]

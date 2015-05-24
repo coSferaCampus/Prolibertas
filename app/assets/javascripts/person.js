@@ -1,4 +1,4 @@
-(function(){
+( function() {
   var app = angular.module('prolibertas-person', ['ui.router']);
 
   // Controllers
@@ -27,7 +27,7 @@
       });
 
   //función para calcular la edad a partir de la fecha de nacimiento
-   scope.anos = function (birth){
+   scope.anos = function (birth) {
     var e = birth.split("-");
 
     var ano =  e[0];
@@ -231,13 +231,10 @@
    //variable para los errores
     scope.errors = {};
 
-
     $('.datepicker').datetimepicker({
       locale: 'es',
       format: 'YYYY-MM-DD',
     });
-
-
 
     scope.change = function(field) {
       if(scope.errors[field.toLowerCase()]) {
