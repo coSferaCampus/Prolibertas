@@ -28,7 +28,7 @@
         class="list-group-item menu__el"><span class="menu__el__text">PERSONAS</span></a>
       </li>
 
-      <li><a href="#"
+      <li><a ui-sref="familias" ui-sref-active="active" id="go-families"
         class="list-group-item menu__el"><span class="menu__el__text">FAMILIAS</span></a>
       </li>
       <% if current_user.role == 'director' or current_user.role == 'worker' %>

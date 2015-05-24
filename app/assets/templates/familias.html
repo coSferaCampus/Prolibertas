@@ -1,0 +1,86 @@
+  <nav class="navbar-fixed-top col-md-offset-2 col-md-10">
+    <div class="row" >
+      <div class="col-md-12 listpeople__buscadores">
+        <form class="form-inline">
+          <div class="form-group  col-md-3">
+            <label class="sr-only"></label>
+            <div class="input-group">
+              <input id="searchsurname" ng-model="filtro.surname" type="text" class="form-control" placeholder="Buscar por apellidos...">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search listpeople__azul"></i>
+              </span>
+            </div>
+          </div>
+          <div class="form-group col-md-3">
+            <label class="sr-only"></label>
+            <div class="input-group">
+              <input id="searchorigin" ng-model="filtro.origin" type="text" class="form-control" placeholder="Buscar por origen...">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-globe listpeople__azul"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group col-md-offset-2 col-md-4">
+            <a class="btn btn-primary col-md-7 col-md-offset-5" id="createFamily" ui-sref="familiasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> FAMILIA<span></a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+<section class="listfamilies__tabla col-md-12">
+  <table class="table table-responsive col-md-12" id="familiesTable">
+    <thead class="listfamilies__cabecera">
+      <tr>
+        <th>Apellidos</th>
+        <th>Nombre</th>
+        <th>Origen</th>
+        <th class="listfamilies__centrado">Adultos</th>
+        <th class="listfamilies__centrado">Niños</th>
+        <th class="listfamilies__centrado">Menú</th>
+        <th class="listfamilies__centrado"><img class="listfamilies__iconos" src="/assets/cutlery23.svg"></th>
+        <th class="listfamilies__centrado"><img class="listfamilies__iconos" src="/assets/tshirt18.svg"></th>
+        <th class="listfamilies__centrado"><img class="listfamilies__iconos" src="/assets/shower17.svg"></th>
+          <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/hot51.svg"></th>
+          <th class="listpeople__centrado"></th>
+          <th class="listpeople__centrado"></th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr ng-repeat="family in familyCtrl.families | filter:search" id="family_{{family.id}}">
+        <td>{{family.surname}}</td>
+        <td>{{family.name}}</td>
+        <td>{{family.origin}}</td>
+        <td class="listfamilies__centrado">{{family.adults}}</td>
+        <td class="listfamilies__centrado">{{family.children}}</td>
+        <td class="listfamilies__centrado">{{family.menu}}</td>
+        <td class="listfamilies__centrado">
+          <input id="comida_{{family.id}}" ng-model="family.used_services_of_today.comida"
+          ng-change="familiesCtrl.changeCheckbox(family, familiesCtrl.getService('comida'))"
+          type="checkbox">
+        </td>
+        <td class="listpeople__centrado">
+          <input id="ropa_{{family.id}}" ng-model="family.used_services_of_today.ropa"
+          ng-change="familiesCtrl.changeCheckbox(family, familiesCtrl.getService('ropa'))"
+          type="checkbox">
+        </td>
+        <td class="listpeople__centrado">
+          <input id="ducha_{{family.id}}" ng-model="family.used_services_of_today.ducha"
+          ng-change="familiesCtrl.changeCheckbox(family, familiesCtrl.getService('ducha'))"
+          type="checkbox">
+        </td>
+          <td class="listpeople__centrado">
+            <input id="desayuno_{{family.id}}" ng-model="family.used_services_of_today.desayuno"
+            ng-change="familiesCtrl.changeCheckbox(family, familiesCtrl.getService('desayuno'))"
+            type="checkbox">
+          </td>
+        <td class="listpeople__centrado"><a id="family-show-{{family.id}}"
+            ui-sref="familia({ id: family.id })">
+          <span class="glyphicon glyphicon-eye-open listfamilies__azul"></span></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="alert alert-success leo-message" ng-if="familyCtrl.alertaCreado">¡Ha creado satisfactoriamente una nueva familia!</div>
+  <div class="alert alert-danger leo-message" ng-if="familyCtrl.alertaBorrado">¡Familia borrada satisfactoriamente!</div>

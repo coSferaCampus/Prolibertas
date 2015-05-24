@@ -1,0 +1,91 @@
+<div id="family-show-page">
+
+  <h2>Ficha de {{ familyCtrl.family.name }} {{ familyCtrl.family.surname }}</h2>
+
+  <div class="row col-md-12" ui-view="menupersona">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Nombre:</strong> <span id="family_name">{{ familyCtrl.family.name }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Apellidos:</strong> <span id="family_surname">{{ familyCtrl.family.surname }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Origen:</strong> <span id="family_origin">{{ familyCtrl.family.origin }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Tipo de Menú:</strong> <span id="family_menu">{{ familyCtrl.family.menu }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Género:</strong> <span id="family_genre">{{  familyCtrl.genero(familyCtrl.family.genre) }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Teléfono:</strong> <span id="family_phone">{{ familyCtrl.family.phone }}</span>
+
+        </li>
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Nº Adultos:</strong> <span id="family_adults">{{ familyCtrl.family.adults }}</span>
+
+        </li>
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Nº Menores:</strong> <span id="family_children">{{ familyCtrl.family.children }}</span>
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <div class="col-md-6">
+      <ul class="list-group">
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Centro de procedencia:</strong> <span id="family_center">{{ familyCtrl.family.center }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Trabajador Social:</strong> <span id="family_socialworker">{{ familyCtrl.family.socialworker }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Tipo de Ingresos:</strong> <span id="family_type_of_income">{{ familyCtrl.family.type_of_income }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Cantidad de Ingresos:</strong> <span id="family_amount_of_income">{{ familyCtrl.family.amount_of_income }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Tipo de Vivienda:</strong> <span id="family_address_type">{{ familyCtrl.family.address_type }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Dirección:</strong> <span id="family_address">{{ familyCtrl.family.address }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong  class="person__list__text__left">Asistencia:</strong> <span id="family_assistance">{{ familyCtrl.asistencia(familyCtrl.family.assistance) }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">NIF:</strong> <span id="family_nif">{{ familyCtrl.family.nif }}</span>
+        </li>
+
+      </ul>
+
+    </div>
+     <div class="persona__botones col-md-6">
+        <a id="remove-family-btn" type="button" class="btn btn-danger persona__botones__remove"
+        ng-click="familyCtrl.destroyFamily(familyCtrl.family)">Eliminar
+        </a>
+        <button id="family-edit-{{familyCtrl.family.id}}" ui-sref="familiaEditar({id:familyCtrl.family.id})" type="button" class="btn btn-primary persona__botones__edit">Editar</button>
+     </div>
+  </div>
+
+</div>

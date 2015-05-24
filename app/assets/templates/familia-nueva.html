@@ -1,0 +1,89 @@
+<div class="container col-xs-12 col-sm-12 col-md-12" id="familyform">
+  <form class="col-md-12" ng-submit="familyCtrl.actionForm()">
+
+    <h2>{{ prolibertas }}</h2>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.name }">
+        <label for="InputName">Nombre</label>
+        <input ng-model="familyCtrl.familyForm.name" ng-change="familyCtrl.change('Name')" type="text" class="form-control" id="InputName" data-placement="top">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="InputNif">NIF</label>
+        <input ng-model="familyCtrl.familyForm.nif" type="text" class="form-control" id="InputNif">
+      </div>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.surname }">
+        <label for="InputSurname">Apellidos</label>
+        <input ng-model="familyCtrl.familyForm.surname" ng-change="familyCtrl.change('Surname')" type="text" class="form-control" id="InputSurname" data-placement="top" >
+      </div>
+      <div class="form-group col-md-6">
+        <label for="InputMenu">Tipo de Menú</label>
+        <input ng-model="familyCtrl.familyForm.menu" type="text" class="form-control" id="InputMenu">
+      </div>
+      <div class="form-group col-md-3" ng-class="{ 'has-error':familyCtrl.errors.adults }">
+        <label for="InputAdults">Nº Adultos</label>
+        <input ng-model="familyCtrl.familyForm.adults " ng-change="familyCtrl.change('Adults')" type="number" class="form-control" id="InputAdults">
+      </div>
+      <div class="form-group col-md-3" ng-class="{ 'has-error':familyCtrl.errors.children }">
+        <label for="InputChildren">Nº Menores</label>
+        <input ng-model="familyCtrl.familyForm.children" ng-change="familyCtrl.change('Children')" type="number" class="form-control" id="InputChildren">
+      </div>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.genre }">
+        <label for="InputGenre">Género</label>
+        <select ng-model="familyCtrl.familyForm.genre" ng-change="familyCtrl.change('Genre')" type="text" class="form-control" id="InputGenre" data-placement="top">
+          <option value="">Seleccione género</option>
+          <option value="man">Hombre</option>
+          <option value="woman">Mujer</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="InputOrigin">Origen</label>
+        <input ng-model="familyCtrl.familyForm.origin" type="text" class="form-control" id="InputOrigin">
+      </div>
+      <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.center }">
+        <label for="InputCenter">Centro de procedencia</label>
+        <input ng-model="familyCtrl.familyForm.center" ng-change="familyCtrl.change('Center')" type="text" class="form-control" id="InputCenter" data-placement="top" >
+      </div>
+      <div class="form-group col-md-6">
+        <label for="InputSocialworker">Trabajador Social</label>
+        <input ng-model="familyCtrl.familyForm.socialworker" type="text" class="form-control" id="InputSocialworker">
+      </div>
+      <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.assistance }">
+        <label for="InputAssistance">Asistencia</label>
+        <select ng-model="familyCtrl.familyForm.assistance" ng-change="familyCtrl.change('Assistance')" type="number" class="form-control" id="InputAssistance" data-placement="top">
+          <option value='0'>0 - Primera vez</option>
+          <option value='1'>1 - Habitual</option>
+          <option value='2'>2 - Reincidente</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="InputAddressType">Tipo de Vivienda</label>
+        <input ng-model="familyCtrl.familyForm.address_type" type="text" class="form-control" id="InputAddressType">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="InputTypeOfIncome">Tipo de Ingresos</label>
+        <input ng-model="familyCtrl.familyForm.type_of_income" type="text" class="form-control" id="InputTypeOfIncome">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="InputAmountOfIncome">Cantidad de Ingresos</label>
+        <input ng-model="familyCtrl.familyForm.amount_of_income" type="text" class="form-control" id="InputAmountOfIncome">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="InputAddress">Dirección</label>
+        <input ng-model="familyCtrl.familyForm.address" type="text" class="form-control" id="InputAddress">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="InputPhone">Teléfono</label>
+        <input ng-model="familyCtrl.familyForm.phone" type="text" class="form-control" id="InputPhone">
+      </div>
+
+    <div class="col-md-12">
+      <div class="submit-group col-md-4 col-md-offset-7">
+        <button class="btn btn-primary" type="submit" id="InputSubmit">Guardar</button>
+      </div>
+    </div>
+  </form>
+</div>
