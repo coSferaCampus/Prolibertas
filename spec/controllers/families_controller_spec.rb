@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe FamiliesController, type: :controller do
   set_content_type 'application/json'
 
-  options = [:show, :index, :create]
+  options = [:show, :index, :create, :update, :destroy]
   json_attributes = FactoryGirl.attributes_for(:family).keys
 
   before :all do
