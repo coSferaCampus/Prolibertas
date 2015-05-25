@@ -32,9 +32,9 @@ parametros = FactoryGirl.attributes_for(:article)
   elsif parametros[:type] == :others3
     select('otros 3', from: 'InputType')
   end
-
-  find("option[value='1']").click
-
+  within '#InputAmount' do
+    find("option[value='1']").click
+  end
   fill_in 'InputObservations', with: parametros[:observations]
   fill_in 'InputRequested', with: parametros[:requested].strftime('%d/%m/%Y')
   fill_in 'InputDispensed', with: parametros[:dispensed].strftime('%d/%m/%Y')
