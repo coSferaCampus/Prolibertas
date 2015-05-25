@@ -40,11 +40,11 @@ Feature: Assign service
   Scenario: Choose service clothes
     When I select service clothes for "Mohamed"
     Then I see that it has created a new use for clothes service for "Mohamed"
-@wip
+
   Scenario: Choose service shower
     When I select service shower for "Reina"
     Then I see that it has created a new use for shower service for "Reina"
-@wip
+
   Scenario: Choose service desayuno
     When I select service desayuno for "Mohamed"
     Then I see that it has created a new use for desayuno service for "Mohamed"
