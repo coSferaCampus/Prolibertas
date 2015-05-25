@@ -2,16 +2,16 @@
   <h3>{{prolibertas}}</h3>
   <form ng-submit="historyFormCtrl.actionForm()" id="historyform">
     <div class="form-group" ng-class="{'has-error':historyFormCtrl.errors.description}">
-      <textarea class="form-control" ng-change="historyFormCtrl.change('Description')" ng-model="historyFormCtrl.historyForm.description" id="InputDescription" placeholder="Descripción de la nueva historia" rows="3"></textarea>
+      <textarea class="form-control" rows="10" ng-change="historyFormCtrl.change('Description')" ng-model="historyFormCtrl.historyForm.description" id="InputDescription" placeholder="Biografía" rows="3"></textarea>
     </div>
     <div class="form-group">
-      <textarea class="form-control" ng-model="historyFormCtrl.historyForm.liabilities" id="InputLiabilities" placeholder="Compromisos" rows="3"></textarea>
+      <textarea class="form-control" ng-model="historyFormCtrl.historyForm.liabilities" id="InputLiabilities" placeholder="Compromisos" rows="10"></textarea>
     </div>
     <div class="row nuevacita">
       <div class="col-md-2 col-xs-6">
         <div class="input-group datepicker" ng-class="{'has-error':historyFormCtrl.errors.date}">
           <span class="input-group-addon listpeople__azul"><span class="glyphicon glyphicon-calendar"></span></span>
-          <input type="text" class="form-control" ng-change="historyFormCtrl.change('Date')" ng-model="historyFormCtrl.historyForm.date" placeholder="Fecha" id="InputDate">
+          <input type="text" class="form-control" ng-change="historyFormCtrl.change('Date')" ng-model="historyFormCtrl.historyForm.date" placeholder="Fecha creación" id="InputDate">
         </div>
       </div>
       <div class="col-md-2 col-xs-6">
