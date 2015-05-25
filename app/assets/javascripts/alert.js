@@ -21,7 +21,7 @@
 
     scope.tipo = function(tipo){
       if (tipo == "punishment") {
-        return 'castigo';
+        return 'sanción';
       }
       else if (tipo == "warning") {
         return 'advertencia';
@@ -60,7 +60,7 @@
 
     scope.tipo = function(tipo){
       if (tipo == "punishment") {
-        return 'castigo';
+        return 'sanción';
       }
       else if (tipo == "warning") {
         return 'advertencia';
