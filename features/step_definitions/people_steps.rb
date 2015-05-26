@@ -5,8 +5,8 @@ end
 Then(/^I should see the list of the people$/) do
   expect(page).to have_css "#peopleTable"
   Person.each do |person|
-    expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
-    expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
+    expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.name
+    expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.surname
     expect(page).to have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
     expect(page).to have_css "tr#person_#{person.id} td:nth-child(4)", text:
       if person.genre == :man
@@ -14,7 +14,7 @@ Then(/^I should see the list of the people$/) do
       else
         "M"
       end
-    expect(page).to have_css "tr#person_#{person.id} td:nth-child(5)", text: person.menu
+    expect(page).to have_css "tr#person_#{person.id} td:nth-child(6)", text: person.menu
   end
 end
 
@@ -46,12 +46,12 @@ end
 Then(/^I should see the list of the people with "(.*?)" as surname$/) do |surname|
   Person.each do |person|
     if surname == person.surname
-      expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
-      expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
+      expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.name
+      expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.surname
       expect(page).to have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
     else
-      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
-      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
+      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(2)", text: person.name
+      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(1)", text: person.surname
       expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
     end
   end
@@ -64,12 +64,12 @@ end
 Then(/^I should see the list of the people with "(.*?)" as origin$/) do |origin|
   Person.each do |person|
     if origin == person.origin
-      expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
-      expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
+      expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.name
+      expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.surname
       expect(page).to have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
     else
-      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
-      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
+      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(2)", text: person.name
+      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(1)", text: person.surname
       expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
     end
   end
@@ -79,12 +79,12 @@ Then(/^I should see the list of the people with "(.*?)" and "(.*?)" as surname a
 
   Person.each do |person|
     if surname == person.surname and origin == person.origin
-      expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
-      expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
+      expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.name
+      expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.surname
       expect(page).to have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
     else
-      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(1)", text: person.name
-      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(2)", text: person.surname
+      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(2)", text: person.name
+      expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(1)", text: person.surname
       expect(page).to_not have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
     end
   end
@@ -133,13 +133,17 @@ When(/^I fill person form with valid parameters$/) do
   else
     select('Mujer', from: 'InputGenre')
   end
-  fill_in 'InputSocialServices', with: parametros[:social_services]
+  select('0 - No', from: 'InputSocial_services')
   fill_in 'InputPhone', with: parametros[:phone]
   fill_in 'InputOrigin', with: parametros[:origin]
   fill_in 'InputMenu', with: parametros[:menu]
-  fill_in 'InputAssistance', with: parametros[:assistance]
+  within '#InputAssistance' do
+    find("option[value='1']").click
+  end
   fill_in 'InputIncome', with: parametros[:income]
-  fill_in 'InputHome', with: parametros[:home]
+  within '#InputAddress_type' do
+    find("option[value='1']").click
+  end
   fill_in 'InputAddress', with: parametros[:address]
   fill_in 'InputFamilyStatus', with: parametros[:family_status]
   fill_in 'InputContactFamily', with: parametros[:contact_family]
@@ -161,7 +165,7 @@ Then(/^I should see the new person in people list$/) do
     else
       "M"
     end
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(5)", text: person.menu
+  expect(page).to have_css "tr#person_#{person.id} td:nth-child(6)", text: person.menu
 end
 
 Then(/^I should see person created message$/) do
@@ -173,13 +177,17 @@ When(/^I fill person form with invalid parameters$/) do
   parametros = FactoryGirl.attributes_for(:person)
   fill_in 'InputBirth', with: parametros[:birth]
   fill_in 'InputNif', with: parametros[:nif]
-  fill_in 'InputSocialServices', with: parametros[:social_services]
+  select('0 - No', from: 'InputSocial_services')
   fill_in 'InputPhone', with: parametros[:phone]
   fill_in 'InputOrigin', with: parametros[:origin]
   fill_in 'InputMenu', with: parametros[:menu]
-  fill_in 'InputAssistance', with: parametros[:assistance]
+  within '#InputAssistance' do
+    find("option[value='1']").click
+  end
   fill_in 'InputIncome', with: parametros[:income]
-  fill_in 'InputHome', with: parametros[:home]
+  within '#InputAddress_type' do
+    find("option[value='1']").click
+  end
   fill_in 'InputAddress', with: parametros[:address]
   fill_in 'InputFamilyStatus', with: parametros[:family_status]
   fill_in 'InputContactFamily', with: parametros[:contact_family]
@@ -228,17 +236,26 @@ Then(/^I should see the person information in the form$/) do
   find_field('InputSurname').value.should eq @person.surname
   find_field('InputNif').value.should eq @person.nif
   find_field('InputGenre').value.should eq @person.genre.to_s
-  find_field('InputSocialServices').value.should eq @person.social_services
   find_field('InputPhone').value.should eq @person.phone
-  find_field('InputOrigin').value.should eq @person.origin
   find_field('InputMenu').value.should eq @person.menu
-  find_field('InputAssistance').value.should eq @person.assistance
+
+  if @person.origin == "españa"
+    find_field('InputCity').value.should eq @person.city.to_s
+    else
+    find_field('InputOrigin').value.should eq @person.origin
+  end
   find_field('InputIncome').value.should eq @person.income
-  find_field('InputHome').value.should eq @person.home
+  find_field('InputAssistance').value.should eq @person.assistance.to_s
+  find_field('InputSocial_have_income').value.should eq @person.have_income.to_s
+  find_field('InputIncome').value.should eq @person.income
+  find_field('InputAddress_type').value.should eq @person.address_type.to_s
   find_field('InputAddress').value.should eq @person.address
+  find_field('InputSocial_residence').value.should eq @person.residence.to_s
   find_field('InputFamilyStatus').value.should eq @person.family_status
   find_field('InputContactFamily').value.should eq @person.contact_family
   find_field('InputHealthStatus').value.should eq @person.health_status
+  find_field('InputDocumentation').value.should eq @person.documentation.to_s
+  find_field('InputSocial_services').value.should eq @person.social_services.to_s
   find_field('InputNotes').value.should eq @person.notes
 end
 
@@ -247,19 +264,24 @@ When(/^I update the form$/) do
   @person = Person.first
   page.find("#person-edit-#{@person.id}").click
   fill_in 'InputName', with: "pepe"
+  fill_in 'InputBirth', with: "1982-09-13"
   fill_in 'InputSurname', with: "gonzalez"
   fill_in 'InputNif', with: "23423423s"
-  fill_in 'InputSocialServices', with: "prolibertas"
+  select('Hombre', from: 'InputGenre')
   fill_in 'InputPhone', with: "345345343"
   fill_in 'InputOrigin', with: "congo"
   fill_in 'InputMenu', with: "musulman"
-  fill_in 'InputAssistance', with: "asiste muchisimo"
+  select('0 - Primera vez', from: 'InputAssistance')
+  select('0 - No', from: 'InputSocial_have_income')
   fill_in 'InputIncome', with: "ninguno"
-  fill_in 'InputHome', with: "debajo del puente"
+  select('0 - Sin vivienda', from: 'InputAddress_type')
+  select('0 - De paso', from: 'InputSocial_residence')
   fill_in 'InputAddress', with: "lo mismo"
   fill_in 'InputFamilyStatus', with: "ninguno"
   fill_in 'InputContactFamily', with: "ninguna persona"
   fill_in 'InputHealthStatus', with: "esta genial"
+  select('0 - Indocumentado', from: 'InputDocumentation')
+  select('0 - No', from: 'InputSocial_services')
   fill_in 'InputNotes', with: "este hombre es un maquina"
   page.find("#InputSubmit").click
 end
@@ -267,19 +289,24 @@ end
 Then(/^I should see the person updated$/) do
   expect(page).to have_css "#person-edit-#{@person.id}"
   expect(page).to have_css "#person_name", text: "pepe"
+  expect(page).to have_css "#person_age", text: "1982-09-13"
   expect(page).to have_css "#person_surname", text: "gonzalez"
+  expect(page).to have_css "#person_genre", text: "Hombre"
   expect(page).to have_css "#person_nif", text: "23423423s"
-  expect(page).to have_css "#person_social", text: "prolibertas"
+  expect(page).to have_css "#person_social_services", text: "No"
   expect(page).to have_css "#person_phone", text: "345345343"
   expect(page).to have_css "#person_origin", text: "congo"
   expect(page).to have_css "#person_menu", text: "musulman"
-  expect(page).to have_css "#person_assistance", text: "asiste muchisimo"
+  expect(page).to have_css "#person_assistance", text: "Primera vez"
+  expect(page).to have_css "#person_have_income", text: "No"
   expect(page).to have_css "#person_income", text: "ninguno"
-  expect(page).to have_css "#person_home", text: "debajo del puente"
+  expect(page).to have_css "#person_address_type", text: "Sin vivienda"
+  expect(page).to have_css "#person_residence", text: "De paso"
   expect(page).to have_css "#person_address", text: "lo mismo"
   expect(page).to have_css "#person_family", text: "ninguno"
   expect(page).to have_css "#person_contact", text: "ninguna persona"
   expect(page).to have_css "#person_health", text: "esta genial"
+  expect(page).to have_css "#person_documentation", text: "Indocumentado"
   expect(page).to have_css "#person_notes", text: "este hombre es un maquina"
 end
 
