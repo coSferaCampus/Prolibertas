@@ -34,10 +34,6 @@
           <option value="woman">Mujer</option>
         </select>
       </div>
-      <div class="form-group col-md-6">
-        <label for="InputSocialServices">Servicios Sociales</label>
-        <input ng-model="personCtrl.personForm.social_services" type="text" class="form-control" id="InputSocialServices">
-      </div>
 
       <div class="form-group col-md-6">
         <label for="InputPhone">Teléfono</label>
@@ -121,7 +117,7 @@
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.have_income }">
         <label for="InputSocial_have_income">¿Tiene ingresos?</label>
-        <select ng-model="personCtrl.personForm.have_income" ng-change="personCtrl.change('Have_income')" type="number" class="form-control" id="InputHave_income" data-placement="top">
+        <select ng-model="personCtrl.personForm.have_income" ng-change="personCtrl.change('Have_income')" type="number" class="form-control" id="InputSocial_have_income" data-placement="top">
           <option value='0'>0 - No</option>
           <option value='1'>1 - Si</option>
         </select>
@@ -148,7 +144,7 @@
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.residence }">
         <label for="InputSocial_residence">Residencia</label>
-        <select ng-model="personCtrl.personForm.residence" ng-change="personCtrl.change('Residence')" type="number" class="form-control" id="InputResidence" data-placement="top">
+        <select ng-model="personCtrl.personForm.residence" ng-change="personCtrl.change('Residence')" type="number" class="form-control" id="InputSocial_residence" data-placement="top">
           <option value='0'>0 - De paso</option>
           <option value='1'>1 - Residente</option>
         </select>
