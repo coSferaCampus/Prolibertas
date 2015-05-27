@@ -37,6 +37,7 @@ class User
   validates :full_name,       presence: true
   validates_presence_of       :password, on: :create
   validates :password,        confirmation: true
+  validates :password_confirmation, presence: true
 
   def role
     roles.first.name if roles.first
