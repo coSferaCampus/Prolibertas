@@ -17,5 +17,4 @@ class Article
   validates :amount, presence: true
   validates :requested, presence: true
   validates :person, presence: true
-
 end

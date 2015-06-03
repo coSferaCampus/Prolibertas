@@ -21,7 +21,7 @@
       <tr id="article_{{article.id}}" ng-repeat="article in articlesCtrl.articles | orderBy:'-pending'">
         <td>{{article.created_by.name}}</td>
         <td>{{articlesCtrl.tipo(article.type)}}</td>
-        <td>{{articlesCtrl.cantidad(article.amount)}}</td>
+        <td>{{article.amount}}</td>
         <td>{{article.requested}}</td>
         <td>{{article.dispensed}}</td>
         <td>{{article.observations}}</td>

@@ -42,39 +42,6 @@
         return 'otros 3';
       }
     }
-
-    scope.cantidad = function(cantidad){
-      if (cantidad == "1") {
-        return '1';
-      }
-      else if (cantidad == "2") {
-        return '2';
-      }
-      else if (cantidad == "3") {
-        return '3';
-      }
-      else if (cantidad == "4") {
-        return '4';
-      }
-      else if (cantidad == "5") {
-        return '5';
-      }
-      else if (cantidad == "6") {
-        return '6';
-      }
-      else if (cantidad == "7") {
-        return '7';
-      }
-      else if (cantidad == "8") {
-        return '8';
-      }
-      else if (cantidad == "9") {
-        return '9';
-      }
-      else if (cantidad == "10") {
-        return '10';
-      }
-    }
   }]);
 
   app.controller('ArticleController', ['$http', '$state', function( $http, $state ) {
@@ -110,38 +77,7 @@
       }
     };
 
-    scope.cantidad = function(cantidad) {
-      if (cantidad == "1") {
-        return '1';
-      }
-      else if (cantidad == "2") {
-        return '2';
-      }
-      else if (cantidad == "3") {
-        return '3';
-      }
-      else if (cantidad == "4") {
-        return '4';
-      }
-      else if (cantidad == "5") {
-        return '5';
-      }
-      else if (cantidad == "6") {
-        return '6';
-      }
-      else if (cantidad == "7") {
-        return '7';
-      }
-      else if (cantidad == "8") {
-        return '8';
-      }
-      else if (cantidad == "9") {
-        return '9';
-      }
-      else if (cantidad == "10") {
-        return '10';
-      }
-    };
+
 
     scope.destroyArticle = function(article) {
       var confirmed = confirm( '¿Desea borrar el artículo?' );
@@ -227,7 +163,6 @@
       scope.actionForm = scope.guardarArticulo;
       $rootScope.prolibertas = "Crear Artículo"
     }
-
   }]);
 
 })();
