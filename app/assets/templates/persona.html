@@ -6,7 +6,7 @@
     <div class="col-md-12 col-xs-12 ">
       <ul class="nav nav-tabs">
         <li><a ui-sref="persona({id: personCtrl.person.id})"data-toggle="tab">Ficha persona</a></li>
-        <li><a data-toggle="tab">Servicios</a></li>
+        <li><a id="person__articles" ui-sref="persona.articulos({id: personCtrl.person.id})" data-toggle="tab">Inventario</a></li>
         <li class="navPersona__el" ng-if="currentUser.role !== 'volunteer'"><a id="person_histories" ui-sref="persona.historias({id: personCtrl.person.id})" data-toggle="tab">Historia</a></li>
         <li class="navPersona__el" ng-if="currentUser.role !== 'volunteer'"><a id="person__alerts" ui-sref="persona.alertas({id: personCtrl.person.id})"data-toggle="tab">Alertas</a></li>
       </ul>

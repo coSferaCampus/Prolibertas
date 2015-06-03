@@ -1,6 +1,6 @@
 (function() {
 
-  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-alert', 'prolibertas-service', 'prolibertas-family']);
+  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-article', 'prolibertas-alert', 'prolibertas-service', 'prolibertas-family']);
 
   // Config
   app.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
@@ -160,6 +160,50 @@
           }
         }
       })
+
+     .state("persona.articulos", {
+      url: "/articulos?alertaCreado&alertaBorrado",
+      views:{
+        menupersona:{
+          templateUrl: "articulos.html",
+          controller: "ArticlesController",
+          controllerAs: "articlesCtrl"
+        }
+      },
+    })
+
+    .state("persona.articulosNuevo", {
+      url: "/articulos/nuevo",
+      views:{
+        menupersona:{
+        templateUrl: "articulo-nuevo.html",
+        controller: "ArticleFormController",
+        controllerAs: "articleCtrl"
+        }
+      }
+    })
+
+    .state("persona.articulo", {
+      url: "/articulos/:articulo_id",
+      views:{
+        menupersona:{
+          templateUrl: "articulo.html",
+          controller: "ArticleController",
+          controllerAs: "articleCtrl"
+        }
+      }
+    })
+
+    .state("persona.articuloEditar", {
+      url: "/articulos/:articulo_id/editar",
+      views:{
+        menupersona:{
+          templateUrl: "articulo-nuevo.html",
+          controller: "ArticleFormController",
+          controllerAs: "articleCtrl"
+        }
+      }
+    })
 
      .state("servicios", {
       url: "/servicios?alertaCreado&alertaBorrado",
