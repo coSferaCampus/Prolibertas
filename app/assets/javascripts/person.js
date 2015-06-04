@@ -8,6 +8,9 @@
     scope.services = [];
     scope.alertaCreado = $state.params.alertaCreado;
 
+    $('.datepicker').datetimepicker({locale: 'es', format: 'L'});
+
+
     // La alerta se oculta después de 5 segundos
     $timeout(function(){scope.alertaCreado = false;}, 5000);
 
