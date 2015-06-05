@@ -4,11 +4,16 @@
   // Controllers
   app.controller('PeopleController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope) {
     var scope = this;
+    scope.selected_day = Date.now();
     scope.people = [];
     scope.services = [];
     scope.alertaCreado = $state.params.alertaCreado;
 
-    $('.datepicker').datetimepicker({locale: 'es', format: 'L'});
+    $('.datepicker').datetimepicker({
+      locale: 'es',
+       format: 'L',
+       viewDate : 'true'
+     });
 
 
     // La alerta se oculta después de 5 segundos
@@ -19,10 +24,10 @@
     $timeout(function(){scope.alertaBorrado = false;}, 5000);
     $rootScope.prolibertas = "Lista de Personas"
 
-    $http.get('/people.json')
+    $http.get('/people.json', { selected_day: selectedDay })
       .success(function(data){
         scope.people = data.people;
-      })
+      });
 
     $http.get('/services.json')
       .success(function(data) {
@@ -115,6 +120,12 @@
       }
     };
 
+    scope.sendDate = function() {
+      $http.get('/people.json', { selected_day: scope.selectedDay } )
+        .success( function( data ) {
+          scope.people = data.people;
+      });
+    };
   }]);
 
   app.controller('PersonController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {

@@ -7,7 +7,7 @@ class PeopleController < ApplicationController
   end
 
   def index
-    @people = Person.all
+    @people = Person.all( selected_day )
     respond_with @people
   end
 

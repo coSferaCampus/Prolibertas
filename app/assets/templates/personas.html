@@ -33,7 +33,7 @@
           <div class="form-group col-md-2" style="bottom: 20px">
             <label for=""></label>
             <div class="input-group datepicker">
-              <input type="text" class="form-control" placeholder="Fecha">
+            <input ng-model="peopleCtrl.selected_day" ng-change="peopleCtrl.sendDate()" type="text" class="form-control" id="InputSelected_date">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-calendar listpeople__azul"></i>
               </span>
@@ -75,22 +75,22 @@
           <td class="listpeople__centrado">{{peopleCtrl.anos(person.birth)}}</td>
           <td class="listpeople__centrado">{{person.menu}}</td>
           <td class="listpeople__centrado">
-            <input id="comida_{{person.id}}" ng-model="person.used_services_of_today.comida"
+            <input id="comida_{{person.id}}" ng-model="person.used_services.comida"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('comida'))"
             type="checkbox">
           </td>
           <td class="listpeople__centrado">
-            <input id="ropa_{{person.id}}" ng-model="person.used_services_of_today.ropa"
+            <input id="ropa_{{person.id}}" ng-model="person.used_services.ropa"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ropa'))"
             type="checkbox">
           </td>
           <td class="listpeople__centrado">
-            <input id="ducha_{{person.id}}" ng-model="person.used_services_of_today.ducha"
+            <input id="ducha_{{person.id}}" ng-model="person.used_services.ducha"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ducha'))"
             type="checkbox">
           </td>
             <td class="listpeople__centrado">
-            <input id="desayuno_{{person.id}}" ng-model="person.used_services_of_today.desayuno"
+            <input id="desayuno_{{person.id}}" ng-model="person.used_services.desayuno"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('desayuno'))"
             type="checkbox">
           </td>
