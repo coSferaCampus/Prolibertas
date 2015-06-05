@@ -2,17 +2,16 @@
   var app = angular.module('prolibertas-person', ['ui.router']);
 
   // Controllers
-  app.controller('PeopleController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope) {
+  app.controller('PeopleController', ['$filter', '$http', '$timeout', '$state', '$rootScope', function($filter, $http, $timeout, $state, $rootScope) {
     var scope = this;
-    scope.selected_day = Date.now();
+    scope.selected_day =  $filter('date')(new Date(), 'dd/MM/yyyy');
     scope.people = [];
     scope.services = [];
     scope.alertaCreado = $state.params.alertaCreado;
 
     $('.datepicker').datetimepicker({
       locale: 'es',
-       format: 'L',
-       viewDate : 'true'
+       format: 'L'
      });
 
 
@@ -24,7 +23,7 @@
     $timeout(function(){scope.alertaBorrado = false;}, 5000);
     $rootScope.prolibertas = "Lista de Personas"
 
-    $http.get('/people.json', { selected_day: selectedDay })
+    $http.get('/people.json', { selected_day: scope.selectedDay })
       .success(function(data){
         scope.people = data.people;
       });
@@ -125,6 +124,23 @@
         .success( function( data ) {
           scope.people = data.people;
       });
+    };
+
+    scope.todayDate = function() {
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+
+      var yyyy = today.getFullYear();
+      if(dd<10){
+        dd='0'+dd
+      }
+      if(mm<10){
+        mm='0'+mm
+      }
+      var today = dd+'/'+mm+'/'+yyyy;
+
+      return today;
     };
   }]);
 
