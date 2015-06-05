@@ -43,7 +43,7 @@
         <label for="InputMenu">Tipo de Menú</label>
         <input ng-model="personCtrl.personForm.menu" type="text" class="form-control" id="InputMenu">
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.origin }">
         <label for="InputOrigin">Origen</label>
         <input ng-model="personCtrl.personForm.origin" type="text" class="form-control" id="InputOrigin">
       </div>

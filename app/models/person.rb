@@ -31,6 +31,7 @@ class Person
 
   validates :name, presence: true
   validates :surname, presence: true
+  validates :origin, presence: true
   validates :genre, inclusion: { in: [:man, :woman] }
 
   def is_spanish
