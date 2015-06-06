@@ -8,6 +8,7 @@ FactoryGirl.define do
     phone { Faker::PhoneNumber.cell_phone }
     adults { rand(1...3) }
     children { rand(1...5) }
+    birthchildren { "1,2,1" }
     center { ['Norte', 'Levante', 'Fuensanta', 'Ribera',
       'Poniente Sur', 'Poniente Norte', 'Moreras', 'Periferia', 'Lucena'].sample }
     socialworker { Faker::Name.name}
@@ -29,6 +30,7 @@ FactoryGirl.define do
     phone { Faker::PhoneNumber.cell_phone }
     adults { rand(1...3) }
     children { rand(1...5) }
+    birthchildren "1,2,1"
     center { ['Norte', 'Levante', 'Fuensanta', 'Ribera', 'Poniente Sur', 'Poniente Norte', 'Moreras', 'Periferia', 'Lucena'].sample }
     socialworker { Faker::Name.name}
     type_of_income { ['Nómina', 'Ayuda', 'PER'].sample }

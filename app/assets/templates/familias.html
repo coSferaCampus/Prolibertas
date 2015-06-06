@@ -22,7 +22,11 @@
             </div>
           </div>
 
-          <div class="form-group col-md-offset-2 col-md-4">
+          <div class="form-group col-md-2">
+           <a class="btn btn-info col-md-16" id="createFamily" ui-sref="#"></span><span> Listado cocina<span></a>
+         </div>
+
+          <div class="form-group col-md-4">
             <a class="btn btn-primary col-md-7 col-md-offset-5" id="createFamily" ui-sref="familiasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> FAMILIA<span></a>
           </div>
         </form>
@@ -34,6 +38,7 @@
   <table class="table table-responsive col-md-12" id="familiesTable">
     <thead class="listfamilies__cabecera">
       <tr>
+        <th>Creador</th>
         <th>Apellidos</th>
         <th>Nombre</th>
         <th>Origen</th>
@@ -41,15 +46,13 @@
         <th class="listfamilies__centrado">Niños</th>
         <th class="listfamilies__centrado">Menú</th>
         <th class="listfamilies__centrado"><img class="listfamilies__iconos" src="/assets/cutlery23.svg"></th>
-        <th class="listfamilies__centrado"><img class="listfamilies__iconos" src="/assets/tshirt18.svg"></th>
-        <th class="listfamilies__centrado"><img class="listfamilies__iconos" src="/assets/shower17.svg"></th>
-          <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/hot51.svg"></th>
           <th class="listpeople__centrado"></th>
           <th class="listpeople__centrado"></th>
       </tr>
     </thead>
     <tbody >
       <tr ng-repeat="family in familyCtrl.families | filter:search" id="family_{{family.id}}">
+        <td class="hidden-xs">{{family.created_by.name}}</td>
         <td>{{family.surname}}</td>
         <td>{{family.name}}</td>
         <td>{{family.origin}}</td>
@@ -61,21 +64,7 @@
           ng-change="familiesCtrl.changeCheckbox(family, familiesCtrl.getService('comida'))"
           type="checkbox">
         </td>
-        <td class="listpeople__centrado">
-          <input id="ropa_{{family.id}}" ng-model="family.used_services_of_today.ropa"
-          ng-change="familiesCtrl.changeCheckbox(family, familiesCtrl.getService('ropa'))"
-          type="checkbox">
-        </td>
-        <td class="listpeople__centrado">
-          <input id="ducha_{{family.id}}" ng-model="family.used_services_of_today.ducha"
-          ng-change="familiesCtrl.changeCheckbox(family, familiesCtrl.getService('ducha'))"
-          type="checkbox">
-        </td>
-          <td class="listpeople__centrado">
-            <input id="desayuno_{{family.id}}" ng-model="family.used_services_of_today.desayuno"
-            ng-change="familiesCtrl.changeCheckbox(family, familiesCtrl.getService('desayuno'))"
-            type="checkbox">
-          </td>
+     
         <td class="listpeople__centrado"><a id="family-show-{{family.id}}"
             ui-sref="familia({ id: family.id })">
           <span class="glyphicon glyphicon-eye-open listfamilies__azul"></span></a>

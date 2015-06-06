@@ -28,6 +28,12 @@
         <label for="InputChildren">Nº Menores</label>
         <input ng-model="familyCtrl.familyForm.children" ng-change="familyCtrl.change('Children')" type="number" class="form-control" id="InputChildren">
       </div>
+      <div class="form-group col-md-3" ng-class="{ 'has-error':familyCtrl.familyForm.birthchildren }">
+        <label for="InputBirthchildren"> Edad Menores</label>
+        <input ng-model="familyCtrl.familyForm.birthchildren" class="form-control" id="InputBirthchildren" 
+               placeholder="1,2,3" required>
+      </div>
+
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.genre }">
         <label for="InputGenre">Género</label>
