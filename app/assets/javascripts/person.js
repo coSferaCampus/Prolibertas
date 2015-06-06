@@ -4,7 +4,8 @@
   // Controllers
   app.controller('PeopleController', ['$filter', '$http', '$timeout', '$state', '$rootScope', function($filter, $http, $timeout, $state, $rootScope) {
     var scope = this;
-    scope.selected_day =  $filter('date')(new Date(), 'dd/MM/yyyy');
+    scope.person= {};
+    scope.person.selected_day =  $filter('date')(new Date(), 'dd/MM/yyyy');
     scope.people = [];
     scope.services = [];
     scope.alertaCreado = $state.params.alertaCreado;
@@ -23,7 +24,7 @@
     $timeout(function(){scope.alertaBorrado = false;}, 5000);
     $rootScope.prolibertas = "Lista de Personas"
 
-    $http.get('/people.json', { selected_day: scope.selectedDay })
+    $http.get('/people.json', { person: scope.person })
       .success(function(data){
         scope.people = data.people;
       });
@@ -120,7 +121,7 @@
     };
 
     scope.sendDate = function() {
-      $http.get('/people.json', { selected_day: scope.selectedDay } )
+      $http.get('/people.json', { person: scope.person } )
         .success( function( data ) {
           scope.people = data.people;
       });

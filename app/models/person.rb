@@ -45,7 +45,7 @@ class Person
   end
 
   # Método que devolverá usos de servicio para el día en que se pida con su id
- def used_services( selected_day )
+ def used_services( params[:selected_day] )
    resultado = used_services.where(:created_at => selected_day).map do |used_service|
      [used_service.service.name, true]
    end
@@ -53,7 +53,7 @@ class Person
  end
 
   # Método que devolverá usos de servicio para el día en que se pida con su id
- def used_services_id( selected_day )
+ def used_services_id( params[:selected_day] )
    resultado = used_services.where(:created_at => selected_day).map do |used_service|
      [used_service.service.name, used_service.id.to_s]
    end
