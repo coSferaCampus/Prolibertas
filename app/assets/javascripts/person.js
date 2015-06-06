@@ -31,6 +31,10 @@
 
   //función para calcular la edad a partir de la fecha de nacimiento
    scope.anos = function (birth) {
+    if (birth === null ) {
+      return "";
+    }
+      else {
     var e = birth.split("-");
 
     var ano =  e[0];
@@ -54,6 +58,7 @@
      }
 
       return edad;
+    }
 }
 
     scope.genero = function(genero){
