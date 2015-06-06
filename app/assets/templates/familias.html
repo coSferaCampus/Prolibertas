@@ -22,9 +22,7 @@
             </div>
           </div>
 
-          <div class="form-group col-md-2">
-           <a class="btn btn-info col-md-16" id="createFamily" ui-sref="#"></span><span> Listado cocina<span></a>
-         </div>
+         
 
           <div class="form-group col-md-4">
             <a class="btn btn-primary col-md-7 col-md-offset-5" id="createFamily" ui-sref="familiasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> FAMILIA<span></a>
@@ -38,12 +36,12 @@
   <table class="table table-responsive col-md-12" id="familiesTable">
     <thead class="listfamilies__cabecera">
       <tr>
-        <th>Creador</th>
         <th>Apellidos</th>
         <th>Nombre</th>
         <th>Origen</th>
         <th class="listfamilies__centrado">Adultos</th>
         <th class="listfamilies__centrado">Niños</th>
+         <th class="listfamilies__centrado">Edad Niños</th>
         <th class="listfamilies__centrado">Menú</th>
         <th class="listfamilies__centrado"><img class="listfamilies__iconos" src="/assets/cutlery23.svg"></th>
           <th class="listpeople__centrado"></th>
@@ -52,12 +50,12 @@
     </thead>
     <tbody >
       <tr ng-repeat="family in familyCtrl.families | filter:search" id="family_{{family.id}}">
-        <td class="hidden-xs">{{family.created_by.name}}</td>
         <td>{{family.surname}}</td>
         <td>{{family.name}}</td>
         <td>{{family.origin}}</td>
         <td class="listfamilies__centrado">{{family.adults}}</td>
         <td class="listfamilies__centrado">{{family.children}}</td>
+         <td class="listfamilies__centrado">{{family.birthchildren}}</td>
         <td class="listfamilies__centrado">{{family.menu}}</td>
         <td class="listfamilies__centrado">
           <input id="comida_{{family.id}}" ng-model="family.used_services_of_today.comida"
