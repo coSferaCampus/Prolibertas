@@ -1,6 +1,9 @@
 class Family
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Userstamp
+
+  mongoid_userstamp user_model: 'User'
 
   field :name,                     type: String
   field :surname,                type: String
@@ -10,6 +13,7 @@ class Family
   field :phone,                    type: String
   field :adults,                    type: Integer
   field :children,                 type: Integer
+  field :birthchildren,             type: String
   field :center,                    type: String
   field :socialworker,           type: String
   field :type_of_income,      type: String
@@ -23,8 +27,8 @@ class Family
   has_many :alerts
 
   validates :name,                presence: true
-  validates :surname,           presence: true
-  validates :adults,               presence: true
+  validates :surname,             presence: true
+  validates :adults,              presence: true
   validates :children,            presence: true
   validates :center,              presence: true
   validates :genre, inclusion: {in: [:man, :woman]}

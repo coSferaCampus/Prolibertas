@@ -22,6 +22,7 @@
       .success(function(data) {
         scope.families = data.families;
       });
+
     scope.change = function( field ) {
       if( scope.errors[ field.toLowerCase() ] ) {
         $( "#Input" + field ).tooltip( 'destroy' );
@@ -102,6 +103,7 @@
         });
       }
     };
+
 
     scope.genero = function( genero ) {
       if ( genero == "man" ) {

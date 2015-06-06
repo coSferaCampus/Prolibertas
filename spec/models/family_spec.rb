@@ -12,6 +12,7 @@ RSpec.describe Family, type: :model do
     it { is_expected.to have_field(:phone).of_type(String) }
     it { is_expected.to have_field(:adults).of_type(Integer) }
     it { is_expected.to have_field(:children).of_type(Integer) }
+    it { is_expected.to have_field(:birthchildren).of_type(String) }
     it { is_expected.to have_field(:center).of_type(String) }
     it { is_expected.to have_field(:socialworker).of_type(String) }
     it { is_expected.to have_field(:type_of_income).of_type(String) }
