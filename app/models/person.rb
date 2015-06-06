@@ -35,10 +35,12 @@ class Person
   validates :genre, inclusion: { in: [:man, :woman] }
 
   def is_spanish
-    if (self.origin.downcase == "españa" || self.origin.upcase == "ESPAÑA")
-      return true
-    else
-      return false
+    if (self.origin != nil)
+      if (self.origin.downcase == "españa" || self.origin.upcase == "ESPAÑA")
+        return true
+      else
+        return false
+      end
     end
   end
 
