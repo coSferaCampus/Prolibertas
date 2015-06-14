@@ -2,13 +2,18 @@
   var app = angular.module('prolibertas-person', ['ui.router']);
 
   // Controllers
-  app.controller('PeopleController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope) {
+  app.controller('PeopleController', ['$filter', '$http', '$timeout', '$state', '$rootScope', function($filter, $http, $timeout, $state, $rootScope) {
     var scope = this;
+    scope.person= {};
+    scope.person.selected_day =  $filter('date')(new Date(), 'dd/MM/yyyy');
     scope.people = [];
     scope.services = [];
     scope.alertaCreado = $state.params.alertaCreado;
 
-    $('.datepicker').datetimepicker({locale: 'es', format: 'L'});
+    $('.datepicker').datetimepicker({
+      locale: 'es',
+       format: 'L'
+     });
 
 
     // La alerta se oculta después de 5 segundos
@@ -19,10 +24,17 @@
     $timeout(function(){scope.alertaBorrado = false;}, 5000);
     $rootScope.prolibertas = "Lista de Personas"
 
-    $http.get('/people.json')
+      $http.get( '/people.json?selected_day=' + scope.person.selected_day )
       .success(function(data){
         scope.people = data.people;
-      })
+      });
+
+    $("#InputSelected_day").focusout( function() {
+        $http.get( '/people.json?selected_day=' + scope.person.selected_day )
+          .success( function( data ) {
+            scope.people = data.people;
+        });
+    });
 
     $http.get('/services.json')
       .success(function(data) {
@@ -74,20 +86,20 @@
       $http.post('/used_services.json',
       {used_service: {person_id: person.id, service_id: service.id}} )
         .success(function(data) {
-          person.used_services_of_today_id[service.name] = data.used_service.id;
+          person.used_services_of_selected_day_id[service.name] = data.used_services_of_selected_day.id;
         })
     };
 
     scope.deleteUsedService = function(person, service) {
-      $http.delete('/used_services/' + person.used_services_of_today_id[service.name] + '.json')
+      $http.delete('/used_services/' + person.used_services_of_selected_day_id[service.name] + '.json')
         .success(function(data) {
-          person.used_services_of_today_id[service.name] = null;
+          person.used_services_of_selected_day_id[service.name] = null;
         })
     };
 
     // método que cambia a check si está desmarcado y viceversa
     scope.changeCheckbox = function(person, service) {
-      if(person.used_services_of_today_id[service.name])
+      if(person.used_services_of_selected_day_id[service.name])
         scope.deleteUsedService(person, service);
       else
       scope.createUsedService(person, service)
@@ -115,6 +127,22 @@
       }
     };
 
+    scope.todayDate = function() {
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+
+      var yyyy = today.getFullYear();
+      if(dd<10){
+        dd='0'+dd
+      }
+      if(mm<10){
+        mm='0'+mm
+      }
+      var today = dd+'/'+mm+'/'+yyyy;
+
+      return today;
+    };
   }]);
 
   app.controller('PersonController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {

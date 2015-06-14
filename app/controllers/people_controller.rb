@@ -7,6 +7,7 @@ class PeopleController < ApplicationController
   end
 
   def index
+    $selected_day = params[:selected_day]
     @people = Person.all
     respond_with @people
   end
