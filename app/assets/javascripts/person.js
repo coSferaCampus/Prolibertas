@@ -29,12 +29,12 @@
         scope.people = data.people;
       });
 
-    scope.sendDate = function() {
-      $http.get( '/people.json?selected_day=' + scope.person.selected_day )
-        .success( function( data ) {
-          scope.people = data.people;
-      });
-    };
+    $("#InputSelected_day").focusout( function() {
+        $http.get( '/people.json?selected_day=' + scope.person.selected_day )
+          .success( function( data ) {
+            scope.people = data.people;
+        });
+    });
 
     $http.get('/services.json')
       .success(function(data) {
