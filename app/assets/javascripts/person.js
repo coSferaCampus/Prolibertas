@@ -29,17 +29,24 @@
         scope.people = data.people;
       });
 
-    $("#InputSelected_day").focusout( function() {
-        $http.get( '/people.json?selected_day=' + scope.person.selected_day )
-          .success( function( data ) {
-            scope.people = data.people;
-        });
-    });
-
-    $http.get('/services.json')
+      $http.get('/services.json')
       .success(function(data) {
         scope.services = data.services;
       });
+
+    $("#InputSelected_day").focusout( function() {
+        $http.get( '/people.json?selected_day=' + $("#InputSelected_day").val() )
+          .success( function( data ) {
+            scope.people = data.people;
+        });
+
+        $http.get('/services.json')
+          .success(function(data) {
+          scope.services = data.services;
+      });
+    });
+
+
 
   //función para calcular la edad a partir de la fecha de nacimiento
    scope.anos = function (birth) {
