@@ -24,10 +24,17 @@
     $timeout(function(){scope.alertaBorrado = false;}, 5000);
     $rootScope.prolibertas = "Lista de Personas"
 
-    $http.get('/people.json', { person: scope.person })
+      $http.get( '/people.json?selected_day=' + scope.person.selected_day )
       .success(function(data){
         scope.people = data.people;
       });
+
+    scope.sendDate = function() {
+      $http.get( '/people.json?selected_day=' + scope.person.selected_day )
+        .success( function( data ) {
+          scope.people = data.people;
+      });
+    };
 
     $http.get('/services.json')
       .success(function(data) {
@@ -79,20 +86,20 @@
       $http.post('/used_services.json',
       {used_service: {person_id: person.id, service_id: service.id}} )
         .success(function(data) {
-          person.used_services_of_today_id[service.name] = data.used_service.id;
+          person.used_services_of_selected_day_id[service.name] = data.used_services_of_selected_day.id;
         })
     };
 
     scope.deleteUsedService = function(person, service) {
-      $http.delete('/used_services/' + person.used_services_of_today_id[service.name] + '.json')
+      $http.delete('/used_services/' + person.used_services_of_selected_day_id[service.name] + '.json')
         .success(function(data) {
-          person.used_services_of_today_id[service.name] = null;
+          person.used_services_of_selected_day_id[service.name] = null;
         })
     };
 
     // método que cambia a check si está desmarcado y viceversa
     scope.changeCheckbox = function(person, service) {
-      if(person.used_services_of_today_id[service.name])
+      if(person.used_services_of_selected_day_id[service.name])
         scope.deleteUsedService(person, service);
       else
       scope.createUsedService(person, service)
@@ -118,13 +125,6 @@
           return '';
         }
       }
-    };
-
-    scope.sendDate = function() {
-      $http.get('/people.json', { person: scope.person } )
-        .success( function( data ) {
-          scope.people = data.people;
-      });
     };
 
     scope.todayDate = function() {

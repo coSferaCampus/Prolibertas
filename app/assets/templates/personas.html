@@ -75,22 +75,22 @@
           <td class="listpeople__centrado">{{peopleCtrl.anos(person.birth)}}</td>
           <td class="listpeople__centrado">{{person.menu}}</td>
           <td class="listpeople__centrado">
-            <input id="comida_{{person.id}}" ng-model="person.used_services.comida"
+            <input id="comida_{{person.id}}" ng-model="person.used_services_of_selected_day.comida"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('comida'))"
             type="checkbox">
           </td>
           <td class="listpeople__centrado">
-            <input id="ropa_{{person.id}}" ng-model="person.used_services.ropa"
+            <input id="ropa_{{person.id}}" ng-model="person.used_services_of_selected_day.ropa"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ropa'))"
             type="checkbox">
           </td>
           <td class="listpeople__centrado">
-            <input id="ducha_{{person.id}}" ng-model="person.used_services.ducha"
+            <input id="ducha_{{person.id}}" ng-model="person.used_services_of_selected_day.ducha"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ducha'))"
             type="checkbox">
           </td>
             <td class="listpeople__centrado">
-            <input id="desayuno_{{person.id}}" ng-model="person.used_services.desayuno"
+            <input id="desayuno_{{person.id}}" ng-model="person.used_services_of_selected_day.desayuno"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('desayuno'))"
             type="checkbox">
           </td>

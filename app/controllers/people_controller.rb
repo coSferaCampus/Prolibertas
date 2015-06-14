@@ -7,7 +7,8 @@ class PeopleController < ApplicationController
   end
 
   def index
-    @people = Person.all( params[:selected_day] )
+    $selected_day = params[:selected_day]
+    @people = Person.all
     respond_with @people
   end
 
@@ -30,7 +31,7 @@ class PeopleController < ApplicationController
 
   def person_params
     params.require(:person).permit(
-      :id, :selected_day, :name, :surname, :origin, :genre, :phone, :assistance, :family_status, :health_status, :birth, :nif, :social_services, :menu, :income, :address, :contact_family, :notes, :documentation, :address_type, :city, :residence, :have_income
+      :id, :name, :surname, :origin, :genre, :phone, :assistance, :family_status, :health_status, :birth, :nif, :social_services, :menu, :income, :address, :contact_family, :notes, :documentation, :address_type, :city, :residence, :have_income
       )
   end
 end

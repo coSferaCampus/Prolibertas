@@ -2,6 +2,12 @@ class Person
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  attr_accessor :selected_day
+
+  def after_initialize ( selected_day = "2015-06-014" )
+    @selected_day = selected_day
+  end
+
   field :name,              type: String
   field :surname,          type: String
   field :origin,              type: String
@@ -44,25 +50,33 @@ class Person
     end
   end
 
-  # Método que devolverá usos de servicio para el día en que se pida con su id
- def used_services( params[:selected_day] )
-   resultado = used_services.where(:created_at => selected_day).map do |used_service|
-     [used_service.service.name, true]
-   end
-   Hash[resultado]
- end
+  # Método que devolverá usos de servicio para el día en que se pida
+  def used_services_of_selected_day
+    selected_day = date_formater $selected_day
+    puts "Dia seleccionado: " + selected_day
+    resultado = used_services.where(:created_at.gte => selected_day).map do |used_service|
+      [used_service.service.name, true]
+    end
+    Hash[resultado]
+  end
 
   # Método que devolverá usos de servicio para el día en que se pida con su id
- def used_services_id( params[:selected_day] )
-   resultado = used_services.where(:created_at => selected_day).map do |used_service|
-     [used_service.service.name, used_service.id.to_s]
-   end
-   Hash[resultado]
- end
+  def used_services_of_selected_day_id
+    selected_day = date_formater $selected_day
+    resultado = used_services.where(:created_at.gte => selected_day).map do |used_service|
+      [used_service.service.name, used_service.id.to_s]
+    end
+    Hash[resultado]
+  end
 
   # Método que devuelve las alertas pendientes
   def pending_alerts
     alerts.where(:pending.gt => Date.today).desc(:created_at)
+  end
+
+
+  def date_formater( day )
+   day.split("/").reverse.join("-")
   end
 
 end
