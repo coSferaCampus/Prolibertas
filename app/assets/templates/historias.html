@@ -14,14 +14,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr id="history_{{history.id}}" ng-repeat="history in historiesCtrl.histories">
+      <tr id="history_{{history.id}}" ng-repeat="history in historiesCtrl.histories | orderBy:'-date'">
         <td class="hidden-xs">{{history.created_by.name}}</td>
         <td class="altura">{{history.description}}</td>
         <td>{{history.liabilities}}</td>
-        <td>{{history.date}}</td> 
+        <td>{{history.date}}</td>
         <td>{{history.time}}</td>
         <td class="listpeople__centrado"><a id="history-show-{{history.id}}" ui-sref="persona.historia({historia_id: history.id})"><span class="glyphicon glyphicon-eye-open listpeople__azul" id="views_history"></span></a>
-        </td>  
+        </td>
       </tr>
     </tbody>
  </table>
