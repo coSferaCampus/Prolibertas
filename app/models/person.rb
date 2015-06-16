@@ -2,12 +2,6 @@ class Person
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  attr_accessor :selected_day
-
-  def after_initialize ( selected_day = "2015-06-014" )
-    @selected_day = selected_day
-  end
-
   field :name,              type: String
   field :surname,          type: String
   field :origin,              type: String
