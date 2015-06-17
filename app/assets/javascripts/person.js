@@ -35,7 +35,8 @@
       });
 
     $("#InputSelected_day").focusout( function() {
-        $http.get( '/people.json?selected_day=' + $("#InputSelected_day").val() )
+      scope.person.selected_day = $("#InputSelected_day").val();
+        $http.get( '/people.json?selected_day=' + scope.person.selected_day )
           .success( function( data ) {
             scope.people = data.people;
         });
@@ -86,7 +87,7 @@
 
     scope.createUsedService = function(person, service) {
       $http.post('/used_services.json',
-      {used_service: {person_id: person.id, service_id: service.id}} )
+      {used_service: {person_id: person.id, service_id: service.id, created_at: scope.person.selected_day }} )
         .success(function(data) {
           person.used_services_of_selected_day_id[service.name] = data.used_service.id;
         })
