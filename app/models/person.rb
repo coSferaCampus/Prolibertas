@@ -64,7 +64,7 @@ class Person
 
   # Método que devuelve las alertas pendientes
   def pending_alerts
-    alerts.where(:pending.gt => $selected_day).desc(:created_at)
+    alerts.where(:pending.gte => $selected_day).desc(:created_at)
   end
 
 end
