@@ -13,7 +13,7 @@
         <input ng-model="userFormCtrl.userForm.password_confirmation"
                   ng-change="userFormCtrl.change('Password_confirmation')"
                   type="password" class="form-control"
-                  id="InputPassword_confirmation" data-placement="top">
+                  id="InputPassword_confirmation" data-placement="top" required >
       </div>
     </div>
 
@@ -24,4 +24,51 @@
     </div>
   </form>
 </div>
+
+<script type="text/javascript">
+  (function (exports) {
+    function valOrFunction(val, ctx, args) {
+        if (typeof val == "function") {
+            return val.apply(ctx, args);
+        } else {
+            return val;
+        }
+    }
+
+    function InvalidInputHelper(input, options) {
+        input.setCustomValidity(valOrFunction(options.defaultText, window, [input]));
+
+        function changeOrInput() {
+            if (input.value == "") {
+                input.setCustomValidity(valOrFunction(options.emptyText, window, [input]));
+            } else {
+                input.setCustomValidity("");
+            }
+        }
+
+        function invalid() {
+            if (input.value == "") {
+                input.setCustomValidity(valOrFunction(options.emptyText, window, [input]));
+            } else {
+               console.log("INVALID!"); input.setCustomValidity(valOrFunction(options.invalidText, window, [input]));
+            }
+        }
+
+          input.addEventListener("change", changeOrInput);
+          input.addEventListener("input", changeOrInput);
+          input.addEventListener("invalid", invalid);
+      }
+      exports.InvalidInputHelper = InvalidInputHelper;
+  })(window);
+
+  InvalidInputHelper(document.getElementById("InputPassword_confirmation"), {
+  defaultText: "Por favor repita su contraseña",
+
+  emptyText: "Por favor repita su contraseña",
+
+  invalidText: function (input) {
+    return 'Contraseña inválida';
+  }
+});
+</script>
 

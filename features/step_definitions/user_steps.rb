@@ -84,7 +84,7 @@ Then(/^I should see the list of all users$/) do
   User.with_role(:worker).each do |user|
     expect(page).to have_css "tr#user_#{user.id} td:nth-child(1)", text: user.name
     expect(page).to have_css "tr#user_#{user.id} td:nth-child(2)", text: user.full_name
-    expect(page).to have_css "tr#user_#{user.id} td:nth-child(3)", text: 
+    expect(page).to have_css "tr#user_#{user.id} td:nth-child(3)", text:
     if user.roles.first.name == 'director'
       'Director'
     elsif user.roles.first.name == 'worker'
@@ -98,17 +98,17 @@ end
 # Test para vista de usuario
 
 When(/^I click the view icon of a user in users list view$/) do
-  usuario = User.first 
+  usuario = User.first
   page.find("#user-show-#{usuario.id}").click
 end
 
 Then(/^I should go to a view of this user$/) do
-  usuario = User.first 
+  usuario = User.first
   expect(page).to have_css "#user_full_name", text: usuario.full_name
   expect(page).to have_css "#user_username", text: usuario.name
   expect(page).to have_css "#user_tlf", text: usuario.tlf
   expect(page).to have_css "#user_email", text: usuario.email
-  expect(page).to have_css "#user_role", text: 
+  expect(page).to have_css "#user_role", text:
   if usuario.role == 'director'
     'Director'
   elsif usuario.role == 'worker'
@@ -121,7 +121,7 @@ end
 # Test vista de usuario - borrar usuario
 
 When(/^I click the remove button in users view$/) do
-  @usuario = User.first 
+  @usuario = User.first
   page.find("#user-show-#{@usuario.id}").click
   page.find("#remove-user-btn").click
   page.driver.browser.switch_to.alert.accept
@@ -164,7 +164,7 @@ Then(/^I should see the new user in users list$/) do
   user = User.last
   expect(page).to have_css "tr#user_#{user.id} td:nth-child(1)", text: user.name
   expect(page).to have_css "tr#user_#{user.id} td:nth-child(2)", text: user.full_name
-  expect(page).to have_css "tr#user_#{user.id} td:nth-child(3)", text: 
+  expect(page).to have_css "tr#user_#{user.id} td:nth-child(3)", text:
   if user.role == :director
     "Director"
   elsif user.role == :worker
@@ -205,7 +205,7 @@ Given(/^There is (\d+) user in the platform$/) do |amount|
 end
 
 Given(/^I click the view icon of a user in user list view$/) do
-  usuario = User.first 
+  usuario = User.first
   page.find("#user-show-#{usuario.id}").click
 end
 
@@ -218,7 +218,7 @@ Then(/^I should see the edit user form$/) do
 end
 
 Then(/^I should see the user information in the user form$/) do
-@user = User.first 
+@user = User.first
   find_field('InputName').value.should eq @user.name
   find_field('InputFull_name').value.should eq @user.full_name
   find_field('InputRole').value.should eq @user.role.to_s
@@ -227,7 +227,7 @@ Then(/^I should see the user information in the user form$/) do
 end
 
 When(/^I update the user form$/) do
-@user = User.first 
+@user = User.first
   page.find("#user-edit-#{@user.id}").click
   fill_in 'InputName', with: "pepe"
   fill_in 'InputFull_name', with: "pepe gonzalez"
@@ -245,7 +245,7 @@ Then(/^I should see the user updated$/) do
 end
 
 When(/^I fill user update form with invalid parameters$/) do
-  @user = User.first 
+  @user = User.first
   page.find("#user-edit-#{@user.id}").click
   fill_in 'InputName', with: ""
   fill_in 'InputFull_name', with: ""
