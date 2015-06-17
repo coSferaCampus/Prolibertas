@@ -39,11 +39,6 @@
           .success( function( data ) {
             scope.people = data.people;
         });
-
-        $http.get('/services.json')
-          .success(function(data) {
-          scope.services = data.services;
-      });
     });
 
 
@@ -93,7 +88,7 @@
       $http.post('/used_services.json',
       {used_service: {person_id: person.id, service_id: service.id}} )
         .success(function(data) {
-          person.used_services_of_selected_day_id[service.name] = data.used_services_of_selected_day.id;
+          person.used_services_of_selected_day_id[service.name] = data.used_service.id;
         })
     };
 

@@ -46,9 +46,11 @@ class Person
 
   # Método que devolverá usos de servicio para el día en que se pida
   def used_services_of_selected_day
-    selected_day = date_formater $selected_day
-    puts "Dia seleccionado: " + selected_day
-    resultado = used_services.where(:created_at.gte => selected_day).map do |used_service|
+    selected_day_from = date_from_formater $selected_day
+    selected_day_to = date_to_formater $selected_day
+
+    resultado = used_services.where(:created_at.gte => selected_day_from )
+    .union.where(:created_at.lte => selected_day_to ).map do |used_service|
       [used_service.service.name, true]
     end
     Hash[resultado]
@@ -56,8 +58,11 @@ class Person
 
   # Método que devolverá usos de servicio para el día en que se pida con su id
   def used_services_of_selected_day_id
-    selected_day = date_formater $selected_day
-    resultado = used_services.where(:created_at.gte => selected_day).map do |used_service|
+    selected_day_from = date_from_formater $selected_day
+    selected_day_to = date_to_formater $selected_day
+
+    resultado = used_services.where(:created_at.gte => selected_day_from )
+    .union.where(:created_at.lte => selected_day_to ).map do |used_service|
       [used_service.service.name, used_service.id.to_s]
     end
     Hash[resultado]
@@ -65,12 +70,18 @@ class Person
 
   # Método que devuelve las alertas pendientes
   def pending_alerts
-    alerts.where(:pending.gt => Date.today).desc(:created_at)
+    selected_day_to = date_to_formater $selected_day
+    alerts.where(:pending.gt => selected_day_to).desc(:created_at)
   end
 
+  def date_from_formater( day )
+   date_from = day.split("/").reverse.join("-")
+   Time.parse(date_from + ' 00:00:00 +0200')
+  end
 
-  def date_formater( day )
-   day.split("/").reverse.join("-")
+  def date_to_formater( day )
+   date_to = day.split("/").reverse.join("-")
+   Time.parse(date_to + ' 23:59:59 +0200')
   end
 
 end
