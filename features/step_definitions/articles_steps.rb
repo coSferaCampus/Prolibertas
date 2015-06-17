@@ -33,8 +33,7 @@ parametros = FactoryGirl.attributes_for(:article)
     select('otros 3', from: 'InputType')
   end
 
-  find("option[value='1']").click
-
+  fill_in 'InputAmount', with: 1
   fill_in 'InputObservations', with: parametros[:observations]
   fill_in 'InputRequested', with: parametros[:requested].strftime('%d/%m/%Y')
   fill_in 'InputDispensed', with: parametros[:dispensed].strftime('%d/%m/%Y')
@@ -135,7 +134,7 @@ end
 
 When(/^I update the article form$/) do
   select('manta', from: 'InputType')
-  select('3', from: 'InputAmount')
+  fill_in 'InputAmount', with: 3
   fill_in 'InputObservations', with: "Tuvo un problema"
   page.find("#InputSubmit").click
 end

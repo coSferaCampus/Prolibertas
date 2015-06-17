@@ -28,7 +28,7 @@ Given(/^I have the following people$/) do |table|
     %w( comida ducha ropa desayuno).each do | service_name |
       if hash[service_name] == 'true'
         service = Service.where(name: service_name).first
-        FactoryGirl.create(:used_service, person: person, service: service)
+        FactoryGirl.create(:used_service, person: person, service: service, created_at: Date.today )
       end
     end
 
