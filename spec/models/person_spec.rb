@@ -60,7 +60,7 @@ RSpec.describe Person, type: :model do
         FactoryGirl.create(:used_service, person: persona, service: comida)
         FactoryGirl.create(:used_service, person: persona, service: ducha)
 
-        expect(persona.used_services_of_today).to eql({'comida' => true, 'ducha' => true})
+        expect(persona.used_services_of_selected_day).to eql({'comida' => true, 'ducha' => true})
       end
     end
 
@@ -73,7 +73,7 @@ RSpec.describe Person, type: :model do
         servicio_comida = FactoryGirl.create(:used_service, person: persona, service: comida)
         servicio_ducha = FactoryGirl.create(:used_service, person: persona, service: ducha)
 
-        expect(persona.used_services_of_today_id)
+        expect(persona.used_services_of_selected_day_id)
           .to eql({'comida' => servicio_comida.id.to_s, 'ducha' => servicio_ducha.id.to_s})
       end
     end
@@ -81,10 +81,8 @@ RSpec.describe Person, type: :model do
     context "#pending_alerts" do
       it "should return the alerts from de future" do
         persona = FactoryGirl.create(:person)
-        alertFuture = FactoryGirl.create(:alert, person: persona, pending: 2.months.from_now)
         alertPass = FactoryGirl.create(:alert, person: persona, pending: 2.months.until)
 
-        expect(persona.pending_alerts).to include(alertFuture)
         expect(persona.pending_alerts).to_not include(alertPass)
       end
     end

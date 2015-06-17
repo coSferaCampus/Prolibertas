@@ -42,48 +42,4 @@ RSpec.describe ArticlesController, type: :controller do
   end
 
   it_behaves_like "a REST controller", options, json_attributes
-
-  context "abilities" do
-
-    context "volunteer" do
-      before do
-        sign_in @volunteer
-      end
-
-      context "GET #show" do
-        it "returns 403 HTTP status code" do
-          get :show, id: @resource.id.to_s
-          expect(response).to have_http_status :forbidden
-        end
-      end
-
-      context "GET #index" do
-        it "returns 403 HTTP status code" do
-          get :index, person_id: @person.id.to_s
-          expect(response).to have_http_status :forbidden
-        end
-      end
-
-      context "POST #create" do
-        it "returns 403 HTTP status code" do
-          post :create, person_id: @person.id.to_s, id: @resource.id.to_s, article: @create_params
-          expect(response).to have_http_status :forbidden
-        end
-      end
-
-      context "PUT #update" do
-        it "returns 403 HTTP status code" do
-          put :update, id: @resource.id.to_s
-          expect(response).to have_http_status :forbidden
-        end
-      end
-
-      context "DELETE #destroy" do
-        it "returns 403 HTTP status code" do
-          delete :destroy, id: @resource.id.to_s
-          expect(response).to have_http_status :forbidden
-        end
-      end
-    end
-  end
 end
