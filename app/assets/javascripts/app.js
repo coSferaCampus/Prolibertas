@@ -248,6 +248,11 @@
       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     };
 
+    // Imprimir Web
+    $rootScope.printDocument = function() {
+      window.print();
+    };
+
     // Obtener el usuario logeado
     $rootScope.currentUser = {};
     $http.get('/current.json').success(function(data) { $rootScope.currentUser = data.user; });
