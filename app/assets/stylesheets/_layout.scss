@@ -128,7 +128,7 @@ li .menu__el.active {
 
 // Elimina los menus y las barras al imprimir
 @media print {
-  .menu, .barra, .nav, .navbar-fixed-top {
+  .btn, .menu, .barra, .nav, .navbar-fixed-top {
     display: none;
   }
 }

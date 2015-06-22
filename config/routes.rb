@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :articles, only: [:show, :update, :destroy]
 
   get '/current' => 'users#current'
+
+  get '/people/:id/individual_report' => 'people#individual_report'
 end

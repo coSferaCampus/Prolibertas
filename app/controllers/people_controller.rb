@@ -27,6 +27,14 @@ class PeopleController < ApplicationController
     respond_with @person
   end
 
+  def individual_report
+    @individual_report = UsedService.where( person_id: params[:id] ).desc(:created_at).map do |used_service|
+      [used_service.created_at.to_s.split('-').reverse.join('/'), used_service.service.name]
+    end
+
+     respond_with @individual_report.to_json
+  end
+
   private
 
   def person_params

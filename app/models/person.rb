@@ -67,4 +67,14 @@ class Person
     alerts.where(:pending.gte => $selected_day).desc(:created_at)
   end
 
+  # Método que devuelve los servicios usados de una persona
+  # def individual_report
+
+  #   resultado = used_services.where( person_id: $person_id ).desc(:created_at).map do |used_service|
+  #     [used_service.created_at.to_s.split('-').reverse.join('/'), used_service.service.name]
+  #   end
+
+  #   Hash[resultado]
+  # end
+
 end
