@@ -373,4 +373,22 @@
   return filteri18n;
 
 }]);
+
+  app.controller('PersonReportController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {
+    var scope = this;
+    scope.services = {};
+    scope.person = {};
+
+    $http.get('/people/' + $state.params.id + '.json')
+    .success(function(data){
+      scope.person = data.person;
+    });
+
+    $http.get('/people/' + $state.params.id + '/individual_report.json')
+    .success(function(data){
+      scope.services = data;
+    });
+
+  }]);
+
 })();

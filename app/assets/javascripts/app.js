@@ -73,6 +73,17 @@
       controllerAs: "personCtrl"
     })
 
+    .state("persona.informe", {
+      url: "/informe",
+      views:{
+        menupersona:{
+          templateUrl: "persona-informe.html",
+          controller: "PersonReportController",
+          controllerAs: "personCtrl"
+        }
+      }
+    })
+
     .state("persona.alertas", {
       url: "/alertas?alertaCreado&alertaBorrado",
       views:{
