@@ -9,6 +9,7 @@ class Ability
     can :manage, History
     can :manage, Family
     can :manage, Article
+    can :manage, Sandwich
 
     if user.has_role? :director
       cannot :show, User do |usuario|

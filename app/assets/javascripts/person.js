@@ -4,6 +4,7 @@
   // Controllers
   app.controller('PeopleController', ['$filter', '$http', '$timeout', '$state', '$rootScope', function($filter, $http, $timeout, $state, $rootScope) {
     var scope = this;
+    scope.sandwiches = 0;
     scope.person= {};
     scope.person.selected_day =  $filter('date')(new Date(), 'dd/MM/yyyy');
     scope.people = [];
@@ -33,6 +34,10 @@
       .success(function(data) {
         scope.services = data.services;
       });
+
+    // $('#InputSandwichesSubmit').click( function() {
+    //   scope.guardarSandwiches();
+    // });
 
     $("#InputSelected_day").focusout( function() {
       scope.person.selected_day = $("#InputSelected_day").val();
@@ -146,6 +151,23 @@
 
       return today;
     };
+
+    scope.guardarSandwiches = function() {
+
+      $http.post('/sandwiches.json', {amount: scope.sandwiches, created_at: scope.person.selected_day})
+        .error(function(data) {
+          scope.errors = data.errors;
+
+          for(var error in scope.errors) {
+            if(scope.errors[error]) {
+              $("#Input" + $rootScope.capitalize(error))
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');
+            }
+          }
+        });
+    };
+
+
   }]);
 
   app.controller('PersonController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {
