@@ -45,7 +45,7 @@
     })
 
     .state("personas", {
-      url: "/personas?alertaCreado&alertaBorrado",
+      url: "/personas?alertaCreado&alertaBorrado&alertaGuardado",
       templateUrl: "personas.html",
       controller: "PeopleController",
       controllerAs: "peopleCtrl"

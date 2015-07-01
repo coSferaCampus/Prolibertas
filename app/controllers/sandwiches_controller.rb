@@ -3,12 +3,9 @@ class SandwichesController < ApplicationController
   load_and_authorize_resource param_method: :sandwich_params
 
   def create
-    @sandwich = Sandwich.create(sandwich_params)
-    respond_with @sandwich
-  end
-
-  def update
-    @sandwich.update_attributes(sandwich_params)
+    @sandwich = Sandwich.find_or_initialize_by(:created_at => params[:created_at])
+    @sandwich.amount = params[:amount]
+    @sandwich.save
     respond_with @sandwich
   end
 

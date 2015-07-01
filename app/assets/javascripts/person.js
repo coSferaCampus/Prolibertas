@@ -4,25 +4,25 @@
   // Controllers
   app.controller('PeopleController', ['$filter', '$http', '$timeout', '$state', '$rootScope', function($filter, $http, $timeout, $state, $rootScope) {
     var scope = this;
-    scope.sandwiches = 0;
+    scope.sandwiches;
     scope.person= {};
     scope.person.selected_day =  $filter('date')(new Date(), 'dd/MM/yyyy');
     scope.people = [];
     scope.services = [];
     scope.alertaCreado = $state.params.alertaCreado;
+    scope.alertaBorrado = $state.params.alertaBorrado;
+    scope.alertaGuardado = $state.params.alertaGuardado;
+
+    // La alerta se oculta después de 5 segundos
+    $timeout(function(){scope.alertaCreado = false;}, 5000);
+    $timeout(function(){scope.alertaBorrado = false;}, 5000);
+    $timeout(function(){scope.alertaGuardado = false;}, 5000);
 
     $('.datepicker').datetimepicker({
       locale: 'es',
        format: 'L'
      });
 
-
-    // La alerta se oculta después de 5 segundos
-    $timeout(function(){scope.alertaCreado = false;}, 5000);
-
-    scope.alertaBorrado = $state.params.alertaBorrado;
-    // La alerta se oculta después de 5 segundos
-    $timeout(function(){scope.alertaBorrado = false;}, 5000);
     $rootScope.prolibertas = "Lista de Personas"
 
       $http.get( '/people.json?selected_day=' + scope.person.selected_day )
@@ -34,10 +34,6 @@
       .success(function(data) {
         scope.services = data.services;
       });
-
-    // $('#InputSandwichesSubmit').click( function() {
-    //   scope.guardarSandwiches();
-    // });
 
     $("#InputSelected_day").focusout( function() {
       scope.person.selected_day = $("#InputSelected_day").val();
@@ -155,7 +151,9 @@
     scope.guardarSandwiches = function() {
 
       $http.post('/sandwiches.json', {amount: scope.sandwiches, created_at: scope.person.selected_day})
-        .error(function(data) {
+        .success( function(data) {
+          $state.go("personas", { alertaGuardado: 'true' })
+        }).error( function(data) {
           scope.errors = data.errors;
 
           for(var error in scope.errors) {
