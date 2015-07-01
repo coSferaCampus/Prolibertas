@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :alerts, only: [:show, :update, :destroy]
   resources :histories, only: [:show, :update, :destroy]
   resources :articles, only: [:show, :update, :destroy]
-  resources :sandwiches, only: [:create, :update]
+  resources :sandwiches, only: [:show, :create]
 
   get '/current' => 'users#current'
 
