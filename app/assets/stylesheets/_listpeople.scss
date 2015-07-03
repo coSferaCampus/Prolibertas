@@ -35,3 +35,45 @@
   width: 40px;
   height: 32px;
 }
+
+
+.listfamilies__azul {
+  color: $brand;
+}
+
+.listfamilies__tabla {
+  padding: 0px;
+  margin-top: 82px;
+  padding-left: 0px;
+}
+
+.listfamilies__cabecera {
+  background-color: $grey_20;
+}
+
+.listfamilies__centrado {
+   text-align: center;
+   vertical-align: middle;
+}
+
+.listfamilies__iconos {
+  width: 20px;
+}
+
+.listfamilies__boton {
+  background-color: $brand;
+  color: white;
+  width: 40px;
+  height: 32px;
+}
+  @media only screen and (max-width: 767px) {
+
+    .listpeople__buscadores {
+      margin-top: 50px;
+    }
+
+    .listpeople__tabla {
+      margin-top: 100px;
+  }
+}
+

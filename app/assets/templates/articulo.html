@@ -1,0 +1,37 @@
+<div id="article-show-page" class="col-md-7">
+
+  <ul class="list-group">
+    <li class="list-group-item person__list__el">
+       <strong class="person__list__text__left">Creador:</strong> <span id="creador">{{ articleCtrl.article.created_by.name }}</span>
+    </li>
+    <li class="list-group-item person__list__el">
+      <strong class="person__list__text__left">Tipo:</strong> <span id="article_type">{{ articleCtrl.tipo(articleCtrl.article.type) }}</span>
+    </li>
+
+    <li class="list-group-item person__list__el">
+      <strong class="person__list__text__left">Cantidad:</strong> <span id="article_amount">{{ articleCtrl.article.amount }}</span>
+    </li>
+
+    <li class="list-group-item person__list__el">
+      <strong class="person__list__text__left">Pedidas:</strong> <span id="article_requested">{{ articleCtrl.article.requested }}</span>
+    </li>
+
+    <li class="list-group-item person__list__el">
+      <strong class="person__list__text__left">Entregadas:</strong> <span id="article_dispensed">{{ articleCtrl.article.dispensed }}</span>
+    </li>
+
+    <li class="list-group-item person__list__el">
+      <strong class="person__list__text__left">Observaciones:</strong> <span id="article_observations">{{ articleCtrl.article.observations }}</span>
+    </li>
+  </ul>
+
+</div>
+
+<div class="persona__botones col-md-7">
+  <a id="remove-article-btn" type="button" class="btn btn-danger persona__botones__remove" ng-click="articleCtrl.destroyArticle(articleCtrl.article)">
+    Eliminar
+  </a>
+  <a id="edit_article_button" type="button" class="btn btn-primary persona__botones__edit" ui-sref="persona.articuloEditar({id: personCtrl.person.id, articulo_id: articleCtrl.article.id })">
+    Editar
+  </a>
+</div>

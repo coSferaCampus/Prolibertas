@@ -7,7 +7,10 @@ class Ability
     can :manage, Person
     can :manage, Alert
     can :manage, History
-    
+    can :manage, Family
+    can :manage, Article
+    can :manage, Sandwich
+
     if user.has_role? :director
       cannot :show, User do |usuario|
        usuario.has_role? :director and user != usuario

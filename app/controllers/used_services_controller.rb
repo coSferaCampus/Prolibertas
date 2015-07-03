@@ -21,7 +21,7 @@ class UsedServicesController < ApplicationController
 
   def used_service_params
     params.require(:used_service).permit(
-      :person_id, :service_id
+      :person_id, :service_id, :created_at
       )
   end
 end

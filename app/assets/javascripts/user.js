@@ -2,7 +2,7 @@
   var app = angular.module('prolibertas-user', ['ui.router']);
 
   // Controllers
-  app.controller('UsersController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope){
+  app.controller('UsersController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope) {
     var scope = this;
     scope.users = [];
     $rootScope.prolibertas = "Usuarios de Prolibertas";
@@ -19,7 +19,7 @@
       .success(function(data){
         scope.users = data.users;
       })
-    
+
     scope.rol = function(rol) {
       console.log(rol);
       if (rol == "worker") {
@@ -42,7 +42,7 @@
     $http.get('/users/' + $state.params.id + '.json')
     .success(function(data){
       scope.user = data.user;
-      $rootScope.prolibertas = scope.user.name 
+      $rootScope.prolibertas = scope.user.name
     });
 
     scope.rol = function(rol) {
@@ -62,7 +62,7 @@
       if (confirmed) {
         $http.delete('/users/' + user.id + '.json').success(function(data) {
           $state.go("usuarios", { alertaBorrado: 'true' })
-        }); 
+        });
       }
     };
   }]);
@@ -70,7 +70,7 @@
   app.controller('UserFormController', ['$http', '$state', '$rootScope', function($http, $state, $rootScope) {
     var scope = this;
     // variable para el formulario
-    scope.userForm = {role: "volunteer"}; 
+    scope.userForm = {role: "volunteer"};
     //variable para los errores
     scope.errors = {};
 
@@ -93,7 +93,7 @@
           for(var error in scope.errors) {
             if(scope.errors[error]) {
               $("#Input" + $rootScope.capitalize(error))
-                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');
             }
           }
         });
@@ -115,7 +115,7 @@
           for(var error in scope.errors) {
             if(scope.errors[error]) {
               $("#Input" + $rootScope.capitalize(error))
-                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');    
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');
             }
           }
         });
