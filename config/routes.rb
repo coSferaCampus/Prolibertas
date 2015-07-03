@@ -16,10 +16,6 @@ Rails.application.routes.draw do
   resources :sandwiches, only: [:show, :create]
 
   get '/current' => 'users#current'
-<<<<<<< HEAD
-
   get '/people/:id/individual_report' => 'people#individual_report'
-=======
   get '/reports/genre' => 'reports#genre'
->>>>>>> probando
 end
