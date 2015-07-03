@@ -9,9 +9,9 @@
 </head>
 <body>
 
-  <div class="list-group nav navbar-nav col-md-2 col-sm-2 col-lg-2 col-xs-2">
+  <div class="list-group nav navbar-nav col-md-2 col-xs-2 col-sm-2">
 
-    <!--<img class="logo" src="/assets/logo-menu.svg">-->
+    <!--<img class="logo hidden-xs" src="/assets/logo-menu.svg">-->
 
     <div class="menu__users" title="Gestión de usuarios">
       <a ui-sref="usuario.perfil({id: currentUser.id})"  ui-sref-active="active" id="perfil" class="glyphicon glyphicon-user" aria-hidden="true"></a>
@@ -33,14 +33,16 @@
       </li>
       <% if current_user.role == 'director' or current_user.role == 'worker' %>
 
-      <li><a href="#"
-        class="list-group-item menu__el"><span class="menu__el__text">INFORMES</span></a>
+      <li>
+        <a ui-sref="informes"  ui-sref-active="active" id="go-reports"
+        class="list-group-item menu__el" title="Informes"><span class="menu__el__text">INFORMES</span></a>
       </li>
 
       <li>
         <a ui-sref="usuarios"  ui-sref-active="active" id="go-users"
         class="list-group-item menu__el" title="Gestión de usuarios"><span class="menu__el__text">USUARIOS</span></a>
       </li>
+
       <% end %>
     </ul>
 

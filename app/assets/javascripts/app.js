@@ -249,6 +249,11 @@
        templateUrl: "familia-nueva.html",
        controller: "FamiliesController",
        controllerAs: "familyCtrl"
+    })
+
+     .state("informes", {
+      url: "/informes",
+      templateUrl: "informes.html"
      });
   });
 
