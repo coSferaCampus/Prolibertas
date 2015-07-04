@@ -32,6 +32,18 @@ $("#reportOption").on('change', function() {
       reportUrl = "/reports/genre.json";
       reportTitle = "Hombres/Mujeres";
       break;
+    case "2":
+      reportUrl = "/reports/documentation.json";
+      reportTitle = "Indocumentado/Regularizado/Irregular";
+      break;
+    case "3":
+      reportUrl = "/reports/assistance.json";
+      reportTitle = "Primera vez/Habitual/Reincidente";
+      break;
+    case "4":
+      reportUrl = "/reports/residence.json";
+      reportTitle = "De Paso/Residente";
+      break;
     }
 
   d3.json(reportUrl, function(error, data) {
@@ -58,7 +70,3 @@ $("#reportOption").on('change', function() {
 
   $("#reportTitle").text( "Informe " + reportTitle);
 });
-
-
-
-
