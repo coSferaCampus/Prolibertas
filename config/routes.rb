@@ -21,4 +21,7 @@ Rails.application.routes.draw do
 
   get '/reports/genre' => 'reports#genre'
   get '/reports/spanish' => 'reports#spanish'
+  get '/reports/documentation' => 'reports#documentation'
+  get '/reports/assistance' => 'reports#assistance'
+  get '/reports/residence' => 'reports#residence'
 end

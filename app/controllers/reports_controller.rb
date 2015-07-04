@@ -3,13 +3,27 @@ class ReportsController < ApplicationController
 
   def genre
     @report = Report.genre
-    puts "EL GENERO ES: #{@report}"
     respond_with @report.to_json
   end
 
   def spanish
     @report = Report.spanish
-    puts "Españoles y Extranjeros: #{@report}"
     respond_with @report.to_json
   end
+
+  def documentation
+    @report = Report.documentation
+    respond_with @report.to_json
+  end
+
+  def assistance
+    @report = Report.assistance
+    respond_with @report.to_json
+  end
+
+  def residence
+    @report = Report.residence
+    respond_with @report.to_json
+  end
+
 end
