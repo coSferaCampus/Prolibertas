@@ -1,0 +1,40 @@
+<div class="container col-xs-12 col-sm-12 col-md-12">
+
+  <form ng-submit="filesCtrl.adjuntar()" id="filesForm">
+
+      <div class="input-group col-md-4">
+        <label for="InputFileName">Nombre</label>
+        <input class="archivoAdjuntoNombre" type="text" id="InputFileName" ng-model="filesCtrl.person.attachment.name">
+      </div>
+
+      <div class="input-group col-md-4">
+        <label for="InputFile">Adjuntar archivo</label>
+        <input class="archivoAdjunto" type="file" id="InputFile" ng-file-select ng-model="filesCtrl.person.attachment.file">
+      </div>
+
+      <div class="submit-group col-md-12">
+         <button class="btn btn-primary historia_btn_guardar" type="submit" id="InputSubmit">Adjuntar archivo</button>
+       </div>
+  </form>
+
+  <section class="listpeople__tabla col-md-12">
+    <table class="table table-responsive table-hover table-condensed col-md-12  col-lg-12" id="peopleTable">
+      <thead class="listpeople__cabecera">
+        <tr>
+          <th>Nombre</th>
+          <th>Archivo</th>
+          <th>Ver</th>
+          <th>Borrar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="attachment in filesCtrl.person.attachments | orderBy: 'name'" id="attachment_{{attachment.id}}">
+          <td>{{attachment.name}}</td>
+          <td>{{attachment.file}}</td>
+          <td>{{attachment.file_url}}</td>
+          <td><button ng-click="filesCtrl.removeAttachment(attachment)">X</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

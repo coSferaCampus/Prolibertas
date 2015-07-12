@@ -411,4 +411,70 @@
 
   }]);
 
+  app.controller('PersonFilesController',  ['$http', '$timeout', '$state', '$rootScope', '$upload', function($http, $timeout, $state, $rootScope, $upload ) {
+    var scope = this;
+    scope.person = {};
+    scope.person.attachments = [];
+    scope.person.attachment = {};
+
+    $http.get('/people/' + $state.params.id + '.json')
+    .success(function(data){
+      scope.person = data.person;
+    });
+
+    $http.get('/people/' + $state.params.id + '/attachments.json')
+    .success(function(data){
+      scope.person.attachments = data.attachments;
+    });
+
+    scope.adjuntar = function(add) {
+
+      $upload.upload({
+        url: "/people/" + $state.params.id + "/attachments.json",
+        method: "POST",
+        fields: scope.person.attachment,
+        file: scope.person.attachment.file,
+        fileFormDataName: "attachment[file]",
+        formDataAppender: function(fd, key, val){
+          fd.append('attachment[' + key + ']', val || '');
+        }
+      })
+      .success(function(data) {
+
+          scope.person.attachments.push(data.attachment);
+
+          scope.errors = {};
+        })
+        .error(function(data) {
+          scope.errors = data.errors;
+
+          for(var error in scope.errors) {
+            if(scope.errors[error]) {
+              $("#Input" + $rootScope.capitalize(error))
+                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');
+            }
+          }
+        });
+    };
+
+    scope.removeAttachment = function(attachment) {
+      console.log(attachment);
+      var confirmed = confirm("¿Desea borrar el archivo?");
+
+      if (confirmed) {
+        scope.person.attachment = attachment;
+
+        $http.delete('/attachments/' + attachment.id + '.json')
+          .success(function(data) {
+            var index = scope.person.attachments.indexOf(attachment);
+            if (index > -1) {
+              scope.person.attachments.splice(index, 1);
+            }
+        });
+      }
+
+    };
+
+  }]);
+
 })();

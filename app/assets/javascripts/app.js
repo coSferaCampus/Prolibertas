@@ -95,6 +95,17 @@
       },
     })
 
+    .state("persona.adjuntos", {
+      url: "/adjuntos",
+      views:{
+        menupersona:{
+          templateUrl: "adjuntos.html",
+          controller: "PersonFilesController",
+          controllerAs: "filesCtrl"
+        }
+      },
+    })
+
     .state("persona.alertasNueva", {
       url: "/alertas/nueva",
       views:{

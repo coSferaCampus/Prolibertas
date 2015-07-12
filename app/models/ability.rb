@@ -10,6 +10,7 @@ class Ability
     can :manage, Family
     can :manage, Article
     can :manage, Sandwich
+    can :manage, Attachment
 
     if user.has_role? :director
       cannot :show, User do |usuario|
