@@ -5,7 +5,7 @@ RSpec.describe Attachment, type: :model do
   end
 
   context "Fields" do
-    it { is_expected.to have_field(:name).of_type(String) }
+    it { is_expected.to have_field(:file).of_type(Object) }
   end
 
   context "Relations" do
@@ -13,6 +13,6 @@ RSpec.describe Attachment, type: :model do
   end
 
   context "Validations" do
-    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:file) }
   end
 end
