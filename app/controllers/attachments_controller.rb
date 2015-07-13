@@ -24,7 +24,6 @@ class AttachmentsController < ApplicationController
   def destroy
     @attachment.remove_file!
     @attachment.file = nil
-    @attachment.name = nil
     @attachment.destroy
     respond_with @attachment
   end
@@ -34,5 +33,4 @@ class AttachmentsController < ApplicationController
   def attachment_params
     params.require(:attachment).permit(:name, :file, :remove_file)
   end
-
 end

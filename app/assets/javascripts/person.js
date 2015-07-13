@@ -440,9 +440,7 @@
         }
       })
       .success(function(data) {
-
           scope.person.attachments.push(data.attachment);
-
           scope.errors = {};
         })
         .error(function(data) {
@@ -458,7 +456,6 @@
     };
 
     scope.removeAttachment = function(attachment) {
-      console.log(attachment);
       var confirmed = confirm("¿Desea borrar el archivo?");
 
       if (confirmed) {

@@ -1,18 +1,17 @@
 <div class="container col-xs-12 col-sm-12 col-md-12">
 
-  <form ng-submit="filesCtrl.adjuntar()" id="filesForm">
+  <form ng-submit="filesCtrl.adjuntar()" id="filesForm" class="col-md-12">
 
-      <div class="input-group col-md-4">
-        <label for="InputFileName">Nombre</label>
-        <input class="archivoAdjuntoNombre" type="text" id="InputFileName" ng-model="filesCtrl.person.attachment.name">
+      <div class="col-md-6">
+
       </div>
 
-      <div class="input-group col-md-4">
+      <div class="input-group col-md-6">
         <label for="InputFile">Adjuntar archivo</label>
         <input class="archivoAdjunto" type="file" id="InputFile" ng-file-select ng-model="filesCtrl.person.attachment.file">
       </div>
 
-      <div class="submit-group col-md-12">
+      <div class="submit-group col-md-6">
          <button class="btn btn-primary historia_btn_guardar" type="submit" id="InputSubmit">Adjuntar archivo</button>
        </div>
   </form>
@@ -21,18 +20,22 @@
     <table class="table table-responsive table-hover table-condensed col-md-12  col-lg-12" id="peopleTable">
       <thead class="listpeople__cabecera">
         <tr>
-          <th>Nombre</th>
-          <th>Archivo</th>
-          <th>Ver</th>
-          <th>Borrar</th>
+          <th class="col-md-8">Archivo</th>
+          <th class="col-md-2">Tipo</th>
+          <th class="col-md-1"></th>
+          <th class="col-md-1"></th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="attachment in filesCtrl.person.attachments | orderBy: 'name'" id="attachment_{{attachment.id}}">
-          <td>{{attachment.name}}</td>
-          <td>{{attachment.file}}</td>
-          <td>{{attachment.file_url}}</td>
-          <td><button ng-click="filesCtrl.removeAttachment(attachment)">X</button></td>
+          <td>{{attachment.file_name}}</td>
+          <td>{{attachment.file_type}}</td>
+          <td><a href="{{attachment.file_url}}" target="_self" download="{{attachment.file_name}}">
+            <i class="glyphicon glyphicon-download listpeople__azul"></i></a>
+            </td>
+          <td><a ng-click="filesCtrl.removeAttachment(attachment)">
+            <i class="glyphicon glyphicon-trash listpeople__azul"></i></a>
+          </a></td>
         </tr>
       </tbody>
     </table>

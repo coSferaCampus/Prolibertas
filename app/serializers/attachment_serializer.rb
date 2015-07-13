@@ -1,3 +1,3 @@
 class AttachmentSerializer < ActiveModel::Serializer
-  attributes :id, :name, :file_url
+  attributes :id, :file_name, :file_type, :file_url
 end

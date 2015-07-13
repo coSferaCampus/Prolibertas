@@ -5,13 +5,19 @@ class Attachment
 
   mongoid_userstamp user_model: 'User'
 
-  field :name, type: String
-
   mount_uploader :file, FileUploader
 
   belongs_to :person
 
-  validates :name, presence: true
+  validates :file, presence: true
+
+  def file_name
+    self.file.file.file.split("/").pop
+  end
+
+  def file_type
+    self.file.file.file.split(".").pop
+  end
 
   def file_url
     self.file.url
