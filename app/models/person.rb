@@ -28,6 +28,7 @@ class Person
   has_many :alerts
   has_many :histories
   has_many :articles
+  has_many :attachments
 
   validates :name, presence: true
   validates :surname, presence: true
