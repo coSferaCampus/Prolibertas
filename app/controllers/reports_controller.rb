@@ -26,4 +26,13 @@ class ReportsController < ApplicationController
     respond_with @report.to_json
   end
 
+  def origin
+    @report = Report.origin
+    respond_with @report.to_json
+  end
+
+  def city
+    @report = Report.city
+    respond_with @report.to_json
+  end
 end

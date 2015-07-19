@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   get '/reports/documentation' => 'reports#documentation'
   get '/reports/assistance' => 'reports#assistance'
   get '/reports/residence' => 'reports#residence'
-
+  get '/reports/origin' => 'reports#origin'
+  get '/reports/city' => 'reports#city'
 end

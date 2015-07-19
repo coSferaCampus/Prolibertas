@@ -36,4 +36,44 @@ class Report
     [{label: 'De Paso', amount: de_paso}, {label: 'Residente', amount: residente}]
   end
 
+  def self.origin
+    labels = []
+    amounts = []
+    response = []
+
+    Person.each { |x| labels << x.origin }
+    labels.each { |x| amounts << Person.where( origin: x ).count }
+
+    labels.each_with_index do |item, index|
+      response << { label: labels[index], amount: amounts[index] }
+    end
+
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
+
+    response = response.first(5) if response.count >= 4
+
+    response
+  end
+
+  def self.city
+    labels = []
+    amounts = []
+    response = []
+
+    Person.each { |x| labels << x.city if ( x.city && x.city != :"" && x.city != nil ) }
+    labels.each { |x| amounts << Person.where( city: x ).count }
+
+    labels.each_with_index do |item, index|
+      response << { label: labels[index], amount: amounts[index] }
+    end
+
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
+
+    response = response.first(5) if response.size >= 4
+
+    response
+  end
+
 end
