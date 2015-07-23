@@ -35,4 +35,20 @@ class ReportsController < ApplicationController
     @report = Report.city
     respond_with @report.to_json
   end
+
+  def services
+    @report = Report.services
+    respond_with @report.to_json
+  end
+
+  def services_year
+    $year = params[:selected_year]
+    @report = Report.services_year
+    respond_with @report.to_json
+  end
+
+  def services_month
+    @report = Report.services_month
+    respond_with @report.to_json
+  end
 end

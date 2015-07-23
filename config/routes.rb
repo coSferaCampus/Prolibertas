@@ -31,4 +31,7 @@ Rails.application.routes.draw do
   get '/reports/residence' => 'reports#residence'
   get '/reports/origin' => 'reports#origin'
   get '/reports/city' => 'reports#city'
+  get '/reports/services' => 'reports#services'
+  get '/reports/services_year' => 'reports#services_year'
+  get '/reports/services_month' => 'reports#services_month'
 end

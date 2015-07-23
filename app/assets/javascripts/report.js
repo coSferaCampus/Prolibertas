@@ -1,4 +1,4 @@
-$("#reportOption").on('change', function() {
+$("#showReport").on('click', function() {
   $("#report").empty();
 
   var width = 600,
@@ -52,9 +52,19 @@ $("#reportOption").on('change', function() {
       reportUrl = "/reports/city.json";
       reportTitle = "Cantidad de Españoles por ciudad";
       break;
+    case "7":
+      reportUrl = "/reports/services.json";
+      reportTitle = "Servicios totales de la plataforma";
+      break;
+    case "8":
+      reportUrl = "/reports/services_year.json";
+      reportTitle = "Servicios por año";
+      break;
     }
 
-  d3.json(reportUrl, function(error, data) {
+  url = reportUrl + '?selected_year=' + $("#SelectedYear").val();
+
+  d3.json(url, function(error, data) {
 
     data.forEach(function(d) {
       d.amount = +d.amount;
@@ -71,9 +81,10 @@ $("#reportOption").on('change', function() {
 
     g.append("text")
       .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+      .attr("dx", 12)
       .attr("dy", ".35em")
       .style("text-anchor", "middle")
-      .text(function(d) { return (d.data.label + ": " + d.data.amount); });
+      .text(function(d) { return d.data.label + ": " + d.data.amount; });
   });
 
   $("#reportTitle").text( "Informe " + reportTitle);

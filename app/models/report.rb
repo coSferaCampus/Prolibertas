@@ -76,4 +76,54 @@ class Report
     response
   end
 
+  def self.services
+    labels = []
+    labels_ids = []
+    amounts = []
+    response = []
+
+    Service.each { |x| labels << x.name }
+    labels.each { |x| labels_ids << Service.find_by( name: x ) }
+    labels_ids.each { |x| amounts << UsedService.where( service_id: x ).count }
+
+    labels.each_with_index do |item, index|
+      response << { label: labels[index], amount: amounts[index] }
+    end
+
+    response
+  end
+
+  def self.services_year
+    labels = []
+    labels_ids = []
+    amounts = []
+    response = []
+
+    Service.each { |x| labels << x.name }
+    labels.each { |x| labels_ids << Service.find_by( name: x ) }
+    labels_ids.each { |x| amounts << UsedService.where( service_id: x, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count }
+
+    labels.each_with_index do |item, index|
+      response << { label: labels[index], amount: amounts[index] }
+    end
+
+    response
+  end
+
+  def self.services_month
+    labels = []
+    labels_ids = []
+    amounts = []
+    response = []
+
+    Service.each { |x| labels << x.name }
+    labels.each { |x| labels_ids << Service.find_by( name: x ) }
+    labels_ids.each { |x| amounts << UsedService.where( service_id: x ).count }
+
+    labels.each_with_index do |item, index|
+      response << { label: labels[index], amount: amounts[index] }
+    end
+
+    response
+  end
 end
