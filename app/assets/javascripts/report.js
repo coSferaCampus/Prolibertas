@@ -53,12 +53,20 @@ $("#showReport").on('click', function() {
       reportTitle = "Cantidad de Españoles por ciudad";
       break;
     case "7":
-      reportUrl = "/reports/services.json";
-      reportTitle = "Servicios totales de la plataforma";
+      reportUrl = "/reports/people.json";
+      reportTitle = "Personas en la plataforma";
       break;
     case "8":
       reportUrl = "/reports/services_year.json";
-      reportTitle = "Servicios por año";
+      reportTitle = "Servicios";
+      break;
+    case "9":
+      reportUrl = "/reports/sandwiches.json";
+      reportTitle = "Bocadillos";
+      break;
+    case "10":
+      reportUrl = "/reports/inv.json";
+      reportTitle = "Inventario";
       break;
     }
 
