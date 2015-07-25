@@ -32,6 +32,9 @@
       else if (tipo == "shoes") {
         return 'zapatos';
       }
+      else if (tipo == "basket") {
+        return 'canastillas';
+      }
       else if (tipo == "others1") {
         return 'otros 1';
       }

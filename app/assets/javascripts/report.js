@@ -1,8 +1,8 @@
-$("#reportOption").on('change', function() {
+$("#showReport").on('click', function() {
   $("#report").empty();
 
-  var width = 400,
-    height = 400,
+  var width = 600,
+    height = 600,
     radius = Math.min(width, height) / 2;
 
   var color = d3.scale.category20();
@@ -44,9 +44,35 @@ $("#reportOption").on('change', function() {
       reportUrl = "/reports/residence.json";
       reportTitle = "De Paso/Residente";
       break;
+    case "5":
+      reportUrl = "/reports/origin.json";
+      reportTitle = "País de origen";
+      break;
+    case "6":
+      reportUrl = "/reports/city.json";
+      reportTitle = "Cantidad de Españoles por ciudad";
+      break;
+    case "7":
+      reportUrl = "/reports/people.json";
+      reportTitle = "Personas en la plataforma";
+      break;
+    case "8":
+      reportUrl = "/reports/services_year.json";
+      reportTitle = "Servicios";
+      break;
+    case "9":
+      reportUrl = "/reports/sandwiches.json";
+      reportTitle = "Bocadillos";
+      break;
+    case "10":
+      reportUrl = "/reports/inv.json";
+      reportTitle = "Inventario";
+      break;
     }
 
-  d3.json(reportUrl, function(error, data) {
+  url = reportUrl + '?selected_year=' + $("#SelectedYear").val();
+
+  d3.json(url, function(error, data) {
 
     data.forEach(function(d) {
       d.amount = +d.amount;
@@ -63,9 +89,10 @@ $("#reportOption").on('change', function() {
 
     g.append("text")
       .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+      .attr("dx", 12)
       .attr("dy", ".35em")
       .style("text-anchor", "middle")
-      .text(function(d) { return (d.data.label + ": " + d.data.amount); });
+      .text(function(d) { return d.data.label + ": " + d.data.amount; });
   });
 
   $("#reportTitle").text( "Informe " + reportTitle);

@@ -13,7 +13,7 @@ class Article
 
   belongs_to :person
 
-  validates :type, inclusion: { in: [ :blanket, :sheet, :jacket, :shoes, :others1, :others2, :others3 ] }
+  validates :type, inclusion: { in: [ :blanket, :sheet, :jacket, :shoes, :basket, :others1, :others2, :others3 ] }
   validates :amount, presence: true
   validates :requested, presence: true
   validates :person, presence: true

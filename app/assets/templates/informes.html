@@ -4,7 +4,7 @@
       <div class="col-md-12 listpeople__buscadores" style="padding-bottom:0px">
         <form class="form-inline">
 
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-3">
            <select class="form-control" id="reportOption">
              <option value="" selected>Selecciona un informe</option>
              <option value="0">Españoles/Extranjeros</option>
@@ -12,12 +12,18 @@
              <option value="2">Documentación</option>
              <option value="3">Asistencia</option>
              <option value="4">Residencia</option>
+             <option value="5">País de origen</option>
+             <option value="6">Españoles/Ciudad</option>
+             <option value="7">Personas en la plataforma</option>
+             <option value="8">Servicios</option>
+             <option value="9">Bocadillos</option>
+             <option value="10">Inventario</option>
            </select>
          </div>
 
-          <div class="form-group col-md-2">
+          <div class="form-group col-md-3">
             <div class="input-group datepicker" >
-            <input ng-model="peopleCtrl.person.selected_day" type="text" class="form-control" id="InputSelected_day">
+            <input type="text" class="form-control" id="SelectedYear">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-calendar listpeople__azul"></i>
               </span>
@@ -25,7 +31,11 @@
           </div>
 
           <div class="form-group col-md-3">
-            <a class="btn btn-primary col-md-offset-1 col-md-5" ng-click="printDocument()" id="printFamily"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Imprimir<span></a>
+            <a class="btn btn-primary col-md-offset-0 col-md-6" id="showReport"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Generar informe<span></a>
+          </div>
+
+          <div class="form-group col-md-3">
+            <a class="btn btn-primary col-md-offset-0 col-md-6" ng-click="printDocument()" id="printFamily"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Imprimir<span></a>
           </div>
         </form>
       </div>
@@ -36,6 +46,14 @@
       <h2 id ="reportTitle">Informe </h2>
       <div id="report" class="col-md-6"></div>
       <script type="text/javascript" src="assets/report.js"></script>
+      <script>
+        var today = new Date();
+        $("#SelectedYear").val(today.getFullYear());
+        $('.datepicker').datetimepicker({
+          locale: 'es',
+          format: 'YYYY',
+        });
+      </script>
     </div>
 
 
