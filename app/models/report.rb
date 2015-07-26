@@ -3,14 +3,24 @@ class Report
     man_amount = Person.where(genre: 'man', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
     woman_amount = Person.where(genre: 'woman', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
 
-    [{label: 'Hombres', amount: man_amount}, {label: 'Mujeres', amount: woman_amount}]
+    response = [{label: 'Hombres', amount: man_amount}, {label: 'Mujeres', amount: woman_amount}]
+
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
+
+    response
   end
 
   def self.spanish
     spanish_amount = Person.where(:origin.in => ['españa','España'], :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
     foreign_amount = Person.where( :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count - spanish_amount
 
-    [{label: 'Españoles', amount: spanish_amount}, {label: 'Extranjeros', amount: foreign_amount}]
+    response = [{label: 'Extranjeros', amount: foreign_amount}, {label: 'Españoles', amount: spanish_amount}]
+
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
+
+    response
   end
 
   def self.documentation
@@ -18,7 +28,11 @@ class Report
     regularizados = Person.where(documentation: 1, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
     irregulares= Person.where(documentation: 2, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
 
-    [{label: 'Indocumentados', amount: indocumentados}, {label: 'Regularizados', amount: regularizados}, {label: 'Sin Regularizar', amount: irregulares}]
+    response = [{label: 'Indocumentados', amount: indocumentados}, {label: 'Regularizados', amount: regularizados}, {label: 'Sin Regularizar', amount: irregulares}]
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
+
+    response
   end
 
   def self.assistance
@@ -26,14 +40,24 @@ class Report
     habitual = Person.where(assistance: 1, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
     reincidente= Person.where(assistance: 2, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
 
-    [{label: 'Primera vez', amount: primera_vez}, {label: 'Habitual', amount: habitual}, {label: 'Reincidente', amount: reincidente}]
+    response = [{label: 'Primera vez', amount: primera_vez}, {label: 'Habitual', amount: habitual}, {label: 'Reincidente', amount: reincidente}]
+
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
+
+    response
   end
 
   def self.residence
     de_paso = Person.where(residence: 0, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
     residente = Person.where(residence: 1, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
 
-    [{label: 'De Paso', amount: de_paso}, {label: 'Residente', amount: residente}]
+    response = [{label: 'De Paso', amount: de_paso}, {label: 'Residente', amount: residente}]
+
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
+
+    response
   end
 
   def self.origin
@@ -96,6 +120,9 @@ class Report
       response << { label: labels[index], amount: amounts[index] }
     end
 
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
+
     response
   end
 
@@ -112,6 +139,9 @@ class Report
     labels.each_with_index do |item, index|
       response << { label: labels[index], amount: amounts[index] }
     end
+
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
 
     response
   end
@@ -199,6 +229,9 @@ class Report
     if ( a_others3 > 0 ) then
       response << {label: 'Otros 3', amount: a_others3}
     end
+
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
 
       response
   end

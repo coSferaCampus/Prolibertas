@@ -5,7 +5,7 @@ $("#showReport").on('click', function() {
     height = 600,
     radius = Math.min(width, height) / 2;
 
-  var color = d3.scale.category20();
+  var color = d3.scale.category10();
 
   var arc = d3.svg.arc()
       .outerRadius(radius - 10)
