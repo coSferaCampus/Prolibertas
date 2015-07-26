@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   get '/reports/city' => 'reports#city'
   get '/reports/people' => 'reports#people'
   get '/reports/services_year' => 'reports#services_year'
-  get '/reports/services_month' => 'reports#services_month'
   get '/reports/sandwiches' => 'reports#sandwiches'
   get '/reports/inv' => 'reports#inv'
+  get '/reports/families' => 'reports#families'
 end

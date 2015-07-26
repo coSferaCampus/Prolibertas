@@ -101,9 +101,17 @@ class Report
   end
 
   def self.people
-    amount = Person.where( :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count
+    a_new = Person.where( :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count
+    a_active =0
 
-    [{label: 'Personas', amount: amount}]
+    Person.each { |x| a_active += 1 if UsedService.where( person_id: x.id, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count > 0 }
+
+    response = [{label: 'Nuevas', amount: a_new}, {label: 'Activas', amount: a_active}]
+
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
+
+    response
   end
 
   def self.services_year
@@ -115,26 +123,6 @@ class Report
     Service.each { |x| labels << x.name }
     labels.each { |x| labels_ids << Service.find_by( name: x ) }
     labels_ids.each { |x| amounts << UsedService.where( service_id: x, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count }
-
-    labels.each_with_index do |item, index|
-      response << { label: labels[index], amount: amounts[index] }
-    end
-
-    response.sort_by! { |x| x[:amount] }
-    response.reverse!
-
-    response
-  end
-
-  def self.services_month
-    labels = []
-    labels_ids = []
-    amounts = []
-    response = []
-
-    Service.each { |x| labels << x.name }
-    labels.each { |x| labels_ids << Service.find_by( name: x ) }
-    labels_ids.each { |x| amounts << UsedService.where( service_id: x ).count }
 
     labels.each_with_index do |item, index|
       response << { label: labels[index], amount: amounts[index] }
@@ -234,5 +222,21 @@ class Report
     response.reverse!
 
       response
+  end
+
+  def self.families
+    families = Family.where( :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) )
+    a_new = families.count
+    a_total = 0
+
+    families.each do |x|
+      a_total += x.adults + x.children
+    end
+
+    response = [{ label: "Nuevas", amount: a_new }, { label: "Miembros", amount: a_total }]
+    response.sort_by! { |x| x[:amount] }
+    response.reverse!
+
+    response
   end
 end

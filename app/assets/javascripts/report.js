@@ -54,7 +54,7 @@ $("#showReport").on('click', function() {
       break;
     case "7":
       reportUrl = "/reports/people.json";
-      reportTitle = "Personas en la plataforma";
+      reportTitle = "Personas Nuevas / Activas";
       break;
     case "8":
       reportUrl = "/reports/services_year.json";
@@ -67,6 +67,10 @@ $("#showReport").on('click', function() {
     case "10":
       reportUrl = "/reports/inv.json";
       reportTitle = "Inventario";
+      break;
+    case "11":
+      reportUrl = "/reports/families.json";
+      reportTitle = "Familias Nuevas / Miembros";
       break;
     }
 
