@@ -7,7 +7,10 @@ body { overflow-x: hidden; }
 .arc text {
   font-size: 24px;
   fill: #fff;
-  z-index: 9999999999 !important;
+}
+
+.niapa {
+  color: transparent;
 }
 
 .bootstrap-datetimepicker-widget  {

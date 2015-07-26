@@ -55,11 +55,6 @@ class ReportsController < ApplicationController
     respond_with @report.to_json
   end
 
-  def services_month
-    @report = Report.services_month
-    respond_with @report.to_json
-  end
-
   def sandwiches
     $year = params[:selected_year]
     @report = Report.sandwiches
@@ -69,6 +64,12 @@ class ReportsController < ApplicationController
   def  inv
     $year = params[:selected_year]
     @report = Report.inv
+    respond_with @report.to_json
+  end
+
+  def  families
+    $year = params[:selected_year]
+    @report = Report.families
     respond_with @report.to_json
   end
 end
