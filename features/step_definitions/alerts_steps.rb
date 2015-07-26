@@ -13,7 +13,7 @@ Then(/^I should see the list of the alerts$/) do
   Person.first.alerts.each do |alert|
     expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(2)", text:
       if alert.type == :punishment
-        "castigo"
+        "sanción"
       elsif alert.type == :warning
         "advertencia"
       elsif alert.type == :advice
@@ -49,7 +49,7 @@ end
 When(/^I fill alert form with valid parameters$/) do
 parametros = FactoryGirl.attributes_for(:alert)
   if parametros[:type] == :punishment
-    select('castigo', from: 'InputType')
+    select('sanción', from: 'InputType')
   elsif parametros[:type] == :warning
     select('advertencia', from: 'InputType')
   elsif parametros[:type] == :advice
@@ -69,7 +69,7 @@ Then(/^I should see the new alert in alerts list$/) do
   alert = Alert.last
   expect(page).to have_css "tr#alert_#{alert.id} td:nth-child(2)", text:
     if alert.type == :punishment
-      "castigo"
+      "sanción"
     elsif alert.type == :warning
       "advertencia"
     elsif alert.type == :advice
@@ -104,7 +104,7 @@ end
 When(/^I fill input "(.*?)" with valid parameters$/) do |arg1|
 parametros = FactoryGirl.attributes_for(:alert)
   if parametros[:type] == :punishment
-    select('castigo', from: 'InputType')
+    select('sanción', from: 'InputType')
   elsif parametros[:type] == :warning
     select('advertencia', from: 'InputType')
   elsif parametros[:type] == :advice

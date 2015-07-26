@@ -1,6 +1,6 @@
 (function() {
-  
-  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-alert', 'prolibertas-service']);
+
+  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-article', 'prolibertas-alert', 'prolibertas-service', 'prolibertas-family']);
 
   // Config
   app.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
@@ -34,18 +34,18 @@
       url: "/usuarios/:id/editar",
       templateUrl: "usuarios-nuevo.html",
       controller: "UserFormController",
-      controllerAs: "userFormCtrl"    
+      controllerAs: "userFormCtrl"
     })
 
     .state("usuario.perfil", {
       url: "/perfil",
       templateUrl: "perfil.html",
       controller: "UserFormController",
-      controllerAs: "userFormCtrl"    
+      controllerAs: "userFormCtrl"
     })
 
     .state("personas", {
-      url: "/personas?alertaCreado&alertaBorrado",
+      url: "/personas?alertaCreado&alertaBorrado&alertaGuardado",
       templateUrl: "personas.html",
       controller: "PeopleController",
       controllerAs: "peopleCtrl"
@@ -70,7 +70,18 @@
       url: "/personas/:id/editar",
       templateUrl: "persona-nueva.html",
       controller: "PersonFormController",
-      controllerAs: "personCtrl"    
+      controllerAs: "personCtrl"
+    })
+
+    .state("persona.informe", {
+      url: "/informe",
+      views:{
+        menupersona:{
+          templateUrl: "persona-informe.html",
+          controller: "PersonReportController",
+          controllerAs: "personCtrl"
+        }
+      }
     })
 
     .state("persona.alertas", {
@@ -82,7 +93,17 @@
           controllerAs: "alertsCtrl"
         }
       },
+    })
 
+    .state("persona.adjuntos", {
+      url: "/adjuntos",
+      views:{
+        menupersona:{
+          templateUrl: "adjuntos.html",
+          controller: "PersonFilesController",
+          controllerAs: "filesCtrl"
+        }
+      },
     })
 
     .state("persona.alertasNueva", {
@@ -124,7 +145,7 @@
          menupersona:{
            templateUrl: "historias.html",
            controller: "HistoriesController",
-           controllerAs: "historiesCtrl" 
+           controllerAs: "historiesCtrl"
          }
         }
       })
@@ -135,7 +156,7 @@
          menupersona:{
             templateUrl: "form_historia.html",
             controller: "HistoryFormController",
-            controllerAs: "historyFormCtrl" 
+            controllerAs: "historyFormCtrl"
          }
         }
       })
@@ -146,7 +167,7 @@
           menupersona:{
             templateUrl: "historia.html",
             controller: "HistoryController",
-            controllerAs: "historyCtrl"  
+            controllerAs: "historyCtrl"
           }
         }
       })
@@ -157,16 +178,93 @@
           menupersona:{
             templateUrl: "form_historia.html",
             controller: "HistoryFormController",
-            controllerAs: "historyFormCtrl"  
+            controllerAs: "historyFormCtrl"
           }
         }
       })
+
+     .state("persona.articulos", {
+      url: "/articulos?alertaCreado&alertaBorrado",
+      views:{
+        menupersona:{
+          templateUrl: "articulos.html",
+          controller: "ArticlesController",
+          controllerAs: "articlesCtrl"
+        }
+      },
+    })
+
+    .state("persona.articulosNuevo", {
+      url: "/articulos/nuevo",
+      views:{
+        menupersona:{
+        templateUrl: "articulo-nuevo.html",
+        controller: "ArticleFormController",
+        controllerAs: "articleCtrl"
+        }
+      }
+    })
+
+    .state("persona.articulo", {
+      url: "/articulos/:articulo_id",
+      views:{
+        menupersona:{
+          templateUrl: "articulo.html",
+          controller: "ArticleController",
+          controllerAs: "articleCtrl"
+        }
+      }
+    })
+
+    .state("persona.articuloEditar", {
+      url: "/articulos/:articulo_id/editar",
+      views:{
+        menupersona:{
+          templateUrl: "articulo-nuevo.html",
+          controller: "ArticleFormController",
+          controllerAs: "articleCtrl"
+        }
+      }
+    })
 
      .state("servicios", {
       url: "/servicios?alertaCreado&alertaBorrado",
       templateUrl: "services.html",
       controller: "ServicesController",
       controllerAs: "servicesCtrl"
+     })
+
+      .state("familias", {
+       url: "/familias?alertaCreado&alertaBorrado",
+       templateUrl:  "familias.html",
+       controller:   "FamiliesController",
+       controllerAs: "familyCtrl"
+     })
+
+    .state("familia", {
+      url: "/familias/:id",
+      templateUrl: "familia.html",
+       controller: "FamilyController",
+       controllerAs: "familyCtrl"
+    })
+
+    .state("familiaEditar", {
+      url: "/familias/:id/editar",
+      templateUrl: "familia-nueva.html",
+       controller: "FamiliesController",
+       controllerAs: "familyCtrl"
+    })
+
+     .state("familiasNueva", {
+       url: "/familias/nueva",
+       templateUrl: "familia-nueva.html",
+       controller: "FamiliesController",
+       controllerAs: "familyCtrl"
+    })
+
+     .state("informes", {
+      url: "/informes",
+      templateUrl: "informes.html"
      });
   });
 
@@ -177,9 +275,14 @@
       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
     };
 
+    // Imprimir Web
+    $rootScope.printDocument = function() {
+      window.print();
+    };
+
     // Obtener el usuario logeado
     $rootScope.currentUser = {};
     $http.get('/current.json').success(function(data) { $rootScope.currentUser = data.user; });
-    
+
   });
 })();

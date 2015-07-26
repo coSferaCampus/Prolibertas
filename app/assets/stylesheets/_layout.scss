@@ -125,3 +125,10 @@ li .menu__el.active {
   color: white;
   display: none;
 }
+
+// Elimina los menus y las barras al imprimir
+@media print {
+  .btn, .menu, .barra, .nav, .navbar-fixed-top {
+    display: none;
+  }
+}

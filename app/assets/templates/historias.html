@@ -2,7 +2,7 @@
   <div class="row__button__create">
     <a class="btn btn-primary col-md-offset-10 col-md-2 col-sm-offset-9 col-sm-3 col-xs-offset-9 col-xs-3" id="createhistory" ui-sref="persona.historiaNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="hidden-xs"> HISTORIA<span></a>
   </div>
-  <table class="table table-responsive table-hover table-condensed " id="list_histories">
+  <table class="table table-striped table-responsive table-hover table-condensed " id="list_histories">
     <thead class="listpeople__cabecera">
       <tr>
         <th class="hidden-xs">Creador</th>
@@ -14,14 +14,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr id="history_{{history.id}}" ng-repeat="history in historiesCtrl.histories">
+      <tr id="history_{{history.id}}" ng-repeat="history in historiesCtrl.histories | orderBy:'-time' | orderBy:'-date'">
         <td class="hidden-xs">{{history.created_by.name}}</td>
-        <td>{{history.description}}</td>
-        <td class="hidden-xs">{{history.liabilities}}</td>
-        <td>{{history.date}}</td> 
+        <td class="altura">{{history.description}}</td>
+        <td>{{history.liabilities}}</td>
+        <td>{{history.date}}</td>
         <td>{{history.time}}</td>
         <td class="listpeople__centrado"><a id="history-show-{{history.id}}" ui-sref="persona.historia({historia_id: history.id})"><span class="glyphicon glyphicon-eye-open listpeople__azul" id="views_history"></span></a>
-        </td>  
+        </td>
       </tr>
     </tbody>
  </table>

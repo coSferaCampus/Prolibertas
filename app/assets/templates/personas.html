@@ -1,27 +1,56 @@
-  <nav class="navbar-fixed-top col-md-offset-2 col-md-10">
+  <nav class="navbar-fixed-top col-md-10 col-sm-10 col-lg-10 col-xs-10
+          col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
     <div class="row" >
-      <div class="col-md-12 listpeople__buscadores">
+      <div class="col-md-12 listpeople__buscadores" style="padding-bottom:0px">
         <form class="form-inline">
-          <div class="form-group  col-md-4">
+          <div class="form-group  col-md-2">
             <label class="sr-only"></label>
             <div class="input-group">
-              <input id="searchsurname" ng-model="search.surname" type="text" class="form-control" placeholder="Buscar por apellidos...">
+              <input id="searchsurname" ng-model="filtro.surname" type="text" class="form-control" placeholder="Apellidos">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-search listpeople__azul"></i>
               </span>
             </div>
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-2">
             <label class="sr-only"></label>
             <div class="input-group">
-              <input id="searchorigin" ng-model="search.origin" type="text" class="form-control" placeholder="Buscar por origen...">
+              <input id="searchorigin" ng-model="filtro.origin" type="text" class="form-control" placeholder="Origen">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-globe listpeople__azul"></i>
               </span>
             </div>
           </div>
-          <div class="form-group col-md-4">
-            <a class="btn btn-primary col-md-7 col-md-offset-5" id="createPerson" ui-sref="personasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> PERSONA<span></a>
+
+          <div class="form-group col-md-2">
+           <select class="form-control" data-ng-model="search.is_spanish">
+             <option value="" selected>Todos</option>
+             <option value="true">Españoles</option>
+             <option value="false">Extranjeros</option>
+           </select>
+         </div>
+
+          <div class="form-group col-md-2" style="bottom: 20px">
+            <label for=""></label>
+            <div class="input-group datepicker" >
+            <input ng-model="peopleCtrl.person.selected_day" type="text" class="form-control" id="InputSelected_day">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-calendar listpeople__azul"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group col-md-2">
+            <div class="input-group">
+              <input id="InputSandwiches" ng-model="peopleCtrl.sandwiches" type="text" class="form-control" placeholder="Bocadillos">
+              <span class="input-group-addon">
+                <a class="glyphicon glyphicon-arrow-right listpeople__azul" ng-click="peopleCtrl.guardarSandwiches();"></a>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group col-md-2">
+            <a class="btn btn-primary col-md-10" id="createPerson" ui-sref="personasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> PERSONA<span></a>
           </div>
         </form>
       </div>
@@ -36,45 +65,49 @@
           <th>Nombre</th>
           <th>Origen</th>
           <th class="listpeople__centrado">S</th>
+          <th class="listpeople__centrado">Edad</th>
           <th class="listpeople__centrado">Menú</th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/cutlery23.svg"></th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/tshirt18.svg"></th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/shower17.svg"></th>
-          <th class="listpeople__centrado">MÁS</th>
+          <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/hot51.svg"></th>
           <th class="listpeople__centrado"></th>
           <th class="listpeople__centrado"></th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="person in peopleCtrl.people | filter:search | orderBy: 'surname'" id="person_{{person.id}}" class="{{peopleCtrl.alertClass(person)}}">
+        <tr ng-repeat="person in peopleCtrl.people | filteri18n:{surname:filtro.surname} | filteri18n:{origin:filtro.origin} | filter:search | orderBy: 'surname'" id="person_{{person.id}}" class="{{peopleCtrl.alertClass(person)}}">
           <td>{{person.surname}}</td>
           <td>{{person.name}}</td>
           <td>{{person.origin}}</td>
           <td class="listpeople__centrado">{{peopleCtrl.genero(person.genre)}}</td>
+          <td class="listpeople__centrado">{{peopleCtrl.anos(person.birth)}}</td>
           <td class="listpeople__centrado">{{person.menu}}</td>
           <td class="listpeople__centrado">
-            <input id="comida_{{person.id}}" ng-model="person.used_services_of_today.comida"
+            <input id="comida_{{person.id}}" ng-model="person.used_services_of_selected_day.comida"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('comida'))"
             type="checkbox">
           </td>
           <td class="listpeople__centrado">
-            <input id="ropa_{{person.id}}" ng-model="person.used_services_of_today.ropa"
+            <input id="ropa_{{person.id}}" ng-model="person.used_services_of_selected_day.ropa"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ropa'))"
             type="checkbox">
           </td>
           <td class="listpeople__centrado">
-            <input id="ducha_{{person.id}}" ng-model="person.used_services_of_today.ducha"
+            <input id="ducha_{{person.id}}" ng-model="person.used_services_of_selected_day.ducha"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ducha'))"
             type="checkbox">
           </td>
-          <td class="listpeople__centrado"><i class="glyphicon glyphicon-plus-sign listpeople__azul"></i>
+            <td class="listpeople__centrado">
+            <input id="desayuno_{{person.id}}" ng-model="person.used_services_of_selected_day.desayuno"
+            ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('desayuno'))"
+            type="checkbox">
           </td>
+
           <td class="listpeople__centrado"><a id="person-show-{{person.id}}"
             ui-sref="persona({ id: person.id })">
             <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
           </td>
-
-          <td class="listpeople__centrado"><i class="glyphicon glyphicon-list listpeople__azul"></i></td>
         </tr>
       </tbody>
     </table>
@@ -82,3 +115,4 @@
 
   <div class="alert alert-success leo-message" ng-if="peopleCtrl.alertaCreado">¡Ha creado satisfactoriamente una nueva persona!</div>
   <div class="alert alert-danger leo-message" ng-if="peopleCtrl.alertaBorrado">¡Borrado satisfactoriamente!</div>
+    <div class="alert alert-success leo-message" ng-if="peopleCtrl.alertaGuardado">Guardado</div>

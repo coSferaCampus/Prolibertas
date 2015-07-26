@@ -1,8 +1,8 @@
 class UsedService
   include Mongoid::Document
-  include Mongoid::Timestamps
+
+  field :created_at, type: Date
 
   belongs_to :person
   belongs_to :service
-
 end

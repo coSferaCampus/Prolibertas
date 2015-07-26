@@ -9,9 +9,9 @@
 </head>
 <body>
 
-  <div class="list-group nav navbar-nav col-md-2">
+  <div class="list-group nav navbar-nav col-md-2 col-xs-2 col-sm-2">
 
-    <!--<img class="logo" src="/assets/logo-menu.svg">-->
+    <!--<img class="logo hidden-xs" src="/assets/logo-menu.svg">-->
 
     <div class="menu__users" title="Gestión de usuarios">
       <a ui-sref="usuario.perfil({id: currentUser.id})"  ui-sref-active="active" id="perfil" class="glyphicon glyphicon-user" aria-hidden="true"></a>
@@ -28,22 +28,21 @@
         class="list-group-item menu__el"><span class="menu__el__text">PERSONAS</span></a>
       </li>
 
-      <li><a href="#"
+      <li><a ui-sref="familias" ui-sref-active="active" id="go-families"
         class="list-group-item menu__el"><span class="menu__el__text">FAMILIAS</span></a>
       </li>
       <% if current_user.role == 'director' or current_user.role == 'worker' %>
-      <li><a ui-sref="servicios"
-        class="list-group-item menu__el"><span class="menu__el__text">SERVICIOS</span></a>
-      </li>
 
-      <li><a href="#"
-        class="list-group-item menu__el"><span class="menu__el__text">INFORMES</span></a>
+      <li>
+        <a ui-sref="informes"  ui-sref-active="active" id="go-reports"
+        class="list-group-item menu__el" title="Informes"><span class="menu__el__text">INFORMES</span></a>
       </li>
 
       <li>
         <a ui-sref="usuarios"  ui-sref-active="active" id="go-users"
         class="list-group-item menu__el" title="Gestión de usuarios"><span class="menu__el__text">USUARIOS</span></a>
       </li>
+
       <% end %>
     </ul>
 
@@ -58,7 +57,8 @@
   <!-- FIN MENU LATERAL -->
 
   <!-- VISTA DINÁMICA CON ANGULARJS -->
-  <div id="principal" ui-view class="vista col-md-10 col-md-offset-2"></div>
+  <div id="principal" ui-view class="vista col-md-10 col-sm-10 col-lg-10 col-xs-10
+          col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2"></div>
   <!-- FIN DE VISTA DINÁMICA CON ANGULARJS -->
 </body>
 </html>

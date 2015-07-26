@@ -1,7 +1,7 @@
 (function(){
   var app = angular.module('prolibertas-history', ['ui.router', 'angularFileUpload']);
 
-  app.controller('HistoriesController', ['$http', '$state', '$timeout', function($http, $state, $timeout){
+  app.controller('HistoriesController', ['$http', '$state', '$timeout', function($http, $state, $timeout) {
     var scope = this;
     scope.histories = [];
 
