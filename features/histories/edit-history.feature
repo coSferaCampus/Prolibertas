@@ -25,6 +25,6 @@ Feature: Edit History
   Scenario: Update history form with no text
    Given I click the edit history button
    When I fill history update form with invalid parameters
-   Then I should see the errors in the update history form
+   Then I should see the errors in the history form
 
   
