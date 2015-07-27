@@ -20,7 +20,7 @@ Feature: Create History
   Scenario: Error parameters
     When I fill history form with invalid parameters
     Then I should see the errors in the history form
-  
+
   Scenario: Correct error parameters on InputDescription
     When I fill history form with invalid parameters
     And  I fill input "InputDescription" with "Description"

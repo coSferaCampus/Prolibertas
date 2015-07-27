@@ -40,7 +40,6 @@ When(/^I fill history form with valid parameters$/) do
   fill_in 'InputTime', with: parametros[:time]
   fill_in 'InputDatenew', with: parametros[:newdate].strftime('%d/%m/%Y')
   fill_in 'InputTimenew', with: parametros[:newtime]
-  attach_file('InputFile', "#{Rails.root}/spec/samples/file.pdf")
   click_button 'InputSubmit'
 end
 
@@ -65,7 +64,6 @@ When(/^I fill history form with invalid parameters$/) do
   fill_in 'InputLiabilities', with: parametros[:liabilities]
   fill_in 'InputDatenew', with: parametros[:newdate].strftime('%d/%m/%Y')
   fill_in 'InputTimenew', with: parametros[:newtime]
-  attach_file('InputFile', "#{Rails.root}/spec/samples/file.pdf")
   click_button 'InputSubmit'
 end
 Then(/^I should see the errors in the history form$/) do
@@ -113,11 +111,6 @@ When(/^I fill history update form with invalid parameters$/) do
   fill_in 'InputTime', with: ""
   page.find("#InputSubmit").click
 end
-
-Then(/^I should see the errors in the update history form$/) do
-  
-end
-
 
 When(/^I click the remove button in history view$/) do
   @historia = History.first
