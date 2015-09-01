@@ -4,7 +4,6 @@ FactoryGirl.define do
     surname { Faker::Name.last_name }
     origin { Faker::Address.country }
     menu { ["standar", "muslim"].sample }
-    genre { [:man, :woman].sample }
     phone { Faker::PhoneNumber.cell_phone }
     adults { rand(1...3) }
     children { rand(1...5) }
@@ -26,7 +25,6 @@ FactoryGirl.define do
     surname { Faker::Name.last_name }
     origin { Faker::Address.country }
     menu { ["standar", "muslim"].sample }
-    genre { [:man, :woman].sample }
     phone { Faker::PhoneNumber.cell_phone }
     adults { rand(1...3) }
     children { rand(1...5) }
