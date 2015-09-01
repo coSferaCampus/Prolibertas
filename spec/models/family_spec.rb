@@ -8,7 +8,6 @@ RSpec.describe Family, type: :model do
     it { is_expected.to have_field(:surname).of_type(String) }
     it { is_expected.to have_field(:origin).of_type(String) }
     it { is_expected.to have_field(:menu).of_type(String) }
-    it { is_expected.to have_field(:genre).of_type(Symbol) }
     it { is_expected.to have_field(:phone).of_type(String) }
     it { is_expected.to have_field(:adults).of_type(Integer) }
     it { is_expected.to have_field(:children).of_type(Integer) }
@@ -34,6 +33,5 @@ RSpec.describe Family, type: :model do
     it { is_expected.to validate_presence_of(:adults) }
     it { is_expected.to validate_presence_of(:children) }
     it { is_expected.to validate_presence_of(:center) }
-    it { is_expected.to validate_inclusion_of(:genre).to_allow([:man, :woman]) }
   end
 end

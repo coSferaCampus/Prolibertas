@@ -12,7 +12,7 @@ class Report
   end
 
   def self.spanish
-    spanish_amount = Person.where(:origin.in => ['españa','España'], :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
+    spanish_amount = Person.where(:origin.in => ['españa','España', 'ESPAÑA'], :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
     foreign_amount = Person.where( :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count - spanish_amount
 
     response = [{label: 'Extranjeros', amount: foreign_amount}, {label: 'Españoles', amount: spanish_amount}]
