@@ -110,9 +110,13 @@
           <strong class="person__list__text__left">Familiar de contacto:</strong> <span id="person_contact">{{ personCtrl.person.contact_family }}</span>
         </li>
 
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Identificador:</strong> <span id="person_identifier">{{ personCtrl.person.identifier }}</span>
+        </li>
+
       </ul>
     </div>
-     <div class="persona__botones col-md-6">
+     <div class="persona__botones col-md-12">
         <a id="remove-person-btn" type="button" class="btn btn-danger persona__botones__remove"
         ng-click="personCtrl.destroyPerson(personCtrl.person)">Eliminar
         </a>

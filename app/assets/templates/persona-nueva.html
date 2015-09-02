@@ -106,6 +106,11 @@
         </select>
       </div>
 
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.identifier }">
+        <label for="InputAssistance">Identificador</label>
+        <input ng-model="personCtrl.personForm.identifier" type="text" class="form-control" id="InputIdentifier" data-placement="top">
+      </div>
+
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.assistance }">
         <label for="InputAssistance">Asistencia</label>
         <select ng-model="personCtrl.personForm.assistance" ng-change="personCtrl.change('Assistance')" type="number" class="form-control" id="InputAssistance" data-placement="top">
@@ -181,12 +186,12 @@
         </select>
       </div>
 
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-12">
         <label for="InputNotes">Notas</label>
         <textarea ng-model="personCtrl.personForm.notes" class="form-control" rows="2" id="InputNotes"></textarea>
       </div>
 
-      <div class="submit-group col-md-6">
+      <div class="submit-group col-md-12">
         <button class="btn btn-danger" ui-sref="personas">Cancelar</button>
         <button class="btn btn-primary" type="submit" id="InputSubmit">Guardar</button>
       </div>
