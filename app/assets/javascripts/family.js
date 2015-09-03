@@ -120,5 +120,15 @@
       else if(value === 2) { return 'Reincidente'; }
     };
 
+    scope.vivienda = function(value ) {
+      if (value === 0) { return 'Sin vivienda'; }
+      else if(value === 1) { return 'Vivienda'; }
+      else if(value === 2) { return 'Infravivienda'; }
+    };
+
+    scope.si_o_no = function(value) {
+      if (value === 0) { return 'No'; }
+      else if(value === 1) { return 'Si'; }
+    };
   }]);
 })();

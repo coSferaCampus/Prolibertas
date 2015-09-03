@@ -71,7 +71,7 @@
       <ul class="list-group">
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Fecha de nacimiento:</strong> <span id="person_age">{{ personCtrl.person.birth }}</span>
+          <strong class="person__list__text__left">Fecha de nacimiento:</strong> <span id="person_age">{{ personCtrl.person.birth | date: "dd/MM/yyyy" }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
@@ -114,6 +114,9 @@
           <strong class="person__list__text__left">Identificador:</strong> <span id="person_identifier">{{ personCtrl.person.identifier }}</span>
         </li>
 
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Alta por:</strong> <span id="family_nif">{{ personCtrl.person.created_by.name }}</span>
+        </li>
       </ul>
     </div>
      <div class="persona__botones col-md-12">

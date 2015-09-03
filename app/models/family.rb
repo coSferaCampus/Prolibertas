@@ -13,14 +13,14 @@ class Family
   field :birthchildren,    type: String
   field :center,           type: String
   field :socialworker,     type: String
-  field :type_of_income,   type: String
-  field :address_type,     type: String
   field :address,          type: String
   field :nif,              type: String
   field :identifier,       type: String
   field :adults,           type: Integer
   field :children,         type: Integer
   field :assistance,       type: Integer
+  field :address_type,     type: Integer
+  field :type_of_income,   type: Integer
   field :amount_of_income, type: Float
 
   has_many :used_services

@@ -1,6 +1,9 @@
 class Person
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Userstamp
+
+  mongoid_userstamp user_model: 'User'
 
   field :name,            type: String
   field :surname,         type: String

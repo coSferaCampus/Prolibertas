@@ -66,6 +66,7 @@ class Report
     response = []
 
     Person.each { |x| labels << x.origin }
+    labels.uniq!
     labels.each { |x| amounts << Person.where( origin: x , :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count }
 
     labels.each_with_index do |item, index|
@@ -90,7 +91,7 @@ class Report
     labels.each { |x| amounts << Person.where( city: x, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count }
 
     labels.each_with_index do |item, index|
-      response << { label: labels[index], amount: amounts[index] }
+      response << { label: labels[index].gsub('_', ' ') , amount: amounts[index] }
     end
 
     response.sort_by! { |x| x[:amount] }

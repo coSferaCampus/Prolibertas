@@ -62,11 +62,18 @@
 
       <div class="form-group col-md-6">
         <label for="InputAddressType">Tipo de Vivienda</label>
-        <input ng-model="familyCtrl.familyForm.address_type" type="text" class="form-control" id="InputAddressType">
+        <select ng-model="familyCtrl.familyForm.address_type" type="number" class="form-control" id="InputAddressType" data-placement="top">
+          <option value='0'>0 - Sin vivienda</option>
+          <option value='1'>1 - Vivienda</option>
+          <option value='2'>2 - Infravivienda</option>
+        </select>
       </div>
       <div class="form-group col-md-3">
         <label for="InputTypeOfIncome">Tipo de Ingresos</label>
-        <input ng-model="familyCtrl.familyForm.type_of_income" type="text" class="form-control" id="InputTypeOfIncome">
+        <select ng-model="familyCtrl.familyForm.type_of_income" type="number" class="form-control" id="InputTypeOfIncome" data-placement="top">
+          <option value='0'>0 - No</option>
+          <option value='1'>1 - Si</option>
+        </select>
       </div>
       <div class="form-group col-md-3">
         <label for="InputAmountOfIncome">Cantidad de Ingresos</label>

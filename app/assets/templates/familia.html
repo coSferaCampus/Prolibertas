@@ -59,7 +59,7 @@
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Tipo de Ingresos:</strong> <span id="family_type_of_income">{{ familyCtrl.family.type_of_income }}</span>
+          <strong class="person__list__text__left">Ingresos:</strong> <span id="family_type_of_income">{{ familyCtrl.si_o_no(familyCtrl.family.type_of_income) }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
@@ -67,7 +67,7 @@
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Tipo de Vivienda:</strong> <span id="family_address_type">{{ familyCtrl.family.address_type }}</span>
+          <strong class="person__list__text__left">Tipo de Vivienda:</strong> <span id="family_address_type">{{ familyCtrl.vivienda(familyCtrl.family.address_type) }}</span>
         </li>
 
         <li class="list-group-item person__list__el">

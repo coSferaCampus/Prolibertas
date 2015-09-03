@@ -22,7 +22,7 @@
         <td class="hidden-xs">{{alertsCtrl.tipo(alert.type)}}</td>
         <td>{{alert.description}}</td>
         <td class="hidden-xs">{{alert.cause}}</td>
-        <td>{{alert.pending}}</td>
+        <td>{{alert.pending | date: "dd/MM/yyyy"}}</td>
         <td>
           <a id="alert-show-{{alert.id}}" ui-sref="persona.alerta({id: personCtrl.person.id, alerta_id: alert.id})"><span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
         </td>
