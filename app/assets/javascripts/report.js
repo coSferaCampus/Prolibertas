@@ -78,9 +78,10 @@ $("#showReport").on('click', function() {
 
   d3.json(url, function(error, data) {
 
-    data.forEach(function(d) {
-      d.amount = +d.amount;
-    });
+    if(data) {
+      data.forEach(function(d) {
+        d.amount = +d.amount;
+      });
 
     var g = svg.selectAll(".arc")
       .data(pie(data))
@@ -97,6 +98,7 @@ $("#showReport").on('click', function() {
       .attr("dy", ".35em")
       .style("text-anchor", "middle")
       .text(function(d) { return d.data.label + ": " + d.data.amount; });
+    }
   });
 
   $("#reportTitle").text( "Informe " + reportTitle);
