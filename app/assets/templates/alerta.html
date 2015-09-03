@@ -17,7 +17,7 @@
     </li>  
 
     <li class="list-group-item person__list__el">
-      <strong class="person__list__text__left">Hasta:</strong> <span id="alert_pending">{{ alertCtrl.alert.pending }}</span>
+      <strong class="person__list__text__left">Hasta:</strong> <span id="alert_pending">{{ alertCtrl.alert.pending | date: "dd/MM/yyyy" }}</span>
     </li>
   </ul>
 

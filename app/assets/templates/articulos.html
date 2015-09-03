@@ -22,8 +22,8 @@
         <td>{{article.created_by.name}}</td>
         <td>{{articlesCtrl.tipo(article.type)}}</td>
         <td>{{article.amount}}</td>
-        <td>{{article.requested}}</td>
-        <td>{{article.dispensed}}</td>
+        <td>{{article.requested | date: "dd/MM/yyyy"}}</td>
+        <td>{{article.dispensed | date: "dd/MM/yyyy"}}</td>
         <td>{{article.observations}}</td>
         <td>
           <a id="article-show-{{article.id}}" ui-sref="persona.articulo({id: personCtrl.person.id, articulo_id: article.id})"><span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
