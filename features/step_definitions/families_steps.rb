@@ -25,7 +25,6 @@ When(/^I fill family form with valid parameters$/) do
   fill_in 'InputAdults', with: parametros[:adults]
   fill_in 'InputChildren', with: parametros[:children]
   fill_in 'InputCenter', with: parametros[:center]
-  select('Hombre', from: 'InputGenre')
   click_button 'InputSubmit'
 end
 
@@ -88,7 +87,6 @@ When(/^I update the family form$/) do
   fill_in 'InputAdults', with: parametros[:adults]
   fill_in 'InputChildren', with: parametros[:children]
   fill_in 'InputCenter', with: parametros[:center]
-  select('Hombre', from: 'InputGenre')
   click_button 'InputSubmit'
 end
 
