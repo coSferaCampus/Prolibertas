@@ -8,6 +8,7 @@
     scope.person= {};
     scope.person.selected_day =  $filter('date')(new Date(), 'dd/MM/yyyy');
     scope.people = [];
+    scope.hasPeople = false;
     scope.services = [];
     scope.alertaCreado = $state.params.alertaCreado;
     scope.alertaBorrado = $state.params.alertaBorrado;
@@ -25,25 +26,25 @@
 
     $rootScope.prolibertas = "Lista de Personas"
 
-      $http.get( '/people.json?selected_day=' + scope.person.selected_day )
-      .success(function(data){
-        scope.people = data.people;
-      });
+    $http.get( '/people.json?selected_day=' + scope.person.selected_day )
+    .success(function(data){
+      scope.people = data.people;
+      scope.hasPeople = true;
+    });
 
-      $http.get('/services.json')
-      .success(function(data) {
-        scope.services = data.services;
-      });
+    $http.get('/services.json')
+    .success(function(data) {
+      scope.services = data.services;
+    });
 
     $("#InputSelected_day").focusout( function() {
       scope.person.selected_day = $("#InputSelected_day").val();
         $http.get( '/people.json?selected_day=' + scope.person.selected_day )
           .success( function( data ) {
             scope.people = data.people;
+            scope.hasPeople = true;
         });
     });
-
-
 
   //función para calcular la edad a partir de la fecha de nacimiento
    scope.anos = function (birth) {
