@@ -39,7 +39,7 @@
         <input ng-model="familyCtrl.familyForm.identifier" type="text" class="form-control" id="InputIdentifier" data-placement="top" >
       </div>
 
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.origin }">
         <label for="InputOrigin">Origen</label>
         <input ng-model="familyCtrl.familyForm.origin" type="text" class="form-control" id="InputOrigin">
       </div>

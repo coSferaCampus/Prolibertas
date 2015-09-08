@@ -35,5 +35,6 @@ RSpec.describe Family, type: :model do
     it { is_expected.to validate_presence_of(:adults) }
     it { is_expected.to validate_presence_of(:children) }
     it { is_expected.to validate_presence_of(:center) }
+    it { is_expected.to validate_presence_of(:origin) }
   end
 end
