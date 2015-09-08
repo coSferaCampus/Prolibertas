@@ -4,24 +4,24 @@ RSpec.describe Family, type: :model do
     it { is_expected.to be_timestamped_document }
   end
   context "Fields" do
-    it { is_expected.to have_field( :name          ).of_type(String) }
-    it { is_expected.to have_field( :surname       ).of_type(String) }
-    it { is_expected.to have_field( :origin        ).of_type(String) }
-    it { is_expected.to have_field( :menu          ).of_type(String) }
-    it { is_expected.to have_field( :phone         ).of_type(String) }
-    it { is_expected.to have_field( :birthchildren ).of_type(String) }
-    it { is_expected.to have_field( :center        ).of_type(String) }
-    it { is_expected.to have_field( :socialworker  ).of_type(String) }
-    it { is_expected.to have_field( :address       ).of_type(String) }
-    it { is_expected.to have_field( :nif           ).of_type(String) }
+    it { is_expected.to have_field( :name             ).of_type(String) }
+    it { is_expected.to have_field( :surname          ).of_type(String) }
+    it { is_expected.to have_field( :origin           ).of_type(String) }
+    it { is_expected.to have_field( :menu             ).of_type(String) }
+    it { is_expected.to have_field( :phone            ).of_type(String) }
+    it { is_expected.to have_field( :birthchildren    ).of_type(String) }
+    it { is_expected.to have_field( :center           ).of_type(String) }
+    it { is_expected.to have_field( :socialworker     ).of_type(String) }
+    it { is_expected.to have_field( :address          ).of_type(String) }
+    it { is_expected.to have_field( :nif              ).of_type(String) }
+    it { is_expected.to have_field( :amount_of_income ).of_type(String) }
 
-    it { is_expected.to have_field( :adults         ).of_type(Integer) }
-    it { is_expected.to have_field( :children       ).of_type(Integer) }
-    it { is_expected.to have_field( :type_of_income ).of_type(Integer) }
-    it { is_expected.to have_field( :address_type   ).of_type(Integer) }
-    it { is_expected.to have_field( :assistance     ).of_type(Integer) }
+    it { is_expected.to have_field( :adults           ).of_type(Integer) }
+    it { is_expected.to have_field( :children         ).of_type(Integer) }
+    it { is_expected.to have_field( :type_of_income   ).of_type(Integer) }
+    it { is_expected.to have_field( :address_type     ).of_type(Integer) }
+    it { is_expected.to have_field( :assistance       ).of_type(Integer) }
 
-    it { is_expected.to have_field( :amount_of_income ).of_type(Float) }
   end
 
   context "Relations" do

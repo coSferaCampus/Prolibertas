@@ -21,7 +21,7 @@ class Family
   field :assistance,       type: Integer
   field :address_type,     type: Integer
   field :type_of_income,   type: Integer
-  field :amount_of_income, type: Float
+  field :amount_of_income, type: String
 
   has_many :used_services
   has_many :alerts
