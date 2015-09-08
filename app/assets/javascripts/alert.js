@@ -55,7 +55,6 @@
     $http.get("/alerts/" + $state.params.alerta_id + ".json")
     .success(function(data){
       scope.alert = data.alert;
-      console.log(scope.alert);
     })
 
     scope.tipo = function(tipo){

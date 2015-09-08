@@ -125,7 +125,6 @@
       scope.actionForm = scope.actualizarHistoria;
       $http.get('/histories/' + $state.params.historia_id + '.json')
       .success(function(data){
-        console.log(data.history);
         scope.historyForm = data.history;
         $rootScope.prolibertas = "Editar Historia"
       });

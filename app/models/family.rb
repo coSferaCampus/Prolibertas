@@ -21,7 +21,7 @@ class Family
   field :assistance,       type: Integer
   field :address_type,     type: Integer
   field :type_of_income,   type: Integer
-  field :amount_of_income, type: Float
+  field :amount_of_income, type: String
 
   has_many :used_services
   has_many :alerts
@@ -31,6 +31,7 @@ class Family
   validates :adults,       presence: true
   validates :children,     presence: true
   validates :center,       presence: true
+  validates :origin,       presence: true
 
 # Método que devolverá usos de servicio para el día en que se pida
   def used_services_of_today

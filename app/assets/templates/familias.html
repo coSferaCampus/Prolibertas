@@ -51,7 +51,7 @@
       </tr>
     </thead>
     <tbody >
-      <tr ng-repeat="family in familyCtrl.families | filter:search" id="family_{{family.id}}">
+      <tr ng-repeat="family in familyCtrl.families | filteri18n:{surname:filtro.surname} | filteri18n:{origin:filtro.origin} | orderBy: 'surname'" id="family_{{family.id}}">
         <td>{{family.surname}}</td>
         <td>{{family.name}}</td>
         <td>{{family.origin}}</td>

@@ -48,8 +48,8 @@
         <input ng-model="personCtrl.personForm.origin" type="text" class="form-control" id="InputOrigin">
       </div>
 
-      <div ng-if="personCtrl.personForm.is_spanish" class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.city }">
-        <label for="InputCity">Provincia</label>
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.city }">
+        <label for="InputCity">Provincia (España)</label>
         <select ng-model="personCtrl.personForm.city" ng-change="personCtrl.change('City')" type="text" class="form-control" id="InputCity" data-placement="top">
           <option value='Alava'>Álava</option>
           <option value='Albacete'>Albacete</option>
@@ -66,7 +66,7 @@
           <option value='Cantabria'>Cantabria</option>
           <option value='Castellon'>Castellon</option>
           <option value='Ceuta'>Ceuta</option>
-          <option value='Ciudad_Real'>Ciudad Real</option>
+          <option value='Ciudad Real'>Ciudad Real</option>
           <option value='Cordoba'>Córdoba</option>
           <option value='Cuenca'>Cuenca</option>
           <option value='Girona'>Girona</option>
@@ -76,9 +76,9 @@
           <option value='Huelva'>Huelva</option>
           <option value='Huesca'>Huesca</option>
           <option value='Jaen'>Jaén</option>
-          <option value='La_Coruna'>La Coruña</option>
-          <option value='La_Rioja'>La Rioja</option>
-          <option value='Las_Palmas'>Las Palmas</option>
+          <option value='La Coruna'>La Coruña</option>
+          <option value='La Rioja'>La Rioja</option>
+          <option value='Las Palmas'>Las Palmas</option>
           <option value='Leon'>León</option>
           <option value='Lerida'>Lérida</option>
           <option value='Lugo'>Lugo</option>

@@ -118,8 +118,6 @@
       $http.post( '/people/' + $state.params.id + '/articles.json', { article: scope.articleForm } )
         .success( function(data){
           $state.go( 'persona.articulos', { id: $state.params.id, alertaCreado: 'true' } );
-                console.log(scope.alert);
-
         })
         .error( function(data) {
           scope.errors = data.errors;
