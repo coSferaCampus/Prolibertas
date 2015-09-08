@@ -86,9 +86,9 @@ class Report
     amounts = []
     response = []
 
-    Person.each { |x| labels << x.city.to_s if ( x.city && x.city != :"" && x.city != nil ) }
+    Person.each { |x| labels << x.city.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').upcase.to_s if ( x.city && x.city != :"" && x.city != nil ) }
     labels.uniq!
-    labels.each { |x| amounts << Person.where( city: x, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count }
+    labels.each { |x| amounts << Person.where( city: Regexp.new( I18n.transliterate(x), 'i' ), :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count }
 
     labels.each_with_index do |item, index|
       response << { label: labels[index].gsub('_', ' ') , amount: amounts[index] }

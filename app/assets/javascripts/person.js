@@ -269,6 +269,7 @@
       else if(value === 'Vizcaya') { return 'Vizcaya'; }
       else if(value === 'Zamora') { return 'Zamora'; }
       else if(value === 'Zaragoza') { return 'Zaragoza'; }
+      else { return value; }
     };
 
     scope.destroyPerson = function(person) {
@@ -309,6 +310,10 @@
 
     scope.guardarPersona = function() {
       scope.formDates();
+
+      if(scope.personForm.city)
+        scope.personForm.city.toUpperCase();
+
       $http.post('/people.json', {person: scope.personForm})
         .success(function(data){
           $state.go('personas', { alertaCreado: 'true' });
@@ -327,6 +332,10 @@
 
     scope.actualizarPersona = function() {
       scope.formDates();
+
+      if(scope.personForm.city)
+        scope.personForm.city.toUpperCase();
+
       $http.put("/people/" + $state.params.id + ".json",{person: scope.personForm})
         .success(function() {
           $state.go("persona", {id: $state.params.id});

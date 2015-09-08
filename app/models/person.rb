@@ -25,7 +25,7 @@ class Person
   field :residence,       type: Integer
   field :have_income,     type: Integer
   field :genre,           type: Symbol
-  field :city,            type: Symbol
+  field :city,            type: String
   field :birth,           type: Date
 
   has_many :used_services
