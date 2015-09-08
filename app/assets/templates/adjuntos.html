@@ -1,13 +1,14 @@
-<div class="container col-xs-12 col-sm-12 col-md-12">
 
-  <form ng-submit="filesCtrl.adjuntar()" id="filesForm" class="col-md-5">
+  <form ng-submit="filesCtrl.adjuntar()" id="filesForm" class="col-md-12">
+    <div class="row">
     <label for="InputFile">Adjuntar archivo</label>
-    <input class="archivoAdjunto" type="file" id="InputFile" ng-file-select ng-model="filesCtrl.person.attachment.file">
-    <button class="btn btn-primary historia_btn_guardar" type="submit" id="InputSubmit">Adjuntar archivo</button>
+    <input class="archivoAdjunto col-med-3" type="file" id="InputFile" ng-file-select ng-model="filesCtrl.person.attachment.file">
+    <button class="btn btn-primary historia_btn_guardar col-md-3" style="margin-top:-3rem;" type="submit" id="InputSubmit"><span class="glyphicon glyphicon-plus-sign"></span> Adjuntar archivo</button>
+  </div>
   </form>
 
   <section class="listpeople__tabla col-md-12">
-    <table class="table table-responsive table-hover table-condensed col-md-12  col-lg-12" id="peopleTable">
+    <table class="table table-hover table-condensed col-md-12 col-lg-12" style="margin-top:2rem;" id="peopleTable">
       <thead class="listpeople__cabecera">
         <tr>
           <th class="col-md-8">Archivo</th>
@@ -30,4 +31,3 @@
       </tbody>
     </table>
   </section>
-</div>
