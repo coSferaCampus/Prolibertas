@@ -274,12 +274,6 @@
 
     /** Transforma el texto quitando todos los acentos diéresis, etc. **/
     function normalize(texto) {
-      if (texto) {
-        var index = texto.indexOf("");
-
-        if (index > -1)
-          texto.splice(index, 1);
-
         texto = texto.replace(/[áàäâ]/g, "a");
         texto = texto.replace(/[éèëê]/g, "e");
         texto = texto.replace(/[íìïî]/g, "i");
@@ -287,17 +281,18 @@
         texto = texto.replace(/[úùüü]/g, "u");
         texto = texto.toUpperCase();
         return texto;
-      }
     }
 
     /** Esta función es el comparator en el filter **/
     function comparator(actual, expected) {
-      if(actual && expected) {
+      if (actual && expected) {
         if (normalize(actual).indexOf(normalize(expected))>=0) {
           return true;
         } else {
           return false;
         }
+      } else {
+        return true;
       }
     }
 
@@ -310,7 +305,6 @@
 
     return filteri18n;
   }]);
-
 
   // Funciones globales
   app.run(function($rootScope, $state, $http) {
