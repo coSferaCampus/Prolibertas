@@ -1,7 +1,7 @@
 <div class="container col-xs-12 col-sm-12 col-md-12" id="personform">
-  <form class="col-md-12" ng-submit="personCtrl.actionForm()">
+  <form class="col-md-8" ng-submit="personCtrl.actionForm()">
 
-    <h3 class="header-titule hidden-xs">{{prolibertas}}</h3>
+    <h2>{{prolibertas}}</h2>
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.name }">
         <label for="InputName">Nombre</label>
@@ -191,10 +191,9 @@
         <textarea ng-model="personCtrl.personForm.notes" class="form-control" rows="2" id="InputNotes"></textarea>
       </div>
 
-      <div class="submit-group col-md-12">
-        <button class="btn btn-danger" ui-sref="personas">Cancelar</button>
-        <button class="btn btn-primary" type="submit" id="InputSubmit">Guardar</button>
+      <div class="submit-group col-md-4 col-md-offset-8">
+        <button class="btn btn-danger" style="width:47%;"  ui-sref="personas">Cancelar</button>
+        <button class="btn btn-primary pull-right" style="width:47%;" type="submit" id="InputSubmit">Guardar</button>
       </div>
   </form>
 </div>
-

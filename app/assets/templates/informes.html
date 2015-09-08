@@ -1,7 +1,9 @@
-  <nav class="navbar-fixed-top col-md-10 col-sm-10 col-lg-10 col-xs-10
-          col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
+<h2>
+  Informes
+</h2>
+  <nav class="navbar col-md-12 col-sm-12 col-lg-12 col-xs-12">
     <div class="row" >
-      <div class="col-md-12 listpeople__buscadores" style="padding-bottom:0px">
+      <div class="col-md-12 listpeople__buscadores">
         <form class="form-inline">
 
           <div class="form-group col-md-3">
@@ -31,12 +33,12 @@
             </div>
           </div>
 
-          <div class="form-group col-md-4">
-            <a class="btn btn-primary col-md-offset-0 col-md-6" id="showReport"><span class="glyphicon glyphicon-stats"></span><span class="listpeople__txt__button"> Generar informe<span></a>
+          <div class="form-group">
+            <a class="btn btn-primary" id="showReport"><span class="glyphicon glyphicon-stats"></span><span class="listpeople__txt__button"> Generar informe<span></a>
           </div>
 
-          <div class="form-group col-md-3">
-            <a class="btn btn-primary col-md-offset-0 col-md-6" ng-click="printDocument()" id="printFamily"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Imprimir<span></a>
+          <div class="form-group">
+            <a class="btn btn-primary" ng-click="printDocument()" id="printFamily"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Imprimir<span></a>
           </div>
           <span class="niapa">.</span>
         </form>
@@ -44,8 +46,13 @@
     </div>
   </nav>
 
+  <div class="">
+    <div class="alert alert-info pull-left" role="alert">
+      Seleccione el tipo de informe y año que desea consultar y pulse <strong>Generar informe</strong> para generar la gráfica
+    </div>
+  </div>
+
     <div class="row">
-      <h2 id ="reportTitle">Informe </h2>
       <div id="report" class="col-md-12"></div>
       <script type="text/javascript" src="assets/report.js"></script>
       <script>
@@ -57,6 +64,3 @@
         });
       </script>
     </div>
-
-
-

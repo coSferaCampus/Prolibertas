@@ -1,0 +1,16 @@
+ /* CENTRAR UN POCO LA GRÁFICA DE INFORMES */
+ #report {
+   padding-top: 3rem;
+   padding-left: 14rem;
+}
+/*----------------------------------------------------------------------------*/
+
+/* ICONOS DE LAS LISTAS EN GRIS */
+.listpeople__iconos, .listfamilies__iconos {
+opacity: 0.65;
+}
+/*----------------------------------------------------------------------------*/
+
+.form-group > select, .form-group > .input-group {
+  width: 100% !important;
+}
