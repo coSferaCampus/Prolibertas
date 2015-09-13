@@ -38,8 +38,10 @@
           <strong class="person__list__text__left">Identificador:</strong> <span id="family_identifier">{{ familyCtrl.family.identifier }}</span>
         </li>
 
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Fecha de Entrada:</strong> <span id="family_from">{{ familyCtrl.family.from | date: "dd/MM/yyyy" }}</span>
+        </li>
       </ul>
-
     </div>
 
 
@@ -81,10 +83,13 @@
           <strong class="person__list__text__left">Alta por:</strong> <span id="family_nif">{{ familyCtrl.family.created_by.name }}</span>
         </li>
 
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Fecha de Salida:</strong> <span id="family_to">{{ familyCtrl.family.to | date: "dd/MM/yyyy" }}</span>
+        </li>
       </ul>
-
     </div>
-     <div class="persona__botones col-md-12">
+
+     <div ng-if="currentUser.role !== 'volunteer'" class="persona__botones col-md-12">
         <a id="remove-family-btn" type="button" class="btn btn-danger persona__botones__remove"
         ng-click="familyCtrl.destroyFamily(familyCtrl.family)">Eliminar
         </a>

@@ -26,7 +26,7 @@
 
           <div class="form-group col-md-6">
             <a class="btn btn-primary" ng-click="printDocument()" id="printFamily"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Iimprimir listado Cocina<span></a>
-            <a class="btn btn-primary pull-right" id="createFamily" ui-sref="familiasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> AÑADIR FAMILIA<span></a>
+            <a class="btn btn-primary pull-right" ng-if="currentUser.role !== 'volunteer'" id="createFamily" ui-sref="familiasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> AÑADIR FAMILIA<span></a>
           </div>
         </form>
       </div>

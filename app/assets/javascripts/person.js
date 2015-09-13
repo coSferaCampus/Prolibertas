@@ -21,7 +21,7 @@
 
     $('.datepicker').datetimepicker({
       locale: 'es',
-       format: 'L'
+      format: 'DD/MM/YYYY'
      });
 
     $rootScope.prolibertas = "Lista de Personas"
@@ -281,8 +281,6 @@
       }
     };
 
-
-
   }]);
 
   app.controller('PersonFormController', ['$http', '$state', '$rootScope',function($http, $state, $rootScope) {
@@ -294,7 +292,7 @@
 
     $('.datepicker').datetimepicker({
       locale: 'es',
-      format: 'YYYY-MM-DD',
+      format: 'DD/MM/YYYY'
     });
 
     scope.change = function(field) {

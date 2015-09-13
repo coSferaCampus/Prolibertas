@@ -3,6 +3,7 @@ RSpec.describe Person, type: :model do
   context "Document" do
     it { is_expected.to be_timestamped_document }
   end
+
   context "Fields" do
     it { is_expected.to have_field(:name).of_type(String) }
     it { is_expected.to have_field(:surname).of_type(String) }
@@ -12,6 +13,7 @@ RSpec.describe Person, type: :model do
     it { is_expected.to have_field(:assistance).of_type(Integer) }
     it { is_expected.to have_field(:family_status).of_type(String) }
     it { is_expected.to have_field(:health_status).of_type(String) }
+    it { is_expected.to have_field(:city).of_type(String) }
     it { is_expected.to have_field(:birth).of_type(Date) }
     it { is_expected.to have_field(:nif).of_type(String) }
     it { is_expected.to have_field(:social_services).of_type(Integer) }
@@ -24,7 +26,6 @@ RSpec.describe Person, type: :model do
     it { is_expected.to have_field(:address_type).of_type(Integer) }
     it { is_expected.to have_field(:residence).of_type(Integer) }
     it { is_expected.to have_field(:have_income).of_type(Integer) }
-    it { is_expected.to have_field(:city).of_type(Symbol) }
   end
 
   context "Relations" do
