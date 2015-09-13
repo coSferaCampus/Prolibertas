@@ -87,7 +87,7 @@
    //variable para los errores
     scope.errors = {};
 
-    $('.datepicker').datetimepicker({locale: 'es', format: 'L'});
+    $('.datepicker').datetimepicker({locale: 'es', format: 'DD/MM/YYYY'});
 
     scope.change = function(field) {
       if(scope.errors[field.toLowerCase()]) {

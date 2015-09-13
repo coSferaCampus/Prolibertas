@@ -46,7 +46,7 @@
     scope.errors = {};
 
 
-    $('.datepicker').datetimepicker({locale: 'es', format: 'L'});
+    $('.datepicker').datetimepicker({locale: 'es', format: 'DD/MM/YYYY'});
     $('.datetimepicker').datetimepicker({locale: 'es', format: 'HH:mm'});
 
     scope.change = function(field) {

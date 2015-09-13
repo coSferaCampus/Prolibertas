@@ -30,6 +30,7 @@ class Ability
       end
     elsif user.has_role? :volunteer
       cannot [:index, :create, :destroy], User
+      cannot [:create, :update, :destroy], Family
 
       cannot [:show, :update], User do |usuario|
         user != usuario

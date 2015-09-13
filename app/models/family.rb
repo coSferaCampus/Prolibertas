@@ -22,6 +22,8 @@ class Family
   field :address_type,     type: Integer
   field :type_of_income,   type: Integer
   field :amount_of_income, type: String
+  field :from,             type: Date
+  field :to,               type: Date
 
   has_many :used_services
   has_many :alerts

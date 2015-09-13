@@ -23,11 +23,11 @@
       </div>
       <div class="form-group col-md-3" ng-class="{ 'has-error':familyCtrl.errors.adults }">
         <label for="InputAdults">Nº Adultos</label>
-        <input ng-model="familyCtrl.familyForm.adults " ng-change="familyCtrl.change('Adults')" type="number" class="form-control" id="InputAdults">
+        <input ng-model="familyCtrl.familyForm.adults " ng-change="familyCtrl.change('Adults')" type="number" min="0" class="form-control" id="InputAdults">
       </div>
       <div class="form-group col-md-3" ng-class="{ 'has-error':familyCtrl.errors.children }">
         <label for="InputChildren">Nº Menores</label>
-        <input ng-model="familyCtrl.familyForm.children" ng-change="familyCtrl.change('Children')" type="number" class="form-control" id="InputChildren">
+        <input ng-model="familyCtrl.familyForm.children" ng-change="familyCtrl.change('Children')" type="number" min="0" class="form-control" id="InputChildren">
       </div>
       <div class="form-group col-md-3" >
         <label for="InputBirthchildren"> Edad Menores</label>
@@ -76,7 +76,7 @@
         </select>
       </div>
       <div class="form-group col-md-3">
-        <label for="InputAmountOfIncome">Cantidad de Ingresos</label>
+        <label for="InputAmountOfIncome">Ingresos</label>
         <input ng-model="familyCtrl.familyForm.amount_of_income" type="text" class="form-control" id="InputAmountOfIncome">
       </div>
 
@@ -87,6 +87,26 @@
       <div class="form-group col-md-6">
         <label for="InputPhone">Teléfono</label>
         <input ng-model="familyCtrl.familyForm.phone" type="text" class="form-control" id="InputPhone">
+      </div>
+
+      <div class="form-group col-md-6" >
+        <label for="InputFrom">Fecha de entrada</label>
+        <div class="input-group datepicker">
+          <span class="input-group-addon listpeople__azul">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+          <input ng-model="familyCtrl.familyForm.from" type="text" class="form-control" id="InputFrom">
+        </div>
+      </div>
+
+      <div class="form-group col-md-6" >
+        <label for="InputTo">Fecha de salida</label>
+        <div class="input-group datepicker">
+          <span class="input-group-addon listpeople__azul">
+            <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+          <input ng-model="familyCtrl.familyForm.to" type="text" class="form-control" id="InputTo">
+        </div>
       </div>
 
     <div class="col-md-12">

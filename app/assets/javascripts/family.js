@@ -3,20 +3,25 @@
 
   // Controllers
   app.controller('FamiliesController', ['$http','$timeout','$rootScope', '$state', function($http, $timeout, $rootScope, $state) {
-     var scope = this;
-     scope.families = [];
-     scope.familyForm = {};
-     scope.errors = {};
+    var scope = this;
+    scope.families = [];
+    scope.familyForm = {};
+    scope.errors = {};
 
-     scope.alertaCreado = $state.params.alertaCreado;
+    scope.alertaCreado = $state.params.alertaCreado;
 
-     // La alerta se oculta después de 5 segundos
-     $timeout(function() { scope.alertaCreado = false; }, 5000);
+    // La alerta se oculta después de 5 segundos
+    $timeout(function() { scope.alertaCreado = false; }, 5000);
 
-     scope.alertaBorrado = $state.params.alertaBorrado;
-     // La alerta se oculta después de 5 segundos
-     $timeout(function() { scope.alertaBorrado = false; }, 5000);
-     $rootScope.prolibertas = "Lista de Familias";
+    scope.alertaBorrado = $state.params.alertaBorrado;
+    // La alerta se oculta después de 5 segundos
+    $timeout(function() { scope.alertaBorrado = false; }, 5000);
+    $rootScope.prolibertas = "Lista de Familias";
+
+    $('.datepicker').datetimepicker({
+      locale: 'es',
+      format: 'DD/MM/YYYY'
+     });
 
     $http.get('/families.json')
       .success(function(data) {
@@ -30,7 +35,14 @@
       }
     };
 
+    scope.formDates = function(){
+      scope.familyForm.from = $( '#InputFrom' ).val();
+      scope.familyForm.to   = $( '#InputTo'   ).val();
+    };
+
     scope.guardarFamilia = function() {
+      scope.formDates();
+
       $http.post('/families.json', { family: scope.familyForm })
         .success(function(data){
           $state.go('familias', { alertaCreado: 'true' });
@@ -48,6 +60,8 @@
     };
 
     scope.actualizarFamilia = function() {
+      scope.formDates();
+
       $http.put( "/families/" + $state.params.id + ".json",{ family: scope.familyForm } )
         .success(function() {
           $state.go( "familia", { id: $state.params.id } );
