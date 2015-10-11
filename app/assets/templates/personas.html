@@ -78,7 +78,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="person in peopleCtrl.people | filteri18n:{surname:filtro.surname} | filteri18n:{origin:filtro.origin} | orderBy: 'surname'" id="person_{{person.id}}" class="{{peopleCtrl.alertClass(person)}}">
+        <tr ng-repeat="person in peopleCtrl.people | filter: search.is_spanish | filteri18n:{surname:filtro.surname} | filteri18n:{origin:filtro.origin} | orderBy: 'surname'" id="person_{{person.id}}" class="{{peopleCtrl.alertClass(person)}}">
           <td>{{person.surname}}</td>
           <td>{{person.name}}</td>
           <td>{{person.origin}}</td>
