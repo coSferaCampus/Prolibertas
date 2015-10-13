@@ -18,6 +18,8 @@ gem "rolify", '~> 4.0.0'
 gem 'cancancan', '~> 1.10'
 # Para comprimir el javascript
 gem "uglifier", '~> 2.7.1'
+# Para logear los errores al errbit
+gem "airbrake", '~> 4.3.1'
 
 # Convierte objetos de nuestros modelos en json
 gem 'active_model_serializers', '~> 0.9.3'
