@@ -11,7 +11,7 @@
         <li class="navPersona__el" ng-if="currentUser.role !== 'volunteer'"><a id="person__alerts" ui-sref="persona.alertas({id: personCtrl.person.id})" data-toggle="tab">Alertas</a></li>
         <li class="navPersona__el" ng-if="currentUser.role !== 'volunteer'"><a id="person__files" ui-sref="persona.adjuntos({id: personCtrl.person.id})" data-toggle="tab">Adjuntos</a></li>
         <li><a id="person_report" ui-sref="persona.informe" data-toggle="tab" ui-sref="persona.informe({id: personCtrl.person.id})">Informe individual</a></li>
-        <li><a class="navPersona__el"   ng-click="printDocument()" id="printIndividualReport"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Imprimir</a></li>
+        <!-- <li><a class="navPersona__el"   ng-click="printDocument()" id="printIndividualReport"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Imprimir</a></li> -->
       </ul>
     </div>
   </div>

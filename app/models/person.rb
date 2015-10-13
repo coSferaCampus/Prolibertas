@@ -2,6 +2,7 @@ class Person
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Userstamp
+  include Mongoid::NormalizeStrings
 
   mongoid_userstamp user_model: 'User'
 
@@ -27,6 +28,9 @@ class Person
   field :genre,           type: Symbol
   field :city,            type: String
   field :birth,           type: Date
+
+  normalize :origin
+  normalize :city
 
   has_many :used_services
   has_many :alerts

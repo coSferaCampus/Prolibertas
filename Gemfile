@@ -6,6 +6,7 @@ gem 'rails', '4.2.0'
 # Convertir datos mongoDB en objetos de Ruby
 gem 'mongoid', '~> 4.0.1'
 gem 'mongoid_userstamp', '~> 0.4.0'
+gem 'mongoid-normalize-strings', '~> 0.0.1'
 gem 'carrierwave-mongoid' #gema para subir ficheros
 
 gem 'd3-rails', '~> 3.5.5'

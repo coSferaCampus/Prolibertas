@@ -39,6 +39,9 @@
 
     $("#InputSelected_day").focusout( function() {
       scope.person.selected_day = $("#InputSelected_day").val();
+        scope.people = [];
+        scope.hasPeople = false;
+
         $http.get( '/people.json?selected_day=' + scope.person.selected_day )
           .success( function( data ) {
             scope.people = data.people;
