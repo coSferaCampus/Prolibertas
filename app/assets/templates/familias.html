@@ -25,7 +25,8 @@
           </div>
 
           <div class="form-group col-md-6">
-            <a class="btn btn-primary" ng-click="printDocument()" id="printFamily"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Iimprimir listado Cocina<span></a>
+            <input ng-model="cocina" type="checkbox">
+            <!-- <a class="btn btn-primary" ng-click="printDocument()" id="printFamily"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Iimprimir listado Cocina<span></a> -->
             <a class="btn btn-primary pull-right" ng-if="currentUser.role !== 'volunteer'" id="createFamily" ui-sref="familiasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> AÑADIR FAMILIA<span></a>
           </div>
         </form>
@@ -51,7 +52,7 @@
       </tr>
     </thead>
     <tbody >
-      <tr ng-repeat="family in familyCtrl.families | filteri18n:{surname:filtro.surname} | filteri18n:{origin:filtro.origin} | orderBy: 'surname'" id="family_{{family.id}}">
+      <tr ng-repeat="family in familyCtrl.families | filteri18n:{surname:filtro.surname} | filteri18n:{origin:filtro.origin} | orderBy: 'surname'" id="family_{{family.id}}" ng-if="!cocina || family.used_services_of_today.comida">
         <td>{{family.surname}}</td>
         <td>{{family.name}}</td>
         <td>{{family.origin}}</td>
