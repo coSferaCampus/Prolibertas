@@ -35,6 +35,14 @@ class Family
   validates :center,       presence: true
   validates :origin,       presence: true
 
+  def from_date
+    self.from.strftime("%d/%m/%Y")
+  end
+
+  def to_date
+    self.to.strftime("%d/%m/%Y")
+  end
+
 # Método que devolverá usos de servicio para el día en que se pida
   def used_services_of_today
     resultado = used_services.where(:created_at.gte => Date.today).map do |used_service|

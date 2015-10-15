@@ -43,6 +43,9 @@ class Person
   validates :origin, presence: true
   validates :genre, inclusion: { in: [:man, :woman] }
 
+  def birth_date
+    self.birth.strftime("%d/%m/%Y")
+  end
   def is_spanish
     if (self.origin != nil)
       if (self.origin.downcase == "españa" || self.origin.upcase == "ESPAÑA")
