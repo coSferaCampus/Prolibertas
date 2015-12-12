@@ -14,7 +14,7 @@ class Person
   field :address,         type: String
   field :contact_family,  type: String
   field :notes,           type: String
-  field :identifier,      type: String
+  field :exp,             type: String
   field :family_status,   type: String
   field :health_status,   type: String
   field :nif,             type: String
@@ -24,7 +24,6 @@ class Person
   field :address_type,    type: Integer
   field :residence,       type: Integer
   field :have_income,     type: Integer
-  field :exp,             type: Integer
   field :genre,           type: Symbol
   field :city,            type: String
   field :birth,           type: Date
@@ -39,6 +38,10 @@ class Person
   validates :surname, presence: true
   validates :origin, presence: true
   validates :genre, inclusion: { in: [:man, :woman] }
+
+  after_create do |document|
+    set(exp: "%05d" % Person.all.size)
+  end
 
   def is_spanish
     if (self.origin != nil)

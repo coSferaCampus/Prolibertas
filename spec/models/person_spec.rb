@@ -22,11 +22,11 @@ RSpec.describe Person, type: :model do
     it { is_expected.to have_field(:address).of_type(String) }
     it { is_expected.to have_field(:contact_family).of_type(String) }
     it { is_expected.to have_field(:notes).of_type(String) }
+    it { is_expected.to have_field(:exp).of_type(String) }
     it { is_expected.to have_field(:documentation).of_type(Integer) }
     it { is_expected.to have_field(:address_type).of_type(Integer) }
     it { is_expected.to have_field(:residence).of_type(Integer) }
     it { is_expected.to have_field(:have_income).of_type(Integer) }
-    it { is_expected.to have_field(:exp).of_type(Integer) }
   end
 
   context "Relations" do
