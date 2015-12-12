@@ -24,6 +24,7 @@ class Person
   field :address_type,    type: Integer
   field :residence,       type: Integer
   field :have_income,     type: Integer
+  field :exp,             type: Integer
   field :genre,           type: Symbol
   field :city,            type: String
   field :birth,           type: Date

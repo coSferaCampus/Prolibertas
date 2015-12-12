@@ -26,6 +26,7 @@ RSpec.describe Person, type: :model do
     it { is_expected.to have_field(:address_type).of_type(Integer) }
     it { is_expected.to have_field(:residence).of_type(Integer) }
     it { is_expected.to have_field(:have_income).of_type(Integer) }
+    it { is_expected.to have_field(:exp).of_type(Integer) }
   end
 
   context "Relations" do
@@ -39,6 +40,7 @@ RSpec.describe Person, type: :model do
   context "Validations" do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:surname) }
+    it { is_expected.to validate_presence_of(:origin) }
     it { is_expected.to validate_inclusion_of(:genre).to_allow([:man, :woman]) }
   end
 

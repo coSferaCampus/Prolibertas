@@ -22,6 +22,7 @@ FactoryGirl.define do
     residence { [0, 1].sample }
     have_income { [0, 1].sample }
     city { [:Alava, :Albacete, :Alicante, :Almeria, :Asturias, :Avila, :Badajoz, :Baleares, :Barcelona,:Burgos, :Caceres, :Cadiz, :Cantabria, :Castellon, :Ceuta, :Ciudad_Real, :Cordoba, :Cuenca, :Girona, :Granada, :Guadalajara, :Guipuzcoa, :Huelva,:Huesca, :Jaen, :La_Coruna, :La_Rioja, :Las_Palmas, :Leon, :Lerida, :Lugo, :Madrid, :Malaga, :Melilla, :Murcia, :Navarra, :Orense, :Palencia, :Pontevedra,:Salamanca, :Segovia, :Sevilla, :Soria, :Tarragona, :Tenerife,:Teruel, :Toledo, :Valencia, :Valladolid, :Vizcaya, :Zamora, :Zaragoza].sample.to_s }
+    exp
   end
   # Sólo se debe usar con attributes_for
   factory :person_update, parent: :person do

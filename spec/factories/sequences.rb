@@ -10,4 +10,8 @@ FactoryGirl.define do
   sequence :tlf do |n|
     "957" + "%06d" % n
   end
+
+  sequence :exp do |n|
+    n
+  end
 end
