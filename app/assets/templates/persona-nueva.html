@@ -43,12 +43,15 @@
         <label for="InputMenu">Alergias</label>
         <input ng-model="personCtrl.personForm.menu" type="text" class="form-control" id="InputMenu">
       </div>
+
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.origin }">
         <label for="InputOrigin">Origen</label>
-        <input ng-model="personCtrl.personForm.origin" type="text" class="form-control" id="InputOrigin">
+        <select ng-model="personCtrl.personForm.origin" type="text" class="form-control" id="InputOrigin" data-placement="top">
+        <option ng-repeat="country in personCtrl.countries">{{country}}</option>
+        </select>
       </div>
 
-      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.city }">
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.city }" ng-if="personCtrl.personForm.origin === 'España'">
         <label for="InputCity">Provincia (España)</label>
         <select ng-model="personCtrl.personForm.city" ng-change="personCtrl.change('City')" type="text" class="form-control" id="InputCity" data-placement="top">
           <option value='Alava'>Álava</option>
