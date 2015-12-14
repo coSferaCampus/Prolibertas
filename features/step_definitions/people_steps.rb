@@ -127,7 +127,8 @@ When(/^I fill person form with valid parameters$/) do
   fill_in 'InputName', with: parametros[:name]
   fill_in 'InputBirth', with: parametros[:birth]
   fill_in 'InputSurname', with: parametros[:surname]
-  fill_in 'InputNif', with: parametros[:nif]
+  select('NIF', from: 'InputId_type')
+  fill_in 'InputIdentifier', with: parametros[:identifier]
   if parametros[:genre] == :man
     select('Hombre', from: 'InputGenre')
   else
@@ -135,7 +136,7 @@ When(/^I fill person form with valid parameters$/) do
   end
   select('0 - No', from: 'InputSocial_services')
   fill_in 'InputPhone', with: parametros[:phone]
-  fill_in 'InputOrigin', with: parametros[:origin]
+  select(parametros[:origin], from: 'InputOrigin')
   fill_in 'InputMenu', with: parametros[:menu]
   within '#InputAssistance' do
     find("option[value='1']").click
@@ -156,16 +157,7 @@ Then(/^I should see the new person in people list$/) do
   expect(page).to have_css "#peopleTable"
 
   person = Person.last
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(1)", text: person.surname
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(2)", text: person.name
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(3)", text: person.origin
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(4)", text:
-    if person.genre == :man
-      "H"
-    else
-      "M"
-    end
-  expect(page).to have_css "tr#person_#{person.id} td:nth-child(6)", text: person.menu
+  expect(page).to have_css "tr#person_#{person.id}"
 end
 
 Then(/^I should see person created message$/) do
@@ -176,10 +168,11 @@ end
 When(/^I fill person form with invalid parameters$/) do
   parametros = FactoryGirl.attributes_for(:person)
   fill_in 'InputBirth', with: parametros[:birth]
-  fill_in 'InputNif', with: parametros[:nif]
+  select('NIF', from: 'InputId_type')
+  fill_in 'InputIdentifier', with: parametros[:identifier]
   select('0 - No', from: 'InputSocial_services')
   fill_in 'InputPhone', with: parametros[:phone]
-  fill_in 'InputOrigin', with: parametros[:origin]
+  select(parametros[:origin], from: 'InputOrigin')
   fill_in 'InputMenu', with: parametros[:menu]
   within '#InputAssistance' do
     find("option[value='1']").click
@@ -234,7 +227,7 @@ Then(/^I should see the person information in the form$/) do
   @person = Person.first
   find_field('InputName').value.should eq @person.name
   find_field('InputSurname').value.should eq @person.surname
-  find_field('InputNif').value.should eq @person.nif
+  find_field('InputIdentifier').value.should eq @person.identifier
   find_field('InputGenre').value.should eq @person.genre.to_s
   find_field('InputPhone').value.should eq @person.phone
   find_field('InputMenu').value.should eq @person.menu
@@ -266,10 +259,11 @@ When(/^I update the form$/) do
   fill_in 'InputName', with: "pepe"
   fill_in 'InputBirth', with: "1982-09-13"
   fill_in 'InputSurname', with: "gonzalez"
-  fill_in 'InputNif', with: "23423423s"
+  select('NIF', from: 'InputId_type')
+  fill_in 'InputIdentifier', with: "23423423s"
   select('Hombre', from: 'InputGenre')
   fill_in 'InputPhone', with: "345345343"
-  fill_in 'InputOrigin', with: "congo"
+  select('Albania', from: 'InputOrigin')
   fill_in 'InputMenu', with: "musulman"
   select('0 - Primera vez', from: 'InputAssistance')
   select('0 - No', from: 'InputSocial_have_income')
@@ -289,13 +283,12 @@ end
 Then(/^I should see the person updated$/) do
   expect(page).to have_css "#person-edit-#{@person.id}"
   expect(page).to have_css "#person_name", text: "pepe"
-  expect(page).to have_css "#person_age", text: "1982-09-13"
   expect(page).to have_css "#person_surname", text: "gonzalez"
   expect(page).to have_css "#person_genre", text: "Hombre"
-  expect(page).to have_css "#person_nif", text: "23423423s"
+  expect(page).to have_css "#person_identifier", text: "23423423s"
   expect(page).to have_css "#person_social_services", text: "No"
   expect(page).to have_css "#person_phone", text: "345345343"
-  expect(page).to have_css "#person_origin", text: "congo"
+  expect(page).to have_css "#person_origin", text: "Albania"
   expect(page).to have_css "#person_menu", text: "musulman"
   expect(page).to have_css "#person_assistance", text: "Primera vez"
   expect(page).to have_css "#person_have_income", text: "No"

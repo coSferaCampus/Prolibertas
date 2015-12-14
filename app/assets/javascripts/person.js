@@ -174,9 +174,16 @@
     scope.person = {};
 
     $http.get('/people/' + $state.params.id + '.json')
-    .success(function(data){
+    .success(function(data) {
       scope.person = data.person;
       $rootScope.prolibertas = scope.person.name + ' ' + scope.person.surname
+
+      // Tipo de identificador
+      if (scope.person.id_type === "Otro") {
+        scope.id_type = "Identificador";
+      } else {
+        scope.id_type = scope.person.id_type;
+      }
     });
 
     scope.genero = function(genero){
@@ -304,7 +311,7 @@
       "Periferia-El Higuerón", "Periferia-Trassierra", "ETF 1", "ETF 2", "ETF 3", "ETF 4"];
 
     // Tipos de documento de identidad
-    scope.id_types = ["NIF", "NIE", "Pasaporte", "Otro"];
+    scope.id_types = ["", "NIF", "NIE", "Pasaporte", "Otro"];
 
     $('.datepicker').datetimepicker({
       locale: 'es',

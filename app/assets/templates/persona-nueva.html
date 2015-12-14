@@ -4,20 +4,25 @@
     <h2>{{prolibertas}}</h2>
 
       <div class="form-group col-md-6">
-        <label for="InputId_type">Tipo de Documento Identificador</label>
-        <select ng-model="personCtrl.personForm.id_type" type="text" class="form-control" id="InputId_type" data-placement="top">
-        <option ng-repeat="el in personCtrl.id_types">{{el}}</option>
+        <label for="InputId_type">Documento Identificador</label>
+        <select ng-model="personCtrl.personForm.id_type" type="text" class="form-control"
+          ng-options="el for el in personCtrl.id_types"
+          id="InputId_type" data-placement="top">
         </select>
       </div>
 
-      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.identifier }">
+      <div ng-if="personCtrl.personForm.id_type"
+        class="form-group col-md-6"
+        ng-class="{ 'has-error':personCtrl.errors.identifier }">
         <label for="InputIdentifier">Número de Identificador</label>
-        <input ng-model="personCtrl.personForm.identifier" type="text" class="form-control" id="InputIdentifier" data-placement="top">
+        <input ng-model="personCtrl.personForm.identifier" type="text" class="form-control"
+          id="InputIdentifier" data-placement="top">
       </div>
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.name }">
         <label for="InputName">Nombre</label>
-        <input ng-model="personCtrl.personForm.name" ng-change="personCtrl.change('Name')" type="text" class="form-control" id="InputName" data-placement="top">
+        <input ng-model="personCtrl.personForm.name" ng-change="personCtrl.change('Name')"
+          type="text" class="form-control" id="InputName" data-placement="top">
       </div>
 
       <div class="form-group col-md-6" >
@@ -32,12 +37,14 @@
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.surname }">
         <label for="InputSurname">Apellidos</label>
-        <input ng-model="personCtrl.personForm.surname" ng-change="personCtrl.change('Surname')" type="text" class="form-control" id="InputSurname" data-placement="top" >
+        <input ng-model="personCtrl.personForm.surname" ng-change="personCtrl.change('Surname')"
+          type="text" class="form-control" id="InputSurname" data-placement="top" >
       </div>
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.genre }">
         <label for="InputGenre">Género</label>
-        <select ng-model="personCtrl.personForm.genre" ng-change="personCtrl.change('Genre')" type="text" class="form-control" id="InputGenre" data-placement="top">
+        <select ng-model="personCtrl.personForm.genre" ng-change="personCtrl.change('Genre')"
+          type="text" class="form-control" id="InputGenre" data-placement="top">
           <option value="man">Hombre</option>
           <option value="woman">Mujer</option>
         </select>
@@ -119,7 +126,8 @@
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.assistance }">
         <label for="InputAssistance">Asistencia</label>
-        <select ng-model="personCtrl.personForm.assistance" ng-change="personCtrl.change('Assistance')" type="number" class="form-control" id="InputAssistance" data-placement="top">
+        <select ng-model="personCtrl.personForm.assistance" ng-change="personCtrl.change('Assistance')"
+          type="number" class="form-control" id="InputAssistance" data-placement="top">
           <option value='0'>0 - Primera vez</option>
           <option value='1'>1 - Habitual</option>
           <option value='2'>2 - Reincidente</option>
@@ -128,7 +136,8 @@
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.have_income }">
         <label for="InputSocial_have_income">¿Tiene ingresos?</label>
-        <select ng-model="personCtrl.personForm.have_income" ng-change="personCtrl.change('Have_income')" type="number" class="form-control" id="InputSocial_have_income" data-placement="top">
+        <select ng-model="personCtrl.personForm.have_income" ng-change="personCtrl.change('Have_income')"
+          type="number" class="form-control" id="InputSocial_have_income" data-placement="top">
           <option value='0'>0 - No</option>
           <option value='1'>1 - Si</option>
         </select>
@@ -141,24 +150,26 @@
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.address_type }">
         <label for="InputAddress_type">Tipo de Vivienda</label>
-        <select ng-model="personCtrl.personForm.address_type" ng-change="personCtrl.change('Address_type')" type="number" class="form-control" id="InputAddress_type" data-placement="top">
+        <select ng-model="personCtrl.personForm.address_type" ng-change="personCtrl.change('Address_type')"
+          type="number" class="form-control" id="InputAddress_type" data-placement="top">
           <option value='0'>0 - Sin vivienda</option>
           <option value='1'>1 - Vivienda</option>
           <option value='2'>2 - Infravivienda</option>
         </select>
       </div>
 
-      <div class="form-group col-md-6">
-        <label for="InputAddress">Dirección</label>
-        <input ng-model="personCtrl.personForm.address" type="text" class="form-control" id="InputAddress">
-      </div>
-
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.residence }">
         <label for="InputSocial_residence">Residencia</label>
-        <select ng-model="personCtrl.personForm.residence" ng-change="personCtrl.change('Residence')" type="number" class="form-control" id="InputSocial_residence" data-placement="top">
+        <select ng-model="personCtrl.personForm.residence" ng-change="personCtrl.change('Residence')"
+          type="number" class="form-control" id="InputSocial_residence" data-placement="top">
           <option value='0'>0 - De paso</option>
           <option value='1'>1 - Residente</option>
         </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="InputAddress">Dirección</label>
+        <input ng-model="personCtrl.personForm.address" type="text" class="form-control" id="InputAddress">
       </div>
 
       <div class="form-group col-md-6">
@@ -177,7 +188,9 @@
 
        <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.documentation }">
         <label for="InputDocumentation">Documentación</label>
-        <select ng-model="personCtrl.personForm.documentation" ng-change="personCtrl.change('Documentation')" type="number" class="form-control" id="InputDocumentation" data-placement="top">
+        <select ng-model="personCtrl.personForm.documentation"
+          ng-change="personCtrl.change('Documentation')" type="number" class="form-control"
+          id="InputDocumentation" data-placement="top">
           <option value='0'>0 - Indocumentado</option>
           <option value='1'>1 - Regularizado</option>
           <option value='2'>2 - Sin Regularizar</option>
@@ -186,7 +199,9 @@
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.social_services }">
         <label for="InputSocial_services">Servicios Sociales</label>
-        <select ng-model="personCtrl.personForm.social_services" ng-change="personCtrl.change('Social_services')" type="number" class="form-control" id="InputSocial_services" data-placement="top">
+        <select ng-model="personCtrl.personForm.social_services"
+          ng-change="personCtrl.change('Social_services')" type="number" class="form-control"
+          id="InputSocial_services" data-placement="top">
           <option value='0'>0 - No</option>
           <option value='1'>1 - Si</option>
         </select>

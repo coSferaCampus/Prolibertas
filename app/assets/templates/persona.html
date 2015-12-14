@@ -78,6 +78,10 @@
     <div class="col-md-6">
       <ul class="list-group">
 
+        <li class="list-group-item person__list__el" ng-if="personCtrl.person.id_type && personCtrl.person.identifier">
+          <strong class="person__list__text__left">{{personCtrl.id_type}}:</strong> <span id="person_identifier">{{ personCtrl.person.identifier }}</span>
+        </li>
+
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Fecha de nacimiento:</strong> <span id="person_age">{{ personCtrl.person.birth | date: "dd/MM/yyyy" }}</span>
         </li>
@@ -92,10 +96,6 @@
 
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Alergias:</strong> <span id="person_menu">{{ personCtrl.person.menu}}</span>
-        </li>
-
-        <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">DNI:</strong> <span id="person_nif">{{ personCtrl.person.nif }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
@@ -116,10 +116,6 @@
 
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Familiar de contacto:</strong> <span id="person_contact">{{ personCtrl.person.contact_family }}</span>
-        </li>
-
-        <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Identificador:</strong> <span id="person_identifier">{{ personCtrl.person.identifier }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
