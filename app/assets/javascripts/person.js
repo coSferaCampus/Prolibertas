@@ -303,6 +303,9 @@
       "Periferia-Villarrubia", "Periferia-Santa Cruz", "Periferia-Cerro Muriano",
       "Periferia-El Higuerón", "Periferia-Trassierra", "ETF 1", "ETF 2", "ETF 3", "ETF 4"];
 
+    // Tipos de documento de identidad
+    scope.id_types = ["NIF", "NIE", "Pasaporte", "Otro"];
+
     $('.datepicker').datetimepicker({
       locale: 'es',
       format: 'DD/MM/YYYY'

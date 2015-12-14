@@ -12,7 +12,8 @@ RSpec.describe Person, type: :model do
     it { is_expected.to have_field( :family_status  ).of_type(String) }
     it { is_expected.to have_field( :health_status  ).of_type(String) }
     it { is_expected.to have_field( :city           ).of_type(String) }
-    it { is_expected.to have_field( :nif            ).of_type(String) }
+    it { is_expected.to have_field( :id_type        ).of_type(String) }
+    it { is_expected.to have_field( :identifier     ).of_type(String) }
     it { is_expected.to have_field( :menu           ).of_type(String) }
     it { is_expected.to have_field( :income         ).of_type(String) }
     it { is_expected.to have_field( :address        ).of_type(String) }
@@ -47,7 +48,10 @@ RSpec.describe Person, type: :model do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:surname) }
     it { is_expected.to validate_presence_of(:origin) }
+
     it { is_expected.to validate_inclusion_of(:genre).to_allow([:man, :woman]) }
+
+    it { is_expected.to validate_uniqueness_of(:identifier) }
   end
 
   context "custom methods" do

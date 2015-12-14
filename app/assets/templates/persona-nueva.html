@@ -3,6 +3,18 @@
 
     <h2>{{prolibertas}}</h2>
 
+      <div class="form-group col-md-6">
+        <label for="InputId_type">Tipo de Documento Identificador</label>
+        <select ng-model="personCtrl.personForm.id_type" type="text" class="form-control" id="InputId_type" data-placement="top">
+        <option ng-repeat="el in personCtrl.id_types">{{el}}</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.identifier }">
+        <label for="InputIdentifier">Número de Identificador</label>
+        <input ng-model="personCtrl.personForm.identifier" type="text" class="form-control" id="InputIdentifier" data-placement="top">
+      </div>
+
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.name }">
         <label for="InputName">Nombre</label>
         <input ng-model="personCtrl.personForm.name" ng-change="personCtrl.change('Name')" type="text" class="form-control" id="InputName" data-placement="top">
@@ -21,10 +33,6 @@
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.surname }">
         <label for="InputSurname">Apellidos</label>
         <input ng-model="personCtrl.personForm.surname" ng-change="personCtrl.change('Surname')" type="text" class="form-control" id="InputSurname" data-placement="top" >
-      </div>
-      <div class="form-group col-md-6">
-        <label for="InputNif">NIF</label>
-        <input ng-model="personCtrl.personForm.nif" type="text" class="form-control" id="InputNif">
       </div>
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.genre }">
@@ -107,11 +115,6 @@
           <option value='Zamora'>Zamora</option>
           <option value='Zaragoza'>Zaragoza</option>
         </select>
-      </div>
-
-      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.identifier }">
-        <label for="InputAssistance">Identificador</label>
-        <input ng-model="personCtrl.personForm.identifier" type="text" class="form-control" id="InputIdentifier" data-placement="top">
       </div>
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.assistance }">

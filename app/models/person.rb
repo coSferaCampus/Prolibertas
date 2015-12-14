@@ -17,7 +17,8 @@ class Person
   field :notes,           type: String
   field :family_status,   type: String
   field :health_status,   type: String
-  field :nif,             type: String
+  field :id_type,         type: String
+  field :identifier,      type: String
   field :exp,             type: String
   field :zts,             type: String
   field :assistance,      type: Integer
@@ -40,7 +41,11 @@ class Person
   validates :name,        presence: true
   validates :surname,     presence: true
   validates :origin,      presence: true
+
   validates :genre,       inclusion: { in: [:man, :woman] }
+
+  validates_uniqueness_of :identifier, case_sensitive: false
+  validates :identifier,  format: { with: /\w*/ }
 
   after_create do |document|
     set(exp: "%05d" % Person.all.size)
