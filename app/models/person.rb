@@ -10,7 +10,7 @@ class Person
   field :origin,          type: String
   field :city,            type: String
   field :phone,           type: String
-  field :menu,            type: String
+  field :menu,            type: String # Ahora representa el campo alergias
   field :income,          type: String
   field :address,         type: String
   field :contact_family,  type: String

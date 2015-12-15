@@ -13,7 +13,7 @@ FactoryGirl.define do
     socialworker { Faker::Name.name}
     type_of_income { [0, 1].sample }
     amount_of_income {  rand(100...700).to_f.to_s }
-    address_type { [0, 1, 2].sample }
+#    address_type { [0, 1, 2].sample }
     address { Faker::Address.street_address }
     assistance { [0, 1, 2].sample }
     nif { Faker::Number.number(8) }
@@ -33,7 +33,7 @@ FactoryGirl.define do
     socialworker { Faker::Name.name}
     type_of_income { [0, 1].sample }
     amount_of_income {  rand(100...700).to_f.to_s }
-    address_type { [0, 1, 2].sample }
+#    address_type { [0, 1, 2].sample }
     address { Faker::Address.street_address }
     assistance { [0, 1, 2].sample }
     nif { Faker::Number.number(8) }

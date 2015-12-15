@@ -176,7 +176,7 @@
     $http.get('/people/' + $state.params.id + '.json')
     .success(function(data) {
       scope.person = data.person;
-      $rootScope.prolibertas = scope.person.name + ' ' + scope.person.surname
+      $rootScope.prolibertas = scope.person.name + ' ' + scope.person.surname;
 
       // Tipo de identificador
       if (scope.person.id_type === "Otro") {

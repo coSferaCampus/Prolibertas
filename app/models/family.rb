@@ -8,18 +8,18 @@ class Family
   field :name,             type: String
   field :surname,          type: String
   field :origin,           type: String
-  field :menu,             type: String
+  field :menu,             type: String # Ahora representa el campo alergias
   field :phone,            type: String
   field :birthchildren,    type: String
   field :center,           type: String
   field :socialworker,     type: String
   field :address,          type: String
-  field :nif,              type: String
+  field :id_type,          type: String
   field :identifier,       type: String
   field :adults,           type: Integer
   field :children,         type: Integer
   field :assistance,       type: Integer
-  field :address_type,     type: Integer
+#  field :address_type,     type: Integer
   field :type_of_income,   type: Integer
   field :amount_of_income, type: String
   field :from,             type: Date
@@ -34,6 +34,9 @@ class Family
   validates :children,     presence: true
   validates :center,       presence: true
   validates :origin,       presence: true
+
+  validates_uniqueness_of :identifier, case_sensitive: false
+  validates :identifier,  format: { with: /\w*/ }
 
 # Método que devolverá usos de servicio para el día en que se pida
   def used_services_of_today

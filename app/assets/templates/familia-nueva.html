@@ -3,13 +3,25 @@
 
     <h2>{{ prolibertas }}</h2>
 
+      <div class="form-group col-md-6">
+        <label for="InputId_type">Documento Identificador</label>
+        <select ng-model="familyCtrl.familyForm.id_type" type="text" class="form-control"
+          ng-options="el for el in familyCtrl.id_types"
+          id="InputId_type" data-placement="top">
+        </select>
+      </div>
+
+      <div ng-if="familyCtrl.familyForm.id_type"
+        class="form-group col-md-6"
+        ng-class="{ 'has-error':familyCtrl.errors.identifier }">
+        <label for="InputIdentifier">Número de Identificador</label>
+        <input ng-model="familyCtrl.familyForm.identifier" type="text" class="form-control"
+          id="InputIdentifier" data-placement="top">
+      </div>
+
       <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.name }">
         <label for="InputName">Nombre</label>
         <input ng-model="familyCtrl.familyForm.name" ng-change="familyCtrl.change('Name')" type="text" class="form-control" id="InputName" data-placement="top">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="InputNif">NIF</label>
-        <input ng-model="familyCtrl.familyForm.nif" type="text" class="form-control" id="InputNif">
       </div>
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.surname }">
@@ -34,10 +46,6 @@
         <input ng-model="familyCtrl.familyForm.birthchildren" class="form-control" id="InputBirthchildren"
                placeholder="1,2,3" >
       </div>
-      <div class="form-group col-md-3" ng-class="{ 'has-error':familyCtrl.errors.identifier }">
-        <label for="InputIdentifier">Identificador</label>
-        <input ng-model="familyCtrl.familyForm.identifier" type="text" class="form-control" id="InputIdentifier" data-placement="top" >
-      </div>
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.origin }">
         <label for="InputOrigin">Origen</label>
@@ -52,6 +60,7 @@
         <input ng-model="familyCtrl.familyForm.socialworker" type="text" class="form-control" id="InputSocialworker">
       </div>
 
+      <!--
       <div class="form-group col-md-6">
         <label for="InputAddressType">Tipo de Vivienda</label>
         <select ng-model="familyCtrl.familyForm.address_type" type="number" class="form-control" id="InputAddressType" data-placement="top">
@@ -60,6 +69,7 @@
           <option value='2'>2 - Infravivienda</option>
         </select>
       </div>
+      -->
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.assistance }">
         <label for="InputAssistance">Asistencia</label>
