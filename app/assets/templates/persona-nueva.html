@@ -221,6 +221,11 @@
         </select>
       </div>
 
+      <div class="form-group col-md-12" ng-class="{ 'has-error':personCtrl.errors.muslim }">
+        <label for="InputMuslim">Musulmán</label>
+        <input ng-model="personCtrl.personForm.muslim" type="checkbox" id="InputMuslim">
+      </div>
+
       <div class="form-group col-md-12">
         <label for="InputNotes">Notas</label>
         <textarea ng-model="personCtrl.personForm.notes" class="form-control" rows="2" id="InputNotes"></textarea>

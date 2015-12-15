@@ -33,7 +33,9 @@ RSpec.describe Person, type: :model do
     it { is_expected.to have_field( :entry  ).of_type(Date) }
     it { is_expected.to have_field( :output ).of_type(Date) }
 
-    it { is_expected.to have_field( :genre  ).of_type(Symbol) }
+    it { is_expected.to have_field( :genre ).of_type(Symbol) }
+
+    it { is_expected.to have_field( :muslim ).of_type(Mongoid::Boolean) }
   end
 
   context "Relations" do

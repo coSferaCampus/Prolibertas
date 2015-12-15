@@ -31,6 +31,7 @@ class Person
   field :birth,           type: Date
   field :entry,           type: Date
   field :output,          type: Date
+  field :muslim,          type: Boolean, default: false
 
   has_many :used_services
   has_many :alerts

@@ -388,7 +388,7 @@
     }
     else {
       scope.actionForm = scope.guardarPersona;
-      $rootScope.prolibertas = "Crear Persona"
+      $rootScope.prolibertas = "Nuevo Expediente"
     }
 
   }]);
