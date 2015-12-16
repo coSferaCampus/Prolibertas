@@ -50,11 +50,15 @@
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Centro de procedencia:</strong> <span id="family_center">{{ familyCtrl.family.center }}</span>
+          <strong class="person__list__text__left">Zona de trabajo social:</strong> <span id="person_zts">{{ familyCtrl.family.zts }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Trabajador Social:</strong> <span id="family_socialworker">{{ familyCtrl.family.socialworker }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Teléfono del Trabajador Social:</strong> <span id="family_social_tlf">{{ familyCtrl.family.social_tlf }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
@@ -85,6 +89,10 @@
 
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Fecha de Salida:</strong> <span id="family_to">{{ familyCtrl.family.to | date: "dd/MM/yyyy" }}</span>
+        </li>
+
+        <li class="list-group-item person__list__el" ng-if="familyCtrl.family.muslim">
+          <strong class="person__list__text__left">Musulmán:</strong> <span>Sí</span>
         </li>
       </ul>
     </div>

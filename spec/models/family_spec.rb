@@ -11,12 +11,12 @@ RSpec.describe Family, type: :model do
     it { is_expected.to have_field( :menu             ).of_type(String) }
     it { is_expected.to have_field( :phone            ).of_type(String) }
     it { is_expected.to have_field( :birthchildren    ).of_type(String) }
-    it { is_expected.to have_field( :center           ).of_type(String) }
     it { is_expected.to have_field( :socialworker     ).of_type(String) }
     it { is_expected.to have_field( :address          ).of_type(String) }
     it { is_expected.to have_field( :identifier       ).of_type(String) }
     it { is_expected.to have_field( :id_type          ).of_type(String) }
     it { is_expected.to have_field( :amount_of_income ).of_type(String) }
+    it { is_expected.to have_field( :zts              ).of_type(String) }
 
     it { is_expected.to have_field( :adults           ).of_type(Integer) }
     it { is_expected.to have_field( :children         ).of_type(Integer) }
@@ -26,6 +26,8 @@ RSpec.describe Family, type: :model do
 
     it { is_expected.to have_field( :from             ).of_type(Date   ) }
     it { is_expected.to have_field( :to               ).of_type(Date   ) }
+
+    it { is_expected.to have_field( :muslim ).of_type(Mongoid::Boolean) }
   end
 
   context "Relations" do
@@ -38,7 +40,6 @@ RSpec.describe Family, type: :model do
     it { is_expected.to validate_presence_of( :surname  ) }
     it { is_expected.to validate_presence_of( :adults   ) }
     it { is_expected.to validate_presence_of( :children ) }
-    it { is_expected.to validate_presence_of( :center   ) }
     it { is_expected.to validate_presence_of( :origin   ) }
   end
 end

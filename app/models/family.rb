@@ -11,19 +11,21 @@ class Family
   field :menu,             type: String # Ahora representa el campo alergias
   field :phone,            type: String
   field :birthchildren,    type: String
-  field :center,           type: String
   field :socialworker,     type: String
   field :address,          type: String
+  field :amount_of_income, type: String
   field :id_type,          type: String
   field :identifier,       type: String
+  field :zts,              type: String
+  field :social_tlf,       type: String
   field :adults,           type: Integer
   field :children,         type: Integer
   field :assistance,       type: Integer
 #  field :address_type,     type: Integer
   field :type_of_income,   type: Integer
-  field :amount_of_income, type: String
   field :from,             type: Date
   field :to,               type: Date
+  field :muslim,           type: Boolean, default: false
 
   has_many :used_services
   has_many :alerts
@@ -32,7 +34,6 @@ class Family
   validates :surname,      presence: true
   validates :adults,       presence: true
   validates :children,     presence: true
-  validates :center,       presence: true
   validates :origin,       presence: true
 
   validates_uniqueness_of :identifier, case_sensitive: false

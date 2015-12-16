@@ -49,15 +49,32 @@
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.origin }">
         <label for="InputOrigin">Origen</label>
-        <input ng-model="familyCtrl.familyForm.origin" type="text" class="form-control" id="InputOrigin">
+        <select ng-model="familyCtrl.familyForm.origin" type="text" class="form-control" id="InputOrigin" data-placement="top">
+        <option ng-repeat="country in familyCtrl.countries">{{country}}</option>
+        </select>
       </div>
-      <div class="form-group col-md-6" ng-class="{ 'has-error':familyCtrl.errors.center }">
-        <label for="InputCenter">Centro de procedencia</label>
-        <input ng-model="familyCtrl.familyForm.center" ng-change="familyCtrl.change('Center')" type="text" class="form-control" id="InputCenter" data-placement="top" >
+
+      <div class="form-group col-md-6"
+        ng-class="{ 'has-error':familyCtrl.errors.zts }">
+        <label for="InputZts">Zona de Trabajo Social</label>
+        <select
+          ng-model="familyCtrl.familyForm.zts"
+          type="text"
+          class="form-control"
+          id="InputZts"
+          data-placement="top">
+        <option ng-repeat="zts in familyCtrl.zonas">{{zts}}</option>
+        </select>
       </div>
+
       <div class="form-group col-md-6">
         <label for="InputSocialworker">Trabajador Social</label>
         <input ng-model="familyCtrl.familyForm.socialworker" type="text" class="form-control" id="InputSocialworker">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="InputSocialworker">Teléfono del Trabajador Social</label>
+        <input ng-model="familyCtrl.familyForm.social_tlf" type="text" class="form-control" id="InputSocial_tlf">
       </div>
 
       <!--
@@ -98,6 +115,11 @@
       <div class="form-group col-md-6">
         <label for="InputPhone">Teléfono</label>
         <input ng-model="familyCtrl.familyForm.phone" type="text" class="form-control" id="InputPhone">
+      </div>
+
+      <div class="form-group col-md-12" ng-class="{ 'has-error':familyCtrl.errors.muslim }">
+        <label for="InputMuslim">Musulmán</label>
+        <input ng-model="familyCtrl.familyForm.muslim" type="checkbox" id="InputMuslim">
       </div>
 
       <div class="form-group col-md-6" >
