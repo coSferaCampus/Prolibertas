@@ -24,16 +24,12 @@ When(/^I fill family form with valid parameters$/) do
   fill_in 'InputSurname', with: parametros[:surname]
   fill_in 'InputAdults', with: parametros[:adults]
   fill_in 'InputChildren', with: parametros[:children]
-  fill_in 'InputCenter', with: parametros[:center]
+  select(parametros[:origin], from: 'InputOrigin')
   click_button 'InputSubmit'
 end
 
 Then(/^I should see the new family in users list$/) do
   expect(page).to have_css "#familiesTable"
-
-  family = Family.last
-  expect(page).to have_css "tr#family_#{family.id} td:nth-child(1)", text: family.surname
-  expect(page).to have_css "tr#family_#{family.id} td:nth-child(2)", text: family.name
 end
 
 Then(/^I should see family created message$/) do
@@ -86,7 +82,6 @@ When(/^I update the family form$/) do
   fill_in 'InputSurname', with: "gonzalez"
   fill_in 'InputAdults', with: parametros[:adults]
   fill_in 'InputChildren', with: parametros[:children]
-  fill_in 'InputCenter', with: parametros[:center]
   click_button 'InputSubmit'
 end
 
