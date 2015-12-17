@@ -87,6 +87,8 @@
       }
     };
 
+// ---------------------------------------- Servicios ---------------------------------------------
+
     scope.createUsedService = function(person, service) {
       $http.post('/used_services.json',
       {used_service: {person_id: person.id, service_id: service.id, created_at: scope.person.selected_day }} )
@@ -102,7 +104,7 @@
         })
     };
 
-    // método que cambia a check si está desmarcado y viceversa
+    // Método que cambia a check si está desmarcado y viceversa
     scope.changeCheckbox = function(person, service) {
       if(person.used_services_of_selected_day_id[service.name])
         scope.deleteUsedService(person, service);
@@ -111,9 +113,10 @@
     };
 
     scope.getService = function(name) {
-      var result = $.grep(scope.services, function(e){ return e.name == name; });
+      var result = $.grep(scope.services, function(e) { return e.name == name; });
       return result[0];
     };
+// -------------------------------------- FIN Servicios -------------------------------------------
 
     scope.alertClass = function(person) {
       if (person.pending_alerts.length > 0){

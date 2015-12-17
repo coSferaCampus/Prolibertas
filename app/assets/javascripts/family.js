@@ -49,7 +49,38 @@
       }
     };
 
-// ------------------------------------- Fechas y horas -------------------------------------------
+// ---------------------------------------- Servicios ---------------------------------------------
+
+    scope.createUsedService = function(family, service) {
+      $http.post('/used_services.json',
+      {used_service: {family_id: family.id, service_id: service.id, created_at: scope.person.selected_day }} )
+        .success(function(data) {
+          family.used_services_of_selected_day_id[service.name] = data.used_service.id;
+        })
+    };
+
+    scope.deleteUsedService = function(family, service) {
+      $http.delete('/used_services/' + person.used_services_of_selected_day_id[service.name] + '.json')
+        .success(function(data) {
+          family.used_services_of_selected_day_id[service.name] = null;
+        })
+    };
+
+    // Método que cambia a check si está desmarcado y viceversa
+    scope.changeCheckbox = function(family, service) {
+      if(family.used_services_of_selected_day_id[service.name])
+        scope.deleteUsedService(family, service);
+      else
+      scope.createUsedService(family, service)
+    };
+
+    scope.getService = function(name) {
+      var result = $.grep(scope.services, function(e) { return e.name == name; });
+      return result[0];
+    };
+// -------------------------------------- FIN Servicios -------------------------------------------
+
+// ------------------------------------- Fechas y Horas -------------------------------------------
     $( '.datepicker'     ).datetimepicker({ locale: 'es', format: 'DD/MM/YYYY' });
     $( '.datetimepicker' ).datetimepicker({ locale: 'es', format: 'HH:mm'      });
 
@@ -59,7 +90,7 @@
       scope.familyForm.ropero_date = $( '#InputRopero_date' ).val();
       scope.familyForm.ropero_time = $( '#InputRopero_time' ).val();
     };
-// ------------------------------------------------------------------------------------------------
+// ----------------------------------- FIN Fechas y Horas -----------------------------------------
 
     scope.guardarFamilia = function() {
       scope.formDates();
@@ -172,5 +203,22 @@
       if (value === 0) { return 'No'; }
       else if(value === 1) { return 'Si'; }
     };
+  }]);
+
+  app.controller('FamilyReportController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {
+    var scope = this;
+    scope.services = {};
+    scope.family = {};
+
+    $http.get('/families/' + $state.params.id + '.json')
+    .success(function(data){
+      scope.family = data.family;
+    });
+
+    $http.get('/family/' + $state.params.id + '/individual_report.json')
+    .success(function(data){
+      scope.services = data;
+    });
+
   }]);
 })();

@@ -26,6 +26,12 @@ class FamiliesController < ApplicationController
     respond_with @family
   end
 
+  def individual_report
+    @individual_report = UsedService.where( family_id: params[:id] ).desc(:created_at)
+
+     respond_with @individual_report.to_json
+  end
+
   private
 
   def family_params

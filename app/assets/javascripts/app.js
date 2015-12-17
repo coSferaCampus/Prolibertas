@@ -262,6 +262,17 @@
        controllerAs: "familyCtrl"
     })
 
+    .state("familia.informe", {
+      url: "/informe",
+      views:{
+        menufamilia:{
+          templateUrl: "familia-informe.html",
+          controller: "FamilyReportController",
+          controllerAs: "familyCtrl"
+        }
+      }
+    })
+
      .state("informes", {
       url: "/informes",
       templateUrl: "informes.html"

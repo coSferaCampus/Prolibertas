@@ -62,7 +62,7 @@
         <td class="listfamilies__centrado">{{family.menu}}</td>
         <td class="listfamilies__centrado">
           <input id="comida_{{family.id}}" ng-model="family.used_services_of_today.comida"
-          ng-change="familiesCtrl.changeCheckbox(family, familiesCtrl.getService('comida'))"
+          ng-change="familyCtrl.changeCheckbox(family, familiesCtrl.getService('comida'))"
           type="checkbox">
         </td>
 

@@ -2,6 +2,19 @@
 
   <h2>Ficha de {{ familyCtrl.family.name }} {{ familyCtrl.family.surname }}</h2>
 
+  <div class="row fondo_menu_persona">
+    <div class="col-md-12 col-xs-12 ">
+      <ul class="nav nav-tabs">
+        <li><a ui-sref="familia({id: familyCtrl.family.id})"data-toggle="tab">Familia</a></li>
+        <li><a id="person_report" ui-sref="familia.informe" data-toggle="tab" ui-sref="familia.informe({id: familyCtrl.family.id})">Informe</a></li>
+        <li><a class="navPersona__el"   ng-click="printDocument()" id="printIndividualReport"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Imprimir</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="lineablanca"></div>
+
+  <div class="row col-md-12" ui-view="menufamilia">
+
     <div class="col-md-6">
       <ul class="list-group">
         <li class="list-group-item person__list__el">
