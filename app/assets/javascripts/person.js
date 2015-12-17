@@ -5,7 +5,7 @@
   app.controller('PeopleController', ['$filter', '$http', '$timeout', '$state', '$rootScope', function($filter, $http, $timeout, $state, $rootScope) {
     var scope = this;
     scope.sandwiches;
-    scope.person= {};
+    scope.person = {};
     scope.person.selected_day =  $filter('date')(new Date(), 'dd/MM/yyyy');
     scope.people = [];
     scope.hasPeople = false;

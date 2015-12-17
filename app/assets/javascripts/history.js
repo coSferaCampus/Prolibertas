@@ -7,11 +7,11 @@
 
     scope.alertaCreado = $state.params.alertaCreado;
     // La alerta se oculta después de 5 segundos
-    $timeout(function(){scope.alertaCreado = false;}, 5000);
+    $timeout(function(){scope.alertaCreado = false;}, 1000);
 
     scope.alertaBorrado = $state.params.alertaBorrado;
     // La alerta se oculta después de 5 segundos
-    $timeout(function(){scope.alertaBorrado = false;}, 5000);
+    $timeout(function(){scope.alertaBorrado = false;}, 1000);
 
     $http.get('/people/'+ $state.params.id + '/histories.json')
       .success(function(data){
@@ -38,12 +38,13 @@
     };
   }]);
 
-  app.controller('HistoryFormController', ['$http', '$state', '$rootScope','$upload', function($http, $state, $rootScope, $upload) {
-    var scope = this;
-    // variable para el formulario
+  app.controller('HistoryFormController', ['$http', '$filter', '$state', '$rootScope','$upload', function($http, $filter, $state, $rootScope, $upload) {
+    var scope         = this;
     scope.historyForm = {};
-   //variable para los errores
-    scope.errors = {};
+    scope.errors      = {};
+
+    // Fecha a día de hoy
+    scope.historyForm.date =  $filter('date')(new Date(), 'dd/MM/yyyy');
 
 
     $('.datepicker').datetimepicker({locale: 'es', format: 'DD/MM/YYYY'});

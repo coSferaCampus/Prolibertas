@@ -8,25 +8,25 @@
       <textarea class="form-control" ng-model="historyFormCtrl.historyForm.liabilities" id="InputLiabilities" placeholder="Compromisos" rows="10"></textarea>
     </div>
     <div class="row nuevacita">
-      <div class="col-md-2 col-xs-6">
+      <div class="col-md-3 col-xs-6">
         <div class="input-group datepicker" ng-class="{'has-error':historyFormCtrl.errors.date}">
           <span class="input-group-addon listpeople__azul"><span class="glyphicon glyphicon-calendar"></span></span>
-          <input type="text" class="form-control" ng-change="historyFormCtrl.change('Date')" ng-model="historyFormCtrl.historyForm.date" placeholder="Fecha creación" id="InputDate">
+          <input type="text" class="form-control" ng-change="historyFormCtrl.change('Date')" ng-model="historyFormCtrl.historyForm.date" placeholder="Fecha de entrevista" id="InputDate">
         </div>
       </div>
-      <div class="col-md-2 col-xs-6">
+      <div class="col-md-3 col-xs-6">
         <div class="input-group datetimepicker" ng-class="{'has-error':historyFormCtrl.errors.time}">
           <span class="input-group-addon listpeople__azul "><span class="glyphicon glyphicon-time"></span></span>
           <input type="text" class="form-control" ng-change="historyFormCtrl.change('Time')" ng-model="historyFormCtrl.historyForm.time" placeholder="Hora" id="InputTime">
         </div>
       </div>
-      <div class="col-md-2 col-xs-6">
+      <div class="col-md-3 col-xs-6">
         <div class="input-group datepicker">
           <span class="input-group-addon listpeople__azul"><span class="glyphicon glyphicon-calendar"></span></span>
           <input type="text" class="form-control" ng-model="historyFormCtrl.historyForm.newdate" placeholder="Fecha nueva cita" id="InputDatenew">
         </div>
       </div>
-      <div class="col-md-2 col-xs-6">
+      <div class="col-md-3 col-xs-6">
         <div class="input-group datetimepicker">
           <span class="input-group-addon listpeople__azul "><span class="glyphicon glyphicon-time"></span></span>
           <input type="text" class="form-control" ng-model="historyFormCtrl.historyForm.newtime" placeholder="Hora nueva cita" id="InputTimenew">

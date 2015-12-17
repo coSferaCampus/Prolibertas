@@ -7,17 +7,16 @@
     scope.alertaCreado = $state.params.alertaCreado;
 
     // La alerta se oculta después de 5 segundos
-    $timeout( function() { scope.alertaCreado = false; }, 5000 );
+    $timeout(function() { scope.alertaCreado = false; }, 1000);
 
     scope.alertaBorrado = $state.params.alertaBorrado;
     // La alerta se oculta después de 5 segundos
-    $timeout( function() { scope.alertaBorrado = false; }, 5000 );
+    $timeout(function() { scope.alertaBorrado = false; }, 1000);
 
 
-    $http.get( '/people/' + $state.params.id + '/articles.json' )
-      .success( function(data) {
-        scope.articles = data.articles;
-      })
+    $http.get('/people/' + $state.params.id + '/articles.json').success(function(data) {
+      scope.articles = data.articles;
+    });
 
     scope.tipo = function(tipo) {
       if (tipo == "blanket") {
@@ -34,15 +33,6 @@
       }
       else if (tipo == "basket") {
         return 'canastillas';
-      }
-      else if (tipo == "others1") {
-        return 'otros 1';
-      }
-      else if (tipo == "others2") {
-        return 'otros 2';
-      }
-      else if (tipo == "others3") {
-        return 'otros 3';
       }
     }
   }]);
@@ -69,18 +59,7 @@
       else if (tipo == "shoes") {
         return 'zapatos';
       }
-      else if (tipo == "others1") {
-        return 'otros 1';
-      }
-      else if (tipo == "others2") {
-        return 'otros 2';
-      }
-      else if (tipo == "others3") {
-        return 'otros 3';
-      }
     };
-
-
 
     scope.destroyArticle = function(article) {
       var confirmed = confirm( '¿Desea borrar el artículo?' );
@@ -92,12 +71,17 @@
     };
   }]);
 
-  app.controller( 'ArticleFormController', ['$http', '$state', '$rootScope', function( $http, $state, $rootScope ) {
+  app.controller( 'ArticleFormController', ['$http', '$filter', '$state', '$rootScope', function( $http, $filter, $state, $rootScope ) {
     var scope = this;
-    // variable para el formulario
     scope.articleForm = {};
-   //variable para los errores
     scope.errors = {};
+
+    // Fecha a día de hoy
+    scope.articleForm.requested =  $filter('date')(new Date(), 'dd/MM/yyyy');
+
+    // Fecha dentro de 30 días
+    var dateIn30Days = new Date(+new Date() + (86400000 * 30));
+    scope.articleForm.dispensed =  $filter('date')(dateIn30Days, 'dd/MM/yyyy');
 
     $('.datepicker').datetimepicker({locale: 'es', format: 'DD/MM/YYYY'});
 
