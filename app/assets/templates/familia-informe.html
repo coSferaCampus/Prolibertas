@@ -1,0 +1,17 @@
+    <table class="table table-responsive col-md-12 col-lg-12" id="usersTable">
+      <thead class="listpeople__cabecera">
+        <tr>
+          <th class="listpeople__centrado">Autor</th>
+          <th class="listpeople__centrado">Fecha</th>
+          <th class="listpeople__centrado">Servicios</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="service in familyCtrl.services">
+          <td class="listpeople__centrado">{{ service[2] }}</td>
+          <td class="listpeople__centrado">{{ service[0] }}</td>
+          <td class="listpeople__centrado">{{ service[1] }}</td>
+        </tr>
+      </tbody>
+    </table>
