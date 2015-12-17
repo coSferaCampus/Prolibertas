@@ -17,6 +17,7 @@ RSpec.describe Family, type: :model do
     it { is_expected.to have_field( :id_type          ).of_type(String) }
     it { is_expected.to have_field( :amount_of_income ).of_type(String) }
     it { is_expected.to have_field( :zts              ).of_type(String) }
+    it { is_expected.to have_field( :ropero_time      ).of_type(String) }
 
     it { is_expected.to have_field( :adults           ).of_type(Integer) }
     it { is_expected.to have_field( :children         ).of_type(Integer) }
@@ -24,8 +25,9 @@ RSpec.describe Family, type: :model do
 #    it { is_expected.to have_field( :address_type     ).of_type(Integer) }
     it { is_expected.to have_field( :assistance       ).of_type(Integer) }
 
-    it { is_expected.to have_field( :from             ).of_type(Date   ) }
-    it { is_expected.to have_field( :to               ).of_type(Date   ) }
+    it { is_expected.to have_field( :from             ).of_type(Date) }
+    it { is_expected.to have_field( :to               ).of_type(Date) }
+    it { is_expected.to have_field( :ropero_date      ).of_type(Date) }
 
     it { is_expected.to have_field( :muslim ).of_type(Mongoid::Boolean) }
   end

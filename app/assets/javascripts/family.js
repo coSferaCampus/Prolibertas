@@ -37,11 +37,6 @@
     $timeout(function() { scope.alertaBorrado = false; }, 5000);
     $rootScope.prolibertas = "Lista de Familias";
 
-    $('.datepicker').datetimepicker({
-      locale: 'es',
-      format: 'DD/MM/YYYY'
-     });
-
     $http.get('/families.json')
       .success(function(data) {
         scope.families = data.families;
@@ -54,10 +49,17 @@
       }
     };
 
-    scope.formDates = function(){
-      scope.familyForm.from = $( '#InputFrom' ).val();
-      scope.familyForm.to   = $( '#InputTo'   ).val();
+// ------------------------------------- Fechas y horas -------------------------------------------
+    $( '.datepicker'     ).datetimepicker({ locale: 'es', format: 'DD/MM/YYYY' });
+    $( '.datetimepicker' ).datetimepicker({ locale: 'es', format: 'HH:mm'      });
+
+    scope.formDates = function() {
+      scope.familyForm.from        = $( '#InputFrom'        ).val();
+      scope.familyForm.to          = $( '#InputTo'          ).val();
+      scope.familyForm.ropero_date = $( '#InputRopero_date' ).val();
+      scope.familyForm.ropero_time = $( '#InputRopero_time' ).val();
     };
+// ------------------------------------------------------------------------------------------------
 
     scope.guardarFamilia = function() {
       scope.formDates();

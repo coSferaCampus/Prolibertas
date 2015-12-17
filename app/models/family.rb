@@ -18,6 +18,7 @@ class Family
   field :identifier,       type: String
   field :zts,              type: String
   field :social_tlf,       type: String
+  field :ropero_time,      type: String
   field :adults,           type: Integer
   field :children,         type: Integer
   field :assistance,       type: Integer
@@ -25,6 +26,7 @@ class Family
   field :type_of_income,   type: Integer
   field :from,             type: Date
   field :to,               type: Date
+  field :ropero_date,      type: Date
   field :muslim,           type: Boolean, default: false
 
   has_many :used_services
