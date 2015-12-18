@@ -41,7 +41,7 @@
         <label for="InputChildren">Nº Menores</label>
         <input ng-model="familyCtrl.familyForm.children" ng-change="familyCtrl.change('Children')" type="number" min="0" class="form-control" id="InputChildren">
       </div>
-      <div class="form-group col-md-3" >
+      <div class="form-group col-md-6" >
         <label for="InputBirthchildren"> Edad Menores</label>
         <input ng-model="familyCtrl.familyForm.birthchildren" class="form-control" id="InputBirthchildren"
                placeholder="1,2,3" >
@@ -122,13 +122,15 @@
         <input ng-model="familyCtrl.familyForm.muslim" type="checkbox" id="InputMuslim">
       </div>
 
-      <div class="form-group col-md-12">
+      <div class="form-group col-md-6">
+        <label for="InputRopero_date">Fecha cita ropero</label>
         <div class="input-group datepicker">
           <span class="input-group-addon listpeople__azul"><span class="glyphicon glyphicon-calendar"></span></span>
           <input type="text" class="form-control" ng-model="familyCtrl.familyForm.ropero_date" placeholder="Fecha cita ropero" id="InputRopero_date">
         </div>
       </div>
-      <div class="form-group col-md-12">
+      <div class="form-group col-md-6">
+        <label for="InputRopero_time">Hora cita ropero</label>
         <div class="input-group datetimepicker">
           <span class="input-group-addon listpeople__azul "><span class="glyphicon glyphicon-time"></span></span>
           <input type="text" class="form-control" ng-model="familyCtrl.familyForm.ropero_time" placeholder="Hora cita ropero" id="InputRopero_time">

@@ -28,8 +28,31 @@ class PeopleController < ApplicationController
   end
 
   def individual_report
-    @individual_report = UsedService.where( person_id: params[:id] ).desc(:created_at).map do |used_service|
-      [used_service.created_at.to_s.split('-').reverse.join('/'), used_service.service.name, used_service.created_by.full_name]
+    @individual_report = []
+    dates              = []
+
+    services = UsedService.where( person_id: params[:id] ).desc(:created_at)
+
+    services.each { |service| dates << service.created_at }
+
+    dates.uniq!
+    dates.each do |date|
+      @autors        = []
+      @service_names = []
+
+      services.where(created_at: date).each do |x|
+        @autors << x.created_by.full_name
+        @service_names << x.service.name
+      end
+
+      date          = date.to_s.split('-').reverse.join('/')
+      autors        = ""
+      service_names = ""
+
+      @autors.uniq!.each_with_index  { |v, i| autors        += i == 0 ? v : ", " + v }
+      @service_names.each_with_index { |v, i| service_names += i == 0 ? v : ", " + v }
+
+      @individual_report << { "date": date, "autors": autors, "services": service_names }
     end
 
      respond_with @individual_report.to_json

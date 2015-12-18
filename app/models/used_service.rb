@@ -7,5 +7,6 @@ class UsedService
   field :created_at, type: Date
 
   belongs_to :person
+  belongs_to :family
   belongs_to :service
 end

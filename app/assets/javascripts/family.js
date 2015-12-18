@@ -7,6 +7,21 @@
     scope.families = [];
     scope.familyForm = {};
     scope.errors = {};
+    scope.services = [];
+
+    $http.get('/services.json').success(function(data) { scope.services = data.services; });
+
+    // Seleccionar día de la plataforma
+    scope.selected_day =  $filter('date')(new Date(), 'dd/MM/yyyy');
+
+    $("#InputSelected_day").focusout( function() {
+      scope.selected_day = $("#InputSelected_day").val();
+        $http.get( '/families.json?selected_day=' + scope.selected_day )
+          .success(function( data ) {
+            scope.families = data.families;
+            scope.hasFamilies = true;
+        });
+    });
 
     // Fecha de entrada a día de hoy
     scope.familyForm.from =  $filter('date')(new Date(), 'dd/MM/yyyy');
@@ -30,14 +45,14 @@
     scope.alertaCreado = $state.params.alertaCreado;
 
     // La alerta se oculta después de 5 segundos
-    $timeout(function() { scope.alertaCreado = false; }, 5000);
+    $timeout(function() { scope.alertaCreado = false; }, 1000);
 
     scope.alertaBorrado = $state.params.alertaBorrado;
     // La alerta se oculta después de 5 segundos
-    $timeout(function() { scope.alertaBorrado = false; }, 5000);
+    $timeout(function() { scope.alertaBorrado = false; }, 1000);
     $rootScope.prolibertas = "Lista de Familias";
 
-    $http.get('/families.json')
+    $http.get('/families.json?selected_day=' + scope.selected_day)
       .success(function(data) {
         scope.families = data.families;
       });
@@ -49,18 +64,20 @@
       }
     };
 
+    scope.isTrue = function(value) { if (value) { return "Sí"; } };
+
 // ---------------------------------------- Servicios ---------------------------------------------
 
     scope.createUsedService = function(family, service) {
       $http.post('/used_services.json',
-      {used_service: {family_id: family.id, service_id: service.id, created_at: scope.person.selected_day }} )
+      {used_service: {family_id: family.id, service_id: service.id, created_at: scope.selected_day }} )
         .success(function(data) {
           family.used_services_of_selected_day_id[service.name] = data.used_service.id;
         })
     };
 
     scope.deleteUsedService = function(family, service) {
-      $http.delete('/used_services/' + person.used_services_of_selected_day_id[service.name] + '.json')
+      $http.delete('/used_services/' + family.used_services_of_selected_day_id[service.name] + '.json')
         .success(function(data) {
           family.used_services_of_selected_day_id[service.name] = null;
         })
@@ -68,10 +85,11 @@
 
     // Método que cambia a check si está desmarcado y viceversa
     scope.changeCheckbox = function(family, service) {
+      console.log("Familia", family);
       if(family.used_services_of_selected_day_id[service.name])
         scope.deleteUsedService(family, service);
       else
-      scope.createUsedService(family, service)
+        scope.createUsedService(family, service)
     };
 
     scope.getService = function(name) {
@@ -134,21 +152,17 @@
     scope.actionForm = scope.guardarFamilia;
 
     if ($state.params.id != undefined) {
-
       scope.actionForm = scope.actualizarFamilia;
 
       $rootScope.prolibertas = "Editar Familia";
 
-      $http.get('/families/' + $state.params.id + '.json')
-        .success( function(data ) {
-          scope.familyForm = data.family;
-      });
+      $http.get('/families/' + $state.params.id + '.json').success(function(data ) {
+        scope.familyForm = data.family; });
     }
     else {
         scope.actionForm = scope.guardarFamilia;
       $rootScope.prolibertas = "Familia Nueva";
     }
-
   }]);
 
   app.controller('FamilyController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {
@@ -206,19 +220,14 @@
   }]);
 
   app.controller('FamilyReportController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {
-    var scope = this;
+    var scope      = this;
     scope.services = {};
-    scope.family = {};
+    scope.family   = {};
 
-    $http.get('/families/' + $state.params.id + '.json')
-    .success(function(data){
-      scope.family = data.family;
-    });
+    $http.get('/families/' + $state.params.id + '.json').success(function(data) {
+      scope.family = data.family; });
 
-    $http.get('/family/' + $state.params.id + '/individual_report.json')
-    .success(function(data){
-      scope.services = data;
-    });
-
+    $http.get('/family/' + $state.params.id + '/individual_report.json').success(function(data) {
+      scope.services = data; });
   }]);
 })();

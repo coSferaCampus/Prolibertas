@@ -14,17 +14,14 @@
     scope.alertaBorrado = $state.params.alertaBorrado;
     scope.alertaGuardado = $state.params.alertaGuardado;
 
-    // La alerta se oculta después de 5 segundos
-    $timeout(function(){scope.alertaCreado = false;}, 5000);
-    $timeout(function(){scope.alertaBorrado = false;}, 5000);
-    $timeout(function(){scope.alertaGuardado = false;}, 5000);
-
-    $('.datepicker').datetimepicker({
-      locale: 'es',
-      format: 'DD/MM/YYYY'
-     });
-
     $rootScope.prolibertas = "Lista de Personas"
+
+    // La alerta se oculta después de 5 segundos
+    $timeout(function() { scope.alertaCreado   = false; }, 1000);
+    $timeout(function() { scope.alertaBorrado  = false; }, 1000);
+    $timeout(function() { scope.alertaGuardado = false; }, 1000);
+
+    $('.datepicker').datetimepicker({ locale: 'es', format: 'DD/MM/YYYY' });
 
     $http.get( '/people.json?selected_day=' + scope.person.selected_day )
     .success(function(data){

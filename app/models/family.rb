@@ -41,17 +41,19 @@ class Family
   validates_uniqueness_of :identifier, case_sensitive: false
   validates :identifier,  format: { with: /\w*/ }
 
-# Método que devolverá usos de servicio para el día en que se pida
-  def used_services_of_today
-    resultado = used_services.where(:created_at.gte => Date.today).map do |used_service|
+  # Método que devolverá usos de servicio para el día en que se pida
+  def used_services_of_selected_day
+
+    resultado = used_services.where(:created_at => $selected_day ).map do |used_service|
       [used_service.service.name, true]
     end
     Hash[resultado]
   end
 
   # Método que devolverá usos de servicio para el día en que se pida con su id
-  def used_services_of_today_id
-    resultado = used_services.where(:created_at.gte => Date.today).map do |used_service|
+  def used_services_of_selected_day_id
+
+    resultado = used_services.where(:created_at => $selected_day ).map do |used_service|
       [used_service.service.name, used_service.id.to_s]
     end
     Hash[resultado]

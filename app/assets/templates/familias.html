@@ -5,28 +5,48 @@
     <div class="row" >
       <div class="col-md-12 listpeople__buscadores">
         <form class="form-inline">
-          <div class="form-group  col-md-3">
+          <div class="form-group  col-md-2">
             <label class="sr-only"></label>
             <div class="input-group">
-              <input id="searchsurname" ng-model="filtro.surname" type="text" class="form-control" placeholder="Buscar por apellidos...">
+              <input id="searchsurname" ng-model="filtro.surname" type="text" class="form-control" placeholder="Apellidos">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-search listpeople__azul"></i>
               </span>
             </div>
           </div>
-          <div class="form-group col-md-3">
+
+          <div class="form-group col-md-2">
             <label class="sr-only"></label>
             <div class="input-group">
-              <input id="searchorigin" ng-model="filtro.origin" type="text" class="form-control" placeholder="Buscar por origen...">
+              <input id="searchorigin" ng-model="filtro.origin" type="text" class="form-control" placeholder="Origen">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-globe listpeople__azul"></i>
               </span>
             </div>
           </div>
 
-          <div class="form-group col-md-6">
-            <a class="btn btn-primary" ng-click="printDocument()" id="printFamily"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Iimprimir listado Cocina<span></a>
-            <a class="btn btn-primary pull-right" ng-if="currentUser.role !== 'volunteer'" id="createFamily" ui-sref="familiasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> AÑADIR FAMILIA<span></a>
+          <div class="form-group col-md-2">
+            <label class="sr-only"></label>
+            <div class="input-group">
+              <input id="searchidentifier" ng-model="filtro.identifier" type="text" class="form-control" placeholder="Identificador">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-globe listpeople__azul"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group col-md-2">
+            <div class="input-group datepicker">
+            <input ng-model="familyCtrl.selected_day" type="text" class="form-control" id="InputSelected_day">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-calendar listpeople__azul"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group col-md-4">
+            <a class="btn btn-primary" ng-click="printDocument()" id="printFamily"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Listado Cocina<span></a>
+            <a class="btn btn-primary pull-right" ng-if="currentUser.role !== 'volunteer'" id="createFamily" ui-sref="familiasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> FAMILIA<span></a>
           </div>
         </form>
       </div>
@@ -40,29 +60,39 @@
         <th>Apellidos</th>
         <th>Nombre</th>
         <th>Origen</th>
-        <th>ID</th>
+        <th>Identificador</th>
         <th class="listfamilies__centrado">Adultos</th>
         <th class="listfamilies__centrado">Niños</th>
-         <th class="listfamilies__centrado">Edad Niños</th>
+        <th class="listfamilies__centrado">Edad Niños</th>
         <th class="listfamilies__centrado">Alergias</th>
+        <th class="listfamilies__centrado">Musulmán</th>
         <th class="listfamilies__centrado"><img class="listfamilies__iconos" src="/assets/cutlery23.svg"></th>
-          <th class="listpeople__centrado"></th>
-          <th class="listpeople__centrado"></th>
+        <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/tshirt18.svg"></th>
+        <th class="listpeople__centrado"></th>
+        <th class="listpeople__centrado"></th>
       </tr>
     </thead>
     <tbody >
-      <tr ng-repeat="family in familyCtrl.families | filteri18n:{surname:filtro.surname} | filteri18n:{origin:filtro.origin} | orderBy: 'surname'" id="family_{{family.id}}">
+      <tr ng-repeat="family in familyCtrl.families | filteri18n:{surname:filtro.surname} | filteri18n:{origin:filtro.origin} | filteri18n:{identifier:filtro.identifier} | orderBy: 'surname'" id="family_{{family.id}}">
         <td>{{family.surname}}</td>
         <td>{{family.name}}</td>
         <td>{{family.origin}}</td>
         <td>{{family.identifier}}</td>
         <td class="listfamilies__centrado">{{family.adults}}</td>
         <td class="listfamilies__centrado">{{family.children}}</td>
-         <td class="listfamilies__centrado">{{family.birthchildren}}</td>
+        <td class="listfamilies__centrado">{{family.birthchildren}}</td>
         <td class="listfamilies__centrado">{{family.menu}}</td>
-        <td class="listfamilies__centrado">
-          <input id="comida_{{family.id}}" ng-model="family.used_services_of_today.comida"
-          ng-change="familyCtrl.changeCheckbox(family, familiesCtrl.getService('comida'))"
+        <td class="listfamilies__centrado">{{familyCtrl.isTrue(family.muslim)}}</td>
+
+        <td class="listpeople__centrado">
+          <input id="comida_{{family.id}}" ng-model="family.used_services_of_selected_day.comida"
+          ng-change="familyCtrl.changeCheckbox(family, familyCtrl.getService('comida'))"
+          type="checkbox">
+        </td>
+
+        <td class="listpeople__centrado">
+          <input id="ropa_{{family.id}}" ng-model="family.used_services_of_selected_day.ropa"
+          ng-change="familyCtrl.changeCheckbox(family, familyCtrl.getService('ropa'))"
           type="checkbox">
         </td>
 

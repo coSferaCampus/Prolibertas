@@ -55,6 +55,10 @@
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Fecha de Entrada:</strong> <span id="family_from">{{ familyCtrl.family.from | date: "dd/MM/yyyy" }}</span>
         </li>
+
+        <li class="list-group-item person__list__el" ng-if="familyCtrl.family.muslim">
+          <strong class="person__list__text__left">Musulmán:</strong> <span>Sí</span>
+        </li>
       </ul>
     </div>
 
@@ -110,10 +114,6 @@
 
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Fecha de Salida:</strong> <span id="family_to">{{ familyCtrl.family.to | date: "dd/MM/yyyy" }}</span>
-        </li>
-
-        <li class="list-group-item person__list__el" ng-if="familyCtrl.family.muslim">
-          <strong class="person__list__text__left">Musulmán:</strong> <span>Sí</span>
         </li>
       </ul>
     </div>
