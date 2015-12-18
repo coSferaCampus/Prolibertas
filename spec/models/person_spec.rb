@@ -8,6 +8,7 @@ RSpec.describe Person, type: :model do
     it { is_expected.to have_field( :name           ).of_type(String) }
     it { is_expected.to have_field( :surname        ).of_type(String) }
     it { is_expected.to have_field( :origin         ).of_type(String) }
+    it { is_expected.to have_field( :city           ).of_type(String) }
     it { is_expected.to have_field( :phone          ).of_type(String) }
     it { is_expected.to have_field( :family_status  ).of_type(String) }
     it { is_expected.to have_field( :health_status  ).of_type(String) }

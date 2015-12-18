@@ -301,10 +301,7 @@
     // Tipos de documento de identidad
     scope.id_types = ["", "NIF", "NIE", "Pasaporte", "Otro"];
 
-    $('.datepicker').datetimepicker({
-      locale: 'es',
-      format: 'DD/MM/YYYY'
-    });
+    $('.datepicker').datetimepicker({locale: 'es', format: 'DD/MM/YYYY'});
 
     scope.change = function(field) {
       if(scope.errors[field.toLowerCase()]) {

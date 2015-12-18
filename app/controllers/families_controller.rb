@@ -63,7 +63,7 @@ class FamiliesController < ApplicationController
 
   def family_params
     params.require(:family).permit(
-      :id, :name, :surname, :origin, :menu, :phone, :adults, :children, :birthchildren, :center, :socialworker, :type_of_income, :amount_of_income, :address, :assistance, :identifier, :from, :to, :id_type, :zts, :social_tlf, :muslim, :ropero_date, :ropero_time
+      :id, :name, :surname, :origin, :menu, :phone, :adults, :children, :birthchildren, :center, :socialworker, :type_of_income, :amount_of_income, :address, :assistance, :identifier, :from, :to, :id_type, :zts, :social_tlf, :muslim, :ropero_date, :ropero_time, :city
 #      , :address_type
     )
   end
