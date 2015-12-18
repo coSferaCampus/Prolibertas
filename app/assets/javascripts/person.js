@@ -4,15 +4,16 @@
   // Controllers
   app.controller('PeopleController', ['$filter', '$http', '$timeout', '$state', '$rootScope', function($filter, $http, $timeout, $state, $rootScope) {
     var scope = this;
+
     scope.sandwiches;
-    scope.person = {};
-    scope.person.selected_day =  $filter('date')(new Date(), 'dd/MM/yyyy');
-    scope.people = [];
-    scope.hasPeople = false;
-    scope.services = [];
-    scope.alertaCreado = $state.params.alertaCreado;
-    scope.alertaBorrado = $state.params.alertaBorrado;
-    scope.alertaGuardado = $state.params.alertaGuardado;
+    scope.person              = {};
+    scope.person.selected_day = $filter('date')(new Date(), 'dd/MM/yyyy');
+    scope.hasPeople           = false;
+    scope.alertaCreado        = $state.params.alertaCreado;
+    scope.alertaBorrado       = $state.params.alertaBorrado;
+    scope.alertaGuardado      = $state.params.alertaGuardado;
+    scope.people              = [];
+    scope.services            = [];
 
     $rootScope.prolibertas = "Lista de Personas"
 
@@ -21,65 +22,54 @@
     $timeout(function() { scope.alertaBorrado  = false; }, 1000);
     $timeout(function() { scope.alertaGuardado = false; }, 1000);
 
-    $('.datepicker').datetimepicker({ locale: 'es', format: 'DD/MM/YYYY' });
+    $('.datepicker').datetimepicker({locale: 'es', format: 'DD/MM/YYYY'});
 
-    $http.get( '/people.json?selected_day=' + scope.person.selected_day )
-    .success(function(data){
+    $http.get('/people.json?selected_day=' + scope.person.selected_day).success(function(data) {
       scope.people = data.people;
       scope.hasPeople = true;
     });
 
-    $http.get('/services.json')
-    .success(function(data) {
-      scope.services = data.services;
-    });
+    $http.get('/services.json').success(function(data) { scope.services = data.services; });
 
     $("#InputSelected_day").focusout( function() {
       scope.person.selected_day = $("#InputSelected_day").val();
-        $http.get( '/people.json?selected_day=' + scope.person.selected_day )
-          .success( function( data ) {
-            scope.people = data.people;
-            scope.hasPeople = true;
-        });
+      $http.get( '/people.json?selected_day=' + scope.person.selected_day )
+        .success( function( data ) {
+          scope.people = data.people;
+          scope.hasPeople = true;
+      });
     });
 
-  //función para calcular la edad a partir de la fecha de nacimiento
-   scope.anos = function (birth) {
-    if (birth === null ) {
-      return "";
+    //función para calcular la edad a partir de la fecha de nacimiento
+    scope.anos = function (birth) {
+      if (birth === null ) {
+        return "";
+      } else {
+        var e = birth.split("-");
+        var ano = e[0];
+        var mes = e[1];
+        var dia = e[2];
+
+        fecha_hoy = new Date();
+        ahora_ano = fecha_hoy.getYear();
+        ahora_mes = fecha_hoy.getMonth();
+        ahora_dia = fecha_hoy.getDate();
+        edad      = (ahora_ano + 1900) - ano;
+
+        if ( ahora_mes < (mes - 1) )                          { edad--;       }
+        if ( ( (mes - 1) == ahora_mes) && (ahora_dia < dia) ) { edad--;       }
+        if (edad > 1900)                                      { edad -= 1900; }
+
+        return edad;
+      }
     }
-      else {
-    var e = birth.split("-");
 
-    var ano =  e[0];
-    var mes =  e[1];
-    var dia =  e[2];
-
-    fecha_hoy = new Date();
-    ahora_ano = fecha_hoy.getYear();
-    ahora_mes = fecha_hoy.getMonth();
-    ahora_dia = fecha_hoy.getDate();
-    edad = (ahora_ano + 1900) - ano;
-
-      if ( ahora_mes < (mes - 1)){
-        edad--;
-     }
-     if (((mes - 1) == ahora_mes) && (ahora_dia < dia)){
-       edad--;
-     }
-     if (edad > 1900){
-       edad -= 1900;
-     }
-
-      return edad;
-    }
-}
+    scope.isTrue = function(value) { if (value) { return "Sí"; } };
 
     scope.genero = function(genero){
       if (genero == "man") {
         return 'H';
-      }
-      else if (genero == "woman") {
+      } else if (genero == "woman") {
         return 'M';
       }
     };
@@ -87,11 +77,11 @@
 // ---------------------------------------- Servicios ---------------------------------------------
 
     scope.createUsedService = function(person, service) {
-      $http.post('/used_services.json',
-      {used_service: {person_id: person.id, service_id: service.id, created_at: scope.person.selected_day }} )
-        .success(function(data) {
-          person.used_services_of_selected_day_id[service.name] = data.used_service.id;
-        })
+      $http.post('/used_services.json', {
+        used_service: { person_id: person.id, service_id: service.id, created_at: scope.person.selected_day }
+      }).success(function(data) {
+        person.used_services_of_selected_day_id[service.name] = data.used_service.id;
+      });
     };
 
     scope.deleteUsedService = function(person, service) {
@@ -165,8 +155,6 @@
           }
         });
     };
-
-
   }]);
 
   app.controller('PersonController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {
@@ -223,60 +211,60 @@
       else if(value === 1) { return 'Residente'; }
     };
 
-    scope.provincia = function(value ) {
-      if (value === 'Alava') { return 'Álava'; }
-      else if(value === 'Albacete') { return 'Albacete'; }
-      else if(value === 'Alicante') { return 'Alicante'; }
-      else if(value === 'Almeria') { return 'Almería'; }
-      else if(value === 'Asturias') { return 'Asturias'; }
-      else if(value === 'Avila') { return 'Ávila'; }
-      else if(value === 'Badajoz') { return 'Badajoz'; }
-      else if(value === 'Baleares') { return 'Baleares'; }
-      else if(value === 'Barcelona') { return 'Barcelona'; }
-      else if(value === 'Burgos') { return 'Burgos'; }
-      else if(value === 'Caceres') { return 'Cáceres'; }
-      else if(value === 'Cadiz') { return 'Cadiz'; }
-      else if(value === 'Cantabria') { return 'Cantabria'; }
-      else if(value === 'Castellon') { return 'Castellon'; }
-      else if(value === 'Ceuta') { return 'Ceuta'; }
-      else if(value === 'Ciudad_Real') { return 'Ciudad Real'; }
-      else if(value === 'Cordoba') { return 'Córdoba'; }
-      else if(value === 'Cuenca') { return 'Cuenca'; }
-      else if(value === 'Girona') { return 'Girona'; }
-      else if(value === 'Granada') { return 'Granada'; }
-      else if(value === 'Guadalajara') { return 'Guadalajara'; }
-      else if(value === 'Guipuzcoa') { return 'Guipuzcoa'; }
-      else if(value === 'Huelva') { return 'Huelva'; }
-      else if(value === 'Huesca') { return 'Huesca'; }
-      else if(value === 'Jaen') { return 'Jaén'; }
-      else if(value === 'La_Coruna') { return 'La Coruña'; }
-      else if(value === 'La_Rioja') { return 'La Rioja'; }
-      else if(value === 'Las_Palmas') { return 'Las Palmas'; }
-      else if(value === 'Leon') { return 'León'; }
-      else if(value === 'Lerida') { return 'Lérida'; }
-      else if(value === 'Lugo') { return 'Lugo'; }
-      else if(value === 'Madrid') { return 'Madrid'; }
-      else if(value === 'Malaga') { return 'Málaga'; }
-      else if(value === 'Melilla') { return 'Melilla'; }
-      else if(value === 'Murcia') { return 'Murcia'; }
-      else if(value === 'Navarra') { return 'Navarra'; }
-      else if(value === 'Orense') { return 'Orense'; }
-      else if(value === 'Palencia') { return 'Palencia'; }
-      else if(value === 'Pontevedra') { return 'Pontevedra'; }
-      else if(value === 'Salamanca') { return 'Salamanca'; }
-      else if(value === 'Segovia') { return 'Segovia'; }
-      else if(value === 'Sevilla') { return 'Sevilla'; }
-      else if(value === 'Soria') { return 'Soria'; }
-      else if(value === 'Tarragona') { return 'Tarragona'; }
-      else if(value === 'Tenerife') { return 'Tenerife'; }
-      else if(value === 'Teruel') { return 'Teruel'; }
-      else if(value === 'Toledo') { return 'Toledo'; }
-      else if(value === 'Valencia') { return 'Valencia'; }
-      else if(value === 'Valladolid') { return 'Valladolid'; }
-      else if(value === 'Vizcaya') { return 'Vizcaya'; }
-      else if(value === 'Zamora') { return 'Zamora'; }
-      else if(value === 'Zaragoza') { return 'Zaragoza'; }
-      else { return value; }
+    scope.provincia = function(value) {
+      if      ( value === 'Alava'       ) { return 'Álava';       }
+      else if ( value === 'Albacete'    ) { return 'Albacete';    }
+      else if ( value === 'Alicante'    ) { return 'Alicante';    }
+      else if ( value === 'Almeria'     ) { return 'Almería';     }
+      else if ( value === 'Asturias'    ) { return 'Asturias';    }
+      else if ( value === 'Avila'       ) { return 'Ávila';       }
+      else if ( value === 'Badajoz'     ) { return 'Badajoz';     }
+      else if ( value === 'Baleares'    ) { return 'Baleares';    }
+      else if ( value === 'Barcelona'   ) { return 'Barcelona';   }
+      else if ( value === 'Burgos'      ) { return 'Burgos';      }
+      else if ( value === 'Caceres'     ) { return 'Cáceres';     }
+      else if ( value === 'Cadiz'       ) { return 'Cadiz';       }
+      else if ( value === 'Cantabria'   ) { return 'Cantabria';   }
+      else if ( value === 'Castellon'   ) { return 'Castellon';   }
+      else if ( value === 'Ceuta'       ) { return 'Ceuta';       }
+      else if ( value === 'Ciudad_Real' ) { return 'Ciudad Real'; }
+      else if ( value === 'Cordoba'     ) { return 'Córdoba';     }
+      else if ( value === 'Cuenca'      ) { return 'Cuenca';      }
+      else if ( value === 'Girona'      ) { return 'Girona';      }
+      else if ( value === 'Granada'     ) { return 'Granada';     }
+      else if ( value === 'Guadalajara' ) { return 'Guadalajara'; }
+      else if ( value === 'Guipuzcoa'   ) { return 'Guipuzcoa';   }
+      else if ( value === 'Huelva'      ) { return 'Huelva';      }
+      else if ( value === 'Huesca'      ) { return 'Huesca';      }
+      else if ( value === 'Jaen'        ) { return 'Jaén';        }
+      else if ( value === 'La_Coruna'   ) { return 'La Coruña';   }
+      else if ( value === 'La_Rioja'    ) { return 'La Rioja';    }
+      else if ( value === 'Las_Palmas'  ) { return 'Las Palmas';  }
+      else if ( value === 'Leon'        ) { return 'León';        }
+      else if ( value === 'Lerida'      ) { return 'Lérida';      }
+      else if ( value === 'Lugo'        ) { return 'Lugo';        }
+      else if ( value === 'Madrid'      ) { return 'Madrid';      }
+      else if ( value === 'Malaga'      ) { return 'Málaga';      }
+      else if ( value === 'Melilla'     ) { return 'Melilla';     }
+      else if ( value === 'Murcia'      ) { return 'Murcia';      }
+      else if ( value === 'Navarra'     ) { return 'Navarra';     }
+      else if ( value === 'Orense'      ) { return 'Orense';      }
+      else if ( value === 'Palencia'    ) { return 'Palencia';    }
+      else if ( value === 'Pontevedra'  ) { return 'Pontevedra';  }
+      else if ( value === 'Salamanca'   ) { return 'Salamanca';   }
+      else if ( value === 'Segovia'     ) { return 'Segovia';     }
+      else if ( value === 'Sevilla'     ) { return 'Sevilla';     }
+      else if ( value === 'Soria'       ) { return 'Soria';       }
+      else if ( value === 'Tarragona'   ) { return 'Tarragona';   }
+      else if ( value === 'Tenerife'    ) { return 'Tenerife';    }
+      else if ( value === 'Teruel'      ) { return 'Teruel';      }
+      else if ( value === 'Toledo'      ) { return 'Toledo';      }
+      else if ( value === 'Valencia'    ) { return 'Valencia';    }
+      else if ( value === 'Valladolid'  ) { return 'Valladolid';  }
+      else if ( value === 'Vizcaya'     ) { return 'Vizcaya';     }
+      else if ( value === 'Zamora'      ) { return 'Zamora';      }
+      else if ( value === 'Zaragoza'    ) { return 'Zaragoza';    }
+      else                                { return value;         }
     };
 
     scope.destroyPerson = function(person) {

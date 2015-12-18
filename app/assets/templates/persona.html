@@ -65,11 +65,11 @@
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Notas:</strong> <span id="person_notes">{{ personCtrl.person.notes }}</span>
+          <strong class="person__list__text__left">Fecha de alta:</strong> <span id="person_entry">{{ personCtrl.person.entry | date: "dd/MM/yyyy" }}</span>
         </li>
 
         <li class="list-group-item person__list__el">
-          <strong class="person__list__text__left">Fecha de alta:</strong> <span id="person_entry">{{ personCtrl.person.entry | date: "dd/MM/yyyy" }}</span>
+          <strong class="person__list__text__left">Notas:</strong> <span id="person_notes">{{ personCtrl.person.notes }}</span>
         </li>
       </ul>
     </div>

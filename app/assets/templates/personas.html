@@ -69,6 +69,7 @@
           <th class="listpeople__centrado">S</th>
           <th class="listpeople__centrado">Edad</th>
           <th class="listpeople__centrado">Alergias</th>
+          <th class="listfamilies__centrado">Musulmán</th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/cutlery23.svg"></th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/tshirt18.svg"></th>
           <th class="listpeople__centrado"><img class="listpeople__iconos" src="/assets/shower17.svg"></th>
@@ -86,6 +87,7 @@
           <td class="listpeople__centrado">{{peopleCtrl.genero(person.genre)}}</td>
           <td class="listpeople__centrado">{{peopleCtrl.anos(person.birth)}}</td>
           <td class="listpeople__centrado">{{person.menu}}</td>
+          <td class="listfamilies__centrado">{{peopleCtrl.isTrue(person.muslim)}}</td>
           <td class="listpeople__centrado">
             <input id="comida_{{person.id}}" ng-model="person.used_services_of_selected_day.comida"
             ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('comida'))"
