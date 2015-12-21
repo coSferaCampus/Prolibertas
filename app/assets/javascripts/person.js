@@ -6,14 +6,14 @@
     var scope = this;
 
     scope.sandwiches;
-    scope.person              = {};
-    scope.person.selected_day = $filter('date')(new Date(), 'dd/MM/yyyy');
-    scope.hasPeople           = false;
-    scope.alertaCreado        = $state.params.alertaCreado;
-    scope.alertaBorrado       = $state.params.alertaBorrado;
-    scope.alertaGuardado      = $state.params.alertaGuardado;
-    scope.people              = [];
-    scope.services            = [];
+    scope.person         = {};
+    scope.selected_day   = $filter('date')(new Date(), 'dd/MM/yyyy');
+    scope.hasPeople      = false;
+    scope.alertaCreado   = $state.params.alertaCreado;
+    scope.alertaBorrado  = $state.params.alertaBorrado;
+    scope.alertaGuardado = $state.params.alertaGuardado;
+    scope.people         = [];
+    scope.services       = [];
 
     $rootScope.prolibertas = "Lista de Personas"
 
@@ -24,20 +24,26 @@
 
     $('.datepicker').datetimepicker({locale: 'es', format: 'DD/MM/YYYY'});
 
-    $http.get('/people.json?selected_day=' + scope.person.selected_day).success(function(data) {
-      scope.people = data.people;
-      scope.hasPeople = true;
-    });
+    // Lista las personas y las filtra
+    scope.getPeople = function() {
+      params = "";
+      if ( scope.filtro_surname    ) { params += '&surname='    + scope.filtro_surname;    }
+      if ( scope.filtro_origin     ) { params += '&origin='     + scope.filtro_origin;     }
+      if ( scope.filtro_identifier ) { params += '&identifier=' + scope.filtro_identifier; }
+      if ( scope.filtro_spanish    ) { params += '&spanish='    + scope.filtro_spanish;    }
+
+      $http.get('/people.json?selected_day=' + scope.selected_day + params).success(function(data) {
+        scope.people = data.people;
+        scope.hasPeople = true;
+      });
+    }
+    scope.getPeople();
 
     $http.get('/services.json').success(function(data) { scope.services = data.services; });
 
     $("#InputSelected_day").focusout( function() {
       scope.person.selected_day = $("#InputSelected_day").val();
-      $http.get( '/people.json?selected_day=' + scope.person.selected_day )
-        .success( function( data ) {
-          scope.people = data.people;
-          scope.hasPeople = true;
-      });
+      scope.getPeople();
     });
 
     //función para calcular la edad a partir de la fecha de nacimiento

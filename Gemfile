@@ -6,18 +6,14 @@ gem 'rails', '4.2.0'
 # Convertir datos mongoDB en objetos de Ruby
 gem 'mongoid', '~> 4.0.1'
 gem 'mongoid_userstamp', '~> 0.4.0'
-gem 'carrierwave-mongoid' #gema para subir ficheros
-
-gem 'd3-rails', '~> 3.5.5'
-
-# Para el registro de usuarios
-gem 'devise', '~> 3.4.1'
-# Roles
-gem "rolify", '~> 4.0.0'
-# Permisos de usuario
-gem 'cancancan', '~> 1.10'
-# Para comprimir el javascript
-gem "uglifier", '~> 2.7.1'
+gem 'mongoid-normalize-strings'
+gem 'carrierwave-mongoid'  # Subir ficheros
+gem 'd3-rails', '~> 3.5.5' # Gráficas
+gem 'devise', '~> 3.4.1'   # Para el registro de usuarios
+gem "rolify", '~> 4.0.0'   # Roles
+gem 'cancancan', '~> 1.10' # Permisos de usuario
+gem "uglifier", '~> 2.7.1' # Para comprimir el javascript
+gem 'kaminari'             # Paginación
 
 # Convierte objetos de nuestros modelos en json
 gem 'active_model_serializers', '~> 0.9.3'

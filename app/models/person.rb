@@ -1,5 +1,6 @@
 class Person
   include Mongoid::Document
+  include Mongoid::NormalizeStrings
   include Mongoid::Timestamps
   include Mongoid::Userstamp
 
@@ -32,6 +33,10 @@ class Person
   field :entry,           type: Date
   field :output,          type: Date
   field :muslim,          type: Boolean, default: false
+
+  normalize :surname
+  normalize :origin
+  normalize :identifier
 
   has_many :used_services
   has_many :alerts
