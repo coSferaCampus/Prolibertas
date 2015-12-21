@@ -52,7 +52,7 @@ class PeopleController < ApplicationController
       @autors.uniq!.each_with_index  { |v, i| autors        += i == 0 ? v : ", " + v }
       @service_names.each_with_index { |v, i| service_names += i == 0 ? v : ", " + v }
 
-      @individual_report << { "date": date, "autors": autors, "services": service_names }
+      @individual_report << { date: date, autors: autors, services: service_names }
     end
 
      respond_with @individual_report.to_json

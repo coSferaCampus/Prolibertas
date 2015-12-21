@@ -3,55 +3,46 @@
 
   // Controllers
   app.controller('UsersController', ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope) {
-    var scope = this;
-    scope.users = [];
+    var scope              = this;
+    scope.users            = [];
     $rootScope.prolibertas = "Usuarios de Prolibertas";
 
     scope.alertaBorrado = $state.params.alertaBorrado;
-    // La alerta se oculta después de 5 segundos
-    $timeout(function(){scope.alertaBorrado = false;}, 5000);
-
+    $timeout(function() { scope.alertaBorrado = false; }, 1000);
     scope.alertaCreado = $state.params.alertaCreado;
-    // La alerta se oculta después de 5 segundos
-    $timeout(function(){scope.alertaCreado = false;}, 5000);
+    $timeout(function() { scope.alertaCreado = false; }, 1000);
 
-    $http.get('/users.json')
-      .success(function(data){
-        scope.users = data.users;
-      })
+    $http.get('/users.json').success(function(data) {
+      scope.users = data.users;
+    });
 
     scope.rol = function(rol) {
-      if (rol == "worker") {
+      if (rol === "worker") {
         return 'Trabajador Social';
-      }
-      else if (rol == "director") {
+      } else if (rol === "director") {
         return 'Director';
-      }
-      else {
+      } else {
         return 'Voluntario';
       }
     };
 
   }]);
 
-  app.controller('UserController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope ) {
-    var scope = this;
+  app.controller('UserController',  ['$http', '$timeout', '$state', '$rootScope', function($http, $timeout, $state, $rootScope) {
+    var scope  = this;
     scope.user = {};
 
-    $http.get('/users/' + $state.params.id + '.json')
-    .success(function(data){
-      scope.user = data.user;
+    $http.get('/users/' + $state.params.id + '.json').success(function(data) {
+      scope.user             = data.user;
       $rootScope.prolibertas = scope.user.name
     });
 
     scope.rol = function(rol) {
-      if (rol == "worker") {
+      if (rol === "worker") {
         return 'Trabajador Social';
-      }
-      else if (rol == "director") {
+      } else if (rol == "director") {
         return 'Director';
-      }
-      else {
+      } else {
         return 'Voluntario';
       }
     };
@@ -60,20 +51,18 @@
       var confirmed = confirm('¿Desea borrar a ' + user.name + '?');
       if (confirmed) {
         $http.delete('/users/' + user.id + '.json').success(function(data) {
-          $state.go("usuarios", { alertaBorrado: 'true' })
+          $state.go("usuarios", { alertaBorrado: 'true' });
         });
       }
     };
   }]);
 
   app.controller('UserFormController', ['$http', '$state', '$rootScope', function($http, $state, $rootScope) {
-    var scope = this;
-    // variable para el formulario
+    var scope      = this;
     scope.userForm = {role: "volunteer"};
-    //variable para los errores
-    scope.errors = {};
+    scope.errors   = {};
 
-    scope.change = function(field) {
+    scope.change   = function(field) {
       if(scope.errors[field.toLowerCase()]) {
         $("#Input" + field).tooltip('destroy');
         scope.errors[field.toLowerCase()] = false
@@ -82,20 +71,18 @@
 
 
     scope.guardarUsuario = function() {
-      $http.post('/users.json', {user: scope.userForm})
-        .success(function(data){
-          $state.go('usuarios', { alertaCreado: 'true' });
-        })
-        .error(function(data) {
-          scope.errors = data.errors;
+      $http.post('/users.json', {user: scope.userForm}).success(function(data) {
+        $state.go('usuarios', { alertaCreado: 'true' });
+      }).error(function(data) {
+        scope.errors = data.errors;
 
-          for(var error in scope.errors) {
-            if(scope.errors[error]) {
-              $("#Input" + $rootScope.capitalize(error))
-                .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');
-            }
+        for(var error in scope.errors) {
+          if(scope.errors[error]) {
+            $("#Input" + $rootScope.capitalize(error))
+              .tooltip({trigger: 'manual', title: scope.errors[error].join(', ')}).tooltip('show');
           }
-        });
+        }
+      });
     };
 
     scope.actualizarUsuario = function() {
@@ -124,16 +111,13 @@
 
     if ($state.params.id != undefined) {
       scope.actionForm = scope.actualizarUsuario
-      $http.get('/users/' + $state.params.id + '.json')
-      .success(function(data){
-        scope.userForm = data.user;
+      $http.get('/users/' + $state.params.id + '.json').success(function(data) {
+        scope.userForm         = data.user;
         $rootScope.prolibertas = "Editar Usuario"
       });
-    }
-    else {
-      scope.actionForm = scope.guardarUsuario;
+    } else {
+      scope.actionForm       = scope.guardarUsuario;
       $rootScope.prolibertas = "Crear Usuario"
     }
-
   }]);
 })();

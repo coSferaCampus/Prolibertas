@@ -53,7 +53,7 @@ class FamiliesController < ApplicationController
       autores.each_with_index        { |v, i| autors        += i == 0 ? v : ", " + v }
       @service_names.each_with_index { |v, i| service_names += i == 0 ? v : ", " + v }
 
-      @individual_report << { "date": date, "autors": autors, "services": service_names }
+      @individual_report << { date: date, autors: autors, services: service_names }
     end
 
      respond_with @individual_report.to_json
@@ -63,7 +63,9 @@ class FamiliesController < ApplicationController
 
   def family_params
     params.require(:family).permit(
-      :id, :name, :surname, :origin, :menu, :phone, :adults, :children, :birthchildren, :center, :socialworker, :type_of_income, :amount_of_income, :address, :assistance, :identifier, :from, :to, :id_type, :zts, :social_tlf, :muslim, :ropero_date, :ropero_time, :city
+      :id, :name, :surname, :origin, :menu, :phone, :adults, :children, :birthchildren, :center,
+      :socialworker, :type_of_income, :amount_of_income, :address, :assistance, :identifier, :from,
+      :to, :id_type, :zts, :social_tlf, :muslim, :ropero_date, :ropero_time, :city
 #      , :address_type
     )
   end

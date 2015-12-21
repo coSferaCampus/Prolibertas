@@ -7,11 +7,11 @@
     scope.alertaCreado = $state.params.alertaCreado;
 
     // La alerta se oculta después de 3 segundos
-    $timeout(function(){scope.alertaCreado = false;}, 5000);
+    $timeout(function() { scope.alertaCreado = false; }, 1000);
 
     scope.alertaBorrado = $state.params.alertaBorrado;
     // La alerta se oculta después de 3 segundos
-    $timeout(function(){scope.alertaBorrado = false;}, 5000);
+    $timeout(function() { scope.alertaBorrado = false; }, 1000);
 
 
     $http.get("/people/" + $state.params.id + "/alerts.json")
@@ -19,29 +19,26 @@
         scope.alerts = data.alerts;
       })
 
-    scope.tipo = function(tipo){
-      if (tipo == "punishment") {
+    scope.tipo = function(tipo) {
+      if (tipo === "punishment") {
         return 'sanción';
       }
-      else if (tipo == "warning") {
+      else if (tipo === "warning") {
         return 'advertencia';
       }
-      else if (tipo == "advice") {
+      else if (tipo === "advice") {
         return 'consejo';
       }
     }
 
     scope.alertClass = function(alert) {
-      if (alert.type == 'punishment') {
+      if (alert.type === 'punishment') {
         return 'danger';
-      }
-      else if (alert.type == 'warning') {
+      } else if (alert.type === 'warning') {
         return 'warning';
-      }
-      else if (alert.type == 'advice') {
+      } else if (alert.type === 'advice') {
         return 'success';
-      }
-      else {
+      } else {
         return '';
       }
     };
@@ -52,19 +49,17 @@
     var scope = this;
     scope.alert = {};
 
-    $http.get("/alerts/" + $state.params.alerta_id + ".json")
-    .success(function(data){
+    $http.get("/alerts/" + $state.params.alerta_id + ".json").success(function(data) {
       scope.alert = data.alert;
-    })
+    });
 
-    scope.tipo = function(tipo){
-      if (tipo == "punishment") {
+    scope.tipo = function(tipo) {
+      if (tipo === "punishment") {
         return 'sanción';
       }
-      else if (tipo == "warning") {
+      else if (tipo === "warning") {
         return 'advertencia';
-      }
-      else if (tipo == "advice") {
+      } else if (tipo === "advice") {
         return 'consejo';
       }
     };
@@ -141,18 +136,14 @@
 
     if ($state.params.alerta_id != undefined) {
       scope.actionForm = scope.actualizarAlerta;
-      $http.get('/alerts/' + $state.params.alerta_id + '.json')
-      .success(function(data){
-        scope.alertForm = data.alert;
+      $http.get('/alerts/' + $state.params.alerta_id + '.json').success(function(data) {
+        scope.alertForm        = data.alert;
         $rootScope.prolibertas = "Editar Alerta"
       });
     }
     else {
-      scope.actionForm = scope.guardarAlerta;
+      scope.actionForm       = scope.guardarAlerta;
       $rootScope.prolibertas = "Crear Alerta"
     }
-
   }]);
-
-
 })();

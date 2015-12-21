@@ -29,6 +29,10 @@
           <strong class="person__list__text__left">Origen:</strong> <span id="family_origin">{{ familyCtrl.family.origin }}</span>
         </li>
 
+        <li ng-if="familyCtrl.family.origin === 'España'" class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Provincia:</strong> <span id="city">{{ familyCtrl.provincia(familyCtrl.family.city) }}</span>
+        </li>
+
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Alergias:</strong> <span id="family_menu">{{ familyCtrl.family.menu }}</span>
         </li>
