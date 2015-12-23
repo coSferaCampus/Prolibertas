@@ -111,7 +111,12 @@
           <th class="listpeople__centrado"></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody
+        infinite-scroll="peopleCtrl.paginate()"
+        infinite-scroll-distance="3"
+        infinite-scroll-immediate-check="scope.page == scope.max_pages"
+        infinite-scroll-disabled="scope.loading"
+        >
         <tr ng-repeat="person in peopleCtrl.people"
           id="person_{{person.id}}"
           class="{{peopleCtrl.alertClass(person)}}">
@@ -153,7 +158,7 @@
     </table>
   </section>
 
-  <div class="container col-md-12" ng-if="!peopleCtrl.hasPeople">
+  <div class="container col-md-12" ng-if="peopleCtrl.loading">
     <button class="btn btn-lg btn-warning col-md-offset-5"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Cargando...</button>
   </div>
 

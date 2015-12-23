@@ -219,6 +219,8 @@ GEM
     rails-assets-angular-ui-router (0.2.13)
       rails-assets-angular (>= 1.0.8)
     rails-assets-ng-file-upload (3.2.4)
+    rails-assets-ngInfiniteScroll (1.2.1)
+      rails-assets-angular (>= 1.2.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.5)
@@ -331,6 +333,7 @@ DEPENDENCIES
   rails-assets-angular-permission (~> 0.2.0)!
   rails-assets-angular-ui-router (~> 0.2.13)!
   rails-assets-ng-file-upload!
+  rails-assets-ngInfiniteScroll!
   rolify (~> 4.0.0)
   rspec-expectations (~> 3.2.0)
   rspec-rails (~> 3.2.1)

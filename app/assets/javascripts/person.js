@@ -6,9 +6,11 @@
     var scope = this;
 
     scope.sandwiches;
+    scope.totalResources = 0;
+    scope.page = 1;
     scope.person         = {};
     scope.selected_day   = $filter('date')(new Date(), 'dd/MM/yyyy');
-    scope.hasPeople      = false;
+    scope.loading        = true;
     scope.alertaCreado   = $state.params.alertaCreado;
     scope.alertaBorrado  = $state.params.alertaBorrado;
     scope.alertaGuardado = $state.params.alertaGuardado;
@@ -26,18 +28,46 @@
 
     // Lista las personas y las filtra
     scope.getPeople = function() {
+      scope.page = 1;
       params = "";
       if ( scope.filtro_surname    ) { params += '&surname='    + scope.filtro_surname;    }
       if ( scope.filtro_origin     ) { params += '&origin='     + scope.filtro_origin;     }
       if ( scope.filtro_identifier ) { params += '&identifier=' + scope.filtro_identifier; }
       if ( scope.filtro_spanish    ) { params += '&spanish='    + scope.filtro_spanish;    }
 
-      $http.get('/people.json?selected_day=' + scope.selected_day + params).success(function(data) {
-        scope.people = data.people;
-        scope.hasPeople = true;
+      scope.loading = true;
+      $http.get('/people.json?page=' + scope.page + '&selected_day=' + scope.selected_day + params)
+      .success(function(data) {
+        scope.people         = data.people;
+        scope.totalResources = data.total_people;
+        scope.max_pages      = data.max_pages;
+        scope.loading        = false;
       });
-    }
+    };
     scope.getPeople();
+
+    scope.paginate = function() {
+      if( scope.loading )
+        return
+      if( scope.page > scope.max_pages )
+        return
+
+      scope.page = scope.page + 1;
+      params = "";
+      if ( scope.filtro_surname    ) { params += '&surname='    + scope.filtro_surname;    }
+      if ( scope.filtro_origin     ) { params += '&origin='     + scope.filtro_origin;     }
+      if ( scope.filtro_identifier ) { params += '&identifier=' + scope.filtro_identifier; }
+      if ( scope.filtro_spanish    ) { params += '&spanish='    + scope.filtro_spanish;    }
+
+      scope.loading = true;
+      $http.get('/people.json?page=' + scope.page + '&selected_day=' + scope.selected_day + params)
+      .success(function(data) {
+        data.people.forEach(function(person) {
+          scope.people.push(person);
+        });
+        scope.loading = false;
+      });
+    };
 
     $http.get('/services.json').success(function(data) { scope.services = data.services; });
 
@@ -72,10 +102,10 @@
 
     scope.isTrue = function(value) { if (value) { return "Sí"; } };
 
-    scope.genero = function(genero){
-      if (genero == "man") {
+    scope.genero = function(genero) {
+      if (genero === "man") {
         return 'H';
-      } else if (genero == "woman") {
+      } else if (genero === "woman") {
         return 'M';
       }
     };

@@ -1,6 +1,6 @@
 (function() {
 
-  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-article', 'prolibertas-alert', 'prolibertas-service', 'prolibertas-family']);
+  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-article', 'prolibertas-alert', 'prolibertas-service', 'prolibertas-family', 'infinite-scroll']);
 
   // Config
   app.config(function($urlRouterProvider, $stateProvider, $httpProvider) {

@@ -22,5 +22,6 @@
 //= require angular-ui-router
 //= require angular-rails-templates
 //= require ng-file-upload
+//= require ngInfiniteScroll
 //= require_tree .
 //= require_tree ../templates

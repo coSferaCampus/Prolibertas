@@ -35,6 +35,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular-local-storage', '~> 0.1.5'
   gem 'rails-assets-angular-permission', '~> 0.2.0'
   gem 'rails-assets-ng-file-upload'
+  gem 'rails-assets-ngInfiniteScroll'
 end
 
 # Estas gemas sólo se usan en el entorno de desarrollo (development)

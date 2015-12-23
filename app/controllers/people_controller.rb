@@ -2,7 +2,7 @@ class PeopleController < ApplicationController
   before_action :determine_scope, only: :index
   before_action :set_total,       only: :index
   before_action :filter_scope,    only: :index
-#  before_action :paginate,        only: :index
+  before_action :paginate,        only: :index
 
   respond_to :json
   load_and_authorize_resource param_method: :person_params
@@ -11,7 +11,8 @@ class PeopleController < ApplicationController
     $selected_day = params[:selected_day]
     @people       = @scope
 
-    respond_with @people
+    render json: { people: @people, total_people: @total_people, total_scope: @total_scope,
+      max_pages: max_pages }
   end
 
   def show
@@ -80,7 +81,7 @@ class PeopleController < ApplicationController
   end
 
   def set_total
-    @total_activities = @scope.size
+    @total_people = @scope.size
   end
 
   # Determine the filters of the index action
