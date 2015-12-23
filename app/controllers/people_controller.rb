@@ -11,8 +11,8 @@ class PeopleController < ApplicationController
     $selected_day = params[:selected_day]
     @people       = @scope
 
-    render json: { people: @people, total_people: @total_people, total_scope: @total_scope,
-      max_pages: max_pages }
+    respond_with @people
+#    render json: { people: @people, total_people: @total_people, total_scope: @total_scope, max_pages: max_pages }
   end
 
   def show
@@ -81,7 +81,7 @@ class PeopleController < ApplicationController
   end
 
   def set_total
-    @total_people = @scope.size
+    $total_people = @scope.size
   end
 
   # Determine the filters of the index action

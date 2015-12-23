@@ -57,6 +57,14 @@ class Person
     set(exp: "%05d" % Person.all.size)
   end
 
+  def total_people
+    $total_people
+  end
+
+  def max_pages
+    ($total_people / 30.0).ceil
+  end
+
   def is_spanish
     if (self.origin != nil)
       if (self.origin.downcase == "españa" || self.origin.upcase == "ESPAÑA")

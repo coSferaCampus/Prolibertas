@@ -7,7 +7,7 @@
 
     scope.sandwiches;
     scope.totalResources = 0;
-    scope.page = 1;
+    scope.page           = 1;
     scope.person         = {};
     scope.selected_day   = $filter('date')(new Date(), 'dd/MM/yyyy');
     scope.loading        = true;
@@ -39,8 +39,8 @@
       $http.get('/people.json?page=' + scope.page + '&selected_day=' + scope.selected_day + params)
       .success(function(data) {
         scope.people         = data.people;
-        scope.totalResources = data.total_people;
-        scope.max_pages      = data.max_pages;
+        scope.totalResources = data.people[0].total_people;
+        scope.max_pages      = data.people[0].max_pages;
         scope.loading        = false;
       });
     };
@@ -72,7 +72,7 @@
     $http.get('/services.json').success(function(data) { scope.services = data.services; });
 
     $("#InputSelected_day").focusout( function() {
-      scope.person.selected_day = $("#InputSelected_day").val();
+      scope.selected_day = $("#InputSelected_day").val();
       scope.getPeople();
     });
 
@@ -142,7 +142,7 @@
 // -------------------------------------- FIN Servicios -------------------------------------------
 
     scope.alertClass = function(person) {
-      if (person.pending_alerts.length > 0){
+      if (person && person.pending_alerts && person.pending_alerts.length > 0) {
         if (person.pending_alerts[0].type == 'punishment') {
           return 'danger';
         }

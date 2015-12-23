@@ -25,13 +25,13 @@ class ApplicationController < ActionController::Base
     if not @scope.empty?
       @total_scope = @scope.size
       @scope = @scope.page( params[:page] ).per(
-        params[:page_size] || Kaminari.config.default_per_page)
+        params[:page_size] || 30)
     end
   end
 
   def max_pages
     if params[:page]
-      (@scope.length / (params[:page_size] || Kaminari.config.default_per_page).to_f).ceil
+      (@scope.length / (params[:page_size] || 30).to_f).ceil
     end
   end
 
