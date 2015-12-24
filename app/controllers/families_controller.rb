@@ -2,14 +2,19 @@ class FamiliesController < ApplicationController
   respond_to :json
   load_and_authorize_resource param_method: :family_params
 
-  def show
-    respond_with @family
-  end
-
   def index
     $selected_day = params[:selected_day]
     @families = Family.all
+
+    if params[:kitchen]
+      @families = @families.where(:from.lte => $selected_day, :to.gte => $selected_day)
+    end
+
     respond_with @families
+  end
+
+  def show
+    respond_with @family
   end
 
   def create

@@ -65,9 +65,14 @@
 
           <div class="form-group col-md-2">
             <div class="input-group">
-              <input id="InputSandwiches" ng-model="peopleCtrl.sandwiches" type="text" class="form-control" placeholder="Bocadillos">
+              <input id="InputSandwiches"
+                ng-model="peopleCtrl.sandwiches"
+                type="text" class="form-control"
+                placeholder="Bocadillos">
               <span class="input-group-addon">
-                <a class="glyphicon glyphicon glyphicon-save listpeople__azul" ng-click="peopleCtrl.guardarSandwiches();"></a>
+                <a class="glyphicon glyphicon glyphicon-save listpeople__azul"
+                  ng-click="peopleCtrl.guardarSandwiches();">
+                </a>
               </span>
             </div>
           </div>
@@ -93,7 +98,9 @@
   </nav>
 
   <section class="listpeople__tabla col-md-12">
-    <table class="table table-responsive table-hover table-condensed col-md-12  col-lg-12" id="peopleTable">
+    <table
+      class="table table-responsive table-hover table-condensed col-md-12  col-lg-12"
+      id="peopleTable">
       <thead class="listpeople__cabecera">
         <tr>
           <th>Apellidos</th>
@@ -129,29 +136,39 @@
           <td class="listpeople__centrado">{{person.menu}}</td>
           <td class="listfamilies__centrado">{{peopleCtrl.isTrue(person.muslim)}}</td>
           <td class="listpeople__centrado">
-            <input id="comida_{{person.id}}" ng-model="person.used_services_of_selected_day.comida"
-            ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('comida'))"
-            type="checkbox">
+            <input
+              id="comida_{{person.id}}"
+              ng-model="person.used_services_of_selected_day.comida"
+              ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('comida'))"
+              type="checkbox">
           </td>
           <td class="listpeople__centrado">
-            <input id="ropa_{{person.id}}" ng-model="person.used_services_of_selected_day.ropa"
-            ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ropa'))"
-            type="checkbox">
+            <input
+              id="ropa_{{person.id}}"
+              ng-model="person.used_services_of_selected_day.ropa"
+              ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ropa'))"
+              type="checkbox">
           </td>
           <td class="listpeople__centrado">
-            <input id="ducha_{{person.id}}" ng-model="person.used_services_of_selected_day.ducha"
-            ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ducha'))"
-            type="checkbox">
+            <input
+              id="ducha_{{person.id}}"
+              ng-model="person.used_services_of_selected_day.ducha"
+              ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('ducha'))"
+              type="checkbox">
           </td>
             <td class="listpeople__centrado">
-            <input id="desayuno_{{person.id}}" ng-model="person.used_services_of_selected_day.desayuno"
-            ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('desayuno'))"
+            <input
+              id="desayuno_{{person.id}}"
+              ng-model="person.used_services_of_selected_day.desayuno"
+              ng-change="peopleCtrl.changeCheckbox(person, peopleCtrl.getService('desayuno'))"
             type="checkbox">
           </td>
 
-          <td class="listpeople__centrado"><a id="person-show-{{person.id}}"
-            ui-sref="persona({ id: person.id })">
-            <span class="glyphicon glyphicon-eye-open listpeople__azul"></span></a>
+          <td class="listpeople__centrado">
+            <a id="person-show-{{person.id}}"
+              ui-sref="persona({ id: person.id })">
+              <span class="glyphicon glyphicon-eye-open listpeople__azul"></span>
+            </a>
           </td>
         </tr>
       </tbody>

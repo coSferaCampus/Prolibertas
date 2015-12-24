@@ -16,10 +16,7 @@
 
     $("#InputSelected_day").focusout( function() {
       scope.selected_day = $("#InputSelected_day").val();
-        $http.get('/families.json?selected_day=' + scope.selected_day).success(function(data) {
-          scope.families = data.families;
-          scope.hasFamilies = true;
-        });
+      scope.getFamilies();
     });
 
     // Fecha de entrada a día de hoy
@@ -51,9 +48,15 @@
     $timeout(function() { scope.alertaBorrado = false; }, 1000);
     $rootScope.prolibertas = "Lista de Familias";
 
-    $http.get('/families.json?selected_day=' + scope.selected_day).success(function(data) {
-      scope.families = data.families;
-    });
+    scope.getFamilies = function() {
+      var url = '/families.json?selected_day=' + scope.selected_day
+      if (scope.kitchen) { url += "&kitchen=true" };
+      $http.get(url).success(function(data) {
+        scope.families = data.families;
+        scope.hasFamilies = true;
+      });
+    }
+    scope.getFamilies();
 
     scope.change = function(field) {
       if (scope.errors[field.toLowerCase()]) {

@@ -8,7 +8,12 @@
           <div class="form-group  col-md-2">
             <label class="sr-only"></label>
             <div class="input-group">
-              <input id="searchsurname" ng-model="filtro.surname" type="text" class="form-control" placeholder="Apellidos">
+              <input
+                id="searchsurname"
+                ng-model="filtro.surname"
+                type="text"
+                class="form-control"
+                placeholder="Apellidos">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-search listpeople__azul"></i>
               </span>
@@ -18,7 +23,12 @@
           <div class="form-group col-md-2">
             <label class="sr-only"></label>
             <div class="input-group">
-              <input id="searchorigin" ng-model="filtro.origin" type="text" class="form-control" placeholder="Origen">
+              <input
+                id="searchorigin"
+                ng-model="filtro.origin"
+                type="text"
+                class="form-control"
+                placeholder="Origen">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-globe listpeople__azul"></i>
               </span>
@@ -28,7 +38,12 @@
           <div class="form-group col-md-2">
             <label class="sr-only"></label>
             <div class="input-group">
-              <input id="searchidentifier" ng-model="filtro.identifier" type="text" class="form-control" placeholder="Identificador">
+              <input
+                id="searchidentifier"
+                ng-model="filtro.identifier"
+                type="text"
+                class="form-control"
+                placeholder="Identificador">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-globe listpeople__azul"></i>
               </span>
@@ -37,16 +52,38 @@
 
           <div class="form-group col-md-2">
             <div class="input-group datepicker">
-            <input ng-model="familyCtrl.selected_day" type="text" class="form-control" id="InputSelected_day">
+            <input
+              ng-model="familyCtrl.selected_day"
+              type="text"
+              class="form-control"
+              id="InputSelected_day">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-calendar listpeople__azul"></i>
               </span>
             </div>
           </div>
 
-          <div class="form-group col-md-4">
-            <a class="btn btn-primary" ng-click="printDocument()" id="printFamily"><span class="glyphicon glyphicon-print"></span><span class="listpeople__txt__button"> Listado Cocina<span></a>
-            <a class="btn btn-primary pull-right" ng-if="currentUser.role !== 'volunteer'" id="createFamily" ui-sref="familiasNueva"><span class="glyphicon glyphicon-plus-sign"></span><span class="listpeople__txt__button"> FAMILIA<span></a>
+          <div class="col-md-4">
+            <span class="listpeople__txt__button">Cocina <span>
+            <input
+              type="checkbox"
+              ng-model="familyCtrl.kitchen"
+              ng-change="familyCtrl.getFamilies()" id="kitchen">
+            <div class="pull-right">
+            <a
+              class="btn btn-primary"
+              ng-click="printDocument()"
+              id="printFamily">
+              <span class="glyphicon glyphicon-print"></span>
+              <span class="listpeople__txt__button"> Imprimir<span>
+            </a>
+            <a class="btn btn-primary"
+              ng-if="currentUser.role !== 'volunteer'"
+              id="createFamily" ui-sref="familiasNueva">
+              <span class="glyphicon glyphicon-plus-sign"></span>
+              <span class="listpeople__txt__button"> FAMILIA<span>
+            </a>
+            </div>
           </div>
         </form>
       </div>
@@ -54,7 +91,9 @@
   </nav>
 
 <section class="listfamilies__tabla col-md-12">
-  <table class="table table-responsive col-md-12" id="familiesTable">
+  <table
+    class="table table-responsive col-md-12"
+    id="familiesTable">
     <thead class="listfamilies__cabecera">
       <tr>
         <th>Apellidos</th>
@@ -96,9 +135,11 @@
           type="checkbox">
         </td>
 
-        <td class="listpeople__centrado"><a id="family-show-{{family.id}}"
+        <td class="listpeople__centrado">
+          <a id="family-show-{{family.id}}"
             ui-sref="familia({ id: family.id })">
-          <span class="glyphicon glyphicon-eye-open listfamilies__azul"></span></a>
+            <span class="glyphicon glyphicon-eye-open listfamilies__azul"></span>
+          </a>
         </td>
       </tr>
     </tbody>
