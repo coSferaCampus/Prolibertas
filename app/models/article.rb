@@ -5,16 +5,17 @@ class Article
 
   mongoid_userstamp user_model: 'User'
 
-  field :type,      type: Symbol
-  field :amount,   type: Integer
-  field :requested,   type: Date
-  field :dispensed,       type: Date
-  field :observations,    type: String
+  field :observations, type: String
+  field :amount,       type: Integer
+  field :type,         type: Symbol
+  field :requested,    type: Date
+  field :dispensed,    type: Date
 
   belongs_to :person
 
-  validates :type, inclusion: { in: [ :blanket, :sheet, :jacket, :shoes, :basket, :others1, :others2, :others3 ] }
-  validates :amount, presence: true
+  validates :amount,    presence: true
   validates :requested, presence: true
-  validates :person, presence: true
+  validates :person,    presence: true
+
+  validates :type,      inclusion: { in: [ :blanket, :sheet, :jacket, :shoes, :basket ] }
 end
