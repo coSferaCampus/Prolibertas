@@ -6,6 +6,7 @@
       <div class="form-group col-md-6">
         <label for="InputId_type">Documento Identificador</label>
         <select
+          ng-init="personCtrl.personForm.id_type = personCtrl.id_types[0]"
           ng-model="personCtrl.personForm.id_type"
           type="text"
           class="form-control"

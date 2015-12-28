@@ -36,7 +36,7 @@
       "Periferia-El Higuerón", "Periferia-Trassierra", "ETF 1", "ETF 2", "ETF 3", "ETF 4"];
 
     // Tipos de documento de identidad
-    scope.id_types = ["", "NIF", "NIE", "Pasaporte", "Otro"];
+    scope.id_types = ["NIF", "NIE", "Pasaporte", "Otro"];
 
     scope.alertaCreado = $state.params.alertaCreado;
 
