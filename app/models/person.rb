@@ -76,23 +76,23 @@ class Person
   end
 
   def has_blanket
-    return true if (Article.where(person_id: id, type: :blanket, :amount.gte => 1,:dispensed.gte => 15.days.ago).size >= 1)
+    return true if (Article.where(person_id: id, type: :blanket, :amount.gte => 1,:dispensed.gte => $selected_day.to_time - 15).size >= 1)
   end
 
   def has_sheet
-    return true if (Article.where(person_id: id, type: :sheet, :amount.gte => 1,:dispensed.gte => 15.days.ago).size >= 1)
+    return true if (Article.where(person_id: id, type: :sheet, :amount.gte => 1,:dispensed.gte => $selected_day.to_time - 15).size >= 1)
   end
 
   def has_jacket
-    return true if (Article.where(person_id: id, type: :jacket, :amount.gte => 1,:dispensed.gte => 15.days.ago).size >= 1)
+    return true if (Article.where(person_id: id, type: :jacket, :amount.gte => 1,:dispensed.gte => $selected_day.to_time - 15).size >= 1)
   end
 
   def has_shoes
-    return true if (Article.where(person_id: id, type: :shoes, :amount.gte => 1,:dispensed.gte => 15.days.ago).size >= 1)
+    return true if (Article.where(person_id: id, type: :shoes, :amount.gte => 1,:dispensed.gte => $selected_day.to_time - 15).size >= 1)
   end
 
   def has_basket
-    return true if (Article.where(person_id: id, type: :basket, :amount.gte => 1,:dispensed.gte => 15.days.ago).size >= 1)
+    return true if (Article.where(person_id: id, type: :basket, :amount.gte => 1,:dispensed.gte => $selected_day.to_time - 15).size >= 1)
   end
 
   # Método que devolverá usos de servicio para el día en que se pida

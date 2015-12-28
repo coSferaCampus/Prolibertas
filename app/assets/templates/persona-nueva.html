@@ -25,20 +25,25 @@
           type="text" class="form-control" id="InputName" data-placement="top">
       </div>
 
+      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.surname }">
+        <label for="InputSurname">Apellidos</label>
+        <input ng-model="personCtrl.personForm.surname" ng-change="personCtrl.change('Surname')"
+          type="text" class="form-control" id="InputSurname" data-placement="top" >
+      </div>
+
       <div class="form-group col-md-6" >
         <label for="InputBirth">Fecha de Nacimiento</label>
         <div class="input-group datepicker">
           <span class="input-group-addon listpeople__azul">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
-          <input ng-model="personCtrl.personForm.birth" type="text" class="form-control" id="InputBirth">
+          <input
+            ng-model="personCtrl.personForm.birth"
+            type="text"
+            class="form-control"
+            placeholder="dd/mm/aaaa"
+            id="InputBirth">
         </div>
-      </div>
-
-      <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.surname }">
-        <label for="InputSurname">Apellidos</label>
-        <input ng-model="personCtrl.personForm.surname" ng-change="personCtrl.change('Surname')"
-          type="text" class="form-control" id="InputSurname" data-placement="top" >
       </div>
 
       <div class="form-group col-md-6" ng-class="{ 'has-error':personCtrl.errors.genre }">
@@ -237,7 +242,12 @@
           <span class="input-group-addon listpeople__azul">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
-          <input ng-model="personCtrl.personForm.entry" type="text" class="form-control" id="InputEntry">
+          <input
+            ng-model="personCtrl.personForm.entry"
+            type="text"
+            class="form-control"
+            placeholder="dd/mm/aaaa"
+            id="InputEntry">
         </div>
       </div>
 
@@ -247,7 +257,12 @@
           <span class="input-group-addon listpeople__azul">
             <span class="glyphicon glyphicon-calendar"></span>
           </span>
-          <input ng-model="personCtrl.personForm.output" type="text" class="form-control" id="InputOutput">
+          <input
+            ng-model="personCtrl.personForm.output"
+            type="text"
+            class="form-control"
+            placeholder="dd/mm/aaaa"
+            id="InputOutput">
         </div>
       </div>
 

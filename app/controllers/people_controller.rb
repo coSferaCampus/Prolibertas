@@ -12,7 +12,6 @@ class PeopleController < ApplicationController
     @people       = @scope
 
     respond_with @people
-#    render json: { people: @people, total_people: @total_people, total_scope: @total_scope, max_pages: max_pages }
   end
 
   def show
@@ -55,8 +54,9 @@ class PeopleController < ApplicationController
       date          = date.to_s.split('-').reverse.join('/')
       autors        = ""
       service_names = ""
+      autores       = @autors.uniq
 
-      @autors.uniq!.each_with_index  { |v, i| autors        += i == 0 ? v : ", " + v }
+      autores.each_with_index        { |v, i| autors        += i == 0 ? v : ", " + v }
       @service_names.each_with_index { |v, i| service_names += i == 0 ? v : ", " + v }
 
       @individual_report << { date: date, autors: autors, services: service_names }
