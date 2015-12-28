@@ -10,6 +10,7 @@ class Article
   field :type,         type: Symbol
   field :requested,    type: Date
   field :dispensed,    type: Date
+  field :active,       type: Date
 
   belongs_to :person
 
@@ -18,4 +19,8 @@ class Article
   validates :person,    presence: true
 
   validates :type,      inclusion: { in: [ :blanket, :sheet, :jacket, :shoes, :basket ] }
+
+  after_save do |document|
+    set active: dispensed + 15
+  end
 end
