@@ -50,8 +50,8 @@ class Person
 
   validates :genre,       inclusion: { in: [:man, :woman] }
 
-  validates_uniqueness_of :identifier, case_sensitive: false
-  validates :identifier,  format: { with: /\w*/ }
+  validates_uniqueness_of :identifier, case_sensitive: false, if: :identifier
+  validates :identifier,  format: { with: /\w*/ }, if: :identifier
 
   after_create do |document|
     set(exp: "%05d" % Person.all.size)

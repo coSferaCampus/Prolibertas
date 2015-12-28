@@ -39,8 +39,8 @@ class Family
   validates :children,     presence: true
   validates :origin,       presence: true
 
-  validates_uniqueness_of :identifier, case_sensitive: false
-  validates :identifier,  format: { with: /\w*/ }
+  validates_uniqueness_of :identifier, case_sensitive: false, if: :identifier
+  validates :identifier,  format: { with: /\w*/ }, if: :identifier
 
   # Método que devolverá usos de servicio para el día en que se pida
   def used_services_of_selected_day
