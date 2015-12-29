@@ -359,8 +359,9 @@
         scope.personForm.city.toUpperCase();
 
       $http.post('/people.json', {person: scope.personForm})
-        .success(function(data){
+        .success(function(data) {
           $state.go('personas', { alertaCreado: 'true' });
+          scope.errors = {};
         })
         .error(function(data) {
           scope.errors = data.errors;

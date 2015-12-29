@@ -23,6 +23,7 @@
         <label for="InputIdentifier">Número de Identificador</label>
         <input
           ng-model="familyCtrl.familyForm.identifier"
+          ng-change="familyCtrl.change('Identifier')"
           type="text"
           class="form-control"
           id="InputIdentifier"

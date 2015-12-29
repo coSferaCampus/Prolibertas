@@ -16,11 +16,12 @@ class Article
 
   validates :amount,    presence: true
   validates :requested, presence: true
+  validates :dispensed, presence: true
   validates :person,    presence: true
 
   validates :type,      inclusion: { in: [ :blanket, :sheet, :jacket, :shoes, :basket ] }
 
   after_save do |document|
-    set active: dispensed + 15
+    set active: dispensed + 1.month
   end
 end

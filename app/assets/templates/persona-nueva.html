@@ -17,12 +17,12 @@
       </div>
 
       <div
-        ng-if="personCtrl.personForm.id_type"
         class="form-group col-md-6"
         ng-class="{ 'has-error':personCtrl.errors.identifier }">
         <label for="InputIdentifier">Número de Identificador</label>
         <input
           ng-model="personCtrl.personForm.identifier"
+          ng-change="personCtrl.change('Identifier')"
           type="text"
           class="form-control"
           id="InputIdentifier"
@@ -290,23 +290,6 @@
         </textarea>
       </div>
 
-       <div
-        class="form-group col-md-6"
-        ng-class="{ 'has-error':personCtrl.errors.documentation }">
-        <label for="InputDocumentation">Documentación</label>
-        <select
-          ng-model="personCtrl.personForm.documentation"
-          ng-change="personCtrl.change('Documentation')"
-          type="number"
-          class="form-control"
-          id="InputDocumentation"
-          data-placement="top">
-          <option value='0'>0 - Indocumentado</option>
-          <option value='1'>1 - Regularizado</option>
-          <option value='2'>2 - Sin Regularizar</option>
-        </select>
-      </div>
-
       <div
         class="form-group col-md-6"
         ng-class="{ 'has-error':personCtrl.errors.social_services }">
@@ -335,6 +318,23 @@
           id="InputZts"
           data-placement="top">
         <option ng-repeat="zts in personCtrl.zonas">{{zts}}</option>
+        </select>
+      </div>
+
+       <div
+        class="form-group col-md-6"
+        ng-class="{ 'has-error':personCtrl.errors.documentation }">
+        <label for="InputDocumentation">Documentación</label>
+        <select
+          ng-model="personCtrl.personForm.documentation"
+          ng-change="personCtrl.change('Documentation')"
+          type="number"
+          class="form-control"
+          id="InputDocumentation"
+          data-placement="top">
+          <option value='0'>0 - Indocumentado</option>
+          <option value='1'>1 - Regularizado</option>
+          <option value='2'>2 - Sin Regularizar</option>
         </select>
       </div>
 
