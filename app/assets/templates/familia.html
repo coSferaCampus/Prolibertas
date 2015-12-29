@@ -122,7 +122,9 @@
       </ul>
     </div>
 
-     <div ng-if="currentUser.role !== 'volunteer'" class="persona__botones col-md-12">
+     <div
+       ng-if="currentUser.role !== 'volunteer'"
+       class="persona__botones col-md-12">
         <a id="remove-family-btn" type="button" class="btn btn-danger persona__botones__remove"
         ng-click="familyCtrl.destroyFamily(familyCtrl.family)">Eliminar
         </a>

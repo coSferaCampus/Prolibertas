@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = 
+    @users =
       if current_user.has_role? :director
         User.with_any_role(:volunteer, :worker)
       elsif current_user.has_role? :worker
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       @user.add_role(rol)
     end
 
-    if @user == current_user
+    if @user == current_user and @user.valid?
       sign_in @user, bypass: true
     end
 
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy 
+    @user.destroy
     respond_with @user
   end
 

@@ -132,8 +132,10 @@
       </ul>
     </div>
      <div class="persona__botones col-md-12">
-        <a id="remove-person-btn" type="button" class="btn btn-danger persona__botones__remove"
-        ng-click="personCtrl.destroyPerson(personCtrl.person)">Eliminar
+        <a
+          ng-if="currentUser.role !== 'volunteer'"
+          id="remove-person-btn" type="button" class="btn btn-danger persona__botones__remove"
+          ng-click="personCtrl.destroyPerson(personCtrl.person)">Eliminar
         </a>
         <button id="person-edit-{{personCtrl.person.id}}" ui-sref="personaEditar({id:personCtrl.person.id})" type="button" class="btn btn-primary persona__botones__edit">Editar</button>
      </div>

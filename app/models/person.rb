@@ -47,11 +47,12 @@ class Person
   validates :name,        presence: true
   validates :surname,     presence: true
   validates :origin,      presence: true
+  validates :city,        presence: true, if: -> { origin == "España" }
 
   validates :genre,       inclusion: { in: [:man, :woman] }
 
   validates_uniqueness_of :identifier, case_sensitive: false, if: :identifier
-  validates :identifier,  format: { with: /\w*/ }, if: :identifier
+  validates :identifier,  format: { with: /\A\w*\z/ }, if: :identifier
 
   after_create do |document|
     set(exp: "%05d" % Person.all.size)

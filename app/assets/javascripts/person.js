@@ -38,10 +38,13 @@
       scope.loading = true;
       $http.get('/people.json?page=' + scope.page + '&selected_day=' + scope.selected_day + params)
       .success(function(data) {
-        scope.people         = data.people;
-        scope.totalResources = data.people[0].total_people;
-        scope.max_pages      = data.people[0].max_pages;
-        scope.loading        = false;
+        scope.people  = data.people;
+        scope.loading = false;
+
+        if (data.people) {
+          scope.totalResources = data.people[0].total_people;
+          scope.max_pages      = data.people[0].max_pages;
+        }
       });
     };
     scope.getPeople();
