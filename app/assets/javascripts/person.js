@@ -332,7 +332,7 @@
     scope.zonas = ["Norte-Sierra", "Levante", "Sureste (Fuensanta)", "Centro (La Ribera)", "Sur",
       "Poniente Sur", "Poniente Norte (La Foggara) ", "Noroeste", "Periferia-Alcolea",
       "Periferia-Villarrubia", "Periferia-Santa Cruz", "Periferia-Cerro Muriano",
-      "Periferia-El Higuerón", "Periferia-Trassierra", "ETF 1", "ETF 2", "ETF 3", "ETF 4"];
+      "Periferia-El Higuerón", "Periferia-Trassierra", "ETF 1", "ETF 2", "ETF 3", "ETF 4", ""];
 
     // Tipos de documento de identidad
     scope.id_types = ["NIF", "NIE", "Pasaporte", "Otro"];

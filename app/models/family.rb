@@ -38,6 +38,8 @@ class Family
   validates :adults,       presence: true
   validates :children,     presence: true
   validates :origin,       presence: true
+  validates :from,         presence: true
+  validates :to,           presence: true
 
   validates_uniqueness_of :identifier, case_sensitive: false, if: :identifier
   validates :identifier,  format: { with: /\w*/ }, if: :identifier

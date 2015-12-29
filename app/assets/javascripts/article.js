@@ -129,13 +129,14 @@
     scope.actionForm = scope.guardarArticulo;
 
     if ( $state.params.articulo_id != undefined ) {
-      scope.actionForm = scope.actualizarArticulo;
+      scope.actionForm       = scope.actualizarArticulo;
+      $rootScope.prolibertas = "Editar Artículo";
+
       $http.get('/articles/' + $state.params.articulo_id + '.json')
       .success(function(data) {
         scope.articleForm           = data.article;
-        $rootScope.prolibertas      = "Editar Artículo"
         scope.articleForm.requested = data.article.requested.split("-").reverse().join("/");
-        scope.articleForm.dispensed = data.article.requested.split("-").reverse().join("/");
+        scope.articleForm.dispensed = data.article.dispensed.split("-").reverse().join("/");
       });
     }
     else {
