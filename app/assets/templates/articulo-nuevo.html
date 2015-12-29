@@ -1,7 +1,9 @@
 <h3 class="header-titule hidden-xs">{{prolibertas}}</h3>
 <form class="col-md-12" id="articleForm" ng-submit="articleCtrl.actionForm()">
 
-  <div class="form-group col-md-7" ng-class="{ 'has-error':articleCtrl.errors.type }">
+  <div
+    class="form-group col-md-7"
+    ng-class="{ 'has-error':articleCtrl.errors.type }">
     <label>Tipo</label>
     <select ng-model="articleCtrl.articleForm.type" ng-change="articleCtrl.change('Type')" type="text" class="form-control" data-placement="top" id="InputType">
       <option value="">Seleccione Tipo</option>
@@ -15,16 +17,29 @@
 
   <div class="form-group col-md-7">
     <label>Cantidad</label>
-    <input ng-model="articleCtrl.articleForm.amount" type="number" class="form-control" data-placement="top" id="InputAmount">
+    <input
+      ng-model="articleCtrl.articleForm.amount"
+      type="number"
+      class="form-control"
+      data-placement="top"
+      id="InputAmount">
   </div>
 
-  <div class="form-group col-md-7" ng-class="{ 'has-error':articleCtrl.errors.requested }">
+  <div
+    class="form-group col-md-7"
+    ng-class="{ 'has-error':articleCtrl.errors.requested }">
     <label>Pedidas</label>
     <div class="input-group datepicker">
       <span class="input-group-addon listpeople__azul">
         <span class="glyphicon glyphicon-calendar"></span>
       </span>
-      <input id="InputRequested" ng-model="articleCtrl.articleForm.requested" ng-change="articleCtrl.change('Requested')" type="text" class="form-control">
+      <input
+        id="InputRequested"
+        ng-model="articleCtrl.articleForm.requested"
+        ng-change="articleCtrl.change('Requested')"
+        type="text"
+        placeholder="dd/mm/aaaa"
+        class="form-control">
     </div>
   </div>
 
@@ -34,13 +49,21 @@
       <span class="input-group-addon listpeople__azul">
         <span class="glyphicon glyphicon-calendar"></span>
       </span>
-      <input id="InputDispensed" ng-model="articleCtrl.articleForm.dispensed" ng-change="articleCtrl.change('Dispensed')" type="text" class="form-control">
+      <input
+        id="InputDispensed"
+        ng-model="articleCtrl.articleForm.dispensed"
+        ng-change="articleCtrl.change('Dispensed')"
+        placeholder="dd/mm/aaaa"
+        type="text" class="form-control">
     </div>
   </div>
 
   <div class="form-group col-md-7">
     <label>Observaciones</label>
-    <textarea ng-model="articleCtrl.articleForm.observations" class="form-control" id="InputObservations"></textarea>
+    <textarea
+      ng-model="articleCtrl.articleForm.observations"
+      class="form-control" id="InputObservations">
+    </textarea>
   </div>
 
   <div class="submit-group col-md-7">
