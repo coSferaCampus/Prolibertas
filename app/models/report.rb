@@ -1,7 +1,10 @@
 class Report
   def self.genre
-    man_amount = Person.where(genre: 'man', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
-    woman_amount = Person.where(genre: 'woman', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
+    man_amount   = Person.where(genre: 'man', :created_at.gt => Date.new($year.to_i),
+                                :created_at.lt => Date.new($year.to_i + 1)).size
+
+    woman_amount = Person.where(genre: 'woman', :created_at.gt => Date.new($year.to_i),
+                                :created_at.lt => Date.new($year.to_i + 1)).size
 
     response = [{label: 'Hombres', amount: man_amount}, {label: 'Mujeres', amount: woman_amount}]
 
@@ -12,8 +15,12 @@ class Report
   end
 
   def self.spanish
-    spanish_amount = Person.where(:origin.in => ['españa','España', 'ESPAÑA'], :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
-    foreign_amount = Person.where( :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count - spanish_amount
+    spanish_amount = Person.where(:origin.in => ['españa','España', 'ESPAÑA'],
+                                  :created_at.gt => Date.new($year.to_i),
+                                  :created_at.lt => Date.new($year.to_i + 1)).size
+
+    foreign_amount = Person.where(:created_at.gt => Date.new($year.to_i),
+                                  :created_at.lt => Date.new($year.to_i + 1)).size - spanish_amount
 
     response = [{label: 'Extranjeros', amount: foreign_amount}, {label: 'Españoles', amount: spanish_amount}]
 
@@ -24,11 +31,19 @@ class Report
   end
 
   def self.documentation
-    indocumentados = Person.where(documentation: 0, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
-    regularizados = Person.where(documentation: 1, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
-    irregulares= Person.where(documentation: 2, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
+    indocumentados = Person.where(documentation: 0, :created_at.gt => Date.new($year.to_i),
+                                  :created_at.lt => Date.new($year.to_i + 1)).size
 
-    response = [{label: 'Indocumentados', amount: indocumentados}, {label: 'Regularizados', amount: regularizados}, {label: 'Sin Regularizar', amount: irregulares}]
+    regularizados  = Person.where(documentation: 1, :created_at.gt => Date.new($year.to_i),
+                                  :created_at.lt => Date.new($year.to_i + 1)).size
+
+    irregulares    = Person.where(documentation: 2, :created_at.gt => Date.new($year.to_i),
+                                  :created_at.lt => Date.new($year.to_i + 1)).size
+
+    response = [{label: 'Indocumentados', amount: indocumentados},
+                {label: 'Regularizados', amount: regularizados},
+                {label: 'Sin Regularizar', amount: irregulares}]
+
     response.sort_by! { |x| x[:amount] }
     response.reverse!
 
@@ -36,11 +51,18 @@ class Report
   end
 
   def self.assistance
-    primera_vez = Person.where(assistance: 0, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
-    habitual = Person.where(assistance: 1, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
-    reincidente= Person.where(assistance: 2, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
+    primera_vez = Person.where(assistance: 0, :created_at.gt => Date.new($year.to_i),
+                               :created_at.lt => Date.new($year.to_i + 1)).size
 
-    response = [{label: 'Primera vez', amount: primera_vez}, {label: 'Habitual', amount: habitual}, {label: 'Reincidente', amount: reincidente}]
+    habitual    = Person.where(assistance: 1, :created_at.gt => Date.new($year.to_i),
+                               :created_at.lt => Date.new($year.to_i + 1)).size
+
+    reincidente = Person.where(assistance: 2, :created_at.gt => Date.new($year.to_i),
+                               :created_at.lt => Date.new($year.to_i + 1)).size
+
+    response = [{label: 'Primera vez', amount: primera_vez},
+                {label: 'Habitual', amount: habitual},
+                {label: 'Reincidente', amount: reincidente}]
 
     response.sort_by! { |x| x[:amount] }
     response.reverse!
@@ -49,10 +71,13 @@ class Report
   end
 
   def self.residence
-    de_paso = Person.where(residence: 0, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
-    residente = Person.where(residence: 1, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count
+    de_paso   = Person.where(residence: 0, :created_at.gt => Date.new($year.to_i),
+                             :created_at.lt => Date.new($year.to_i + 1)).size
 
-    response = [{label: 'De Paso', amount: de_paso}, {label: 'Residente', amount: residente}]
+    residente = Person.where(residence: 1, :created_at.gt => Date.new($year.to_i),
+                             :created_at.lt => Date.new($year.to_i + 1)).size
+
+    response  = [{label: 'De Paso', amount: de_paso}, {label: 'Residente', amount: residente}]
 
     response.sort_by! { |x| x[:amount] }
     response.reverse!
@@ -61,13 +86,14 @@ class Report
   end
 
   def self.origin
-    labels = []
-    amounts = []
+    labels   = []
+    amounts  = []
     response = []
 
     Person.each { |x| labels << x.origin }
     labels.uniq!
-    labels.each { |x| amounts << Person.where( origin: x , :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1)).count }
+    labels.each { |x| amounts << Person.where( origin: x , :created_at.gt => Date.new($year.to_i),
+                                              :created_at.lt => Date.new($year.to_i + 1)).size }
 
     labels.each_with_index do |item, index|
       response << { label: labels[index], amount: amounts[index] }
@@ -76,22 +102,23 @@ class Report
     response.sort_by! { |x| x[:amount] }
     response.reverse!
 
-    response = response.first(5) if response.count >= 4
+    response = response.first(5) if response.size >= 4
 
     response
   end
 
   def self.city
-    labels = []
-    amounts = []
+    labels   = []
+    amounts  = []
     response = []
 
-    Person.each { |x| labels << x.city.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').gsub(/\s+/, '').downcase.to_s if ( x.city && x.city != :"" && x.city != nil ) }
+    Person.each { |x| labels << x.city if ( x.city && x.city != :"" && x.city != nil ) }
     labels.uniq!
-    labels.each { |x| amounts << Person.where( city: Regexp.new( I18n.transliterate(x), 'i' ), :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count }
+    labels.each { |x| amounts << Person.where( city: x, :created_at.gt => Date.new($year.to_i),
+                                              :created_at.lt => Date.new($year.to_i + 1) ).size }
 
     labels.each_with_index do |item, index|
-      response << { label: labels[index].gsub('_', ' ') , amount: amounts[index] }
+      response << { label: labels[index], amount: amounts[index] }
     end
 
     response.sort_by! { |x| x[:amount] }
@@ -103,10 +130,16 @@ class Report
   end
 
   def self.people
-    a_new = Person.where( :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count
-    a_active =0
+    a_active = 0
+    a_new    = Person.where(
+      :created_at.gt => Date.new($year.to_i),:created_at.lt => Date.new($year.to_i + 1)).size
 
-    Person.each { |x| a_active += 1 if UsedService.where( person_id: x.id, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count > 0 }
+    Person.each do |x|
+      a_active += 1 if UsedService.where(
+        person_id: x.id, :created_at.gt => Date.new($year.to_i),
+        :created_at.lt => Date.new($year.to_i + 1)
+      ).size > 0
+    end
 
     response = [{label: 'Nuevas', amount: a_new}, {label: 'Activas', amount: a_active}]
 
@@ -117,14 +150,20 @@ class Report
   end
 
   def self.services_year
-    labels = []
+    labels     = []
     labels_ids = []
-    amounts = []
-    response = []
+    amounts    = []
+    response   = []
 
     Service.each { |x| labels << x.name }
     labels.each { |x| labels_ids << Service.find_by( name: x ) }
-    labels_ids.each { |x| amounts << UsedService.where( service_id: x, :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).count }
+
+    labels_ids.each do |x|
+      amounts << UsedService.where(
+        service_id: x, :created_at.gt => Date.new($year.to_i),
+        :created_at.lt => Date.new($year.to_i + 1)
+      ).size
+    end
 
     labels.each_with_index do |item, index|
       response << { label: labels[index], amount: amounts[index] }
@@ -138,55 +177,35 @@ class Report
 
   def self.sandwiches
     amount = 0
-    Sandwich.where( :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).each do |x|
-      amount += x.amount
-    end
+    Sandwich.where(:created_at.gt => Date.new($year.to_i),
+                   :created_at.lt => Date.new($year.to_i + 1)
+                  ).each { |x| amount += x.amount }
 
     [{label: 'Bocadillos', amount: amount}]
   end
 
   def self.inv
-    response = []
+    response  = []
     a_blanket = 0
-    a_sheet    = 0
-    a_jacket   = 0
-    a_shoes    = 0
+    a_sheet   = 0
+    a_jacket  = 0
+    a_shoes   = 0
     a_basket  = 0
-    a_others1 = 0
-    a_others2 = 0
-    a_others3 = 0
 
-    Article.where( type: 'blanket', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).each do |x|
-      a_blanket += x.amount
-    end
+    Article.where(type: 'blanket', :created_at.gt => Date.new($year.to_i),
+                  :created_at.lt => Date.new($year.to_i + 1) ).each { |x| a_blanket += x.amount }
 
-    Article.where( type: 'sheet', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).each do |x|
-      a_sheet += x.amount
-    end
+    Article.where( type: 'sheet', :created_at.gt => Date.new($year.to_i),
+                  :created_at.lt => Date.new($year.to_i + 1) ).each { |x| a_sheet   += x.amount }
 
-    Article.where( type: 'jacket', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).each do |x|
-      a_jacket += x.amount
-    end
+    Article.where( type: 'jacket', :created_at.gt => Date.new($year.to_i),
+                  :created_at.lt => Date.new($year.to_i + 1) ).each { |x| a_jacket  += x.amount }
 
-    Article.where( type: 'shoes', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).each do |x|
-      a_shoes += x.amount
-    end
+    Article.where( type: 'shoes', :created_at.gt => Date.new($year.to_i),
+                  :created_at.lt => Date.new($year.to_i + 1) ).each { |x| a_shoes   += x.amount }
 
-    Article.where( type: 'basket', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).each do |x|
-      a_basket += x.amount
-    end
-
-    Article.where( type: 'others1', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).each do |x|
-      a_others1 += x.amount
-    end
-
-    Article.where( type: 'others2', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).each do |x|
-      a_others2 += x.amount
-    end
-
-    Article.where( type: 'others3', :created_at.gt => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1) ).each do |x|
-      a_others3 += x.amount
-    end
+    Article.where( type: 'basket', :created_at.gt => Date.new($year.to_i),
+                  :created_at.lt => Date.new($year.to_i + 1) ).each { |x| a_basket  += x.amount }
 
     if ( a_blanket > 0 ) then
       response << {label: 'Mantas', amount: a_blanket}
@@ -208,27 +227,15 @@ class Report
       response << {label: 'Canastillas', amount: a_basket}
     end
 
-    if ( a_others1 > 0 ) then
-      response << {label: 'Otros 1', amount: a_others1}
-    end
-
-    if ( a_others2 > 0 ) then
-      response << {label: 'Otros 2', amount: a_others2}
-    end
-
-    if ( a_others3 > 0 ) then
-      response << {label: 'Otros 3', amount: a_others3}
-    end
-
     response.sort_by! { |x| x[:amount] }
     response.reverse!
 
-      response
+    response
   end
 
   def self.families
     families = Family.where( :to.gt => Date.new($year.to_i) )
-    a_new = families.count
+    a_new = families.size
     a_total = 0
 
     families.each do |x|

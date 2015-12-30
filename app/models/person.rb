@@ -128,5 +128,4 @@ class Person
   def pending_alerts
     alerts.where(:pending.gte => $selected_day).desc(:created_at)
   end
-
 end
