@@ -41,7 +41,7 @@
         scope.people  = data.people;
         scope.loading = false;
 
-        if (data.people) {
+        if (data.people && data.people[0]) {
           scope.totalResources = data.people[0].total_people;
           scope.max_pages      = data.people[0].max_pages;
         }
