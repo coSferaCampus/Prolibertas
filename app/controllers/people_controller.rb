@@ -9,6 +9,7 @@ class PeopleController < ApplicationController
 
   def index
     $selected_day = params[:selected_day]
+    $day          = params[:selected_day] ? params[:selected_day].to_time : Date.today
     @people       = @scope
 
     respond_with @people
