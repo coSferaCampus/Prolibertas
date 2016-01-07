@@ -16,7 +16,7 @@ RSpec.describe Article, type: :model do
   end
 
   context "Validations" do
-    it { is_expected.to validate_inclusion_of(:type).to_allow([:blanket, :sheet, :jacket, :shoes, :others1, :others2, :others3])}
+    it { is_expected.to validate_inclusion_of(:type).to_allow([:blanket, :sheet, :jacket, :shoes])}
     it { is_expected.to validate_presence_of(:amount) }
     it { is_expected.to validate_presence_of(:requested) }
     it { is_expected.to validate_presence_of(:person) }
