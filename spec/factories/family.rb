@@ -16,6 +16,8 @@ FactoryGirl.define do
     assistance { [0, 1, 2].sample }
     id_type { ["NIF", "NIE", "Pasaporte", "Otro"].sample }
     identifier { Faker::Number.number(8) }
+    from { Date.today }
+    to { Date.tomorrow }
   end
 
   # Sólo se debe usar con attributes_for
@@ -36,5 +38,7 @@ FactoryGirl.define do
     assistance { [0, 1, 2].sample }
     id_type { ["NIF", "NIE", "Pasaporte", "Otro"].sample }
     identifier { Faker::Number.number(8) }
+    from { Date.today }
+    to { Date.tomorrow }
   end
 end
