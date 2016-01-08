@@ -9,8 +9,7 @@
           <div class="form-group col-md-3">
            <select class="form-control"
              id="reportOption"
-             ng-model="reportCtrl.reportOption"
-             ng-change="reportCtrl.getUrl()">
+             ng-model="reportCtrl.reportOption">
              <option value="" selected>Seleccione el tipo de informe</option>
              <option value="0">Españoles/Extranjeros/Familias por tipo</option>
              <option value="1">Personas por rango de edades</option>
@@ -40,7 +39,7 @@
           <div class="form-group" ng-if="reportCtrl.reportOption">
             <a
               class="btn btn-primary"
-              ng-href="{{reportCtrl.url}}">
+              ng-click="reportCtrl.getUrl()">
               <span class="glyphicon glyphicon-stats"></span>
               <span class="listpeople__txt__button"> Generar Informe</span>
             </a>

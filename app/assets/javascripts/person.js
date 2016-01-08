@@ -1,4 +1,4 @@
-( function() {
+(function() {
   var app = angular.module('prolibertas-person', ['ui.router']);
 
   // Controllers

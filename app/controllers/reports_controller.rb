@@ -113,4 +113,32 @@ class ReportsController < ApplicationController
       :stream => false
     )
   end
+
+  def age_range
+    $year = params[:selected_year]
+
+    name = "InformePorEdad"
+    name += params[:selected_year] if params[:selected_year]
+
+    data = Report.type
+    data_spanish = data[ :spanish ]
+    data_foreign = data[ :foreign ]
+
+    Spreadsheet.client_encoding = 'ISO8859-15'
+    book = Spreadsheet::Workbook.new
+    sheet = book.create_worksheet :name => name
+
+    sheet.row(0).concat %w{TIPO Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre}
+
+    sheet[1,0] = 'ESP_Comedor'.encode(Encoding::ISO_8859_1)
+    sheet[2,0] = 'ESP_Ropero'.encode(Encoding::ISO_8859_1)
+    sheet[3,0] = 'ESP_Ducha'.encode(Encoding::ISO_8859_1)
+    sheet[4,0] = 'ESP_Desayuno'.encode(Encoding::ISO_8859_1)
+
+    sheet[5,0] = 'EXT_Comedor'.encode(Encoding::ISO_8859_1)
+    sheet[6,0] = 'EXT_Ropero'.encode(Encoding::ISO_8859_1)
+    sheet[7,0] = 'EXT_Ducha'.encode(Encoding::ISO_8859_1)
+    sheet[8,0] = 'EXT_Desayuno'.encode(Encoding::ISO_8859_1)
+
+  end
 end
