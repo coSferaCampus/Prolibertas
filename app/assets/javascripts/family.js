@@ -86,7 +86,6 @@
 
     // Método que cambia a check si está desmarcado y viceversa
     scope.changeCheckbox = function(family, service) {
-      console.log("Familia", family);
       if(family.used_services_of_selected_day_id[service.name]) {
         scope.deleteUsedService(family, service);
       } else {

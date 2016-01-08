@@ -2,7 +2,8 @@
   var app = angular.module('prolibertas-person', ['ui.router']);
 
   // Controllers
-  app.controller('PeopleController', ['$filter', '$http', '$timeout', '$state', '$rootScope', function($filter, $http, $timeout, $state, $rootScope) {
+  app.controller('PeopleController', ['$filter', '$http', '$timeout', '$state', '$rootScope',
+    function($filter, $http, $timeout, $state, $rootScope) {
     var scope = this;
 
     scope.sandwiches;
@@ -10,6 +11,7 @@
     scope.page           = 1;
     scope.person         = {};
     scope.selected_day   = $filter('date')(new Date(), 'dd/MM/yyyy');
+    scope.day            = $filter('date')(new Date(), 'dd/MM/yyyy');
     scope.loading        = true;
     scope.alertaCreado   = $state.params.alertaCreado;
     scope.alertaBorrado  = $state.params.alertaBorrado;
@@ -74,10 +76,11 @@
 
     $http.get('/services.json').success(function(data) { scope.services = data.services; });
 
-    $("#InputSelected_day").focusout( function() {
+    scope.changeDay = function() {
       scope.selected_day = $("#InputSelected_day").val();
+      scope.day = $("#InputSelected_day").val();
       scope.getPeople();
-    });
+    };
 
     //función para calcular la edad a partir de la fecha de nacimiento
     scope.anos = function (birth) {
@@ -117,7 +120,7 @@
 
     scope.createUsedService = function(person, service) {
       $http.post('/used_services.json', {
-        used_service: { person_id: person.id, service_id: service.id, created_at: scope.selected_day }
+        used_service: { person_id: person.id, service_id: service.id, created_at: scope.day }
       }).success(function(data) {
         person.used_services_of_selected_day_id[service.name] = data.used_service.id;
       });
@@ -436,9 +439,6 @@
             }
         });
       }
-
     };
-
   }]);
-
 })();

@@ -1,4 +1,74 @@
 class Report
+  def self.type
+    people     = []
+    person_ids = []
+    family_ids = []
+    spanish    = []
+    foreign    = []
+    family     = []
+
+    UsedService.where(:created_at.gt => Date.new($year.to_i),
+      :created_at.lt => Date.new($year.to_i + 1)
+    ).each do |s|
+      person_ids << s.person_id.to_s if s.person_id
+      family_ids << s.family_id.to_s if s.family_id
+    end
+
+    person_ids.uniq!
+    family_ids.uniq!
+
+    people   = Person.where(:id.in => person_ids)
+    families = Family.where(:id.in => family_ids)
+
+    spanish_all = people.where(origin: 'España')
+    foreign_all = people.where(:origin.ne => 'España')
+
+    spanish << spanish_all.size
+    spanish << spanish_all.where(genre: :man).size
+    spanish << spanish_all.where(genre: :woman).size
+    spanish << spanish_all.where(assistance: 0).size
+    spanish << spanish_all.where(assistance: 1).size
+    spanish << spanish_all.where(assistance: 2).size
+    spanish << spanish_all.where(documentation: 0).size
+    spanish << spanish_all.where(documentation: 1).size
+    spanish << spanish_all.where(documentation: 2).size
+    spanish << spanish_all.where(residence: 1).size
+    spanish << spanish_all.where(residence: 0).size
+    spanish << spanish_all.where(social_services: 1).size
+    spanish << spanish_all.where(social_services: 0).size
+    spanish << spanish_all.where(have_income: 1).size
+    spanish << spanish_all.where(have_income: 0).size
+
+    foreign << foreign_all.size
+    foreign << foreign_all.where(genre: :man).size
+    foreign << foreign_all.where(genre: :woman).size
+    foreign << foreign_all.where(assistance: 0).size
+    foreign << foreign_all.where(assistance: 1).size
+    foreign << foreign_all.where(assistance: 2).size
+    foreign << foreign_all.where(documentation: 0).size
+    foreign << foreign_all.where(documentation: 1).size
+    foreign << foreign_all.where(documentation: 2).size
+    foreign << foreign_all.where(residence: 1).size
+    foreign << foreign_all.where(residence: 0).size
+    foreign << foreign_all.where(social_services: 1).size
+    foreign << foreign_all.where(social_services: 0).size
+    foreign << foreign_all.where(have_income: 1).size
+    foreign << foreign_all.where(have_income: 0).size
+
+    family << families.size
+
+    { spanish: spanish, foreign: foreign, family: family }
+  end
+
+  def self.age_range
+    people     = []
+    person_ids = []
+    family_ids = []
+    spanish    = []
+    foreign    = []
+  end
+
+
   def self.genre
     man_amount   = Person.where(genre: 'man', :created_at.gt => Date.new($year.to_i),
                                 :created_at.lt => Date.new($year.to_i + 1)).size

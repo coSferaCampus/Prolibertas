@@ -10,10 +10,11 @@ gem 'mongoid-normalize-strings'
 gem 'carrierwave-mongoid'  # Subir ficheros
 gem 'd3-rails', '~> 3.5.5' # Gráficas
 gem 'devise', '~> 3.4.1'   # Para el registro de usuarios
-gem "rolify", '~> 4.0.0'   # Roles
+gem 'rolify', '~> 4.0.0'   # Roles
 gem 'cancancan', '~> 1.10' # Permisos de usuario
-gem "uglifier", '~> 2.7.1' # Para comprimir el javascript
+gem 'uglifier', '~> 2.7.1' # Para comprimir el javascript
 gem 'kaminari'             # Paginación
+gem 'spreadsheet'          # Exportar a excel
 
 # Convierte objetos de nuestros modelos en json
 gem 'active_model_serializers', '~> 0.9.3'

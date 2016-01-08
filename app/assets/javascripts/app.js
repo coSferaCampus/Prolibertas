@@ -1,13 +1,13 @@
 (function() {
 
-  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-article', 'prolibertas-alert', 'prolibertas-service', 'prolibertas-family', 'infinite-scroll']);
+  var app = angular.module('prolibertas', ['ui.router', 'templates', 'prolibertas-person', 'prolibertas-history', 'prolibertas-user', 'prolibertas-article', 'prolibertas-alert', 'prolibertas-service', 'prolibertas-family', 'prolibertas-report','infinite-scroll']);
 
   // Config
   app.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
-  	// Para las urls que no se encuentren, redirigimos a la raíz.
- 	  $urlRouterProvider.otherwise("/personas");
+    // Para las urls que no se encuentren, redirigimos a la raíz.
+    $urlRouterProvider.otherwise("/personas");
 
-  	// Aquí establecemos los estados de nuestra applicación.
+   // Aquí establecemos los estados de nuestra applicación.
     $stateProvider
     .state("usuarios", {
       url: "/usuarios?alertaCreado&alertaBorrado",
@@ -275,7 +275,9 @@
 
      .state("informes", {
       url: "/informes",
-      templateUrl: "informes.html"
+      templateUrl: "informes.html",
+       controller: "ReportController",
+       controllerAs: "reportCtrl"
      });
   });
 
