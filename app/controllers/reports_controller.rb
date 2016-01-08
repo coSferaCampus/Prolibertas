@@ -140,5 +140,20 @@ class ReportsController < ApplicationController
     sheet[7,0] = 'EXT_Ducha'.encode(Encoding::ISO_8859_1)
     sheet[8,0] = 'EXT_Desayuno'.encode(Encoding::ISO_8859_1)
 
+    sheet[9, 0] = 'TOTAL_Comedor'.encode(Encoding::ISO_8859_1)
+    sheet[10,0] = 'TOTAL_Ropero'.encode(Encoding::ISO_8859_1)
+    sheet[11,0] = 'TOTAL_Ducha'.encode(Encoding::ISO_8859_1)
+    sheet[12,0] = 'TOTAL_Desayuno'.encode(Encoding::ISO_8859_1)
+    sheet[13,0] = 'TOTAL_Bocadillos'.encode(Encoding::ISO_8859_1)
+
+    spreadsheet = StringIO.new
+    book.write spreadsheet
+
+    send_data(
+      spreadsheet.string,
+      filename: name + ".xls",
+      type: 'application/vnd.ms-excel; charset=ISO8859-15; header=present',
+      :stream => false
+    )
   end
 end

@@ -61,11 +61,21 @@ class Report
   end
 
   def self.age_range
-    people     = []
-    person_ids = []
-    family_ids = []
-    spanish    = []
-    foreign    = []
+    esp_comedor      = []
+    esp_ropero       = []
+    esp_ducha        = []
+    esp_desayuno     = []
+
+    ext_comedor      = []
+    ext_ropero       = []
+    ext_ducha        = []
+    ext_desayuno     = []
+
+    total_comedor    = []
+    total_ropero     = []
+    total_ducha      = []
+    total_desayuno   = []
+    total_bocadillos = []
   end
 
 

@@ -9,7 +9,7 @@
     $('.datepicker').datetimepicker({locale: 'es', format: 'YYYY'});
 
     scope.getUrl = function() {
-      if (scope.reportOption) {
+      if (scope.reportOption >= 0 && scope.reportOption <= 7) {
         var url    = "";
         var option = Number(scope.reportOption);
 
@@ -20,10 +20,7 @@
           case 1:
             url = '/reports/age_range?selected_year=' + $("#SelectedYear").val();
             break;
-          default:
-            url = '/aaaaaaaa?selected_year=' + $("#SelectedYear").val();
         }
-
 
         location.href = url;
       }

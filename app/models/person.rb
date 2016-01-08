@@ -55,7 +55,9 @@ class Person
   validates :identifier,  format: { with: /\A\w*\z/ }, if: :identifier
 
   after_create do |document|
-    set(exp: "%05d" % Person.all.size)
+    current = Person.all.asc(:exp).last.exp
+    amount = current != nil ? current : 0
+    set(exp: "%05d" % (amount.to_i + 1).to_s)
   end
 
   def total_people
