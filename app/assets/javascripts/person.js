@@ -354,8 +354,11 @@
       scope.actionForm = scope.actualizarPersona;
       $http.get('/people/' + $state.params.id + '.json')
       .success(function(data) {
-        scope.personForm = data.person;
-        $rootScope.prolibertas = "Editar expediente " + scope.personForm.exp;
+        scope.personForm        = data.person;
+        $rootScope.prolibertas  = "Editar expediente " + scope.personForm.exp;
+        scope.personForm.birth  = data.person.birth.split("-").reverse().join("/");
+        scope.personForm.entry  = data.person.entry.split("-").reverse().join("/");
+        scope.personForm.output = data.person.output.split("-").reverse().join("/");
       });
     }
     else {

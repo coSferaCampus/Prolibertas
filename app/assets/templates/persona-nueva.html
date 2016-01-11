@@ -63,6 +63,7 @@
           </span>
           <input
             ng-model="personCtrl.personForm.birth"
+            ng-change="familyCtrl.change('Birth')"
             type="text"
             class="form-control"
             placeholder="dd/mm/aaaa"
@@ -366,6 +367,7 @@
           </span>
           <input
             ng-model="personCtrl.personForm.entry"
+            ng-change="familyCtrl.change('Entry')"
             type="text"
             class="form-control"
             placeholder="dd/mm/aaaa"
@@ -381,6 +383,7 @@
           </span>
           <input
             ng-model="personCtrl.personForm.output"
+            ng-change="familyCtrl.change('Output')"
             type="text"
             class="form-control"
             placeholder="dd/mm/aaaa"

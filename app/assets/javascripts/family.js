@@ -156,7 +156,7 @@
       scope.actionForm       = scope.actualizarFamilia;
       $rootScope.prolibertas = "Editar Familia";
 
-      $http.get('/families/' + $state.params.id + '.json').success(function(data ) {
+      $http.get('/families/' + $state.params.id + '.json').success(function(data) {
         scope.familyForm      = data.family;
         scope.familyForm.from = data.family.from.split("-").reverse().join("/");
         scope.familyForm.to   = data.family.to.split("-").reverse().join("/");
