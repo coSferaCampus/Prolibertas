@@ -38,5 +38,5 @@ Rails.application.routes.draw do
   get '/reports/inv'                  => 'reports#inv'
   get '/reports/families'             => 'reports#families'
   get '/reports/type'                 => 'reports#type'
-  get '/reports/age_range'            => 'reports#age_range'
+  get '/reports/age'                  => 'reports#age'
 end

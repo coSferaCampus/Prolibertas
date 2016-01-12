@@ -114,37 +114,46 @@ class ReportsController < ApplicationController
     )
   end
 
-  def age_range
+  def age
     $year = params[:selected_year]
 
     name = "InformePorEdad"
     name += params[:selected_year] if params[:selected_year]
 
-    data = Report.type
-    data_spanish = data[ :spanish ]
-    data_foreign = data[ :foreign ]
+    data               = Report.age
+    data_spanish       = data[ :spanish       ]
+    data_spanish_man   = data[ :spanish_man   ]
+    data_spanish_woman = data[ :spanish_woman ]
+    data_foreign       = data[ :foreign       ]
+    data_foreign_man   = data[ :foreign_man   ]
+    data_foreign_woman = data[ :foreign_woman ]
 
     Spreadsheet.client_encoding = 'ISO8859-15'
     book = Spreadsheet::Workbook.new
     sheet = book.create_worksheet :name => name
 
-    sheet.row(0).concat %w{TIPO Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre}
+    sheet.row(0).concat ["", "18 a 30", "31 a 45", "46 a 55", "mas de 60"]
 
-    sheet[1,0] = 'ESP_Comedor'.encode(Encoding::ISO_8859_1)
-    sheet[2,0] = 'ESP_Ropero'.encode(Encoding::ISO_8859_1)
-    sheet[3,0] = 'ESP_Ducha'.encode(Encoding::ISO_8859_1)
-    sheet[4,0] = 'ESP_Desayuno'.encode(Encoding::ISO_8859_1)
+    sheet[1,0] = 'Españoles'.encode(Encoding::ISO_8859_1)
+    sheet[2,0] = 'Españoles hombres'.encode(Encoding::ISO_8859_1)
+    sheet[3,0] = 'Españoles mujeres'.encode(Encoding::ISO_8859_1)
+    sheet[4,0] = 'Extranjeros'.encode(Encoding::ISO_8859_1)
+    sheet[5,0] = 'Extranjeros hombres'.encode(Encoding::ISO_8859_1)
+    sheet[6,0] = 'Extranjeros mujeres'.encode(Encoding::ISO_8859_1)
 
-    sheet[5,0] = 'EXT_Comedor'.encode(Encoding::ISO_8859_1)
-    sheet[6,0] = 'EXT_Ropero'.encode(Encoding::ISO_8859_1)
-    sheet[7,0] = 'EXT_Ducha'.encode(Encoding::ISO_8859_1)
-    sheet[8,0] = 'EXT_Desayuno'.encode(Encoding::ISO_8859_1)
+    row1 = sheet.row(1)
+    row2 = sheet.row(2)
+    row3 = sheet.row(3)
+    row4 = sheet.row(4)
+    row5 = sheet.row(5)
+    row6 = sheet.row(6)
 
-    sheet[9, 0] = 'TOTAL_Comedor'.encode(Encoding::ISO_8859_1)
-    sheet[10,0] = 'TOTAL_Ropero'.encode(Encoding::ISO_8859_1)
-    sheet[11,0] = 'TOTAL_Ducha'.encode(Encoding::ISO_8859_1)
-    sheet[12,0] = 'TOTAL_Desayuno'.encode(Encoding::ISO_8859_1)
-    sheet[13,0] = 'TOTAL_Bocadillos'.encode(Encoding::ISO_8859_1)
+    data_spanish.each       { |data| row1.push data }
+    data_spanish_man.each   { |data| row2.push data }
+    data_spanish_woman.each { |data| row3.push data }
+    data_foreign.each       { |data| row4.push data }
+    data_foreign_man.each   { |data| row5.push data }
+    data_foreign_woman.each { |data| row6.push data }
 
     spreadsheet = StringIO.new
     book.write spreadsheet
@@ -173,12 +182,89 @@ class ReportsController < ApplicationController
     book = Spreadsheet::Workbook.new
     sheet = book.create_worksheet :name => name
 
-    sheet.row(0).concat %w{CIUDAD Numero_habitantes %total}
+    sheet.row(0).concat %w{CIUDAD Numero_personas %total}
 
     cities.each_with_index do |city, i|
       sheet[i+1, 0] = city.encode(Encoding::ISO_8859_1)
       sheet.row(i+1).push(amount[i], percent[i].to_s + '%')
     end
+
+    spreadsheet = StringIO.new
+    book.write spreadsheet
+
+    send_data(
+      spreadsheet.string,
+      filename: name + ".xls",
+      type: 'application/vnd.ms-excel; charset=ISO8859-15; header=present',
+      :stream => false
+    )
+  end
+
+  def origin
+    $year = params[:selected_year]
+
+    name = "InformePorPais".encode(Encoding::ISO_8859_1)
+    name += params[:selected_year] if params[:selected_year]
+
+    data = Report.origin
+    countries = data[ :countries ]
+    amount    = data[ :amount    ]
+    percent   = data[ :percent   ]
+
+
+    Spreadsheet.client_encoding = 'ISO8859-15'
+    book = Spreadsheet::Workbook.new
+    sheet = book.create_worksheet :name => name
+
+    sheet.row(0).concat %w{PAIS Numero_personas %total}
+
+    countries.each_with_index do |el, i|
+      sheet[i+1, 0] = el.encode(Encoding::ISO_8859_1)
+      sheet.row(i+1).push(amount[i], percent[i].to_s + '%')
+    end
+
+    spreadsheet = StringIO.new
+    book.write spreadsheet
+
+    send_data(
+      spreadsheet.string,
+      filename: name + ".xls",
+      type: 'application/vnd.ms-excel; charset=ISO8859-15; header=present',
+      :stream => false
+    )
+  end
+
+  def services
+    $year = params[:selected_year]
+
+    name = "InformePorEdad"
+    name += params[:selected_year] if params[:selected_year]
+
+    data = Report.type
+    data_spanish = data[ :spanish ]
+    data_foreign = data[ :foreign ]
+
+    Spreadsheet.client_encoding = 'ISO8859-15'
+    book = Spreadsheet::Workbook.new
+    sheet = book.create_worksheet :name => name
+
+    sheet.row(0).concat ["", "18 a 30", "31 a 45", "46 a 55", "mas de 60"]
+
+    sheet[1,0] = 'ESP_Comedor'.encode(Encoding::ISO_8859_1)
+    sheet[2,0] = 'ESP_Ropero'.encode(Encoding::ISO_8859_1)
+    sheet[3,0] = 'ESP_Ducha'.encode(Encoding::ISO_8859_1)
+    sheet[4,0] = 'ESP_Desayuno'.encode(Encoding::ISO_8859_1)
+
+    sheet[5,0] = 'EXT_Comedor'.encode(Encoding::ISO_8859_1)
+    sheet[6,0] = 'EXT_Ropero'.encode(Encoding::ISO_8859_1)
+    sheet[7,0] = 'EXT_Ducha'.encode(Encoding::ISO_8859_1)
+    sheet[8,0] = 'EXT_Desayuno'.encode(Encoding::ISO_8859_1)
+
+    sheet[9, 0] = 'TOTAL_Comedor'.encode(Encoding::ISO_8859_1)
+    sheet[10,0] = 'TOTAL_Ropero'.encode(Encoding::ISO_8859_1)
+    sheet[11,0] = 'TOTAL_Ducha'.encode(Encoding::ISO_8859_1)
+    sheet[12,0] = 'TOTAL_Desayuno'.encode(Encoding::ISO_8859_1)
+    sheet[13,0] = 'TOTAL_Bocadillos'.encode(Encoding::ISO_8859_1)
 
     spreadsheet = StringIO.new
     book.write spreadsheet
