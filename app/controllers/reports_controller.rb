@@ -156,4 +156,38 @@ class ReportsController < ApplicationController
       :stream => false
     )
   end
+
+  def city
+    $year = params[:selected_year]
+
+    name = "EspañolesPorProcedencia".encode(Encoding::ISO_8859_1)
+    name += params[:selected_year] if params[:selected_year]
+
+    data = Report.city
+    cities  = data[ :cities  ]
+    amount  = data[ :amount  ]
+    percent = data[ :percent ]
+
+
+    Spreadsheet.client_encoding = 'ISO8859-15'
+    book = Spreadsheet::Workbook.new
+    sheet = book.create_worksheet :name => name
+
+    sheet.row(0).concat %w{CIUDAD Numero_habitantes %total}
+
+    cities.each_with_index do |city, i|
+      sheet[i+1, 0] = city.encode(Encoding::ISO_8859_1)
+      sheet.row(i+1).push(amount[i], percent[i].to_s + '%')
+    end
+
+    spreadsheet = StringIO.new
+    book.write spreadsheet
+
+    send_data(
+      spreadsheet.string,
+      filename: name + ".xls",
+      type: 'application/vnd.ms-excel; charset=ISO8859-15; header=present',
+      :stream => false
+    )
+  end
 end

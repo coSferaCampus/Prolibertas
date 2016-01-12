@@ -78,6 +78,25 @@ class Report
     total_bocadillos = []
   end
 
+  def self.city
+    all = []
+    percent = []
+
+    Person.all.each { |p| all << p.city if p.city }
+
+    all_hash = all.inject(Hash.new(0)) { |h, e| h[e] += 1; h
+    }.select { |k, v| v > 1
+    }.inject({}) { |r, e| r[e.first] = e.last; r
+    }.sort_by { |k, v| -v }.to_h
+
+    cities = all_hash.keys
+    amount = all_hash.values
+    total_amount = amount.inject(:+)
+
+    amount.each { |a| percent << (a / total_amount.to_f * 100).round(2) }
+
+    { cities: cities, amount: amount, percent: percent }
+  end
 
   def self.genre
     man_amount   = Person.where(genre: 'man', :created_at.gt => Date.new($year.to_i),
@@ -165,95 +184,95 @@ class Report
     response
   end
 
-  def self.origin
-    labels   = []
-    amounts  = []
-    response = []
-
-    Person.each { |x| labels << x.origin }
-    labels.uniq!
-    labels.each { |x| amounts << Person.where( origin: x , :created_at.gt => Date.new($year.to_i),
-                                              :created_at.lt => Date.new($year.to_i + 1)).size }
-
-    labels.each_with_index do |item, index|
-      response << { label: labels[index], amount: amounts[index] }
-    end
-
-    response.sort_by! { |x| x[:amount] }
-    response.reverse!
-
-    response = response.first(5) if response.size >= 4
-
-    response
-  end
-
-  def self.city
-    labels   = []
-    amounts  = []
-    response = []
-
-    Person.each { |x| labels << x.city if ( x.city && x.city != :"" && x.city != nil ) }
-    labels.uniq!
-    labels.each { |x| amounts << Person.where( city: x, :created_at.gt => Date.new($year.to_i),
-                                              :created_at.lt => Date.new($year.to_i + 1) ).size }
-
-    labels.each_with_index do |item, index|
-      response << { label: labels[index], amount: amounts[index] }
-    end
-
-    response.sort_by! { |x| x[:amount] }
-    response.reverse!
-
-    response = response.first(5) if response.size >= 4
-
-    response
-  end
-
-  def self.people
-    a_active = 0
-    a_new    = Person.where(
-      :created_at.gt => Date.new($year.to_i),:created_at.lt => Date.new($year.to_i + 1)).size
-
-    Person.each do |x|
-      a_active += 1 if UsedService.where(
-        person_id: x.id, :created_at.gt => Date.new($year.to_i),
-        :created_at.lt => Date.new($year.to_i + 1)
-      ).size > 0
-    end
-
-    response = [{label: 'Nuevas', amount: a_new}, {label: 'Activas', amount: a_active}]
-
-    response.sort_by! { |x| x[:amount] }
-    response.reverse!
-
-    response
-  end
-
-  def self.services_year
-    labels     = []
-    labels_ids = []
-    amounts    = []
-    response   = []
-
-    Service.each { |x| labels << x.name }
-    labels.each { |x| labels_ids << Service.find_by( name: x ) }
-
-    labels_ids.each do |x|
-      amounts << UsedService.where(
-        service_id: x, :created_at.gt => Date.new($year.to_i),
-        :created_at.lt => Date.new($year.to_i + 1)
-      ).size
-    end
-
-    labels.each_with_index do |item, index|
-      response << { label: labels[index], amount: amounts[index] }
-    end
-
-    response.sort_by! { |x| x[:amount] }
-    response.reverse!
-
-    response
-  end
+# def self.origin
+#   labels   = []
+#   amounts  = []
+#   response = []
+#
+#   Person.each { |x| labels << x.origin }
+#   labels.uniq!
+#   labels.each { |x| amounts << Person.where( origin: x , :created_at.gt => Date.new($year.to_i),
+#                                             :created_at.lt => Date.new($year.to_i + 1)).size }
+#
+#   labels.each_with_index do |item, index|
+#     response << { label: labels[index], amount: amounts[index] }
+#   end
+#
+#   response.sort_by! { |x| x[:amount] }
+#   response.reverse!
+#
+#   response = response.first(5) if response.size >= 4
+#
+#   response
+# end
+#
+# def self.city
+#   labels   = []
+#   amounts  = []
+#   response = []
+#
+#   Person.each { |x| labels << x.city if ( x.city && x.city != :"" && x.city != nil ) }
+#   labels.uniq!
+#   labels.each { |x| amounts << Person.where( city: x, :created_at.gt => Date.new($year.to_i),
+#                                             :created_at.lt => Date.new($year.to_i + 1) ).size }
+#
+#   labels.each_with_index do |item, index|
+#     response << { label: labels[index], amount: amounts[index] }
+#   end
+#
+#   response.sort_by! { |x| x[:amount] }
+#   response.reverse!
+#
+#   response = response.first(5) if response.size >= 4
+#
+#   response
+# end
+#
+# def self.people
+#   a_active = 0
+#   a_new    = Person.where(
+#     :created_at.gt => Date.new($year.to_i),:created_at.lt => Date.new($year.to_i + 1)).size
+#
+#   Person.each do |x|
+#     a_active += 1 if UsedService.where(
+#       person_id: x.id, :created_at.gt => Date.new($year.to_i),
+#       :created_at.lt => Date.new($year.to_i + 1)
+#     ).size > 0
+#   end
+#
+#   response = [{label: 'Nuevas', amount: a_new}, {label: 'Activas', amount: a_active}]
+#
+#   response.sort_by! { |x| x[:amount] }
+#   response.reverse!
+#
+#   response
+# end
+#
+# def self.services_year
+#   labels     = []
+#   labels_ids = []
+#   amounts    = []
+#   response   = []
+#
+#   Service.each { |x| labels << x.name }
+#   labels.each { |x| labels_ids << Service.find_by( name: x ) }
+#
+#   labels_ids.each do |x|
+#     amounts << UsedService.where(
+#       service_id: x, :created_at.gt => Date.new($year.to_i),
+#       :created_at.lt => Date.new($year.to_i + 1)
+#     ).size
+#   end
+#
+#   labels.each_with_index do |item, index|
+#     response << { label: labels[index], amount: amounts[index] }
+#   end
+#
+#   response.sort_by! { |x| x[:amount] }
+#   response.reverse!
+#
+#   response
+# end
 
   def self.sandwiches
     amount = 0
