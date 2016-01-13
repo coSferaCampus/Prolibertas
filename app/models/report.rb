@@ -7,7 +7,7 @@ class Report
     foreign    = []
     family     = []
 
-    UsedService.where(:created_at.gt => Date.new($year.to_i),
+    UsedService.where(:created_at.gte => Date.new($year.to_i),
       :created_at.lt => Date.new($year.to_i + 1)
     ).each do |s|
       person_ids << s.person_id.to_s if s.person_id
@@ -69,7 +69,7 @@ class Report
     foreign_man   = []
     foreign_woman = []
 
-    UsedService.where(:created_at.gt => Date.new($year.to_i),
+    UsedService.where(:created_at.gte => Date.new($year.to_i),
       :created_at.lt => Date.new($year.to_i + 1)
     ).each { |s| person_ids << s.person_id.to_s if s.person_id }
 
@@ -125,7 +125,7 @@ class Report
     percent = []
     person_ids = []
 
-    UsedService.where(:created_at.gt => Date.new($year.to_i),
+    UsedService.where(:created_at.gte => Date.new($year.to_i),
       :created_at.lt => Date.new($year.to_i + 1)
     ).each { |s| person_ids << s.person_id.to_s if s.person_id }
 
@@ -151,7 +151,7 @@ class Report
     percent = []
     person_ids = []
 
-    UsedService.where(:created_at.gt => Date.new($year.to_i),
+    UsedService.where(:created_at.gte => Date.new($year.to_i),
       :created_at.lt => Date.new($year.to_i + 1)
     ).each { |s| person_ids << s.person_id.to_s if s.person_id }
 
@@ -172,22 +172,36 @@ class Report
     { countries: countries, amount: amount, percent: percent }
   end
 
-  def self.services
+  def self.person_services
     esp_comedor      = []
     esp_ropero       = []
     esp_ducha        = []
     esp_desayuno     = []
-
     ext_comedor      = []
     ext_ropero       = []
     ext_ducha        = []
     ext_desayuno     = []
-
     total_comedor    = []
     total_ropero     = []
     total_ducha      = []
     total_desayuno   = []
     total_bocadillos = []
+    person_ids = []
+
+    vars = [esp_comedor, esp_ropero, esp_ducha, esp_desayuno, ext_comedor, ext_ropero, ext_ducha,
+    ext_desayuno, total_comedor, total_ropero, total_ducha, total_desayuno, total_bocadillos]
+
+    vars.map do |var|
+
+    UsedService.where(:created_at.gte => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1))
+
+    person_ids.uniq!
+
+    { esp_comedor: esp_comedor, esp_ropero: esp_ropero, esp_ducha: esp_ducha,
+      esp_desayuno: esp_desayuno, ext_comedor: ext_comedor, ext_ropero: ext_ropero,
+      ext_ducha: ext_ducha, ext_desayuno: ext_desayuno, total_comedor: total_comedor,
+      total_ropero: total_ropero, total_ducha: total_ducha, total_desayuno: total_desayuno,
+      total_bocadillos: total_bocadillos }
   end
 
 # def self.genre

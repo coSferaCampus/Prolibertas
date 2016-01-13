@@ -177,7 +177,6 @@ class ReportsController < ApplicationController
     amount  = data[ :amount  ]
     percent = data[ :percent ]
 
-
     Spreadsheet.client_encoding = 'ISO8859-15'
     book = Spreadsheet::Workbook.new
     sheet = book.create_worksheet :name => name
@@ -211,7 +210,6 @@ class ReportsController < ApplicationController
     amount    = data[ :amount    ]
     percent   = data[ :percent   ]
 
-
     Spreadsheet.client_encoding = 'ISO8859-15'
     book = Spreadsheet::Workbook.new
     sheet = book.create_worksheet :name => name
@@ -234,15 +232,17 @@ class ReportsController < ApplicationController
     )
   end
 
-  def services
+  def person_services
     $year = params[:selected_year]
 
     name = "InformePorEdad"
     name += params[:selected_year] if params[:selected_year]
 
-    data = Report.type
-    data_spanish = data[ :spanish ]
-    data_foreign = data[ :foreign ]
+    data = Report.person_services
+    data_esp_comedor  = data[ :esp_comedor  ]
+    data_esp_ropero   = data[ :esp_ropero   ]
+    data_esp_ducha    = data[ :esp_ducha    ]
+    data_esp_desayuno = data[ :esp_desayuno ]
 
     Spreadsheet.client_encoding = 'ISO8859-15'
     book = Spreadsheet::Workbook.new
@@ -265,6 +265,36 @@ class ReportsController < ApplicationController
     sheet[11,0] = 'TOTAL_Ducha'.encode(Encoding::ISO_8859_1)
     sheet[12,0] = 'TOTAL_Desayuno'.encode(Encoding::ISO_8859_1)
     sheet[13,0] = 'TOTAL_Bocadillos'.encode(Encoding::ISO_8859_1)
+
+    row1  = sheet.row(1)
+    row2  = sheet.row(2)
+    row3  = sheet.row(3)
+    row4  = sheet.row(4)
+    row5  = sheet.row(5)
+    row6  = sheet.row(6)
+    row7  = sheet.row(7)
+    row8  = sheet.row(8)
+    row9  = sheet.row(9)
+    row10 = sheet.row(10)
+    row11 = sheet.row(11)
+    row12 = sheet.row(12)
+    row13 = sheet.row(13)
+
+    data_esp_comedor.each      { |data| row1.push data  }
+    data_esp_ropero.each       { |data| row2.push data  }
+    data_esp_ducha.each        { |data| row3.push data  }
+    data_esp_desayuno.each     { |data| row4.push data  }
+
+    data_ext_comedor.each      { |data| row5.push data  }
+    data_ext_ropero.each       { |data| row6.push data  }
+    data_ext_ducha.each        { |data| row7.push data  }
+    data_ext_desayuno.each     { |data| row8.push data  }
+
+    data_total_comedor.each    { |data| row9.push data  }
+    data_total_ropero.each     { |data| row10.push data }
+    data_total_ducha.each      { |data| row11.push data }
+    data_total_desayuno.each   { |data| row12.push data }
+    data_total_bocadillos.each { |data| row13.push data }
 
     spreadsheet = StringIO.new
     book.write spreadsheet

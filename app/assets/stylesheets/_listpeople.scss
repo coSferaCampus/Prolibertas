@@ -15,6 +15,27 @@
   color: $brand;
 }
 
+.listpeople-danger {
+  background-color: #fbb0b0;
+  &:hover {
+    background-color: #F88181 !important;
+  }
+}
+
+.listpeople-success {
+  background-color: #A7D3A7;
+  &:hover {
+    background-color: #85C185 !important;
+  }
+}
+
+.listpeople-warning {
+  background-color: #F6F8B4;
+  &:hover {
+    background-color: #F0F486 !important;
+  }
+}
+
 .listpeople__tabla {
   padding: 0px;
   margin-top: 1rem;

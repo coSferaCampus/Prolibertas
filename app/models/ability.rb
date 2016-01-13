@@ -37,7 +37,7 @@ class Ability
       end
 
       cannot :manage, History
-      cannot :manage, Alert
+      cannot [:create, :update, :destroy], Alert
     end
   end
 end

@@ -24,10 +24,21 @@
 </div>
 
 <div class="persona__botones col-md-7">
-  <a id="remove-alert-btn" type="button" class="btn btn-danger persona__botones__remove" ng-click="alertCtrl.destroyAlert(alertCtrl.alert)">
+  <a
+    ng-if="currentUser.role !== 'volunteer'"
+    id="remove-alert-btn"
+    type="button"
+    class="btn btn-danger
+    persona__botones__remove"
+    ng-click="alertCtrl.destroyAlert(alertCtrl.alert)">
     Eliminar
   </a>
-  <a id="edit_alert_button" type="button" class="btn btn-primary persona__botones__edit" ui-sref="persona.alertaEditar({id: personCtrl.person.id, alerta_id: alertCtrl.alert.id })">
+  <a
+    ng-if="currentUser.role !== 'volunteer'"
+    id="edit_alert_button"
+    type="button"
+    class="btn btn-primary persona__botones__edit"
+    ui-sref="persona.alertaEditar({id: personCtrl.person.id, alerta_id: alertCtrl.alert.id })">
     Editar
   </a>
 </div>
