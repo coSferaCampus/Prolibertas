@@ -183,7 +183,7 @@
 
     scope.guardarSandwiches = function() {
 
-      $http.post('/sandwiches.json', {amount: scope.sandwiches, created_at: scope.person.selected_day})
+      $http.post('/sandwiches.json', {amount: scope.sandwiches, created_at: scope.selected_day})
         .success( function(data) {
           $state.go("personas", { alertaGuardado: 'true' })
         }).error( function(data) {

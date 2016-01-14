@@ -186,16 +186,46 @@ class Report
     total_ducha      = []
     total_desayuno   = []
     total_bocadillos = []
-    person_ids = []
 
-    vars = [esp_comedor, esp_ropero, esp_ducha, esp_desayuno, ext_comedor, ext_ropero, ext_ducha,
-    ext_desayuno, total_comedor, total_ropero, total_ducha, total_desayuno, total_bocadillos]
+    comida_id   = Service.where( name: 'comida'   ).first.id.to_s
+    ropa_id     = Service.where( name: 'ropa'     ).first.id.to_s
+    ducha_id    = Service.where( name: 'ducha'    ).first.id.to_s
+    desayuno_id = Service.where( name: 'desayuno' ).first.id.to_s
 
-    vars.map do |var|
+    esp_ids = Person.where( origin: "España"       ).map { |person| person.id }
+    ext_ids = Person.where( :origin.ne => "España" ).map { |person| person.id }
 
-    UsedService.where(:created_at.gte => Date.new($year.to_i), :created_at.lt => Date.new($year.to_i + 1))
+    (1..12).each do |x|
+      date = ($year + '/' + x.to_s + '/1').to_time
 
-    person_ids.uniq!
+      sandwiches = 0
+      sandwiches += Sandwich.where(:created_at.gte => date, :created_at.lt => date + 1.month)
+        .map { |s| s.amount }.inject(0, :+)
+
+      services = UsedService.where(:person_id.ne => nil, :created_at.gte => date,
+                                   :created_at.lt => date + 1.month)
+
+      services_comedor  = services.where( service_id: comida_id   )
+      services_ropero   = services.where( service_id: ropa_id     )
+      services_ducha    = services.where( service_id: ducha_id    )
+      services_desayuno = services.where( service_id: desayuno_id )
+
+      esp_comedor      << services_comedor.where(:person_id.in => esp_ids).size
+      esp_ropero       << services_ropero.where(:person_id.in => esp_ids).size
+      esp_ducha        << services_ducha.where(:person_id.in => esp_ids).size
+      esp_desayuno     << services_desayuno.where(:person_id.in => esp_ids).size
+
+      ext_comedor      << services_comedor.where(:person_id.in => ext_ids).size
+      ext_ropero       << services_ropero.where(:person_id.in => ext_ids).size
+      ext_ducha        << services_ducha.where(:person_id.in => ext_ids).size
+      ext_desayuno     << services_desayuno.where(:person_id.in => ext_ids).size
+
+      total_comedor    << services_comedor.size
+      total_ropero     << services_ropero.size
+      total_ducha      << services_ducha.size
+      total_desayuno   << services_desayuno.size
+      total_bocadillos << sandwiches
+    end
 
     { esp_comedor: esp_comedor, esp_ropero: esp_ropero, esp_ducha: esp_ducha,
       esp_desayuno: esp_desayuno, ext_comedor: ext_comedor, ext_ropero: ext_ropero,

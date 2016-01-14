@@ -235,20 +235,33 @@ class ReportsController < ApplicationController
   def person_services
     $year = params[:selected_year]
 
-    name = "InformePorEdad"
+    name = "ServiciosPorMeses"
     name += params[:selected_year] if params[:selected_year]
 
     data = Report.person_services
-    data_esp_comedor  = data[ :esp_comedor  ]
-    data_esp_ropero   = data[ :esp_ropero   ]
-    data_esp_ducha    = data[ :esp_ducha    ]
-    data_esp_desayuno = data[ :esp_desayuno ]
+
+    data_esp_comedor      = data[ :esp_comedor      ]
+    data_esp_ropero       = data[ :esp_ropero       ]
+    data_esp_ducha        = data[ :esp_ducha        ]
+    data_esp_desayuno     = data[ :esp_desayuno     ]
+
+    data_ext_comedor      = data[ :ext_comedor      ]
+    data_ext_ropero       = data[ :ext_ropero       ]
+    data_ext_ducha        = data[ :ext_ducha        ]
+    data_ext_desayuno     = data[ :ext_desayuno     ]
+
+    data_total_comedor    = data[ :total_comedor    ]
+    data_total_ropero     = data[ :total_ropero     ]
+    data_total_ducha      = data[ :total_ducha      ]
+    data_total_desayuno   = data[ :total_desayuno   ]
+    data_total_bocadillos = data[ :total_bocadillos ]
 
     Spreadsheet.client_encoding = 'ISO8859-15'
     book = Spreadsheet::Workbook.new
     sheet = book.create_worksheet :name => name
 
-    sheet.row(0).concat ["", "18 a 30", "31 a 45", "46 a 55", "mas de 60"]
+    sheet.row(0).concat ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+                         'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
     sheet[1,0] = 'ESP_Comedor'.encode(Encoding::ISO_8859_1)
     sheet[2,0] = 'ESP_Ropero'.encode(Encoding::ISO_8859_1)

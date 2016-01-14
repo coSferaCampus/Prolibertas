@@ -26,6 +26,9 @@
           case 3:
             url = '/reports/origin?selected_year=' + $("#SelectedYear").val();
             break;
+          case 4:
+            url = '/reports/person_services?selected_year=' + $("#SelectedYear").val();
+            break;
         }
 
         location.href = url;
