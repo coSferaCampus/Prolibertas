@@ -319,4 +319,42 @@ class ReportsController < ApplicationController
       :stream => false
     )
   end
+
+  def family_services
+    $year = params[:selected_year]
+
+    name = "ServiciosFamiliaPorMeses"
+    name += params[:selected_year] if params[:selected_year]
+
+    data = Report.family_services
+
+    data_comedor = data[ :comedor ]
+    data_ropero  = data[ :ropero  ]
+
+    Spreadsheet.client_encoding = 'ISO8859-15'
+    book = Spreadsheet::Workbook.new
+    sheet = book.create_worksheet :name => name
+
+    sheet.row(0).concat ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+                         'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+
+    sheet[1,0] = 'comedor'.encode(Encoding::ISO_8859_1)
+    sheet[2,0] = 'ropero'.encode(Encoding::ISO_8859_1)
+
+    row1 = sheet.row(1)
+    row2 = sheet.row(2)
+
+    data_comedor.each { |data| row1.push data  }
+    data_ropero.each  { |data| row2.push data  }
+
+    spreadsheet = StringIO.new
+    book.write spreadsheet
+
+    send_data(
+      spreadsheet.string,
+      filename: name + ".xls",
+      type: 'application/vnd.ms-excel; charset=ISO8859-15; header=present',
+      :stream => false
+    )
+  end
 end
