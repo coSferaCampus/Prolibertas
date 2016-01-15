@@ -53,14 +53,14 @@ RSpec.describe AlertsController, type: :controller do
       context "GET #show" do
         it "returns 403 HTTP status code" do
           get :show, id: @resource.id.to_s 
-          expect(response).to have_http_status :forbidden
+          expect(response).to have_http_status :ok
         end
       end
 
       context "GET #index" do
         it "returns 403 HTTP status code" do
           get :index, person_id: @person.id.to_s
-          expect(response).to have_http_status :forbidden
+          expect(response).to have_http_status :ok
         end
       end
 
