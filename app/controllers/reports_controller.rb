@@ -132,7 +132,7 @@ class ReportsController < ApplicationController
     book = Spreadsheet::Workbook.new
     sheet = book.create_worksheet :name => name
 
-    sheet.row(0).concat ["", "18 a 30", "31 a 45", "46 a 55", "mas de 60"]
+    sheet.row(0).concat ["", "18 a 30", "31 a 45", "46 a 60", "mas de 60"]
 
     sheet[1,0] = 'Españoles'.encode(Encoding::ISO_8859_1)
     sheet[2,0] = 'Españoles hombres'.encode(Encoding::ISO_8859_1)
@@ -326,7 +326,7 @@ class ReportsController < ApplicationController
     name = "ServiciosFamiliaPorMeses"
     name += params[:selected_year] if params[:selected_year]
 
-    data = Report.family_zts
+    data = Report.family_services
 
     data_comedor = data[ :comedor ]
     data_ropero  = data[ :ropero  ]

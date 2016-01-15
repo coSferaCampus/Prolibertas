@@ -87,33 +87,33 @@ class Report
 
     spanish << spanish_all.where(:birth.gte => 30.years.ago).size
     spanish << spanish_all.where(:birth.gte => 45.years.ago, :birth.lte => 31.years.ago).size
-    spanish << spanish_all.where(:birth.gte => 59.years.ago, :birth.lte => 46.years.ago).size
-    spanish << spanish_all.where(:birth.lte => 60.years.ago).size
+    spanish << spanish_all.where(:birth.gte => 60.years.ago, :birth.lte => 46.years.ago).size
+    spanish << spanish_all.where(:birth.lte => 61.years.ago).size
 
     spanish_man << spanish_all_man.where(:birth.gte => 30.years.ago).size
     spanish_man << spanish_all_man.where(:birth.gte => 45.years.ago, :birth.lte => 31.years.ago).size
-    spanish_man << spanish_all_man.where(:birth.gte => 59.years.ago, :birth.lte => 46.years.ago).size
-    spanish_man << spanish_all_man.where(:birth.lte => 60.years.ago).size
+    spanish_man << spanish_all_man.where(:birth.gte => 60.years.ago, :birth.lte => 46.years.ago).size
+    spanish_man << spanish_all_man.where(:birth.lte => 61.years.ago).size
 
     spanish_woman << spanish_all_woman.where(:birth.gte => 30.years.ago).size
     spanish_woman << spanish_all_woman.where(:birth.gte => 45.years.ago, :birth.lte => 31.years.ago).size
-    spanish_woman << spanish_all_woman.where(:birth.gte => 59.years.ago, :birth.lte => 46.years.ago).size
-    spanish_woman << spanish_all_woman.where(:birth.lte => 60.years.ago).size
+    spanish_woman << spanish_all_woman.where(:birth.gte => 60.years.ago, :birth.lte => 46.years.ago).size
+    spanish_woman << spanish_all_woman.where(:birth.lte => 61.years.ago).size
 
     foreign << foreign_all.where(:birth.gte => 30.years.ago).size
     foreign << foreign_all.where(:birth.gte => 45.years.ago, :birth.lte => 31.years.ago).size
-    foreign << foreign_all.where(:birth.gte => 59.years.ago, :birth.lte => 46.years.ago).size
-    foreign << foreign_all.where(:birth.lte => 60.years.ago).size
+    foreign << foreign_all.where(:birth.gte => 60.years.ago, :birth.lte => 46.years.ago).size
+    foreign << foreign_all.where(:birth.lte => 61.years.ago).size
 
     foreign_man << foreign_all_man.where(:birth.gte => 30.years.ago).size
     foreign_man << foreign_all_man.where(:birth.gte => 45.years.ago, :birth.lte => 31.years.ago).size
-    foreign_man << foreign_all_man.where(:birth.gte => 59.years.ago, :birth.lte => 46.years.ago).size
-    foreign_man << foreign_all_man.where(:birth.lte => 60.years.ago).size
+    foreign_man << foreign_all_man.where(:birth.gte => 60.years.ago, :birth.lte => 46.years.ago).size
+    foreign_man << foreign_all_man.where(:birth.lte => 61.years.ago).size
 
     foreign_woman << foreign_all_woman.where(:birth.gte => 30.years.ago).size
     foreign_woman << foreign_all_woman.where(:birth.gte => 45.years.ago, :birth.lte => 31.years.ago).size
-    foreign_woman << foreign_all_woman.where(:birth.gte => 59.years.ago, :birth.lte => 46.years.ago).size
-    foreign_woman << foreign_all_woman.where(:birth.lte => 60.years.ago).size
+    foreign_woman << foreign_all_woman.where(:birth.gte => 60.years.ago, :birth.lte => 46.years.ago).size
+    foreign_woman << foreign_all_woman.where(:birth.lte => 61.years.ago).size
 
 
     { spanish: spanish, spanish_man: spanish_man, spanish_woman: spanish_woman,
