@@ -400,9 +400,8 @@ class ReportsController < ApplicationController
     name = "FamiliasPorZTS"
     name += params[:selected_year] if params[:selected_year]
 
-    data = Report.family_services
-
-#    amount = data[ :amount ]
+    data = Report.family_zts
+    amount = data[ :amount ]
 
     Spreadsheet.client_encoding = 'ISO8859-15'
     book = Spreadsheet::Workbook.new
@@ -415,7 +414,6 @@ class ReportsController < ApplicationController
              "Poniente Sur", "Poniente Norte (La Foggara)", "Noroeste", "Periferia-Alcolea",
              "Periferia-Villarrubia", "Periferia-Santa Cruz", "Periferia-Cerro Muriano",
              "Periferia-El Higuerón", "Periferia-Trassierra", "ETF 1", "ETF 2", "ETF 3", "ETF 4"]
-    amount = [[2], [2, 3], [2, 1], [1, 1], [1,3], [4], [5], [6], [7], [10], [11], [12], [12], [14], [15], [16], [17] ,[18]]
 
     zonas.each_with_index do |el, i|
       sheet[i+1, 0] = el.encode(Encoding::ISO_8859_1)

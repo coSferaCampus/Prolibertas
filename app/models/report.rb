@@ -274,20 +274,34 @@ class Report
   end
 
   def self.family_zts
-    amount  = []
+    amount = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
     zonas   = ["Norte-Sierra", "Levante", "Sureste (Fuensanta)", "Centro (La Ribera)", "Sur",
                "Poniente Sur", "Poniente Norte (La Foggara)", "Noroeste", "Periferia-Alcolea",
                "Periferia-Villarrubia", "Periferia-Santa Cruz", "Periferia-Cerro Muriano",
                "Periferia-El Higuerón", "Periferia-Trassierra", "ETF 1", "ETF 2", "ETF 3", "ETF 4"]
 
-    (1..12).each do |x|
-      date = ($year + '/' + x.to_s + '/1').to_time
-      families = Family.where(:zts.ne => nil, :used_services.ne => [])
+    families  = Family.where(:zts.ne => nil, :used_services.ne => [])
+    comida_id = Service.where( name: 'comida' ).first.id.to_s
 
-      zonas.each_with_index do |el, i|
-        amount[i] << families.where(zts: el).size
-      end
-    end
+    (1..12).each { |x|
+      date = ($year + '/' + x.to_s + '/1').to_time
+
+      zonas.each_with_index { |el, i|
+        sum = 0
+
+        families.where(zts: el).each { |family|
+          hasService = false
+
+          family.used_services.where(service_id: comida_id).each { |service|
+            hasService = true if service.created_at >= date and service.created_at < date + 1.month
+          }
+
+          sum +=1 if hasService
+        }
+
+        amount[i] << sum
+      }
+    }
 
     { amount: amount }
   end
