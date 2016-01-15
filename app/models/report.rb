@@ -254,6 +254,26 @@ class Report
     { comedor: comedor, ropero: ropero }
   end
 
+  def self.family_zts
+    comedor = []
+    ropero  = []
+
+    comida_id = Service.where( name: 'comida' ).first.id.to_s
+    ropa_id   = Service.where( name: 'ropa'   ).first.id.to_s
+
+    (1..12).each do |x|
+      date = ($year + '/' + x.to_s + '/1').to_time
+
+      services = UsedService.where(:family_id.ne => nil, :created_at.gte => date,
+                                   :created_at.lt => date + 1.month)
+
+      comedor << services.where( service_id: comida_id ).size
+      ropero  << services.where( service_id: ropa_id   ).size
+    end
+
+    { comedor: comedor, ropero: ropero }
+  end
+
 # def self.genre
 #   man_amount   = Person.where(genre: 'man', :created_at.gt => Date.new($year.to_i),
 #                               :created_at.lt => Date.new($year.to_i + 1)).size

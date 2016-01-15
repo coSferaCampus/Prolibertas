@@ -344,8 +344,49 @@ class ReportsController < ApplicationController
     row1 = sheet.row(1)
     row2 = sheet.row(2)
 
-    data_comedor.each { |data| row1.push data  }
-    data_ropero.each  { |data| row2.push data  }
+    data_comedor.each { |data| row1.push data }
+    data_ropero.each  { |data| row2.push data }
+
+    spreadsheet = StringIO.new
+    book.write spreadsheet
+
+    send_data(
+      spreadsheet.string,
+      filename: name + ".xls",
+      type: 'application/vnd.ms-excel; charset=ISO8859-15; header=present',
+      :stream => false
+    )
+  end
+
+  def family_zts
+    $year = params[:selected_year]
+
+    name = "FamiliasPorZTS"
+    name += params[:selected_year] if params[:selected_year]
+
+    data = Report.family_services
+
+#    amount = data[ :amount ]
+
+    Spreadsheet.client_encoding = 'ISO8859-15'
+    book = Spreadsheet::Workbook.new
+    sheet = book.create_worksheet :name => name
+
+    sheet.row(0).concat ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+                         'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+
+    zonas = ["Norte-Sierra", "Levante", "Sureste (Fuensanta)", "Centro (La Ribera)", "Sur",
+             "Poniente Sur", "Poniente Norte (La Foggara)", "Noroeste", "Periferia-Alcolea",
+             "Periferia-Villarrubia", "Periferia-Santa Cruz", "Periferia-Cerro Muriano",
+             "Periferia-El Higuerón", "Periferia-Trassierra", "ETF 1", "ETF 2", "ETF 3", "ETF 4"]
+    amount = [[2], [2, 3], [2, 1], [1, 1], [1,3], [4], [5], [6], [7], [10], [11], [12], [12], [14], [15], [16], [17] ,[18]]
+
+    zonas.each_with_index do |el, i|
+      sheet[i+1, 0] = el.encode(Encoding::ISO_8859_1)
+      amount[i].each { |a|
+        sheet.row(i+1).push(a) # Aqui meto los datos de cada fila
+      }
+    end
 
     spreadsheet = StringIO.new
     book.write spreadsheet
