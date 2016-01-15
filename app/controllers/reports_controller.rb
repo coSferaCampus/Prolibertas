@@ -326,7 +326,7 @@ class ReportsController < ApplicationController
     name = "ServiciosFamiliaPorMeses"
     name += params[:selected_year] if params[:selected_year]
 
-    data = Report.family_services
+    data = Report.family_zts
 
     data_comedor = data[ :comedor ]
     data_ropero  = data[ :ropero  ]
@@ -346,6 +346,42 @@ class ReportsController < ApplicationController
 
     data_comedor.each { |data| row1.push data }
     data_ropero.each  { |data| row2.push data }
+
+    spreadsheet = StringIO.new
+    book.write spreadsheet
+
+    send_data(
+      spreadsheet.string,
+      filename: name + ".xls",
+      type: 'application/vnd.ms-excel; charset=ISO8859-15; header=present',
+      :stream => false
+    )
+  end
+
+  def articles
+    $year = params[:selected_year]
+
+    name = "InventarioDeArticulos"
+    name += params[:selected_year] if params[:selected_year]
+
+    data = Report.articles
+    amount = data[ :amount ]
+
+    Spreadsheet.client_encoding = 'ISO8859-15'
+    book = Spreadsheet::Workbook.new
+    sheet = book.create_worksheet :name => name
+
+    sheet.row(0).concat ['', 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio',
+                         'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+
+    articles = ["Mantas", "Sábanas", "Chaquetas", "Zapatos", "Canastillas"]
+
+    articles.each_with_index do |el, i|
+      sheet[i+1, 0] = el.encode(Encoding::ISO_8859_1)
+      amount[i].each { |a|
+        sheet.row(i+1).push(a) # Aqui meto los datos de cada fila
+      }
+    end
 
     spreadsheet = StringIO.new
     book.write spreadsheet

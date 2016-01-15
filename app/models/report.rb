@@ -254,24 +254,42 @@ class Report
     { comedor: comedor, ropero: ropero }
   end
 
-  def self.family_zts
-    comedor = []
-    ropero  = []
-
-    comida_id = Service.where( name: 'comida' ).first.id.to_s
-    ropa_id   = Service.where( name: 'ropa'   ).first.id.to_s
+  def self.articles
+    types  = [ :blanket, :sheet, :jacket, :shoes, :basket ]
+    amount = [[],[],[],[],[]]
 
     (1..12).each do |x|
       date = ($year + '/' + x.to_s + '/1').to_time
 
-      services = UsedService.where(:family_id.ne => nil, :created_at.gte => date,
-                                   :created_at.lt => date + 1.month)
+      articles = Article.where(:dispensed.gte => date, :dispensed.lt => date + 1.month)
 
-      comedor << services.where( service_id: comida_id ).size
-      ropero  << services.where( service_id: ropa_id   ).size
+      types.each_with_index do |el, i|
+        sum = 0
+        articles.where(type: el).each { |article| sum += article.amount}
+        amount[i] << sum
+      end
     end
 
-    { comedor: comedor, ropero: ropero }
+    { amount: amount }
+  end
+
+  def self.family_zts
+    amount  = []
+    zonas   = ["Norte-Sierra", "Levante", "Sureste (Fuensanta)", "Centro (La Ribera)", "Sur",
+               "Poniente Sur", "Poniente Norte (La Foggara)", "Noroeste", "Periferia-Alcolea",
+               "Periferia-Villarrubia", "Periferia-Santa Cruz", "Periferia-Cerro Muriano",
+               "Periferia-El Higuerón", "Periferia-Trassierra", "ETF 1", "ETF 2", "ETF 3", "ETF 4"]
+
+    (1..12).each do |x|
+      date = ($year + '/' + x.to_s + '/1').to_time
+      families = Family.where(:zts.ne => nil, :used_services.ne => [])
+
+      zonas.each_with_index do |el, i|
+        amount[i] << families.where(zts: el).size
+      end
+    end
+
+    { amount: amount }
   end
 
 # def self.genre

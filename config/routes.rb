@@ -41,5 +41,6 @@ Rails.application.routes.draw do
   get '/reports/age'                  => 'reports#age'
   get '/reports/person_services'      => 'reports#person_services'
   get '/reports/family_services'      => 'reports#family_services'
+  get '/reports/articles'             => 'reports#articles'
   get '/reports/family_zts'           => 'reports#family_zts'
 end
