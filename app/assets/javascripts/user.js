@@ -14,6 +14,7 @@
 
     $http.get('/users.json').success(function(data) {
       scope.users = data.users;
+      console.log(data.users);
     });
 
     scope.rol = function(rol) {
