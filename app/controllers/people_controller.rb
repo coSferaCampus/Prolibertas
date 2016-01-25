@@ -73,7 +73,7 @@ class PeopleController < ApplicationController
       :id, :name, :surname, :origin, :genre, :phone, :assistance, :family_status, :health_status,
       :birth, :social_services, :menu, :income, :address, :contact_family, :notes, :documentation,
       :address_type, :city, :residence, :have_income, :entry, :output, :zts, :id_type, :identifier,
-      :muslim)
+      :nationality, :muslim)
   end
 
   # Determine the scope of the request

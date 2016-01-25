@@ -9,6 +9,7 @@ class Family
   field :surname,          type: String
   field :origin,           type: String
   field :city,             type: String
+  field :nationality,      type: String
   field :menu,             type: String # Ahora representa el campo alergias
   field :phone,            type: String
   field :birthchildren,    type: String

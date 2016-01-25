@@ -33,6 +33,10 @@
           <strong class="person__list__text__left">Provincia:</strong> <span id="city">{{ familyCtrl.family.city }}</span>
         </li>
 
+        <li ng-if="familyCtrl.family.nationality" class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Nacionalidad:</strong> <span id="nationality">{{ familyCtrl.family.nationality }}</span>
+        </li>
+
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Alergias:</strong> <span id="family_menu">{{ familyCtrl.family.menu }}</span>
         </li>

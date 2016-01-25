@@ -4,5 +4,5 @@ class PersonSerializer < ActiveModel::Serializer
     :used_services_of_selected_day, :used_services_of_selected_day_id, :pending_alerts, :residence,
     :have_income, :city, :is_spanish, :documentation, :address_type, :exp, :created_by,
     :entry, :output, :zts, :id_type, :identifier, :muslim, :total_people, :max_pages,
-    :has_blanket, :has_sheet, :has_jacket, :has_shoes, :has_basket
+    :has_blanket, :has_sheet, :has_jacket, :has_shoes, :has_basket, :nationality
 end

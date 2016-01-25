@@ -20,8 +20,4 @@ class Article
   validates :person,    presence: true
 
   validates :type,      inclusion: { in: [ :blanket, :sheet, :jacket, :shoes, :basket ] }
-
-  after_save do |document|
-    set active: dispensed + 1.month
-  end
 end

@@ -94,6 +94,10 @@
           <strong class="person__list__text__left">Provincia:</strong> <span id="city">{{ personCtrl.person.city }}</span>
         </li>
 
+        <li ng-if="personCtrl.person.nationality" class="list-group-item person__list__el">
+          <strong class="person__list__text__left">Nacionalidad:</strong> <span id="nationality">{{ personCtrl.person.nationality }}</span>
+        </li>
+
         <li class="list-group-item person__list__el">
           <strong class="person__list__text__left">Alergias:</strong> <span id="person_menu">{{ personCtrl.person.menu}}</span>
         </li>

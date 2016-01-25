@@ -165,6 +165,7 @@
           <option value='Orense'>Orense</option>
           <option value='Palencia'>Palencia</option>
           <option value='Pontevedra'>Pontevedra</option>
+          <option value='Sahara'>Álava</option>
           <option value='Salamanca'>Salamanca</option>
           <option value='Segovia'>Segovia</option>
           <option value='Sevilla'>Sevilla</option>
@@ -178,6 +179,19 @@
           <option value='Vizcaya'>Vizcaya</option>
           <option value='Zamora'>Zamora</option>
           <option value='Zaragoza'>Zaragoza</option>
+        </select>
+      </div>
+
+      <div
+        class="form-group col-md-6"
+        ng-class="{ 'has-error':familyCtrl.errors.nationality }">
+        <label for="InputNationality">Nacionalidad</label>
+        <select
+          ng-model="familyCtrl.familyForm.nationality"
+          type="text" class="form-control"
+          id="InputNationality"
+          data-placement="top">
+        <option ng-repeat="country in familyCtrl.countries">{{country}}</option>
         </select>
       </div>
 
