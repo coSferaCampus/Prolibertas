@@ -153,13 +153,19 @@
     scope.actionForm = scope.guardarFamilia;
 
     if ($state.params.id != undefined) {
-      scope.actionForm       = scope.actualizarFamilia;
+      scope.actionForm = scope.actualizarFamilia;
       $rootScope.prolibertas = "Editar Familia";
 
       $http.get('/families/' + $state.params.id + '.json').success(function(data) {
-        scope.familyForm      = data.family;
-        scope.familyForm.from = data.family.from.split("-").reverse().join("/");
-        scope.familyForm.to   = data.family.to.split("-").reverse().join("/");
+        scope.familyForm = data.family;
+
+        if (scope.familyForm.from) {
+          scope.familyForm.from = data.family.from.split("-").reverse().join("/");
+        }
+
+        if (scope.familyForm.to) {
+          scope.familyForm.to   = data.family.to.split("-").reverse().join("/");
+        }
       });
     }
     else {
