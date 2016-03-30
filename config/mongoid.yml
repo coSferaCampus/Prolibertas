@@ -99,3 +99,10 @@ test:
         # low amounts for fast failures.
         max_retries: 1
         retry_interval: 0
+production:
+  sessions:
+    default:
+      database: prolibertas_production
+      hosts:
+        - <%= ENV['PRO_MONGODB_HOST'] || 'localhost' %>:<%= ENV['PRO_MONGODB_PORT'] || 27017 %>
+  options:

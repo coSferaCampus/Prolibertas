@@ -16,6 +16,10 @@ gem 'uglifier', '~> 2.7.1' # Para comprimir el javascript
 gem 'kaminari'             # Paginación
 gem 'spreadsheet'          # Exportar a excel
 
+gem 'unicorn' # Servidor HTTP
+gem "non-stupid-digest-assets" # Resuelve los assets no compilados
+gem "ngannotate-rails"
+
 # Convierte objetos de nuestros modelos en json
 gem 'active_model_serializers', '~> 0.9.3'
 
