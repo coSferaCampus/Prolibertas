@@ -48,6 +48,9 @@
           scope.max_pages      = data.people[0].max_pages;
         }
       });
+
+      $http.get('/sandwiches/show.json?selected_day=' + scope.selected_day)
+        .success(function(data) { scope.sandwitches_amt = data; });
     };
     scope.getPeople();
 
@@ -79,6 +82,7 @@
     scope.changeDay = function() {
       scope.selected_day = $("#InputSelected_day").val();
       scope.day = $("#InputSelected_day").val();
+      if(scope.sandwitches_amt) { scope.sandwiches = ""; }
       scope.getPeople();
     };
 
@@ -185,7 +189,7 @@
 
       $http.post('/sandwiches.json', {amount: scope.sandwiches, created_at: scope.selected_day})
         .success( function(data) {
-          $state.go("personas", { alertaGuardado: 'true' })
+          $state.go("personas", { alertaGuardado: 'true' });
         }).error( function(data) {
           scope.errors = data.errors;
 
@@ -196,6 +200,8 @@
             }
           }
         });
+
+        scope.getPeople();
     };
   }]);
 

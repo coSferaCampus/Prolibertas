@@ -16,20 +16,6 @@
          </div>
 
           <div class="form-group col-md-3">
-            <div class="input-group">
-              <input id="InputSandwiches"
-                ng-model="peopleCtrl.sandwiches"
-                type="text" class="form-control"
-                placeholder="Bocadillos">
-              <span class="input-group-addon">
-                <a class="glyphicon glyphicon glyphicon-save listpeople__azul"
-                  ng-click="peopleCtrl.guardarSandwiches();">
-                </a>
-              </span>
-            </div>
-          </div>
-
-          <div class="form-group col-md-3">
             <div class="input-group datepicker">
             <input
               ng-model="peopleCtrl.selected_day"
@@ -38,6 +24,23 @@
               id="InputSelected_day">
               <span class="input-group-addon">
                 <i class="glyphicon glyphicon-calendar listpeople__azul"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group col-md-3">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <span>{{peopleCtrl.sandwitches_amt}}</span>
+              </span>
+              <input id="InputSandwiches"
+                ng-model="peopleCtrl.sandwiches"
+                type="text" class="form-control"
+                placeholder="Bocadillos">
+              <span class="input-group-addon">
+                <a class="glyphicon glyphicon glyphicon-save listpeople__azul"
+                  ng-click="peopleCtrl.guardarSandwiches();">
+                </a>
               </span>
             </div>
           </div>
