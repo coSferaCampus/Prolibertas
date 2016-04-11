@@ -9,6 +9,15 @@ class SandwichesController < ApplicationController
     respond_with @sandwich
   end
 
+  def show
+    if params[:selected_day]
+      date = params[:selected_day].to_datetime
+      @sandwich = Sandwich.where(:created_at.gte => date, :created_at.lt => date + 1.day).first
+      @amt = @sandwich? @sandwich.amount : 0
+      respond_with @amt
+    end
+  end
+
   private
 
   def sandwich_params

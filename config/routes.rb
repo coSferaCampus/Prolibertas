@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :alerts,        only: [ :show, :update, :destroy ]
   resources :histories,     only: [ :show, :update, :destroy ]
   resources :articles,      only: [ :show, :update, :destroy ]
-  resources :sandwiches,    only: [ :show, :create           ]
+  resources :sandwiches,    only: :create
   resources :attachments,   only: [ :show, :update, :destroy ]
 
   get '/current'                      => 'users#current'
@@ -43,4 +43,5 @@ Rails.application.routes.draw do
   get '/reports/family_services'      => 'reports#family_services'
   get '/reports/articles'             => 'reports#articles'
   get '/reports/family_zts'           => 'reports#family_zts'
+  get '/sandwiches/show'              => 'sandwiches#show'
 end
