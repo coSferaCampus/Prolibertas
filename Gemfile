@@ -19,6 +19,7 @@ gem 'spreadsheet'          # Exportar a excel
 gem 'unicorn' # Servidor HTTP
 gem "non-stupid-digest-assets" # Resuelve los assets no compilados
 gem "ngannotate-rails"
+gem 'airbrake', '~> 5.0'
 
 # Convierte objetos de nuestros modelos en json
 gem 'active_model_serializers', '~> 0.9.3'
