@@ -49,7 +49,7 @@
         }
       });
 
-      $http.get('/sandwiches/show.json?selected_day=' + scope.selected_day)
+      $http.get('/sandwiches_of_the_day.json?selected_day=' + scope.selected_day)
         .success(function(data) { scope.sandwitches_amt = data; });
     };
     scope.getPeople();

@@ -10,6 +10,10 @@ class SandwichesController < ApplicationController
   end
 
   def show
+    respond_with @sandwich
+  end
+
+  def sandwiches_of_the_day
     if params[:selected_day]
       date = params[:selected_day].to_datetime
       @sandwich = Sandwich.where(:created_at.gte => date, :created_at.lt => date + 1.day).first
